@@ -1,0 +1,1868 @@
+{
+	"TrackName": "melbourne_2019",
+	"TrackConfig": "",
+	"Type": "PRACTICE",
+	"DurationSecs": 0,
+	"RaceLaps": 0,
+	"Cars": [
+		{
+			"CarId": 0,
+			"Driver": {
+				"Name": "Reagan G",
+				"Team": "",
+				"Nation": "TEX",
+				"Guid": "76561198946955771",
+				"GuidsList": [
+					"76561198946955771"
+				]
+			},
+			"Model": "rss_formula_hybrid_2020",
+			"Skin": "d_16_Ferrari_SF1000",
+			"BallastKG": 0,
+			"Restrictor": 0
+		},
+		{
+			"CarId": 1,
+			"Driver": {
+				"Name": "Theo",
+				"Team": "",
+				"Nation": "USA",
+				"Guid": "76561197961128043",
+				"GuidsList": [
+					"76561197961128043"
+				]
+			},
+			"Model": "rss_formula_hybrid_2020",
+			"Skin": "c_5_Ferrari_SF1000",
+			"BallastKG": 0,
+			"Restrictor": 0
+		},
+		{
+			"CarId": 2,
+			"Driver": {
+				"Name": "Shelby",
+				"Team": "",
+				"Nation": "CAN",
+				"Guid": "76561198415460681",
+				"GuidsList": [
+					"76561198415460681"
+				]
+			},
+			"Model": "rss_formula_hybrid_2020",
+			"Skin": "j_31_Renault_R.S.20",
+			"BallastKG": 0,
+			"Restrictor": 0
+		},
+		{
+			"CarId": 3,
+			"Driver": {
+				"Name": "BackMarker",
+				"Team": "Renault",
+				"Nation": "",
+				"Guid": "76561198972385440",
+				"GuidsList": [
+					"76561198972385440"
+				]
+			},
+			"Model": "rss_formula_hybrid_2020",
+			"Skin": "i_3_Renault_R.S.20",
+			"BallastKG": 0,
+			"Restrictor": 0
+		},
+		{
+			"CarId": 4,
+			"Driver": {
+				"Name": "Salami",
+				"Team": "",
+				"Nation": "VNM",
+				"Guid": "76561198804952860",
+				"GuidsList": [
+					"76561198804952860"
+				]
+			},
+			"Model": "rss_formula_hybrid_2020",
+			"Skin": "p_99_Alfa_Romeo_Racing_C39",
+			"BallastKG": 0,
+			"Restrictor": 0
+		},
+		{
+			"CarId": 5,
+			"Driver": {
+				"Name": "Batata",
+				"Team": "Alfa Romeo",
+				"Nation": "",
+				"Guid": "76561198059743929",
+				"GuidsList": [
+					"76561198059743929"
+				]
+			},
+			"Model": "rss_formula_hybrid_2020",
+			"Skin": "o_7_Alfa_Romeo_Racing_C39",
+			"BallastKG": 0,
+			"Restrictor": 0
+		},
+		{
+			"CarId": 6,
+			"Driver": {
+				"Name": "carproblems",
+				"Team": "",
+				"Nation": "",
+				"Guid": "76561197980256003",
+				"GuidsList": [
+					"76561197980256003"
+				]
+			},
+			"Model": "rss_formula_hybrid_2020",
+			"Skin": "k_26_Scuderia_AlphaTauri_AT01",
+			"BallastKG": 0,
+			"Restrictor": 0
+		},
+		{
+			"CarId": 7,
+			"Driver": {
+				"Name": "sodie",
+				"Team": "",
+				"Nation": "GTM",
+				"Guid": "76561198180012010",
+				"GuidsList": [
+					"76561198180012010"
+				]
+			},
+			"Model": "rss_formula_hybrid_2020",
+			"Skin": "l_10_Scuderia_AlphaTauri_AT01",
+			"BallastKG": 0,
+			"Restrictor": 0
+		},
+		{
+			"CarId": 8,
+			"Driver": {
+				"Name": "Jshylol",
+				"Team": "",
+				"Nation": "PLA",
+				"Guid": "76561198025766792",
+				"GuidsList": [
+					"76561198025766792"
+				]
+			},
+			"Model": "rss_formula_hybrid_2020",
+			"Skin": "f_23_Red_Bull_Racing_RB16",
+			"BallastKG": 0,
+			"Restrictor": 0
+		},
+		{
+			"CarId": 9,
+			"Driver": {
+				"Name": "Matt",
+				"Team": "Red Bull",
+				"Nation": "",
+				"Guid": "76561198020006533",
+				"GuidsList": [
+					"76561198020006533"
+				]
+			},
+			"Model": "rss_formula_hybrid_2020",
+			"Skin": "e_33_Red_Bull_Racing_RB16",
+			"BallastKG": 0,
+			"Restrictor": 0
+		},
+		{
+			"CarId": 10,
+			"Driver": {
+				"Name": "Jackson",
+				"Team": "Williams",
+				"Nation": "",
+				"Guid": "76561198130851942",
+				"GuidsList": [
+					"76561198130851942"
+				]
+			},
+			"Model": "rss_formula_hybrid_2020",
+			"Skin": "s_63_Williams_FW43",
+			"BallastKG": 0,
+			"Restrictor": 0
+		},
+		{
+			"CarId": 11,
+			"Driver": {
+				"Name": "tommygunz_18",
+				"Team": "",
+				"Nation": "PLA",
+				"Guid": "76561198129348572",
+				"GuidsList": [
+					"76561198129348572"
+				]
+			},
+			"Model": "rss_formula_hybrid_2020",
+			"Skin": "t_6_Williams_FW43",
+			"BallastKG": 0,
+			"Restrictor": 0
+		},
+		{
+			"CarId": 12,
+			"Driver": {
+				"Name": "dabromanovich",
+				"Team": "",
+				"Nation": "USA",
+				"Guid": "76561198338032202",
+				"GuidsList": [
+					"76561198338032202"
+				]
+			},
+			"Model": "rss_formula_hybrid_2020",
+			"Skin": "b_77_Mercedes-AMG_F1_W11_EQ_Performance",
+			"BallastKG": 0,
+			"Restrictor": 0
+		},
+		{
+			"CarId": 13,
+			"Driver": {
+				"Name": "Niski",
+				"Team": "",
+				"Nation": "USA",
+				"Guid": "76561198043408140",
+				"GuidsList": [
+					"76561198043408140"
+				]
+			},
+			"Model": "rss_formula_hybrid_2020",
+			"Skin": "a_44_Mercedes-AMG_F1_W11_EQ_Performance",
+			"BallastKG": 0,
+			"Restrictor": 0
+		},
+		{
+			"CarId": 14,
+			"Driver": {
+				"Name": "Maquenchie",
+				"Team": "",
+				"Nation": "",
+				"Guid": "76561198151426091",
+				"GuidsList": [
+					"76561198151426091"
+				]
+			},
+			"Model": "rss_formula_hybrid_2020",
+			"Skin": "q_8_Haas_VF-20",
+			"BallastKG": 0,
+			"Restrictor": 0
+		},
+		{
+			"CarId": 15,
+			"Driver": {
+				"Name": "cibbirt",
+				"Team": "",
+				"Nation": "CAN",
+				"Guid": "76561198033324232",
+				"GuidsList": [
+					""
+				]
+			},
+			"Model": "rss_formula_hybrid_2020",
+			"Skin": "r_20_Haas_VF-20",
+			"BallastKG": 0,
+			"Restrictor": 0
+		},
+		{
+			"CarId": 16,
+			"Driver": {
+				"Name": "SpiffyTheEagle",
+				"Team": "",
+				"Nation": "PLA",
+				"Guid": "76561198014638952",
+				"GuidsList": [
+					"76561198014638952"
+				]
+			},
+			"Model": "rss_formula_hybrid_2020",
+			"Skin": "m_11_Racing_Point_RP20",
+			"BallastKG": 0,
+			"Restrictor": 0
+		},
+		{
+			"CarId": 17,
+			"Driver": {
+				"Name": "Cunninglinguist",
+				"Team": "",
+				"Nation": "USA",
+				"Guid": "76561198010343142",
+				"GuidsList": [
+					"76561198010343142"
+				]
+			},
+			"Model": "rss_formula_hybrid_2020",
+			"Skin": "n_18_Racing_Point__RP20",
+			"BallastKG": 0,
+			"Restrictor": 0
+		},
+		{
+			"CarId": 18,
+			"Driver": {
+				"Name": "CarneAsad",
+				"Team": "",
+				"Nation": "USA",
+				"Guid": "76561198061315736",
+				"GuidsList": [
+					"76561198061315736"
+				]
+			},
+			"Model": "rss_formula_hybrid_2020",
+			"Skin": "h_4_McLaren_MCL35",
+			"BallastKG": 0,
+			"Restrictor": 0
+		},
+		{
+			"CarId": 19,
+			"Driver": {
+				"Name": "AlexG",
+				"Team": "",
+				"Nation": "CAN",
+				"Guid": "76561198039085663",
+				"GuidsList": [
+					"76561198039085663"
+				]
+			},
+			"Model": "rss_formula_hybrid_2020",
+			"Skin": "g_55_McLaren_MCL35",
+			"BallastKG": 0,
+			"Restrictor": 0
+		}
+	],
+	"Result": [
+		{
+			"DriverName": "Reagan G",
+			"DriverGuid": "76561198946955771",
+			"CarId": 0,
+			"CarModel": "rss_formula_hybrid_2020",
+			"BestLap": 80865,
+			"TotalTime": 6453387,
+			"BallastKG": 0,
+			"Restrictor": 0
+		},
+		{
+			"DriverName": "Salami",
+			"DriverGuid": "76561198804952860",
+			"CarId": 4,
+			"CarModel": "rss_formula_hybrid_2020",
+			"BestLap": 81079,
+			"TotalTime": 6744640,
+			"BallastKG": 0,
+			"Restrictor": 0
+		},
+		{
+			"DriverName": "Jackson",
+			"DriverGuid": "76561198130851942",
+			"CarId": 10,
+			"CarModel": "rss_formula_hybrid_2020",
+			"BestLap": 999999999,
+			"TotalTime": 0,
+			"BallastKG": 0,
+			"Restrictor": 0
+		},
+		{
+			"DriverName": "BackMarker",
+			"DriverGuid": "76561198972385440",
+			"CarId": 3,
+			"CarModel": "rss_formula_hybrid_2020",
+			"BestLap": 999999999,
+			"TotalTime": 0,
+			"BallastKG": 0,
+			"Restrictor": 0
+		},
+		{
+			"DriverName": "Shelby",
+			"DriverGuid": "76561198415460681",
+			"CarId": 2,
+			"CarModel": "rss_formula_hybrid_2020",
+			"BestLap": 999999999,
+			"TotalTime": 0,
+			"BallastKG": 0,
+			"Restrictor": 0
+		},
+		{
+			"DriverName": "Batata",
+			"DriverGuid": "76561198059743929",
+			"CarId": 5,
+			"CarModel": "rss_formula_hybrid_2020",
+			"BestLap": 999999999,
+			"TotalTime": 0,
+			"BallastKG": 0,
+			"Restrictor": 0
+		},
+		{
+			"DriverName": "carproblems",
+			"DriverGuid": "76561197980256003",
+			"CarId": 6,
+			"CarModel": "rss_formula_hybrid_2020",
+			"BestLap": 999999999,
+			"TotalTime": 0,
+			"BallastKG": 0,
+			"Restrictor": 0
+		},
+		{
+			"DriverName": "sodie",
+			"DriverGuid": "76561198180012010",
+			"CarId": 7,
+			"CarModel": "rss_formula_hybrid_2020",
+			"BestLap": 999999999,
+			"TotalTime": 0,
+			"BallastKG": 0,
+			"Restrictor": 0
+		},
+		{
+			"DriverName": "Jshylol",
+			"DriverGuid": "76561198025766792",
+			"CarId": 8,
+			"CarModel": "rss_formula_hybrid_2020",
+			"BestLap": 999999999,
+			"TotalTime": 0,
+			"BallastKG": 0,
+			"Restrictor": 0
+		},
+		{
+			"DriverName": "Matt",
+			"DriverGuid": "76561198020006533",
+			"CarId": 9,
+			"CarModel": "rss_formula_hybrid_2020",
+			"BestLap": 999999999,
+			"TotalTime": 0,
+			"BallastKG": 0,
+			"Restrictor": 0
+		},
+		{
+			"DriverName": "Theo",
+			"DriverGuid": "76561197961128043",
+			"CarId": 1,
+			"CarModel": "rss_formula_hybrid_2020",
+			"BestLap": 999999999,
+			"TotalTime": 0,
+			"BallastKG": 0,
+			"Restrictor": 0
+		},
+		{
+			"DriverName": "tommygunz_18",
+			"DriverGuid": "76561198129348572",
+			"CarId": 11,
+			"CarModel": "rss_formula_hybrid_2020",
+			"BestLap": 999999999,
+			"TotalTime": 0,
+			"BallastKG": 0,
+			"Restrictor": 0
+		},
+		{
+			"DriverName": "dabromanovich",
+			"DriverGuid": "76561198338032202",
+			"CarId": 12,
+			"CarModel": "rss_formula_hybrid_2020",
+			"BestLap": 999999999,
+			"TotalTime": 0,
+			"BallastKG": 0,
+			"Restrictor": 0
+		},
+		{
+			"DriverName": "Niski",
+			"DriverGuid": "76561198043408140",
+			"CarId": 13,
+			"CarModel": "rss_formula_hybrid_2020",
+			"BestLap": 999999999,
+			"TotalTime": 0,
+			"BallastKG": 0,
+			"Restrictor": 0
+		},
+		{
+			"DriverName": "Maquenchie",
+			"DriverGuid": "76561198151426091",
+			"CarId": 14,
+			"CarModel": "rss_formula_hybrid_2020",
+			"BestLap": 999999999,
+			"TotalTime": 0,
+			"BallastKG": 0,
+			"Restrictor": 0
+		},
+		{
+			"DriverName": "cibbirt",
+			"DriverGuid": "76561198033324232",
+			"CarId": 15,
+			"CarModel": "rss_formula_hybrid_2020",
+			"BestLap": 999999999,
+			"TotalTime": 0,
+			"BallastKG": 0,
+			"Restrictor": 0
+		},
+		{
+			"DriverName": "SpiffyTheEagle",
+			"DriverGuid": "76561198014638952",
+			"CarId": 16,
+			"CarModel": "rss_formula_hybrid_2020",
+			"BestLap": 999999999,
+			"TotalTime": 0,
+			"BallastKG": 0,
+			"Restrictor": 0
+		},
+		{
+			"DriverName": "Cunninglinguist",
+			"DriverGuid": "76561198010343142",
+			"CarId": 17,
+			"CarModel": "rss_formula_hybrid_2020",
+			"BestLap": 999999999,
+			"TotalTime": 0,
+			"BallastKG": 0,
+			"Restrictor": 0
+		},
+		{
+			"DriverName": "CarneAsad",
+			"DriverGuid": "76561198061315736",
+			"CarId": 18,
+			"CarModel": "rss_formula_hybrid_2020",
+			"BestLap": 999999999,
+			"TotalTime": 0,
+			"BallastKG": 0,
+			"Restrictor": 0
+		},
+		{
+			"DriverName": "AlexG",
+			"DriverGuid": "76561198039085663",
+			"CarId": 19,
+			"CarModel": "rss_formula_hybrid_2020",
+			"BestLap": 999999999,
+			"TotalTime": 0,
+			"BallastKG": 0,
+			"Restrictor": 0
+		}
+	],
+	"Laps": [
+		{
+			"DriverName": "Reagan G",
+			"DriverGuid": "76561198946955771",
+			"CarId": 0,
+			"CarModel": "rss_formula_hybrid_2020",
+			"Timestamp": 199134612,
+			"LapTime": 108042,
+			"Sectors": [
+				50653,
+				21488,
+				35901
+			],
+			"Cuts": 0,
+			"BallastKG": 0,
+			"Tyre": "C4",
+			"Restrictor": 0
+		},
+		{
+			"DriverName": "Reagan G",
+			"DriverGuid": "76561198946955771",
+			"CarId": 0,
+			"CarModel": "rss_formula_hybrid_2020",
+			"Timestamp": 199224865,
+			"LapTime": 90252,
+			"Sectors": [
+				32165,
+				21272,
+				36815
+			],
+			"Cuts": 0,
+			"BallastKG": 0,
+			"Tyre": "C4",
+			"Restrictor": 0
+		},
+		{
+			"DriverName": "Reagan G",
+			"DriverGuid": "76561198946955771",
+			"CarId": 0,
+			"CarModel": "rss_formula_hybrid_2020",
+			"Timestamp": 199351581,
+			"LapTime": 126711,
+			"Sectors": [
+				55844,
+				34110,
+				36757
+			],
+			"Cuts": 0,
+			"BallastKG": 0,
+			"Tyre": "C4",
+			"Restrictor": 0
+		},
+		{
+			"DriverName": "Salami",
+			"DriverGuid": "76561198804952860",
+			"CarId": 4,
+			"CarModel": "rss_formula_hybrid_2020",
+			"Timestamp": 199405974,
+			"LapTime": 134546,
+			"Sectors": [
+				74953,
+				20102,
+				39491
+			],
+			"Cuts": 0,
+			"BallastKG": 0,
+			"Tyre": "C5",
+			"Restrictor": 0
+		},
+		{
+			"DriverName": "Reagan G",
+			"DriverGuid": "76561198946955771",
+			"CarId": 0,
+			"CarModel": "rss_formula_hybrid_2020",
+			"Timestamp": 199433918,
+			"LapTime": 82336,
+			"Sectors": [
+				26090,
+				20975,
+				35271
+			],
+			"Cuts": 0,
+			"BallastKG": 0,
+			"Tyre": "C4",
+			"Restrictor": 0
+		},
+		{
+			"DriverName": "Reagan G",
+			"DriverGuid": "76561198946955771",
+			"CarId": 0,
+			"CarModel": "rss_formula_hybrid_2020",
+			"Timestamp": 199539660,
+			"LapTime": 105746,
+			"Sectors": [
+				38656,
+				25564,
+				41526
+			],
+			"Cuts": 0,
+			"BallastKG": 0,
+			"Tyre": "C4",
+			"Restrictor": 0
+		},
+		{
+			"DriverName": "Salami",
+			"DriverGuid": "76561198804952860",
+			"CarId": 4,
+			"CarModel": "rss_formula_hybrid_2020",
+			"Timestamp": 199560759,
+			"LapTime": 154785,
+			"Sectors": [
+				97544,
+				19526,
+				37715
+			],
+			"Cuts": 0,
+			"BallastKG": 0,
+			"Tyre": "C5",
+			"Restrictor": 0
+		},
+		{
+			"DriverName": "Reagan G",
+			"DriverGuid": "76561198946955771",
+			"CarId": 0,
+			"CarModel": "rss_formula_hybrid_2020",
+			"Timestamp": 199625256,
+			"LapTime": 85597,
+			"Sectors": [
+				26283,
+				23399,
+				35915
+			],
+			"Cuts": 0,
+			"BallastKG": 0,
+			"Tyre": "C4",
+			"Restrictor": 0
+		},
+		{
+			"DriverName": "Salami",
+			"DriverGuid": "76561198804952860",
+			"CarId": 4,
+			"CarModel": "rss_formula_hybrid_2020",
+			"Timestamp": 199686370,
+			"LapTime": 125612,
+			"Sectors": [
+				64255,
+				22680,
+				38677
+			],
+			"Cuts": 0,
+			"BallastKG": 0,
+			"Tyre": "C5",
+			"Restrictor": 0
+		},
+		{
+			"DriverName": "Reagan G",
+			"DriverGuid": "76561198946955771",
+			"CarId": 0,
+			"CarModel": "rss_formula_hybrid_2020",
+			"Timestamp": 199707751,
+			"LapTime": 82499,
+			"Sectors": [
+				26034,
+				20943,
+				35522
+			],
+			"Cuts": 0,
+			"BallastKG": 0,
+			"Tyre": "C4",
+			"Restrictor": 0
+		},
+		{
+			"DriverName": "Salami",
+			"DriverGuid": "76561198804952860",
+			"CarId": 4,
+			"CarModel": "rss_formula_hybrid_2020",
+			"Timestamp": 199801971,
+			"LapTime": 115603,
+			"Sectors": [
+				52247,
+				22424,
+				40932
+			],
+			"Cuts": 0,
+			"BallastKG": 0,
+			"Tyre": "C5",
+			"Restrictor": 0
+		},
+		{
+			"DriverName": "Reagan G",
+			"DriverGuid": "76561198946955771",
+			"CarId": 0,
+			"CarModel": "rss_formula_hybrid_2020",
+			"Timestamp": 199890835,
+			"LapTime": 183081,
+			"Sectors": [
+				122763,
+				20713,
+				39605
+			],
+			"Cuts": 0,
+			"BallastKG": 0,
+			"Tyre": "C4",
+			"Restrictor": 0
+		},
+		{
+			"DriverName": "Salami",
+			"DriverGuid": "76561198804952860",
+			"CarId": 4,
+			"CarModel": "rss_formula_hybrid_2020",
+			"Timestamp": 199962574,
+			"LapTime": 160606,
+			"Sectors": [
+				102570,
+				21851,
+				36185
+			],
+			"Cuts": 0,
+			"BallastKG": 0,
+			"Tyre": "C5",
+			"Restrictor": 0
+		},
+		{
+			"DriverName": "Reagan G",
+			"DriverGuid": "76561198946955771",
+			"CarId": 0,
+			"CarModel": "rss_formula_hybrid_2020",
+			"Timestamp": 199972691,
+			"LapTime": 81859,
+			"Sectors": [
+				26198,
+				20440,
+				35221
+			],
+			"Cuts": 0,
+			"BallastKG": 0,
+			"Tyre": "C4",
+			"Restrictor": 0
+		},
+		{
+			"DriverName": "Reagan G",
+			"DriverGuid": "76561198946955771",
+			"CarId": 0,
+			"CarModel": "rss_formula_hybrid_2020",
+			"Timestamp": 200056250,
+			"LapTime": 83463,
+			"Sectors": [
+				26060,
+				21610,
+				35793
+			],
+			"Cuts": 0,
+			"BallastKG": 0,
+			"Tyre": "C4",
+			"Restrictor": 0
+		},
+		{
+			"DriverName": "Salami",
+			"DriverGuid": "76561198804952860",
+			"CarId": 4,
+			"CarModel": "rss_formula_hybrid_2020",
+			"Timestamp": 200089972,
+			"LapTime": 127396,
+			"Sectors": [
+				68914,
+				21461,
+				37021
+			],
+			"Cuts": 0,
+			"BallastKG": 0,
+			"Tyre": "C5",
+			"Restrictor": 0
+		},
+		{
+			"DriverName": "Reagan G",
+			"DriverGuid": "76561198946955771",
+			"CarId": 0,
+			"CarModel": "rss_formula_hybrid_2020",
+			"Timestamp": 200138193,
+			"LapTime": 81967,
+			"Sectors": [
+				25825,
+				20731,
+				35411
+			],
+			"Cuts": 0,
+			"BallastKG": 0,
+			"Tyre": "C4",
+			"Restrictor": 0
+		},
+		{
+			"DriverName": "Reagan G",
+			"DriverGuid": "76561198946955771",
+			"CarId": 0,
+			"CarModel": "rss_formula_hybrid_2020",
+			"Timestamp": 200220900,
+			"LapTime": 82779,
+			"Sectors": [
+				26366,
+				20700,
+				35713
+			],
+			"Cuts": 0,
+			"BallastKG": 0,
+			"Tyre": "C4",
+			"Restrictor": 0
+		},
+		{
+			"DriverName": "Salami",
+			"DriverGuid": "76561198804952860",
+			"CarId": 4,
+			"CarModel": "rss_formula_hybrid_2020",
+			"Timestamp": 200250403,
+			"LapTime": 160439,
+			"Sectors": [
+				99419,
+				20854,
+				40166
+			],
+			"Cuts": 0,
+			"BallastKG": 0,
+			"Tyre": "C5",
+			"Restrictor": 0
+		},
+		{
+			"DriverName": "Reagan G",
+			"DriverGuid": "76561198946955771",
+			"CarId": 0,
+			"CarModel": "rss_formula_hybrid_2020",
+			"Timestamp": 200330675,
+			"LapTime": 109772,
+			"Sectors": [
+				30086,
+				29183,
+				50503
+			],
+			"Cuts": 0,
+			"BallastKG": 0,
+			"Tyre": "C4",
+			"Restrictor": 0
+		},
+		{
+			"DriverName": "Salami",
+			"DriverGuid": "76561198804952860",
+			"CarId": 4,
+			"CarModel": "rss_formula_hybrid_2020",
+			"Timestamp": 200474200,
+			"LapTime": 223797,
+			"Sectors": [
+				163569,
+				22589,
+				37639
+			],
+			"Cuts": 0,
+			"BallastKG": 0,
+			"Tyre": "C5",
+			"Restrictor": 0
+		},
+		{
+			"DriverName": "Reagan G",
+			"DriverGuid": "76561198946955771",
+			"CarId": 0,
+			"CarModel": "rss_formula_hybrid_2020",
+			"Timestamp": 200476326,
+			"LapTime": 145654,
+			"Sectors": [
+				80238,
+				29218,
+				36198
+			],
+			"Cuts": 0,
+			"BallastKG": 0,
+			"Tyre": "C4",
+			"Restrictor": 0
+		},
+		{
+			"DriverName": "Reagan G",
+			"DriverGuid": "76561198946955771",
+			"CarId": 0,
+			"CarModel": "rss_formula_hybrid_2020",
+			"Timestamp": 200560855,
+			"LapTime": 84529,
+			"Sectors": [
+				26186,
+				20817,
+				37526
+			],
+			"Cuts": 0,
+			"BallastKG": 0,
+			"Tyre": "C4",
+			"Restrictor": 0
+		},
+		{
+			"DriverName": "Reagan G",
+			"DriverGuid": "76561198946955771",
+			"CarId": 0,
+			"CarModel": "rss_formula_hybrid_2020",
+			"Timestamp": 200707492,
+			"LapTime": 146634,
+			"Sectors": [
+				79125,
+				26923,
+				40586
+			],
+			"Cuts": 0,
+			"BallastKG": 0,
+			"Tyre": "C4",
+			"Restrictor": 0
+		},
+		{
+			"DriverName": "Salami",
+			"DriverGuid": "76561198804952860",
+			"CarId": 4,
+			"CarModel": "rss_formula_hybrid_2020",
+			"Timestamp": 200723363,
+			"LapTime": 249165,
+			"Sectors": [
+				189234,
+				21455,
+				38476
+			],
+			"Cuts": 0,
+			"BallastKG": 0,
+			"Tyre": "C5",
+			"Restrictor": 0
+		},
+		{
+			"DriverName": "Reagan G",
+			"DriverGuid": "76561198946955771",
+			"CarId": 0,
+			"CarModel": "rss_formula_hybrid_2020",
+			"Timestamp": 200788358,
+			"LapTime": 80865,
+			"Sectors": [
+				25749,
+				20529,
+				34587
+			],
+			"Cuts": 0,
+			"BallastKG": 0,
+			"Tyre": "C4",
+			"Restrictor": 0
+		},
+		{
+			"DriverName": "Reagan G",
+			"DriverGuid": "76561198946955771",
+			"CarId": 0,
+			"CarModel": "rss_formula_hybrid_2020",
+			"Timestamp": 200892410,
+			"LapTime": 104053,
+			"Sectors": [
+				30356,
+				25223,
+				48474
+			],
+			"Cuts": 0,
+			"BallastKG": 0,
+			"Tyre": "C4",
+			"Restrictor": 0
+		},
+		{
+			"DriverName": "Salami",
+			"DriverGuid": "76561198804952860",
+			"CarId": 4,
+			"CarModel": "rss_formula_hybrid_2020",
+			"Timestamp": 200911503,
+			"LapTime": 188144,
+			"Sectors": [
+				129086,
+				21173,
+				37885
+			],
+			"Cuts": 0,
+			"BallastKG": 0,
+			"Tyre": "C5",
+			"Restrictor": 0
+		},
+		{
+			"DriverName": "Salami",
+			"DriverGuid": "76561198804952860",
+			"CarId": 4,
+			"CarModel": "rss_formula_hybrid_2020",
+			"Timestamp": 200992582,
+			"LapTime": 81079,
+			"Sectors": [
+				25616,
+				20286,
+				35177
+			],
+			"Cuts": 0,
+			"BallastKG": 0,
+			"Tyre": "C5",
+			"Restrictor": 0
+		},
+		{
+			"DriverName": "Reagan G",
+			"DriverGuid": "76561198946955771",
+			"CarId": 0,
+			"CarModel": "rss_formula_hybrid_2020",
+			"Timestamp": 201006528,
+			"LapTime": 114117,
+			"Sectors": [
+				57345,
+				21069,
+				35703
+			],
+			"Cuts": 0,
+			"BallastKG": 0,
+			"Tyre": "C4",
+			"Restrictor": 0
+		},
+		{
+			"DriverName": "Salami",
+			"DriverGuid": "76561198804952860",
+			"CarId": 4,
+			"CarModel": "rss_formula_hybrid_2020",
+			"Timestamp": 201145474,
+			"LapTime": 152893,
+			"Sectors": [
+				93232,
+				21290,
+				38371
+			],
+			"Cuts": 0,
+			"BallastKG": 0,
+			"Tyre": "C4",
+			"Restrictor": 0
+		},
+		{
+			"DriverName": "Reagan G",
+			"DriverGuid": "76561198946955771",
+			"CarId": 0,
+			"CarModel": "rss_formula_hybrid_2020",
+			"Timestamp": 201150966,
+			"LapTime": 144441,
+			"Sectors": [
+				88159,
+				20979,
+				35303
+			],
+			"Cuts": 0,
+			"BallastKG": 0,
+			"Tyre": "C4",
+			"Restrictor": 0
+		},
+		{
+			"DriverName": "Salami",
+			"DriverGuid": "76561198804952860",
+			"CarId": 4,
+			"CarModel": "rss_formula_hybrid_2020",
+			"Timestamp": 201226692,
+			"LapTime": 81221,
+			"Sectors": [
+				25786,
+				20277,
+				35158
+			],
+			"Cuts": 0,
+			"BallastKG": 0,
+			"Tyre": "C4",
+			"Restrictor": 0
+		},
+		{
+			"DriverName": "Reagan G",
+			"DriverGuid": "76561198946955771",
+			"CarId": 0,
+			"CarModel": "rss_formula_hybrid_2020",
+			"Timestamp": 201301466,
+			"LapTime": 150497,
+			"Sectors": [
+				94499,
+				20629,
+				35369
+			],
+			"Cuts": 0,
+			"BallastKG": 0,
+			"Tyre": "C4",
+			"Restrictor": 0
+		},
+		{
+			"DriverName": "Salami",
+			"DriverGuid": "76561198804952860",
+			"CarId": 4,
+			"CarModel": "rss_formula_hybrid_2020",
+			"Timestamp": 201328372,
+			"LapTime": 101684,
+			"Sectors": [
+				41807,
+				23004,
+				36873
+			],
+			"Cuts": 0,
+			"BallastKG": 0,
+			"Tyre": "C4",
+			"Restrictor": 0
+		},
+		{
+			"DriverName": "Salami",
+			"DriverGuid": "76561198804952860",
+			"CarId": 4,
+			"CarModel": "rss_formula_hybrid_2020",
+			"Timestamp": 201509530,
+			"LapTime": 181159,
+			"Sectors": [
+				124599,
+				19611,
+				36949
+			],
+			"Cuts": 0,
+			"BallastKG": 0,
+			"Tyre": "C4",
+			"Restrictor": 0
+		},
+		{
+			"DriverName": "Salami",
+			"DriverGuid": "76561198804952860",
+			"CarId": 4,
+			"CarModel": "rss_formula_hybrid_2020",
+			"Timestamp": 201592732,
+			"LapTime": 83202,
+			"Sectors": [
+				26007,
+				20236,
+				36959
+			],
+			"Cuts": 0,
+			"BallastKG": 0,
+			"Tyre": "C4",
+			"Restrictor": 0
+		}
+	],
+	"Events": [
+		{
+			"Type": "COLLISION_WITH_ENV",
+			"CarId": 0,
+			"Driver": {
+				"Name": "Reagan G",
+				"Team": "",
+				"Nation": "TEX",
+				"Guid": "76561198946955771",
+				"GuidsList": [
+					"76561198946955771"
+				]
+			},
+			"OtherCarId": -1,
+			"OtherDriver": {
+				"Name": "",
+				"Team": "",
+				"Nation": "",
+				"Guid": "",
+				"GuidsList": null
+			},
+			"ImpactSpeed": 31.207506,
+			"WorldPosition": {
+				"X": -406.9553,
+				"Y": 3.3741057,
+				"Z": 33.429806
+			},
+			"RelPosition": {
+				"X": 0.9932748,
+				"Y": 0.4868346,
+				"Z": -1.8956301
+			}
+		},
+		{
+			"Type": "COLLISION_WITH_ENV",
+			"CarId": 0,
+			"Driver": {
+				"Name": "Reagan G",
+				"Team": "",
+				"Nation": "TEX",
+				"Guid": "76561198946955771",
+				"GuidsList": [
+					"76561198946955771"
+				]
+			},
+			"OtherCarId": -1,
+			"OtherDriver": {
+				"Name": "",
+				"Team": "",
+				"Nation": "",
+				"Guid": "",
+				"GuidsList": null
+			},
+			"ImpactSpeed": 8.363683,
+			"WorldPosition": {
+				"X": -678.0862,
+				"Y": 2.6519976,
+				"Z": -405.35025
+			},
+			"RelPosition": {
+				"X": -1.0036745,
+				"Y": -0.2659685,
+				"Z": 2.795097
+			}
+		},
+		{
+			"Type": "COLLISION_WITH_ENV",
+			"CarId": 4,
+			"Driver": {
+				"Name": "Salami",
+				"Team": "",
+				"Nation": "VNM",
+				"Guid": "76561198804952860",
+				"GuidsList": [
+					"76561198804952860"
+				]
+			},
+			"OtherCarId": -1,
+			"OtherDriver": {
+				"Name": "",
+				"Team": "",
+				"Nation": "",
+				"Guid": "",
+				"GuidsList": null
+			},
+			"ImpactSpeed": 68.47854,
+			"WorldPosition": {
+				"X": -605.18854,
+				"Y": 3.010371,
+				"Z": -516.8944
+			},
+			"RelPosition": {
+				"X": 0.0000065863132,
+				"Y": -0.211836,
+				"Z": 3.208694
+			}
+		},
+		{
+			"Type": "COLLISION_WITH_ENV",
+			"CarId": 0,
+			"Driver": {
+				"Name": "Reagan G",
+				"Team": "",
+				"Nation": "TEX",
+				"Guid": "76561198946955771",
+				"GuidsList": [
+					"76561198946955771"
+				]
+			},
+			"OtherCarId": -1,
+			"OtherDriver": {
+				"Name": "",
+				"Team": "",
+				"Nation": "",
+				"Guid": "",
+				"GuidsList": null
+			},
+			"ImpactSpeed": 135.37897,
+			"WorldPosition": {
+				"X": -479.82785,
+				"Y": 3.1457448,
+				"Z": -33.861946
+			},
+			"RelPosition": {
+				"X": -0.8414066,
+				"Y": -0.082599066,
+				"Z": -1.9368668
+			}
+		},
+		{
+			"Type": "COLLISION_WITH_ENV",
+			"CarId": 0,
+			"Driver": {
+				"Name": "Reagan G",
+				"Team": "",
+				"Nation": "TEX",
+				"Guid": "76561198946955771",
+				"GuidsList": [
+					"76561198946955771"
+				]
+			},
+			"OtherCarId": -1,
+			"OtherDriver": {
+				"Name": "",
+				"Team": "",
+				"Nation": "",
+				"Guid": "",
+				"GuidsList": null
+			},
+			"ImpactSpeed": 0.53461874,
+			"WorldPosition": {
+				"X": -568.35095,
+				"Y": 3.1407585,
+				"Z": -124.53204
+			},
+			"RelPosition": {
+				"X": -1.0013299,
+				"Y": -0.11027364,
+				"Z": -1.9011497
+			}
+		},
+		{
+			"Type": "COLLISION_WITH_ENV",
+			"CarId": 4,
+			"Driver": {
+				"Name": "Salami",
+				"Team": "",
+				"Nation": "VNM",
+				"Guid": "76561198804952860",
+				"GuidsList": [
+					"76561198804952860"
+				]
+			},
+			"OtherCarId": -1,
+			"OtherDriver": {
+				"Name": "",
+				"Team": "",
+				"Nation": "",
+				"Guid": "",
+				"GuidsList": null
+			},
+			"ImpactSpeed": 185.33813,
+			"WorldPosition": {
+				"X": 504.3797,
+				"Y": 3.2353444,
+				"Z": 333.56754
+			},
+			"RelPosition": {
+				"X": 0.89712197,
+				"Y": 0.12964536,
+				"Z": 1.5159199
+			}
+		},
+		{
+			"Type": "COLLISION_WITH_ENV",
+			"CarId": 4,
+			"Driver": {
+				"Name": "Salami",
+				"Team": "",
+				"Nation": "VNM",
+				"Guid": "76561198804952860",
+				"GuidsList": [
+					"76561198804952860"
+				]
+			},
+			"OtherCarId": -1,
+			"OtherDriver": {
+				"Name": "",
+				"Team": "",
+				"Nation": "",
+				"Guid": "",
+				"GuidsList": null
+			},
+			"ImpactSpeed": 37.5459,
+			"WorldPosition": {
+				"X": 43.519505,
+				"Y": 4.050803,
+				"Z": -281.28964
+			},
+			"RelPosition": {
+				"X": -0.97808665,
+				"Y": 0.8173339,
+				"Z": -1.324977
+			}
+		},
+		{
+			"Type": "COLLISION_WITH_ENV",
+			"CarId": 4,
+			"Driver": {
+				"Name": "Salami",
+				"Team": "",
+				"Nation": "VNM",
+				"Guid": "76561198804952860",
+				"GuidsList": [
+					"76561198804952860"
+				]
+			},
+			"OtherCarId": -1,
+			"OtherDriver": {
+				"Name": "",
+				"Team": "",
+				"Nation": "",
+				"Guid": "",
+				"GuidsList": null
+			},
+			"ImpactSpeed": 38.5808,
+			"WorldPosition": {
+				"X": 22.87239,
+				"Y": 3.2163258,
+				"Z": -251.33734
+			},
+			"RelPosition": {
+				"X": -1.0036969,
+				"Y": -0.26589495,
+				"Z": 2.7951713
+			}
+		},
+		{
+			"Type": "COLLISION_WITH_ENV",
+			"CarId": 4,
+			"Driver": {
+				"Name": "Salami",
+				"Team": "",
+				"Nation": "VNM",
+				"Guid": "76561198804952860",
+				"GuidsList": [
+					"76561198804952860"
+				]
+			},
+			"OtherCarId": -1,
+			"OtherDriver": {
+				"Name": "",
+				"Team": "",
+				"Nation": "",
+				"Guid": "",
+				"GuidsList": null
+			},
+			"ImpactSpeed": 196.70956,
+			"WorldPosition": {
+				"X": 28.316835,
+				"Y": 3.1840143,
+				"Z": -180.98836
+			},
+			"RelPosition": {
+				"X": 0.75470644,
+				"Y": -0.23506948,
+				"Z": 2.653589
+			}
+		},
+		{
+			"Type": "COLLISION_WITH_ENV",
+			"CarId": 4,
+			"Driver": {
+				"Name": "Salami",
+				"Team": "",
+				"Nation": "VNM",
+				"Guid": "76561198804952860",
+				"GuidsList": [
+					"76561198804952860"
+				]
+			},
+			"OtherCarId": -1,
+			"OtherDriver": {
+				"Name": "",
+				"Team": "",
+				"Nation": "",
+				"Guid": "",
+				"GuidsList": null
+			},
+			"ImpactSpeed": 130.49918,
+			"WorldPosition": {
+				"X": 61.463894,
+				"Y": 4.1135616,
+				"Z": -391.9461
+			},
+			"RelPosition": {
+				"X": -0.9979439,
+				"Y": 0.07659674,
+				"Z": 2.6253762
+			}
+		},
+		{
+			"Type": "COLLISION_WITH_ENV",
+			"CarId": 4,
+			"Driver": {
+				"Name": "Salami",
+				"Team": "",
+				"Nation": "VNM",
+				"Guid": "76561198804952860",
+				"GuidsList": [
+					"76561198804952860"
+				]
+			},
+			"OtherCarId": -1,
+			"OtherDriver": {
+				"Name": "",
+				"Team": "",
+				"Nation": "",
+				"Guid": "",
+				"GuidsList": null
+			},
+			"ImpactSpeed": 83.77958,
+			"WorldPosition": {
+				"X": -345.935,
+				"Y": 3.046977,
+				"Z": 138.69489
+			},
+			"RelPosition": {
+				"X": 0.8678215,
+				"Y": -0.060636636,
+				"Z": 2.6926084
+			}
+		},
+		{
+			"Type": "COLLISION_WITH_ENV",
+			"CarId": 4,
+			"Driver": {
+				"Name": "Salami",
+				"Team": "",
+				"Nation": "VNM",
+				"Guid": "76561198804952860",
+				"GuidsList": [
+					"76561198804952860"
+				]
+			},
+			"OtherCarId": -1,
+			"OtherDriver": {
+				"Name": "",
+				"Team": "",
+				"Nation": "",
+				"Guid": "",
+				"GuidsList": null
+			},
+			"ImpactSpeed": 24.93552,
+			"WorldPosition": {
+				"X": -81.93379,
+				"Y": 3.5207815,
+				"Z": 476.21005
+			},
+			"RelPosition": {
+				"X": 1.0096928,
+				"Y": 0.29364803,
+				"Z": -1.2021465
+			}
+		},
+		{
+			"Type": "COLLISION_WITH_ENV",
+			"CarId": 0,
+			"Driver": {
+				"Name": "Reagan G",
+				"Team": "",
+				"Nation": "TEX",
+				"Guid": "76561198946955771",
+				"GuidsList": [
+					"76561198946955771"
+				]
+			},
+			"OtherCarId": -1,
+			"OtherDriver": {
+				"Name": "",
+				"Team": "",
+				"Nation": "",
+				"Guid": "",
+				"GuidsList": null
+			},
+			"ImpactSpeed": 49.92234,
+			"WorldPosition": {
+				"X": -383.18954,
+				"Y": 3.1013105,
+				"Z": 30.788425
+			},
+			"RelPosition": {
+				"X": 1.0013305,
+				"Y": -0.11027379,
+				"Z": -1.901154
+			}
+		},
+		{
+			"Type": "COLLISION_WITH_ENV",
+			"CarId": 4,
+			"Driver": {
+				"Name": "Salami",
+				"Team": "",
+				"Nation": "VNM",
+				"Guid": "76561198804952860",
+				"GuidsList": [
+					"76561198804952860"
+				]
+			},
+			"OtherCarId": -1,
+			"OtherDriver": {
+				"Name": "",
+				"Team": "",
+				"Nation": "",
+				"Guid": "",
+				"GuidsList": null
+			},
+			"ImpactSpeed": 127.39651,
+			"WorldPosition": {
+				"X": 23.867565,
+				"Y": 3.2244377,
+				"Z": -257.4513
+			},
+			"RelPosition": {
+				"X": 0.26190865,
+				"Y": -0.22500348,
+				"Z": 3.053754
+			}
+		},
+		{
+			"Type": "COLLISION_WITH_ENV",
+			"CarId": 0,
+			"Driver": {
+				"Name": "Reagan G",
+				"Team": "",
+				"Nation": "TEX",
+				"Guid": "76561198946955771",
+				"GuidsList": [
+					"76561198946955771"
+				]
+			},
+			"OtherCarId": -1,
+			"OtherDriver": {
+				"Name": "",
+				"Team": "",
+				"Nation": "",
+				"Guid": "",
+				"GuidsList": null
+			},
+			"ImpactSpeed": 10.968012,
+			"WorldPosition": {
+				"X": -355.64175,
+				"Y": 2.9948359,
+				"Z": 76.81949
+			},
+			"RelPosition": {
+				"X": 0.99993026,
+				"Y": -0.11034502,
+				"Z": -1.8955437
+			}
+		},
+		{
+			"Type": "COLLISION_WITH_ENV",
+			"CarId": 4,
+			"Driver": {
+				"Name": "Salami",
+				"Team": "",
+				"Nation": "VNM",
+				"Guid": "76561198804952860",
+				"GuidsList": [
+					"76561198804952860"
+				]
+			},
+			"OtherCarId": -1,
+			"OtherDriver": {
+				"Name": "",
+				"Team": "",
+				"Nation": "",
+				"Guid": "",
+				"GuidsList": null
+			},
+			"ImpactSpeed": 124.38757,
+			"WorldPosition": {
+				"X": -241.97392,
+				"Y": 1.8814961,
+				"Z": 321.89178
+			},
+			"RelPosition": {
+				"X": 0.000010371208,
+				"Y": -0.21183574,
+				"Z": 3.208673
+			}
+		},
+		{
+			"Type": "COLLISION_WITH_ENV",
+			"CarId": 0,
+			"Driver": {
+				"Name": "Reagan G",
+				"Team": "",
+				"Nation": "TEX",
+				"Guid": "76561198946955771",
+				"GuidsList": [
+					"76561198946955771"
+				]
+			},
+			"OtherCarId": -1,
+			"OtherDriver": {
+				"Name": "",
+				"Team": "",
+				"Nation": "",
+				"Guid": "",
+				"GuidsList": null
+			},
+			"ImpactSpeed": 10.705356,
+			"WorldPosition": {
+				"X": 45.316597,
+				"Y": 3.0543659,
+				"Z": -290.9338
+			},
+			"RelPosition": {
+				"X": -5.364418e-7,
+				"Y": -0.21183614,
+				"Z": 3.2086682
+			}
+		},
+		{
+			"Type": "COLLISION_WITH_ENV",
+			"CarId": 4,
+			"Driver": {
+				"Name": "Salami",
+				"Team": "",
+				"Nation": "VNM",
+				"Guid": "76561198804952860",
+				"GuidsList": [
+					"76561198804952860"
+				]
+			},
+			"OtherCarId": -1,
+			"OtherDriver": {
+				"Name": "",
+				"Team": "",
+				"Nation": "",
+				"Guid": "",
+				"GuidsList": null
+			},
+			"ImpactSpeed": 55.17943,
+			"WorldPosition": {
+				"X": 167.5628,
+				"Y": 2.8540618,
+				"Z": 745.34393
+			},
+			"RelPosition": {
+				"X": 1.0013117,
+				"Y": -0.110274106,
+				"Z": -1.9011238
+			}
+		},
+		{
+			"Type": "COLLISION_WITH_ENV",
+			"CarId": 0,
+			"Driver": {
+				"Name": "Reagan G",
+				"Team": "",
+				"Nation": "TEX",
+				"Guid": "76561198946955771",
+				"GuidsList": [
+					"76561198946955771"
+				]
+			},
+			"OtherCarId": -1,
+			"OtherDriver": {
+				"Name": "",
+				"Team": "",
+				"Nation": "",
+				"Guid": "",
+				"GuidsList": null
+			},
+			"ImpactSpeed": 41.307243,
+			"WorldPosition": {
+				"X": 595.0965,
+				"Y": 3.1981995,
+				"Z": 836.62115
+			},
+			"RelPosition": {
+				"X": 1.0013087,
+				"Y": -0.110274464,
+				"Z": -1.901188
+			}
+		},
+		{
+			"Type": "COLLISION_WITH_ENV",
+			"CarId": 0,
+			"Driver": {
+				"Name": "Reagan G",
+				"Team": "",
+				"Nation": "TEX",
+				"Guid": "76561198946955771",
+				"GuidsList": [
+					"76561198946955771"
+				]
+			},
+			"OtherCarId": -1,
+			"OtherDriver": {
+				"Name": "",
+				"Team": "",
+				"Nation": "",
+				"Guid": "",
+				"GuidsList": null
+			},
+			"ImpactSpeed": 9.113364,
+			"WorldPosition": {
+				"X": 580.74896,
+				"Y": 2.9970136,
+				"Z": 842.87427
+			},
+			"RelPosition": {
+				"X": 1.001359,
+				"Y": -0.26592982,
+				"Z": 2.795122
+			}
+		},
+		{
+			"Type": "COLLISION_WITH_ENV",
+			"CarId": 4,
+			"Driver": {
+				"Name": "Salami",
+				"Team": "",
+				"Nation": "VNM",
+				"Guid": "76561198804952860",
+				"GuidsList": [
+					"76561198804952860"
+				]
+			},
+			"OtherCarId": -1,
+			"OtherDriver": {
+				"Name": "",
+				"Team": "",
+				"Nation": "",
+				"Guid": "",
+				"GuidsList": null
+			},
+			"ImpactSpeed": 180.80852,
+			"WorldPosition": {
+				"X": 149.28845,
+				"Y": 2.7473254,
+				"Z": 726.4187
+			},
+			"RelPosition": {
+				"X": 0.9964773,
+				"Y": -0.22040585,
+				"Z": 2.7561166
+			}
+		},
+		{
+			"Type": "COLLISION_WITH_ENV",
+			"CarId": 4,
+			"Driver": {
+				"Name": "Salami",
+				"Team": "",
+				"Nation": "VNM",
+				"Guid": "76561198804952860",
+				"GuidsList": [
+					"76561198804952860"
+				]
+			},
+			"OtherCarId": -1,
+			"OtherDriver": {
+				"Name": "",
+				"Team": "",
+				"Nation": "",
+				"Guid": "",
+				"GuidsList": null
+			},
+			"ImpactSpeed": 32.090874,
+			"WorldPosition": {
+				"X": -676.2775,
+				"Y": 3.3263507,
+				"Z": -446.87204
+			},
+			"RelPosition": {
+				"X": 0.9822424,
+				"Y": 0.13815041,
+				"Z": -1.8985885
+			}
+		}
+	]
+}

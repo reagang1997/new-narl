@@ -1,0 +1,30 @@
+.logo{
+    height: 220px;
+    margin-top: 15px;
+}
+.center-logo{
+    width: 800px;
+    margin: auto;
+    padding-left: 80px;
+
+}
+
+.links{
+    margin-left: -15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+span{
+   margin-left: 45px;
+   margin-right: 45px;
+}
+
+.link-color{
+    color: rgb(173, 173, 173);
+    font-style: italic;
+}
+
+.link-color:hover{
+    color: black;
+}
+
