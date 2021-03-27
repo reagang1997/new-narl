@@ -9,7 +9,7 @@ function DriverStandings() {
 
     useEffect(() => {
         async function getStandings(){
-            const drivers = await axios.get('http://localhost:8080/api/WDC');
+            const drivers = await axios.get('/api/WDC');
             console.log(drivers.data);
             setDriverStandings(drivers.data);
         }

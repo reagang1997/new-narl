@@ -18,10 +18,10 @@ const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(cors({
-  origin: ["http://localhost:8080", "http://localhost:3000"],
-  credentials: true
-}));
+// app.use(cors({
+//   origin: ["http://localhost:8080", "http://localhost:3000"],
+//   credentials: true
+// }));
 app.use(express.json());
 if (process.env.NODE_ENV === "production") { 
     app.use(express.static("client/build")); 

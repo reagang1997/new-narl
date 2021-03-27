@@ -8,7 +8,7 @@ function ConstructorStandings() {
 
     useEffect(() => {
         async function getStandings() {
-            const teams = await axios.get('http://localhost:8080/api/WCC');
+            const teams = await axios.get('/api/WCC');
             console.log(teams.data);
             setConstructorStandings(teams.data);
         }
