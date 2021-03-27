@@ -22,7 +22,13 @@ app.use(cors({
   origin: ["http://localhost:8080", "http://localhost:3000"],
   credentials: true
 }));
-app.use(express.static("public"));
+app.use(express.json());
+if (process.env.NODE_ENV === "production") { 
+    app.use(express.static("client/build")); 
+}
+else {
+    app.use(express.static("public"));
+}
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/narl", {
   useNewUrlParser: true,
