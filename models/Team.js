@@ -3,14 +3,44 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const TeamSchema = new Schema({
-    name: String,
-    points: Number,
-    wins: Number,
-    fastestLaps: Number,
-    drivers: Array,
-    historyPoints: Number,
-    historyWins: Number,
-    historyFastestLaps: Number
+    name: {
+        type: String
+    },
+    points: {
+        type: Number,
+        default: 0
+    },
+    wins: {
+        type: Number,
+        default: 0
+    },
+    fastestLaps: {
+        type: Number,
+        default: 0
+    },
+    drivers: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Driver',
+            default: []
+        }
+    ],
+    historyPoints: {
+        type: Number,
+        default: 0
+    },
+    historyWins: {
+        type: Number,
+        default: 0
+    },
+    historyFastestLaps: {
+        type: Number,
+        default: 0
+    },
+    isActive: {
+        type: Boolean,
+        default: false
+    }
 });
 
 const Team = mongoose.model('Team', TeamSchema);

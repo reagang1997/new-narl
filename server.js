@@ -29,6 +29,9 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/narl", {
   useFindAndModify: false
 });
 
+app.use(require('./routes/DriverRoutes.js'));
+app.use(require('./routes/TeamRoutes.js'));
+
 // routes
 
 app.get('/api/clearPractice', async (req, res) => {

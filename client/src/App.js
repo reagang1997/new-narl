@@ -9,6 +9,7 @@ import TeamPage from './componets/pages/TeamPage';
 import RaceInfo from './componets/pages/RaceInfo';
 import Home from './componets/pages/Home';
 import DriverStats from './componets/pages/DriverStats';
+import AdminHome from './componets/pages/AdminHome';
 import './index.css';
 function App() {
   
@@ -17,6 +18,7 @@ function App() {
       <div>
         <NavTabs />
         <Route exact path="/" component={Home}/>
+        <Route exact path="/adminHome" component={AdminHome}/>
         <Route exact path="/practiceResults" component={PracticeResults} />
         <Route exact path="/driverStandings" component={DriverStandings} />
         <Route exact path="/constructorStandings" component={ConstructorStandings} />
