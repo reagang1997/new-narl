@@ -19,24 +19,24 @@ const AdminHome = () => {
     }, [selection]);
 
     const addTeam = async () => {
-        const addedTeam = await axios.post('http://localhost:8080/api/CreateNewTeam', newTeam)
+        const addedTeam = await axios.post('/api/CreateNewTeam', newTeam)
         console.log(addedTeam);
     }
 
     const getDrivers = async () => {
-        const driversTmp = await axios.get('http://localhost:8080/api/getAllDrivers');
+        const driversTmp = await axios.get('/api/getAllDrivers');
         setDrivers(driversTmp.data);
         console.log(drivers);
     }
 
     const getTeams = async () => {
-        const tmpTeams = await axios.get('http://localhost:8080/api/getAllTeams');
+        const tmpTeams = await axios.get('/api/getAllTeams');
         setTeams(tmpTeams.data);
         console.log(teams);
     }
 
     const addDriver = async () => {
-        const addedDriver = await axios.post('http://localhost:8080/api/CreateNewDriver', newDriver);
+        const addedDriver = await axios.post('/api/CreateNewDriver', newDriver);
         console.log(addedDriver);
     };
 
@@ -71,7 +71,7 @@ const AdminHome = () => {
             console.log('driver');
             if (selection.indexOf('Inc') != -1) {
                 stats.forEach(async (stat) => {
-                    const updatedResult = await axios.put(`http://localhost:8080/api/IncDriverStats/${selectedDriver}`, stat);
+                    const updatedResult = await axios.put(`/api/IncDriverStats/${selectedDriver}`, stat);
                     console.log(updatedResult);
                 })
             }
@@ -80,7 +80,7 @@ const AdminHome = () => {
                 console.log(stats)
                 stats.forEach(async (stat) => {
 
-                    const updatedResult = await axios.put(`http://localhost:8080/api/SetDriverStats/${selectedDriver}`, stat);
+                    const updatedResult = await axios.put(`/api/SetDriverStats/${selectedDriver}`, stat);
                     console.log('set');
                     console.log(updatedResult);
                 })
@@ -90,13 +90,13 @@ const AdminHome = () => {
         else {
             if(selection.indexOf('Inc') != -1){
                 stats.forEach(async (stat) => {
-                    const updatedResult = await axios.put(`http://localhost:8080/api/IncTeamStats/${selectedTeam}`, stat);
+                    const updatedResult = await axios.put(`/api/IncTeamStats/${selectedTeam}`, stat);
                     console.log(updatedResult);
                 })
             }
             else{
                 stats.forEach(async (stat) => {
-                    const updatedResult = await axios.put(`http://localhost:8080/api/SetTeamStats/${selectedTeam}`, stat);
+                    const updatedResult = await axios.put(`/api/SetTeamStats/${selectedTeam}`, stat);
                     console.log(updatedResult);
                 })
             }
