@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Nav, Form, Button, Col, ToggleButton, ToggleButtonGroup } from 'react-bootstrap';
+import Login from '../Login'
 import axios from 'axios';
 
 const AdminHome = () => {
@@ -12,6 +13,7 @@ const AdminHome = () => {
     const [checkValue, setValue] = useState([1, 3])
     const [selectedDriver, setSelectedDriver] = useState(''); //stores driver id
     const [selectedTeam, setSelectedTeam] = useState('')
+    const [loggedIn, setLoggedIn] = useState(false)
     useEffect(() => {
 
         getDrivers();
@@ -108,6 +110,7 @@ const AdminHome = () => {
 
     return (
         <div>
+            {loggedIn ? <div>
             <Nav defaultActiveKey="/home" className="justify-content-center">
                 <Nav.Link href="/adminHome">Admin Home</Nav.Link>
                 <Nav.Link eventKey="link-1" onClick={(e) => setSelection(e.target.innerHTML)}>Add Driver</Nav.Link>
@@ -393,6 +396,8 @@ const AdminHome = () => {
                     </Form>
                 </div> : <div></div>
             }
+            </div>
+        : <Login loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>}
         </div >
 
     )

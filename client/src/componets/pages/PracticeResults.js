@@ -12,7 +12,7 @@ function PracticeResults(props) {
     }, [])
 
     const getPractice = async() => {
-        const practice = await axios.get('http://localhost:8080/api/practiceResults');
+        const practice = await axios.get('/api/practiceResults');
         console.log(practice);
         setPracticeResults(practice.data);
     }

@@ -20,6 +20,7 @@ span{
 }
 
 .link-color{
+    margin-left: -25px;
     color: rgb(173, 173, 173);
     font-style: italic;
 }

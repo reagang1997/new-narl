@@ -51,6 +51,11 @@ function NavTabs() {
               Team Stats
             </Link>
           </span>
+          <span>
+            <Link to="/adminHome" className={location.pathname === "/adminHome" ? 'active' : 'link-color'} >
+              Admins
+            </Link>
+          </span>
         </div>
       </div>
 

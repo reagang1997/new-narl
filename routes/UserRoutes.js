@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const passport = require('../config/passport');
+const User = require('../models/User');
 
 router.post("/signup", (req, res) => {
   console.log("user signup");
@@ -27,3 +28,17 @@ router.post("/signup", (req, res) => {
     }
   });
 });
+
+router.post('/login', passport.authenticate("local", {
+  failureRedirect: "/signup"
+}),
+  function (req, res) {
+    console.log(req.user)
+    // console.log(req.user)
+    const userInfo = { port: process.env.PORT, user: req.user }
+    res.json(userInfo)
+    console.log(process.env.PORT)
+  }
+);
+
+module.exports = router;

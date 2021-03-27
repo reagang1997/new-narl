@@ -16,7 +16,7 @@ function WCCRow({team, points, pos, wins, fastestLaps}){
         let team = getTeamName(event);
         console.log(team);
 
-        team = await axios.get(`http://localhost:8080/api/${team}`)
+        team = await axios.get(`/api/${team}`)
 
         console.log(team.data[0]);
 
