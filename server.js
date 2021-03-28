@@ -45,6 +45,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/narl", {
 app.use(require('./routes/DriverRoutes.js'));
 app.use(require('./routes/TeamRoutes.js'));
 app.use(require('./routes/UserRoutes.js'));
+app.use(require('./routes/ChampRoutes.js'));
 
 // routes
 
@@ -249,41 +250,41 @@ app.get('/api/raceResults', (req, res) => {
 })
 
 // get driver championship data
-app.get('/api/WDC', async (req, res) => {
-  const driverChamp = await WDC.find({});
+// app.get('/api/WDC', async (req, res) => {
+//   const driverChamp = await WDC.find({});
 
-  driverChamp.forEach(async driver => {
-    const driverStats = await Drivers.findOne({ name: driver.name });
+//   driverChamp.forEach(async driver => {
+//     const driverStats = await Drivers.findOne({ name: driver.name });
 
-    const updatedDriverChamp = await WDC.findOneAndUpdate({ name: driver.name }, { $set: { points: driverStats.points, wins: driverStats.wins, fastestLaps: driverStats.fastestLaps } });
-  })
+//     const updatedDriverChamp = await WDC.findOneAndUpdate({ name: driver.name }, { $set: { points: driverStats.points, wins: driverStats.wins, fastestLaps: driverStats.fastestLaps } });
+//   })
 
-  const wdcToSend = await WDC.find({}).sort({ points: -1 });
+//   const wdcToSend = await WDC.find({}).sort({ points: -1 });
 
-  res.send(wdcToSend);
-})
+//   res.send(wdcToSend);
+// })
 
 // get constructor champioship data
-app.get('/api/WCC', async (req, res) => {
+// app.get('/api/WCC', async (req, res) => {
 
-  const cChamp = await WCC.find({});
+//   const cChamp = await WCC.find({});
 
 
-  cChamp.forEach(async team => {
-    let teamStats = await Teams.findOne({ name: team.team });
-    let updatedWCC = await WCC.findOneAndUpdate({ team: teamStats.name }, {
-      $set: {
-        points: teamStats.points,
-        wins: teamStats.wins,
-        fastestLaps: teamStats.fastestLaps
-      }
-    })
-  })
+//   cChamp.forEach(async team => {
+//     let teamStats = await Teams.findOne({ name: team.team });
+//     let updatedWCC = await WCC.findOneAndUpdate({ team: teamStats.name }, {
+//       $set: {
+//         points: teamStats.points,
+//         wins: teamStats.wins,
+//         fastestLaps: teamStats.fastestLaps
+//       }
+//     })
+//   })
 
-  const wccToSend = await WCC.find({}).sort({ 'points': -1 });
-  res.send(wccToSend);
+//   const wccToSend = await WCC.find({}).sort({ 'points': -1 });
+//   res.send(wccToSend);
 
-})
+// })
 
 //get all drivers 
 
