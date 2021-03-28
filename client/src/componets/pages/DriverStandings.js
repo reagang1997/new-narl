@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import WDCTable from '../WDCTable';
 import fs from 'fs';
-import {Table, Tr, Td} from 'reactable';
+import { Table, Tr, Td } from 'reactable';
 
 function DriverStandings() {
 
     const [drivers, setDrivers] = useState([]);
 
     useEffect(() => {
-        async function getStandings(){
+        async function getStandings() {
             const tmp = await axios.get('/api/WDC');
             console.log(tmp.data);
             setDrivers(tmp.data);
@@ -36,7 +36,8 @@ function DriverStandings() {
                             <Td column='Points'>{driver.points}</Td>
                             <Td column='Wins'>{driver.wins}</Td>
                             <Td column='Fastest Laps'>{driver.fastestLaps}</Td>
-                        </Tr>
+                        </Tr>,
+                        document.getElementById('table')
                     )
                 })}
 
