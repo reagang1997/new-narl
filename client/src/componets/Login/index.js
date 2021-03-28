@@ -22,7 +22,7 @@ const Login = ({ loggedIn, setLoggedIn }) => {
                 password: password
             }
            setShow(true);
-            // const newAdmin = await axios.post('/signup', user);
+            const newAdmin = await axios.post('/signup', user);
         }
         else {
             let user = {
