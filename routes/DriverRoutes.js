@@ -46,7 +46,12 @@ router.put('/api/setDriverStats/:driverID', async (req, res) => {
         case 'name':
             updatedDriver = await Driver.findOneAndUpdate({ _id: req.params.driverID }, { $set: { name: value } }, { new: true });
             break;
-
+        case 'wcc':
+            updatedDriver = await Driver.findOneAndUpdate({ _id: req.params.driverID }, { $set: { wcc: value } }, { new: true });
+            break;
+        case 'wdc':
+            updatedDriver = await Driver.findOneAndUpdate({ _id: req.params.driverID }, { $set: { wdc: value } }, { new: true });
+            break;
     }
 
     res.send(updatedDriver);
@@ -76,6 +81,12 @@ router.put('/api/IncDriverStats/:driverID', async (req, res) => {
             break;
         case 'careerFastestLaps':
             updatedDriver = await Driver.findOneAndUpdate({ _id: req.params.driverID }, { $inc: { careerFastestLaps: value } }, { new: true });
+            break;
+        case 'wcc':
+            updatedDriver = await Driver.findOneAndUpdate({ _id: req.params.driverID }, { $inc: { wcc: value } }, { new: true });
+            break;
+        case 'wdc':
+            updatedDriver = await Driver.findOneAndUpdate({ _id: req.params.driverID }, { $inc: { wdc: value } }, { new: true });
             break;
 
     }

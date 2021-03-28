@@ -40,6 +40,18 @@ const DriverSchema = new Schema({
         type: Boolean,
         default: false
     },
+    wdc: {
+        type: Number,
+        default: 0
+    },
+    position: {
+        type: Number,
+        default: 0
+    },
+    wcc: {
+        type: Number,
+        default: 0
+    },
     teamHistory: [
         {
             type: Schema.Types.ObjectId,

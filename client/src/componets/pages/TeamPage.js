@@ -14,7 +14,7 @@ function TeamPage() {
             let url = window.location.href.split('/');
             const team = url[url.length - 1];
 
-            let tmpteamData = await axios.get(`http://localhost:8080/api/teams/` + `${team}`);
+            let tmpteamData = await axios.get(`/api/teams/` + `${team}`);
             setTeamData(tmpteamData.data)
 
 

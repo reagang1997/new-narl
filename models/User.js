@@ -5,10 +5,7 @@ const bcrypt = require('bcryptjs');
 const userSchema = new Schema({
     email: {type: String, required: true },
     password: { type: String, required: true },
-    username: { type: String, required: true },
-    champ: [
-        {type: Schema.Types.ObjectId, ref: 'Championship'}
-    ]
+    username: { type: String, required: true }
 })
 
 userSchema.methods = {

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Nav, Form, Button, Col, ToggleButton, ToggleButtonGroup } from 'react-bootstrap';
+import Login from '../Login'
 import axios from 'axios';
 
 const AdminHome = () => {
@@ -12,6 +13,7 @@ const AdminHome = () => {
     const [checkValue, setValue] = useState([1, 3])
     const [selectedDriver, setSelectedDriver] = useState(''); //stores driver id
     const [selectedTeam, setSelectedTeam] = useState('')
+    const [loggedIn, setLoggedIn] = useState(false)
     useEffect(() => {
 
         getDrivers();
@@ -108,6 +110,7 @@ const AdminHome = () => {
 
     return (
         <div>
+            {loggedIn ? <div>
             <Nav defaultActiveKey="/home" className="justify-content-center">
                 <Nav.Link href="/adminHome">Admin Home</Nav.Link>
                 <Nav.Link eventKey="link-1" onClick={(e) => setSelection(e.target.innerHTML)}>Add Driver</Nav.Link>
@@ -253,6 +256,16 @@ const AdminHome = () => {
                             <Form.Control placeholder="Career Fastest Laps" style={{ width: '150px' }} onBlur={(e) => setStat('careerFastestLaps', e.target.value)} />
                         </Col>
                         <Col sm={2}>
+                            <Form.Label>Driver Champs</Form.Label>
+
+                            <Form.Control placeholder="Driver Champs" style={{ width: '150px' }} onBlur={(e) => setStat('wdc', e.target.value)} />
+                        </Col>
+                        <Col sm={2}>
+                            <Form.Label>Construct Champs</Form.Label>
+
+                            <Form.Control placeholder="Construct Champs" style={{ width: '150px' }} onBlur={(e) => setStat('wcc', e.target.value)} />
+                        </Col>
+                        <Col sm={2}>
                             <Form.Label>Is Active</Form.Label>
                             <ToggleButtonGroup type='checkbox' value={checkValue} onChange={(val) => {
                                 setValue(val);
@@ -386,6 +399,11 @@ const AdminHome = () => {
 
                                 <Form.Control placeholder="History Fastest Laps" style={{ width: '150px' }} onBlur={(e) => setStat('historyFastestLaps', e.target.value)}/>
                             </Col>
+                            <Col sm={2}>
+                                <Form.Label>Constructor Champs</Form.Label>
+
+                                <Form.Control placeholder="Constructor Champs" style={{ width: '150px' }} onBlur={(e) => setStat('wcc', e.target.value)}/>
+                            </Col>
                         </Form.Row>
                         <Button variant="warning" onClick={updateStats} style={{ marginTop: '10px' }}>
                             Set Driver
@@ -393,6 +411,8 @@ const AdminHome = () => {
                     </Form>
                 </div> : <div></div>
             }
+            </div>
+        : <Login loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>}
         </div >
 
     )

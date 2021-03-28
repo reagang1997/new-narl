@@ -6,6 +6,10 @@ const TeamSchema = new Schema({
     name: {
         type: String
     },
+    position: {
+        type: Number,
+        default: 0
+    },
     points: {
         type: Number,
         default: 0
@@ -41,6 +45,10 @@ const TeamSchema = new Schema({
         type: Boolean,
         default: false
     }
+    wcc: {
+        type: Number,
+        default: 0
+    },
 });
 
 const Team = mongoose.model('Team', TeamSchema);

@@ -8,9 +8,11 @@ const Drivers = require('./models/Driver');
 const RaceHistory = require('./models/RaceResult');
 const PracticeHistory = require('./models/PracticeResult');
 const PracticeTable = require('./models/PracticeTable');
+const session = require('express-session');
 const fs = require('fs');
 const path = require('path');
 const cors = require('cors');
+const passport = require('./config/passport')
 
 const PORT = process.env.PORT || 8080;
 
@@ -30,6 +32,11 @@ else {
     app.use(express.static("public"));
 }
 
+app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
+
+
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/narl", {
   useNewUrlParser: true,
   useFindAndModify: false
@@ -37,6 +44,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/narl", {
 
 app.use(require('./routes/DriverRoutes.js'));
 app.use(require('./routes/TeamRoutes.js'));
+app.use(require('./routes/UserRoutes.js'));
 
 // routes
 

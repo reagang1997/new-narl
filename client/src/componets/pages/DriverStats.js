@@ -9,12 +9,12 @@ function DriverStats() {
 
     const getDrivers = async () => {
         if(driverSearch === ''){
-            const driverList = await axios.get('http://localhost:8080/api/allDrivers')
+            const driverList = await axios.get('/api/allDrivers')
             console.log(driverList.data);
             setDrivers(driverList.data);
         }
         else{
-            const filterd = await axios.get(`http://localhost:8080/api/drivers/${driverSearch}`);
+            const filterd = await axios.get(`/api/drivers/${driverSearch}`);
             setDrivers(filterd.data);
         }
 

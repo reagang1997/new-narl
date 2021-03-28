@@ -17,7 +17,7 @@ function DriverStandings() {
     }, [])
 
     const getRaces = async () => {
-        const response = await axios.get('http://localhost:8080/api/raceResults')
+        const response = await axios.get('/api/raceResults')
         console.log(response.data);
     }
 
