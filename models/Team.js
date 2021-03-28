@@ -44,7 +44,7 @@ const TeamSchema = new Schema({
     isActive: {
         type: Boolean,
         default: false
-    }
+    },
     wcc: {
         type: Number,
         default: 0
