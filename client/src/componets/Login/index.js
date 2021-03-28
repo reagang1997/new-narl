@@ -21,7 +21,7 @@ const Login = ({ loggedIn, setLoggedIn }) => {
                 username: username,
                 password: password
             }
-           setShow(true);
+            setShow(true);
             const newAdmin = await axios.post('/signup', user);
         }
         else {
@@ -54,22 +54,20 @@ const Login = ({ loggedIn, setLoggedIn }) => {
                         We'll never share your email with anyone else.
                 </Form.Text>
                 </Form.Group>
-                {signup ? 
-                        <Form.Group>
-                            <Form.Label>Username</Form.Label>
-                            <Form.Control type="username" placeholder="Username" onBlur={e => setUsername(e.target.value)} />
-                            <Form.Label>Tell us why you want to be an admin</Form.Label>
-                            <Form.Control as="textarea" rows={5} cols={50} placeholder="Your message here"/>
-                        </Form.Group> 
-                        : 
-                        <div>
-                            <Form.Group controlId="formBasicPassword">
-                                <Form.Label>Password</Form.Label>
-                                 <Form.Control type="password" placeholder="Password" onBlur={e => setPassword(e.target.value)} />
-                            </Form.Group>
-                        </div>}
+                {signup ?
+                    <Form.Group>
+                        <Form.Label>Username</Form.Label>
+                        <Form.Control type="username" placeholder="Username" onBlur={e => setUsername(e.target.value)} />
+                        {/* <Form.Label>Tell us why you want to be an admin</Form.Label>
+                        <Form.Control as="textarea" rows={5} cols={50} placeholder="Your message here" /> */}
+                        </Form.Group>
+                        :
+                        <div></div>}
 
-
+                        <Form.Group controlId="formBasicPassword">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control type="password" placeholder="Password" onBlur={e => setPassword(e.target.value)} />
+                </Form.Group>
                 <Button variant="warning" onClick={handleClick}>
                     Submit
                 </Button>
