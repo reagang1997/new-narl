@@ -45,6 +45,9 @@ router.put('/api/setTeamStats/:TeamID', async (req, res) => {
         case 'name':
             updatedTeam = await Team.findOneAndUpdate({ _id: req.params.TeamID }, { $set: { name: value } }, { new: true });
             break;
+        case 'wcc':
+            updatedTeam = await Team.findOneAndUpdate({ _id: req.params.TeamID }, { $set: { wcc: value } }, { new: true });
+            break;
 
     }
 
@@ -75,6 +78,9 @@ router.put('/api/IncTeamStats/:TeamID', async (req, res) => {
             break;
         case 'historyFastestLaps':
             updatedTeam = await Team.findOneAndUpdate({ _id: req.params.TeamID }, { $inc: { historyFastestLaps: value } }, { new: true });
+            break;
+        case 'wcc':
+            updatedTeam = await Team.findOneAndUpdate({ _id: req.params.TeamID }, { $inc: { wcc: value } }, { new: true });
             break;
 
     }

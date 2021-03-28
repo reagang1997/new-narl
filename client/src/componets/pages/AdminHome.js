@@ -256,6 +256,16 @@ const AdminHome = () => {
                             <Form.Control placeholder="Career Fastest Laps" style={{ width: '150px' }} onBlur={(e) => setStat('careerFastestLaps', e.target.value)} />
                         </Col>
                         <Col sm={2}>
+                            <Form.Label>Driver Champs</Form.Label>
+
+                            <Form.Control placeholder="Driver Champs" style={{ width: '150px' }} onBlur={(e) => setStat('wdc', e.target.value)} />
+                        </Col>
+                        <Col sm={2}>
+                            <Form.Label>Construct Champs</Form.Label>
+
+                            <Form.Control placeholder="Construct Champs" style={{ width: '150px' }} onBlur={(e) => setStat('wcc', e.target.value)} />
+                        </Col>
+                        <Col sm={2}>
                             <Form.Label>Is Active</Form.Label>
                             <ToggleButtonGroup type='checkbox' value={checkValue} onChange={(val) => {
                                 setValue(val);
@@ -388,6 +398,11 @@ const AdminHome = () => {
                                 <Form.Label>History FL</Form.Label>
 
                                 <Form.Control placeholder="History Fastest Laps" style={{ width: '150px' }} onBlur={(e) => setStat('historyFastestLaps', e.target.value)}/>
+                            </Col>
+                            <Col sm={2}>
+                                <Form.Label>Constructor Champs</Form.Label>
+
+                                <Form.Control placeholder="Constructor Champs" style={{ width: '150px' }} onBlur={(e) => setStat('wcc', e.target.value)}/>
                             </Col>
                         </Form.Row>
                         <Button variant="warning" onClick={updateStats} style={{ marginTop: '10px' }}>
