@@ -17,14 +17,14 @@ function App() {
     <Router>
       <div>
         <NavTabs />
-        <Route exact path="/" component={Home}/>
+        {/* <Route exact path="/" component={Home}/> */}
         <Route exact path="/adminHome" component={AdminHome}/>
-        <Route exact path="/practiceResults" component={PracticeResults} />
-        <Route exact path="/driverStandings" component={DriverStandings} />
+        {/* <Route exact path="/practiceResults" component={PracticeResults} /> */}
+        <Route exact path="/" path='/driverStandings' component={DriverStandings} />
         <Route exact path="/constructorStandings" component={ConstructorStandings} />
-        <Route exact path="/raceInformation" component={RaceInfo} />
-        <Route path="/teams" component={TeamPage}/>
-        <Route exact path="/driverStats" component={DriverStats} />
+        {/* <Route exact path="/raceInformation" component={RaceInfo} /> */}
+        {/* <Route path="/teams" component={TeamPage}/> */}
+        {/* <Route exact path="/driverStats" component={DriverStats} /> */}
       </div>
     </Router>
   );

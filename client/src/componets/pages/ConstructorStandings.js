@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'
-import {Table, Td, Tr} from 'reactable';
+import { Table, Td, Tr } from 'reactable';
 function ConstructorStandings() {
 
     const [teams, setTeams] = useState([]);
@@ -17,19 +17,25 @@ function ConstructorStandings() {
     return (
         // <WCCTable teams={ConstructorStandings} />
         <div>
-            <Table className='table' id='table'>
+            <table className='table' id='table'>
+                <tr>
+                    <th>Team</th>
+                    <th>Points</th>
+                    <th>Wins</th>
+                    <th>Fastest Laps</th>
+                </tr>
+
                 {teams.map(team => {
                     return (
-                        <Tr>
-                            <Td column='Team Name'>{team.name}</Td>
-                            <Td column='Points'>{team.points}</Td>
-                            <Td column='Wins'>{team.wins}</Td>
-                            <Td column='Fastest Laps'>{team.fastestLaps}</Td>
-                        </Tr>
-                    )
+                        <tr>
+                            <td column='team Name'>{team.name}</td>
+                            <td column='Points'>{team.points}</td>
+                            <td column='Wins'>{team.wins}</td>
+                            <td column='Fastest Laps'>{team.fastestLaps}</td>
+                        </tr>)
                 })}
 
-            </Table>
+            </table>
         </div>
     )
 }

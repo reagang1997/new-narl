@@ -2,21 +2,22 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import WDCTable from '../WDCTable';
 import fs from 'fs';
-import { Table, Tr, Td } from 'reactable';
+import { Table, Tr, td } from 'reactable';
 
 function DriverStandings() {
 
-    const [drivers, setDrivers] = useState([]);
+    const [drivers, setdrivers] = useState([]);
 
     useEffect(() => {
-        async function getStandings() {
-            const tmp = await axios.get('/api/WDC');
-            console.log(tmp.data);
-            setDrivers(tmp.data);
-        }
         getStandings();
     }, [])
 
+    const getStandings = async () => {
+        const tmp = await axios.get('/api/WDC');
+        let data = tmp.data;
+        console.log(tmp.data);
+        setdrivers(data);
+    }
     // const getRaces = async () => {
     //     const response = await axios.get('/api/raceResults')
     //     console.log(response.data);
@@ -24,24 +25,29 @@ function DriverStandings() {
 
     // const Table = Reactable.Table;
     // const Tr = Reactable.Tr;
-    // const Td = Reactable.Td;
+    // const td = Reactable.td;
 
     return (
         <div>
-            <Table className='table' id='table'>
+            <table className='table' id='table'>
+                <tr>
+                    <th>Driver Name</th>
+                    <th>Points</th>
+                    <th>Wins</th>
+                    <th>Fastest Laps</th>
+                </tr>
+                
                 {drivers.map(driver => {
                     return (
-                        <Tr>
-                            <Td column='Driver Name'>{driver.name}</Td>
-                            <Td column='Points'>{driver.points}</Td>
-                            <Td column='Wins'>{driver.wins}</Td>
-                            <Td column='Fastest Laps'>{driver.fastestLaps}</Td>
-                        </Tr>,
-                        document.getElementById('table')
-                    )
+                        <tr>
+                            <td column='Driver Name'>{driver.name}</td>
+                            <td column='Points'>{driver.points}</td>
+                            <td column='Wins'>{driver.wins}</td>
+                            <td column='Fastest Laps'>{driver.fastestLaps}</td>
+                        </tr>)
                 })}
 
-            </Table>
+            </table>
         </div>
         // <WDCTable drivers={driverStandings}/>
     )
