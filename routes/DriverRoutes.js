@@ -6,6 +6,11 @@ router.post('/api/CreateNewDriver', async (req, res) => {
     res.send(newDriver);
 });
 
+router.get('/api/driver/:driverID', async (req, res) => {
+    const found = await Driver.findOne({_id: req.params.driverID});
+    res.send(found);
+})
+
 router.get('/api/getAllDrivers', async (req, res) => {
     const allDrivers = await Driver.find({});
     res.send(allDrivers);
