@@ -71,9 +71,9 @@ const Login = ({ loggedIn, setLoggedIn }) => {
                 <Button variant="warning" onClick={handleClick}>
                     Submit
                 </Button>
-                {!signup ? <Button variant="dark" style={{ marginLeft: '25px' }} onClick={(e) => setSignUp(true)}>
+                {/* {!signup ? <Button variant="dark" style={{ marginLeft: '25px' }} onClick={(e) => setSignUp(true)}>
                     Signup
-                </Button> : <div></div>}
+                </Button> : <div></div>} */}
 
             </Form>
         </div>
