@@ -24,7 +24,7 @@ function App() {
         <Route exact path="/adminHome">
           <AdminHome loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
         </Route>
-        <Route exact path="/practiceResults" component={PracticeResults} />
+        {/* <Route exact path="/practiceResults" component={PracticeResults} /> */}
         <Route exact path="" path='/driverStandings' component={DriverStandings}>
           <DriverStandings loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
         </Route>

@@ -8,22 +8,10 @@ const PracticeTableSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Driver'
     },
-    teamName: {
-        type: String,
-        default: ''
-    },
-    rawLapTime:{
-        type: Number,
-        default: 99999999999
-    },
-    tire:{
-        type: String,
-        default: ''
-    },
-    laps:{
-        type: Number,
-        default: 0
-    },
+    teamName: String,
+    rawLapTime: Number,
+    tire: String,
+    laps: Number
 });
 
 const PracticeTable = mongoose.model('PracticeTable', PracticeTableSchema);
