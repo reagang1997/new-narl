@@ -31,7 +31,8 @@ function PracticeRow({pos, driverName, rawTime, tires, laps, team}) {
             <td>{pos}</td>
             <td onClick={routeChange} id={team}>
                 {/*Make Team Icon Component for here*/}
-                <TeamIcon teamName={team}/>
+                {/* <TeamIcon teamName={team}/> */}
+                {team}
                 </td>
             <td>{time}</td>
             <td>{driverName}</td>
