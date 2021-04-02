@@ -1,7 +1,7 @@
-import axios from 'axios';
 import { Button, Alert } from 'react-bootstrap';
 import React, { useEffect, useState } from 'react';
 import API from '../../utils/API';
+import axios from 'axios';
 
 import PracticeRow from '../PracticeRow';
 function PracticeResults(props) {
