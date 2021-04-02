@@ -72,7 +72,7 @@ function PracticeResults(props) {
                     </tbody>
                 </table>
             </div>
-            <Button variant='warning' style={ {marginLeft: '880px'}} onClick={refresh}>Refresh</Button>
+            <button className='btn warning' onClick={refresh}>Refresh</button>
         </div>
 
     )
