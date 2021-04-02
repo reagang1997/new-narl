@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { Button, Alert } from 'react-bootstrap';
+import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-function PracticeResults(props) {
+
+function PracticeResults() {
 
     const [practiceResults, setPracticeResults] = useState([]);
     const [status, setStatus] = useState(0);
