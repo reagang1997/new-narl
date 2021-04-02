@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Alert } from 'react-bootstrap';
-
-import API from '../../utils/API';
 import axios from 'axios';
-
-import PracticeRow from '../PracticeRow';
 function PracticeResults(props) {
 
     const [practiceResults, setPracticeResults] = useState([]);
