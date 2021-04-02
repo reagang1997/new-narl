@@ -34,9 +34,9 @@ function PracticeResults() {
 
     return (
         <div>
-            {status === 204 ? 
+            {/* {status === 204 ? 
                 <Alert variant='Warning'>Pratice Is Up-To-Date</Alert>   : <div></div> 
-            }
+            } */}
             <div className='practice-container'>
 
                 <table className="table rounded table-hover table-responsive-lg">
