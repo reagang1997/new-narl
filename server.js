@@ -47,7 +47,6 @@ app.use(require('./routes/DriverRoutes.js'));
 app.use(require('./routes/TeamRoutes.js'));
 app.use(require('./routes/UserRoutes.js'));
 app.use(require('./routes/ChampRoutes.js'));
-app.use(require('./routes/PracticeRoutes.js'));
 
 // routes
 
@@ -115,7 +114,12 @@ app.put('/api/updatePractice', async (req, res) => {
   });
 })
 
+//get practice results
+app.get('/api/practiceResults', async (req, res) => {
+    const practiceResults = await PracticeTable.find({}).sort({rawLapTime: 1});
 
+    res.send(practiceResults);
+})
 
 // get all drivers
 app.get('/api/allDrivers', async (req, res) => {
