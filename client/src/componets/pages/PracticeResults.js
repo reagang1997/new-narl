@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import API from '../../utils/API';
+const React, { useState, useEffect } = require( 'react');
+const axios = require( 'axios');
+
 
 function PracticeResults() {
 
