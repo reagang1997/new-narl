@@ -92,7 +92,7 @@ const AdminHome = ({ loggedIn, setLoggedIn }) => {
                 console.log(stats)
                 stats.forEach(async (stat) => {
 
-                    const updatedResult = await axios.put(`/api/SetDriverStats/${selectedDriver}`, stat);
+                    const updatedResult = await axios.put(`/api/SethriverStats/${selectedDriver}`, stat);
                     console.log('set');
                     console.log(updatedResult);
                 })
@@ -115,7 +115,6 @@ const AdminHome = ({ loggedIn, setLoggedIn }) => {
         }
 
         setStats([]);
-        setValue([1,3]);
         findDriver();
 
     }
@@ -231,7 +230,7 @@ const AdminHome = ({ loggedIn, setLoggedIn }) => {
                                 <Form.Control as='select'
                                     value={selectedDriver}
                                     onChange={(e) => setSelectedDriver(e.target.value)}>
-                                    <option>Select Driver</option>
+
                                     {drivers.map(driver => <option id={driver._id} key={driver._id} value={driver._id}>{driver.name}</option>)}
                                 </Form.Control>
                             </Col>
