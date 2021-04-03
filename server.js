@@ -46,6 +46,7 @@ app.use(require('./routes/DriverRoutes.js'));
 app.use(require('./routes/TeamRoutes.js'));
 app.use(require('./routes/UserRoutes.js'));
 app.use(require('./routes/ChampRoutes.js'));
+app.use(require('./routes/PracticeRoutes.js'));
 
 // routes
 
