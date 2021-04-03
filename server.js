@@ -50,20 +50,25 @@ app.use(require('./routes/ChampRoutes.js'));
 // routes
 
 app.get('/api/clearPractice', async (req, res) => {
-  
+  const drivers = await Drivers.find({});
+  console.log(drivers)
   const clearedPractice = await PracticeTable.deleteMany({});
   console.log('cleared')
 
- 
+  drivers.forEach(async (driver) => {
+    console.log(driver.team);
+    let team = driver.team
+    let tmpEntry = {
+      driverName: driver.name,
+      rawLapTime: 999999999,
+      teamName: team,
+      driverID: driver._id,
+      tire: "",
+      laps: 0
+    };
 
-});
-
-app.get('/api/clearPracticeHistory', async (req, res) => {
-  
-  const clearedPractice = await PracticeHistory.deleteMany({});
-  console.log('cleared')
-
- 
+    const newEntry = await PracticeTable.create(tmpEntry);
+  })
 
 });
 
