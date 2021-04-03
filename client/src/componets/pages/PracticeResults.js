@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import {Button, Alert} from 'react-bootstrap';
 import axios from 'axios';
 import API from '../../utils/API';
 
 function PracticeResults() {
 
     const [practiceResults, setPracticeResults] = useState([]);
+    const [status, setStatus] = useState(0);
 
     useEffect(() => {
         getPractice();
