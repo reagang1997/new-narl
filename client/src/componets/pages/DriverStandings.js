@@ -4,7 +4,7 @@ import WDCTable from '../WDCTable';
 import fs from 'fs';
 import { Table, Tr, td } from 'reactable';
 
-function DriverStandings({loggedIn, setLoggedIn}) {
+function DriverStandings() {
 
     const [drivers, setdrivers] = useState([]);
 

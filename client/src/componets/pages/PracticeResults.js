@@ -5,11 +5,10 @@ import API from '../../utils/API';
 function PracticeResults() {
 
     const [practiceResults, setPracticeResults] = useState([]);
-    const [status, setStatus] = useState(0);
 
     useEffect(() => {
         getPractice();
-    }, [status])
+    }, [])
 
     const getPractice = async () => {
         const practice = await axios.get('/api/practiceResults');
@@ -51,7 +50,9 @@ function PracticeResults() {
                 </thead>
                 <tbody>
                     {practiceResults.map((driver, i) => {
+
                         if (driver.rawLapTime === 99999999999) return;
+
                         let time = getFormatted(driver.rawLapTime);
 
                         return (
@@ -73,6 +74,8 @@ function PracticeResults() {
         </div>
         <Button variant='warning' style={ {marginLeft: '880px'}} onClick={refresh}>Refresh</Button>
     </div>
+
+
 
     )
 }
