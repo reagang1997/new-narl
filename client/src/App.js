@@ -19,7 +19,7 @@ function App() {
         <NavTabs />
         {/* <Route exact path="/" component={Home}/> */}
         <Route exact path="/adminHome" component={AdminHome}/>
-        {/* <Route exact path="/practiceResults" component={PracticeResults} /> */}
+        <Route exact path="/practiceResults" component={PracticeResults} />
         <Route exact path="" path='/driverStandings' component={DriverStandings} />
         <Route exact path="/constructorStandings" component={ConstructorStandings} />
         {/* <Route exact path="/raceInformation" component={RaceInfo} /> */}
