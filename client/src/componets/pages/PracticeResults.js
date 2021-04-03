@@ -16,6 +16,12 @@ function PracticeResults() {
         setPracticeResults(practice.data);
     }
 
+    const refresh = async (e) => {
+        const newPR = await axios.get('/api/lastPractice');
+        console.log(newPR);
+        setStatus(newPR.status)
+    }
+
     const getFormatted = (s) => {
         var ms = s % 1000;
         s = (s - ms) / 1000;
@@ -25,9 +31,10 @@ function PracticeResults() {
         const formatted = mins + ':' + secs + ':' + ms;
         return formatted;
     }
-
-    return (
-
+    return ( <div>
+        {status === 204 ? 
+            <Alert variant='Warning'>Pratice Is Up-To-Date</Alert>   : <div></div> 
+        }
         <div className='practice-container'>
 
             <table className="table rounded table-hover table-responsive-lg">
@@ -43,6 +50,9 @@ function PracticeResults() {
                 </thead>
                 <tbody>
                     {practiceResults.map((driver, i) => {
+
+                        if (driver.rawLapTime === 99999999999) return;
+
                         let time = getFormatted(driver.rawLapTime);
 
                         return (
@@ -61,8 +71,9 @@ function PracticeResults() {
 
                 </tbody>
             </table>
-
         </div>
+        <Button variant='warning' style={ {marginLeft: '880px'}} onClick={refresh}>Refresh</Button>
+    </div>
 
 
 
