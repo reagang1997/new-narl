@@ -3,7 +3,6 @@ const fs = require('fs')
 const router = require("express").Router();
 const Drivers = require('../models/Driver');
 const PracticeTable = require('../models/PracticeTable');
-const PR = require('../models/PracticeResult');
 
 router.get('/api/lastPractice', async (req, res) => {
     console.log('hig')
@@ -14,90 +13,55 @@ router.get('/api/lastPractice', async (req, res) => {
         c.list('/173.234.30.178_11576/results', (err, list) => {
             if (err) throw err;
             list.sort(compare);
-            let files = [];
-            for (let i = 2; i < list.length; i++) {
-                files.push(list[i]);
-            }
-            console.log(files);
-            let foundCount = 0;
-            files.forEach(async (file, i) => {
-                let { name } = file;
-                let foundFile = await PR.findOne({ fileName: name });
-                if (!foundFile) {
-                    let newPR = await PR.create({ fileName: name });
+            console.log(list[2]);
+            newFile = list[2];
 
-                    c.get(`/173.234.30.178_11576/results/${name}`, (err, stream) => {
-                        if (err) throw err;
-                        let content = '';
-                        stream.on('data', function (chunk) {
-                            content += chunk.toString();
-                        });
-                        stream.on('end', function () {
-                            // content variable now contains all file content. 
-                            const rawdata = JSON.parse(content);
+            c.get(`/173.234.30.178_11576/results/${newFile.name}`, (err, stream) => {
+                if (err) throw err;
+                let content = '';
+                stream.on('data', function (chunk) {
+                    content += chunk.toString();
+                });
+                stream.on('end', function () {
+                    // content variable now contains all file content. 
+                    const rawdata = JSON.parse(content);
 
-                            const practiceResults = rawdata.Result;
-                            const practiceLaps = rawdata.Laps;
+                    const practiceResults = rawdata.Result;
+                    const practiceLaps = rawdata.Laps;
 
 
-                            let updatedDriver;
+                    let updatedDriver;
 
-                            practiceResults.forEach(async (driver) => {
+                    practiceResults.forEach(async (driver) => {
 
-                                if (driver.BestLap === 999999999) {
-                                    return;
+                        if (driver.BestLap === 999999999) {
+                            return;
+                        }
+                        let driverInDB = await PracticeTable.findOne({ driverName: driver.DriverName });
+
+                        if (!driverInDB) {
+                            driverInDB = await PracticeTable.create({ driverName: driver.DriverName })
+                        }
+
+
+                        if (driver.BestLap < driverInDB.rawLapTime) {
+                            let updatedDriver = await PracticeTable.findOneAndUpdate({ driverName: driver.DriverName }, { $set: { rawLapTime: driver.BestLap } });
+                            practiceLaps.forEach(async (lap) => {
+                                if (lap.LapTime === driver.BestLap) {
+                                    let updatedTire = await PracticeTable.findOneAndUpdate({ driverName: driver.DriverName }, { $set: { tire: lap.Tyre } });
                                 }
-                                let driverInDB = await PracticeTable.findOne({ driverName: driver.DriverName });
+                                console.log('updated: ', lap.DriverName)
 
-                                if (!driverInDB) {
-                                    driverInDB = await PracticeTable.create({ driverName: driver.DriverName });
-                                    let driverTeam = await Drivers.findOne({ name: driver.DriverName });
-                                    if (driverTeam.team.length > 2) {
-                                        let updatedTeam = await PracticeTable.findOneAndUpdate({ driverName: driver.DriverName }, { $set: { teamName: driverTeam.team } });
-
-                                    }
-                                }
-
-
-                                if (driver.BestLap < driverInDB.rawLapTime) {
-                                    let updatedDriver = await PracticeTable.findOneAndUpdate({ driverName: driver.DriverName }, { $set: { rawLapTime: driver.BestLap } });
-                                    practiceLaps.forEach(async (lap) => {
-                                        if (lap.LapTime === driver.BestLap) {
-                                            let updatedTire = await PracticeTable.findOneAndUpdate({ driverName: driver.DriverName }, { $set: { tire: lap.Tyre } });
-                                        }
-                                        console.log('updated: ', lap.DriverName)
-
-                                        let updatedCDriver = await Drivers.findOneAndUpdate({ name: lap.DriverName }, { $inc: { careerLaps: 1 } });
-                                        let updatedPDriver = await PracticeTable.findOneAndUpdate({ driverName: lap.DriverName }, { $inc: { laps: 1 } });
-                                    })
-                                }
+                                let updatedCDriver = await Drivers.findOneAndUpdate({ name: lap.DriverName }, { $inc: { careerLaps: 1 } });
+                                let updatedPDriver = await PracticeTable.findOneAndUpdate({ driverName: lap.DriverName }, { $inc: { laps: 1 } });
                             })
+                        }
+                    })
 
+                    res.status(200);
 
-                        });
-                    });
-                }
-                else {
-                    console.log('found')
-                    foundCount++;
-                    console.log(foundCount);
-                }
-                if (i === files.length - 1) {
-                    console.log(foundCount);
-                    console.log('list l: ', files.length);
-                    if (foundCount === files.length) {
-                        console.log('no update')
-                        res.status(204);
-                    }
-                    else {
-                        console.log('updates');
-                        res.status(200);
-                    }
-                    res.send({})
-
-                }
-            })
-
+                });
+            });
         });
 
 

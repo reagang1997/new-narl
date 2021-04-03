@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import NavTabs from './componets/NavTabs'
 import ConstructorStandings from "./componets/pages/ConstructorStandings";
@@ -12,25 +12,16 @@ import DriverStats from './componets/pages/DriverStats';
 import AdminHome from './componets/pages/AdminHome';
 import './index.css';
 function App() {
-
-  const [loggedIn, setLoggedIn] = useState(false);
-
   
   return (
     <Router>
       <div>
         <NavTabs />
         {/* <Route exact path="/" component={Home}/> */}
-        <Route exact path="/adminHome">
-          <AdminHome loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
-        </Route>
-        {/* <Route exact path="/practiceResults" component={PracticeResults} /> */}
-        <Route exact path="" path='/driverStandings' component={DriverStandings}>
-          <DriverStandings loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
-        </Route>
-        <Route exact path="/constructorStandings" component={ConstructorStandings}>
-          <ConstructorStandings loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
-        </Route>
+        <Route exact path="/adminHome" component={AdminHome}/>
+        <Route exact path="/practiceResults" component={PracticeResults} />
+        <Route exact path="" path='/driverStandings' component={DriverStandings} />
+        <Route exact path="/constructorStandings" component={ConstructorStandings} />
         {/* <Route exact path="/raceInformation" component={RaceInfo} /> */}
         {/* <Route path="/teams" component={TeamPage}/> */}
         {/* <Route exact path="/driverStats" component={DriverStats} /> */}
