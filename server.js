@@ -13,7 +13,6 @@ const fs = require('fs');
 const path = require('path');
 const cors = require('cors');
 const passport = require('./config/passport');
-const { default: PracticeResults } = require("./client/src/componets/pages/PracticeResults");
 
 const PORT = process.env.PORT || 8080;
 
