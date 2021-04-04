@@ -65,7 +65,7 @@ router.get('/api/readFile/:fileName', async (req, res) => {
                     let driverInDB = await PracticeTable.findOne({ driverName: driver.DriverName });
     
                     if (!driverInDB) {
-                        const found = await Driver.find({name: driver.DriverName});
+                        const found = await Drivers.find({name: driver.DriverName});
                         console.log(found.team);
                         const newPR = {
                             driverName: driver.DriverName,
@@ -81,7 +81,6 @@ router.get('/api/readFile/:fileName', async (req, res) => {
                             if (lap.LapTime === driver.BestLap) {
                                 let updatedTire = await PracticeTable.findOneAndUpdate({ driverName: driver.DriverName }, { $set: { tire: lap.Tyre } });
                             }
-                            console.log('updated: ', lap.DriverName)
     
                             let updatedCDriver = await Drivers.findOneAndUpdate({ name: lap.DriverName }, { $inc: { careerLaps: 1 } });
                             let updatedPDriver = await PracticeTable.findOneAndUpdate({ driverName: lap.DriverName }, { $inc: { laps: 1 } });
