@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const Driver = require('../models/Driver');
+const Team = require('../models/Team');
 
 router.post('/api/CreateNewDriver', async (req, res) => {
     const newDriver = await Driver.create(req.body);
@@ -9,6 +10,11 @@ router.post('/api/CreateNewDriver', async (req, res) => {
 router.get('/api/getAllDrivers', async (req, res) => {
     const allDrivers = await Driver.find({});
     res.send(allDrivers);
+})
+
+router.get('/api/singleDriver/:id', async (req, res) => {
+    const found = await Driver.findOne({_id: req.params.id});
+    res.send(found);
 })
 
 router.put('/api/setDriverStats/:driverID', async (req, res) => {
@@ -40,6 +46,9 @@ router.put('/api/setDriverStats/:driverID', async (req, res) => {
             updatedDriver = await Driver.findOneAndUpdate({ _id: req.params.driverID }, { $set: { isActive: value } }, { new: true });
             console.log(value);
             break;
+        case 'team':
+            const foundTeam = await Team.findOne({_id: value});
+            updatedDriver = await Driver.findOneAndUpdate({ _id: req.params.driverID }, { $set: { team: foundTeam.name } }, { new: true });
         case 'teamHistory':
             updatedDriver = await Driver.findOneAndUpdate({ _id: req.params.driverID }, { $push: { teamHistory: value } }, { new: true });
             break;
