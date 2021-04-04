@@ -12,16 +12,25 @@ import DriverStats from './componets/pages/DriverStats';
 import AdminHome from './componets/pages/AdminHome';
 import './index.css';
 function App() {
-  
+  const [loggedIn, setLoggedIn] = useState(false)
+
   return (
     <Router>
       <div>
         <NavTabs />
         {/* <Route exact path="/" component={Home}/> */}
-        <Route exact path="/adminHome" component={AdminHome}/>
-        <Route exact path="/practiceResults" component={PracticeResults} />
-        <Route exact path="" path='/driverStandings' component={DriverStandings} />
-        <Route exact path="/constructorStandings" component={ConstructorStandings} />
+        <Route exact path="/adminHome" component={AdminHome}>
+          <AdminHome loggedIn={loggedIn} setLoggedIn={setLoggedIn}></AdminHome>
+        </Route>
+        <Route exact path="/practiceResults" component={PracticeResults} >
+            <PracticeResults loggedIn={loggedIn} setLoggedIn={setLoggedIn}></PracticeResults>
+        </Route>
+        <Route exact path="" path='/driverStandings' component={DriverStandings} >
+            <DriverStandings loggedIn={loggedIn} setLoggedIn={setLoggedIn}></DriverStandings>
+        </Route>
+        <Route exact path="/constructorStandings" component={ConstructorStandings} >
+            <ConstructorStandings loggedIn={loggedIn} setLoggedIn={setLoggedIn}></ConstructorStandings>
+        </Route>
         {/* <Route exact path="/raceInformation" component={RaceInfo} /> */}
         {/* <Route path="/teams" component={TeamPage}/> */}
         {/* <Route exact path="/driverStats" component={DriverStats} /> */}

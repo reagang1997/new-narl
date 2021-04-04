@@ -3,7 +3,7 @@ import { Nav, Form, Button, Col, ToggleButton, ToggleButtonGroup, Card } from 'r
 import Login from '../Login'
 import axios from 'axios';
 
-const AdminHome = () => {
+const AdminHome = ({loggedIn, setLoggedIn}) => {
     const [selection, setSelection] = useState('');
     const [stats, setStats] = useState([])
     const [newDriver, setNewDriver] = useState({ name: '' });
@@ -13,7 +13,6 @@ const AdminHome = () => {
     const [checkValue, setValue] = useState([1, 3])
     const [selectedDriver, setSelectedDriver] = useState(''); //stores driver id
     const [selectedTeam, setSelectedTeam] = useState('')
-    const [loggedIn, setLoggedIn] = useState(false)
     const [allResults, setAllResults] = useState([]);
     const [filesTP, setFilesTP] = useState([]);
     const [clk, setClk] = useState(0);
