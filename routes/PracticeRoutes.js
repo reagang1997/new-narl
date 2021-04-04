@@ -4,6 +4,7 @@ const router = require("express").Router();
 const Drivers = require('../models/Driver');
 const PracticeTable = require('../models/PracticeTable');
 const PracticeResult = require('../models/PracticeResult');
+const Driver = require('../models/Driver');
 
 router.get('/api/allResults', async (req, res) => {
     const c = new Client();
@@ -64,7 +65,12 @@ router.get('/api/readFile/:fileName', async (req, res) => {
                     let driverInDB = await PracticeTable.findOne({ driverName: driver.DriverName });
     
                     if (!driverInDB) {
-                        driverInDB = await PracticeTable.create({ driverName: driver.DriverName })
+                        const found = await Driver.find({name: driver.DriverName});
+                        const newPR = {
+                            driverName: driver.DriverName,
+                            teamName: found.team
+                        };
+                        driverInDB = await PracticeTable.create(newPR)
                     }
     
     
