@@ -3,7 +3,7 @@ import { Nav, Form, Button, Col, ToggleButton, ToggleButtonGroup, Card } from 'r
 import Login from '../Login'
 import axios from 'axios';
 
-const AdminHome = ({loggedIn, setLoggedIn}) => {
+const AdminHome = ({ loggedIn, setLoggedIn }) => {
     const [selection, setSelection] = useState('');
     const [stats, setStats] = useState([])
     const [newDriver, setNewDriver] = useState({ name: '' });
@@ -13,6 +13,7 @@ const AdminHome = ({loggedIn, setLoggedIn}) => {
     const [checkValue, setValue] = useState([1, 3])
     const [selectedDriver, setSelectedDriver] = useState(''); //stores driver id
     const [selectedTeam, setSelectedTeam] = useState('')
+    const [singleDriver, setSingleDriver] = useState([]);
     const [allResults, setAllResults] = useState([]);
     const [filesTP, setFilesTP] = useState([]);
     const [clk, setClk] = useState(0);
@@ -24,18 +25,22 @@ const AdminHome = ({loggedIn, setLoggedIn}) => {
 
     useEffect(() => {
         findFilesToParse();
-    },[clk] );
+    }, [clk]);
+
+    useEffect(() => {
+        findDriver();
+    },[selectedDriver]);
 
     const getAllResults = async () => {
         let results = await axios.get('/api/allResults');
         let files = [];
-        for(let i = 2; i < results.data.length; i++){
+        for (let i = 2; i < results.data.length; i++) {
             let tmp = {
                 name: results.data[i].name
             }
             files.push(tmp);
         }
-        
+
         console.log(files);
         setAllResults(files);
     }
@@ -126,13 +131,13 @@ const AdminHome = ({loggedIn, setLoggedIn}) => {
         }
 
         else {
-            if(selection.indexOf('Inc') != -1){
+            if (selection.indexOf('Inc') != -1) {
                 stats.forEach(async (stat) => {
                     const updatedResult = await axios.put(`/api/IncTeamStats/${selectedTeam}`, stat);
                     console.log(updatedResult);
                 })
             }
-            else{
+            else {
                 stats.forEach(async (stat) => {
                     const updatedResult = await axios.put(`/api/SetTeamStats/${selectedTeam}`, stat);
                     console.log(updatedResult);
@@ -141,202 +146,223 @@ const AdminHome = ({loggedIn, setLoggedIn}) => {
         }
 
         setStats([]);
+        setSelectedDriver('');
+        setSelectedTeam('');
+        
 
+    }
+
+    const findDriver = async () => {
+        const found = await axios.get(`/api/singleDriver/${selectedDriver}`);
+        setSingleDriver(found.data);
     }
 
     return (
         <div>
             {loggedIn ? <div>
-            <Nav defaultActiveKey="/home" className="justify-content-center">
-                <Nav.Link href="/adminHome">Admin Home</Nav.Link>
-                <Nav.Link eventKey="link-1" onClick={(e) => setSelection(e.target.innerHTML)}>Add Driver</Nav.Link>
-                <Nav.Link eventKey="link-2" onClick={(e) => setSelection(e.target.innerHTML)} >Add Team</Nav.Link>
-                <Nav.Link eventKey="link-2" onClick={(e) => setSelection(e.target.innerHTML)}>Inc Driver Stats</Nav.Link>
-                <Nav.Link eventKey="link-2" onClick={(e) => setSelection(e.target.innerHTML)}>Set Driver Stats</Nav.Link>
-                <Nav.Link eventKey="link-2" onClick={(e) => setSelection(e.target.innerHTML)}>Inc Team Stats</Nav.Link>
-                <Nav.Link eventKey="link-2" onClick={(e) => setSelection(e.target.innerHTML)}>Set Team Stats</Nav.Link>
-                <Nav.Link eventKey="link-2" onClick={(e) => {
-                    setSelection(e.target.innerHTML);
-                    getAllResults();
-                    findFilesToParse();
+                <Nav defaultActiveKey="/home" className="justify-content-center">
+                    <Nav.Link href="/adminHome">Admin Home</Nav.Link>
+                    <Nav.Link eventKey="link-1" onClick={(e) => setSelection(e.target.innerHTML)}>Add Driver</Nav.Link>
+                    <Nav.Link eventKey="link-2" onClick={(e) => setSelection(e.target.innerHTML)} >Add Team</Nav.Link>
+                    <Nav.Link eventKey="link-2" onClick={(e) => setSelection(e.target.innerHTML)}>Inc Driver Stats</Nav.Link>
+                    <Nav.Link eventKey="link-2" onClick={(e) => setSelection(e.target.innerHTML)}>Set Driver Stats</Nav.Link>
+                    <Nav.Link eventKey="link-2" onClick={(e) => setSelection(e.target.innerHTML)}>Inc Team Stats</Nav.Link>
+                    <Nav.Link eventKey="link-2" onClick={(e) => setSelection(e.target.innerHTML)}>Set Team Stats</Nav.Link>
+                    <Nav.Link eventKey="link-2" onClick={(e) => {
+                        setSelection(e.target.innerHTML);
+                        getAllResults();
+                        findFilesToParse();
                     }}>Update Practice</Nav.Link>
-                <Nav.Link eventKey="disabled" disabled>
-                    Disabled
+                    <Nav.Link eventKey="disabled" disabled>
+                        Disabled
             </Nav.Link>
-            </Nav>
-            {/* Good */}
-            {selection === "Add Driver" ? <div style={{ marginLeft: '25%', marginRight: '25%' }}>
-                <h3>Add Driver</h3>
-                <Form>
-                    <Form.Group controlId="formBasicEmail">
-                        <Form.Label>Driver Name</Form.Label>
-                        <Form.Control style={{ width: '250px' }} placeholder="Enter Driver Name" onBlur={(e) => setNewDriver({ name: e.target.value })} />
-                    </Form.Group>
-                    <Button variant="primary" onClick={addDriver}>
-                        Add Driver
+                </Nav>
+                {/* Good */}
+                {selection === "Add Driver" ? <div style={{ marginLeft: '25%', marginRight: '25%' }}>
+                    <h3>Add Driver</h3>
+                    <Form>
+                        <Form.Group controlId="formBasicEmail">
+                            <Form.Label>Driver Name</Form.Label>
+                            <Form.Control style={{ width: '250px' }} placeholder="Enter Driver Name" onBlur={(e) => setNewDriver({ name: e.target.value })} />
+                        </Form.Group>
+                        <Button variant="primary" onClick={addDriver}>
+                            Add Driver
                     </Button>
-                </Form>
-            </div> : <div></div>}
-            {/* Good */}
-            {selection === "Add Team" ? <div style={{ marginLeft: '25%', marginRight: '25%' }}>
-                <h3>Add Team</h3>
-                <Form>
-                    <Form.Group controlId="formBasicEmail">
-                        <Form.Label>Team Name</Form.Label>
-                        <Form.Control style={{ width: '250px' }} type="email" placeholder="Enter Team Name" onBlur={(e) => setNewTeam({ name: e.target.value })} />
-                    </Form.Group>
-                    <Button variant="primary" onClick={addTeam}>
-                        Add Team
+                    </Form>
+                </div> : <div></div>}
+                {/* Good */}
+                {selection === "Add Team" ? <div style={{ marginLeft: '25%', marginRight: '25%' }}>
+                    <h3>Add Team</h3>
+                    <Form>
+                        <Form.Group controlId="formBasicEmail">
+                            <Form.Label>Team Name</Form.Label>
+                            <Form.Control style={{ width: '250px' }} type="email" placeholder="Enter Team Name" onBlur={(e) => setNewTeam({ name: e.target.value })} />
+                        </Form.Group>
+                        <Button variant="primary" onClick={addTeam}>
+                            Add Team
                     </Button>
-                </Form>
-            </div> : <div></div>}
-            {/* Good */}
-            {selection === "Inc Driver Stats" ? <div style={{ marginLeft: '25%', marginRight: '25%' }}>
-                <h3>Increment Driver Stats</h3>
-                <Form>
-                    <Form.Row>
-                        <Col sm={2}>
-                            <Form.Label>Select Driver</Form.Label>
-                        </Col>
-                    </Form.Row>
-                    <Form.Row>
-                        <Col sm={2}>
-                            <Form.Control as='select'
-                                value={selectedDriver}
-                                onChange={(e) => setSelectedDriver(e.target.value)} >
-                                {drivers.map(driver => <option id={driver._id} key={driver._id} value={driver._id}>{driver.name}</option>)}
-                            </Form.Control>
-                        </Col>
-                    </Form.Row>
-                    <Form.Row>
+                    </Form>
+                </div> : <div></div>}
+                {/* Good */}
+                {selection === "Inc Driver Stats" ? <div style={{ marginLeft: '25%', marginRight: '25%' }}>
+                    <h3>Increment Driver Stats</h3>
+                    <Form>
+                        <Form.Row>
+                            <Col sm={2}>
+                                <Form.Label>Select Driver</Form.Label>
+                            </Col>
+                        </Form.Row>
+                        <Form.Row>
+                            <Col sm={2}>
+                                <Form.Control as='select'
+                                    value={selectedDriver}
+                                    onChange={(e) => setSelectedDriver(e.target.value)} >
+                                    {drivers.map(driver => <option id={driver._id} key={driver._id} value={driver._id}>{driver.name}</option>)}
+                                </Form.Control>
+                            </Col>
+                        </Form.Row>
+                        <Form.Row>
 
-                        <Col sm={2} >
-                            <Form.Label>Season Wins</Form.Label>
-                            <Form.Control placeholder="Wins" style={{ width: '150px' }} onBlur={(e) => setStat('wins', e.target.value)} />
-                        </Col>
-                        <Col sm={2}>
-                            <Form.Label>Season Points</Form.Label>
+                            <Col sm={2} >
+                                <Form.Label>Season Wins</Form.Label>
+                                <Form.Control placeholder="Wins" style={{ width: '150px' }} onBlur={(e) => setStat('wins', e.target.value)} />
+                            </Col>
+                            <Col sm={2}>
+                                <Form.Label>Season Points</Form.Label>
 
-                            <Form.Control placeholder="Points" style={{ width: '150px' }} onBlur={(e) => setStat('points', e.target.value)} />
-                        </Col>
-                        <Col sm={2}>
-                            <Form.Label>Season FL</Form.Label>
+                                <Form.Control placeholder="Points" style={{ width: '150px' }} onBlur={(e) => setStat('points', e.target.value)} />
+                            </Col>
+                            <Col sm={2}>
+                                <Form.Label>Season FL</Form.Label>
 
-                            <Form.Control placeholder="Fastest Laps" style={{ width: '150px' }} onBlur={(e) => setStat('fastestLaps', e.target.value)} />
-                        </Col>
-                    </Form.Row>
-                    <Form.Row style={{ marginTop: '25px' }}>
-                        <Col sm={2} >
-                            <Form.Label>Career Wins</Form.Label>
-                            <Form.Control placeholder="Career Wins" style={{ width: '150px' }} onBlur={(e) => setStat('careerWins', e.target.value)} />
-                        </Col>
-                        <Col sm={2}>
-                            <Form.Label>Career Points</Form.Label>
+                                <Form.Control placeholder="Fastest Laps" style={{ width: '150px' }} onBlur={(e) => setStat('fastestLaps', e.target.value)} />
+                            </Col>
+                        </Form.Row>
+                        <Form.Row style={{ marginTop: '25px' }}>
+                            <Col sm={2} >
+                                <Form.Label>Career Wins</Form.Label>
+                                <Form.Control placeholder="Career Wins" style={{ width: '150px' }} onBlur={(e) => setStat('careerWins', e.target.value)} />
+                            </Col>
+                            <Col sm={2}>
+                                <Form.Label>Career Points</Form.Label>
 
-                            <Form.Control placeholder="Career Points" style={{ width: '150px' }} onBlur={(e) => setStat('careerPoints', e.target.value)} />
-                        </Col>
-                        <Col sm={2}>
-                            <Form.Label>Career FL</Form.Label>
+                                <Form.Control placeholder="Career Points" style={{ width: '150px' }} onBlur={(e) => setStat('careerPoints', e.target.value)} />
+                            </Col>
+                            <Col sm={2}>
+                                <Form.Label>Career FL</Form.Label>
 
-                            <Form.Control placeholder="Career Fastest Laps" style={{ width: '150px' }} onBlur={(e) => setStat('careerFastestLaps', e.target.value)} />
-                        </Col>
-                    </Form.Row>
-                    <Button variant="warning" style={{ marginTop: '10px' }} onClick={updateStats} >
-                        Update Driver
+                                <Form.Control placeholder="Career Fastest Laps" style={{ width: '150px' }} onBlur={(e) => setStat('careerFastestLaps', e.target.value)} />
+                            </Col>
+                        </Form.Row>
+                        <Button variant="warning" style={{ marginTop: '10px' }} onClick={updateStats} >
+                            Update Driver
                         </Button>
-                </Form>
-            </div> : <div></div>}
-            {/* Good */}
-            {selection === "Set Driver Stats" ? <div style={{ marginLeft: '25%', marginRight: '25%' }}>
-                <h3>Set Driver Stats</h3>
-                <Form>
-                    <Form.Row>
-                        <Col sm={2}>
-                            <Form.Label>Select Driver</Form.Label>
-                        </Col>
-                    </Form.Row>
-                    <Form.Row>
-                        <Col sm={2}>
-                            <Form.Control as='select'
-                                value={selectedDriver}
-                                onChange={(e) => setSelectedDriver(e.target.value)}>
+                    </Form>
+                </div> : <div></div>}
+                {/* Good */}
+                {selection === "Set Driver Stats" ? <div style={{ marginLeft: '25%', marginRight: '25%' }}>
+                    <h3>Set Driver Stats</h3>
+                    <Form>
+                        <Form.Row>
+                            <Col sm={2}>
+                                <Form.Label>Select Driver</Form.Label>
+                            </Col>
+                            <Col sm={2}>
+                                <Form.Label>Select Team</Form.Label>
+                            </Col>
+                        </Form.Row>
+                        <Form.Row>
+                            <Col sm={2}>
+                                <Form.Control as='select'
+                                    value={selectedDriver}
+                                    onChange={(e) => setSelectedDriver(e.target.value)}>
+                                    <option>Select Driver</option>    
 
-                                {drivers.map(driver => <option id={driver._id} key={driver._id} value={driver._id}>{driver.name}</option>)}
-                            </Form.Control>
-                        </Col>
-                    </Form.Row>
-                    <Form.Row>
-                        <Col sm={2} >
-                            <Form.Label>Season Wins</Form.Label>
-                            <Form.Control placeholder="Wins" style={{ width: '150px' }} onBlur={(e) => setStat('wins', e.target.value)} />
-                        </Col>
-                        <Col sm={2}>
-                            <Form.Label>Season Points</Form.Label>
+                                    {drivers.map(driver => <option id={driver._id} key={driver._id} value={driver._id}>{driver.name}</option>)}
+                                </Form.Control>
+                            </Col>
+                            <Col sm={2}>
+                                <Form.Control as='select'
+                                    value={selectedTeam}
+                                    onChange={(e) => {setSelectedTeam(e.target.value); setStat('team', e.target.value)}}>
+                                    <option>Select Team</option>    
 
-                            <Form.Control placeholder="Points" style={{ width: '150px' }} onBlur={(e) => setStat('points', e.target.value)} />
-                        </Col>
-                        <Col sm={2}>
-                            <Form.Label>Season FL</Form.Label>
+                                    {teams.map(team => <option id={team._id} key={team._id} value={team._id}>{team.name}</option>)}
+                                </Form.Control>
+                            </Col>
+                        </Form.Row>
+                        <Form.Row>
+                            <Col sm={2} >
+                                <Form.Label>Season Wins</Form.Label>
+                                <Form.Control placeholder="Wins" style={{ width: '150px' }} onBlur={(e) => setStat('wins', e.target.value)} />
+                            </Col>
+                            <Col sm={2}>
+                                <Form.Label>Season Points</Form.Label>
 
-                            <Form.Control placeholder="Fastest Laps" style={{ width: '150px' }} onBlur={(e) => setStat('fastestLaps', e.target.value)} />
-                        </Col>
-                    </Form.Row>
-                    <Form.Row style={{ marginTop: '25px' }}>
-                        <Col sm={2} >
-                            <Form.Label>Career Wins</Form.Label>
-                            <Form.Control placeholder="Career Wins" style={{ width: '150px' }} onBlur={(e) => setStat('careerWins', e.target.value)} />
-                        </Col>
-                        <Col sm={2}>
-                            <Form.Label>Career Points</Form.Label>
+                                <Form.Control placeholder="Points" style={{ width: '150px' }} onBlur={(e) => setStat('points', e.target.value)} />
+                            </Col>
+                            <Col sm={2}>
+                                <Form.Label>Season FL</Form.Label>
 
-                            <Form.Control placeholder="Career Points" style={{ width: '150px' }} onBlur={(e) => setStat('careerPoints', e.target.value)} />
-                        </Col>
-                        <Col sm={2}>
-                            <Form.Label>Career FL</Form.Label>
+                                <Form.Control placeholder="Fastest Laps" style={{ width: '150px' }} onBlur={(e) => setStat('fastestLaps', e.target.value)} />
+                            </Col>
+                        </Form.Row>
+                        <Form.Row style={{ marginTop: '25px' }}>
+                            <Col sm={2} >
+                                <Form.Label>Career Wins</Form.Label>
+                                <Form.Control placeholder="Career Wins" style={{ width: '150px' }} onBlur={(e) => setStat('careerWins', e.target.value)} />
+                            </Col>
+                            <Col sm={2}>
+                                <Form.Label>Career Points</Form.Label>
 
-                            <Form.Control placeholder="Career Fastest Laps" style={{ width: '150px' }} onBlur={(e) => setStat('careerFastestLaps', e.target.value)} />
-                        </Col>
-                        <Col sm={2}>
-                            <Form.Label>Driver Champs</Form.Label>
+                                <Form.Control placeholder="Career Points" style={{ width: '150px' }} onBlur={(e) => setStat('careerPoints', e.target.value)} />
+                            </Col>
+                            <Col sm={2}>
+                                <Form.Label>Career FL</Form.Label>
 
-                            <Form.Control placeholder="Driver Champs" style={{ width: '150px' }} onBlur={(e) => setStat('wdc', e.target.value)} />
-                        </Col>
-                        <Col sm={2}>
-                            <Form.Label>Construct Champs</Form.Label>
+                                <Form.Control placeholder="Career Fastest Laps" style={{ width: '150px' }} onBlur={(e) => setStat('careerFastestLaps', e.target.value)} />
+                            </Col>
+                            <Col sm={2}>
+                                <Form.Label>Driver Champs</Form.Label>
 
-                            <Form.Control placeholder="Construct Champs" style={{ width: '150px' }} onBlur={(e) => setStat('wcc', e.target.value)} />
-                        </Col>
-                        <Col sm={2}>
-                            <Form.Label>Is Active</Form.Label>
-                            <ToggleButtonGroup type='checkbox' value={checkValue} onChange={(val) => {
-                                setValue(val);
-                                console.log(val[2]);
-                                if (val[2] === true) {
-                                    const activity = { stat: 'isActive', value: true };
-                                    setStats([...stats, activity]);
+                                <Form.Control placeholder="Driver Champs" style={{ width: '150px' }} onBlur={(e) => setStat('wdc', e.target.value)} />
+                            </Col>
+                            <Col sm={2}>
+                                <Form.Label>Construct Champs</Form.Label>
 
-
-                                }
-                                else {
-                                    const activity = { stat: 'isActive', value: false };
-                                    setStats([...stats, activity]);
-
-                                }
-                            }} >
-                                <ToggleButton type='radio' value={false} >Not Active</ToggleButton>
-                                <ToggleButton type='radio' value={true}>Active</ToggleButton>
-                            </ToggleButtonGroup>
+                                <Form.Control placeholder="Construct Champs" style={{ width: '150px' }} onBlur={(e) => setStat('wcc', e.target.value)} />
+                            </Col>
+                            <Col sm={2}>
+                                <Form.Label>Is Active</Form.Label>
+                                <ToggleButtonGroup type='checkbox' value={checkValue} onChange={(val) => {
+                                    setValue(val);
+                                    console.log(val[2]);
+                                    if (val[2] === true) {
+                                        const activity = { stat: 'isActive', value: true };
+                                        setStats([...stats, activity]);
 
 
-                        </Col>
-                    </Form.Row>
-                    <Button variant="warning" style={{ marginTop: '10px' }} onClick={updateStats}>
-                        Set Driver
+                                    }
+                                    else {
+                                        const activity = { stat: 'isActive', value: false };
+                                        setStats([...stats, activity]);
+
+                                    }
+                                }} >
+                                    <ToggleButton type='radio' value={false} >Not Active</ToggleButton>
+                                    <ToggleButton type='radio' value={true}>Active</ToggleButton>
+                                </ToggleButtonGroup>
+
+
+                            </Col>
+                        </Form.Row>
+                        <Button variant="warning" style={{ marginTop: '10px' }} onClick={updateStats}>
+                            Set Driver
                         </Button>
-                </Form>
-            </div> : <div></div>
-            }
-            {selection === "Inc Team Stats" ? <div style={{ marginLeft: '25%', marginRight: '25%' }}>
+                    </Form>
+                </div> : <div></div>
+                }
+                {selection === "Inc Team Stats" ? <div style={{ marginLeft: '25%', marginRight: '25%' }}>
                     <h3>Increment Team Stats</h3>
                     <Form>
                         <Form.Row>
@@ -347,8 +373,8 @@ const AdminHome = ({loggedIn, setLoggedIn}) => {
                         <Form.Row>
                             <Col sm={2}>
                                 <Form.Control as='select'
-                                onChange={(e) => setSelectedTeam(e.target.value)}
-                                value={selectedTeam}>
+                                    onChange={(e) => setSelectedTeam(e.target.value)}
+                                    value={selectedTeam}>
                                     {teams.map(team => <option value={team._id} key={team._id}>{team.name}</option>)}
                                 </Form.Control>
                             </Col>
@@ -366,18 +392,18 @@ const AdminHome = ({loggedIn, setLoggedIn}) => {
                             <Col sm={2}>
                                 <Form.Label>Season FL</Form.Label>
 
-                                <Form.Control placeholder="Fastest Laps" style={{ width: '150px' }} onBlur={(e) => setStat('fastestLaps', e.target.value)}/>
+                                <Form.Control placeholder="Fastest Laps" style={{ width: '150px' }} onBlur={(e) => setStat('fastestLaps', e.target.value)} />
                             </Col>
                         </Form.Row>
                         <Form.Row style={{ marginTop: '25px' }}>
                             <Col sm={2} >
                                 <Form.Label>History Wins</Form.Label>
-                                <Form.Control placeholder="History Wins" style={{ width: '150px' }} onBlur={(e) => setStat('historyWins', e.target.value)}/>
+                                <Form.Control placeholder="History Wins" style={{ width: '150px' }} onBlur={(e) => setStat('historyWins', e.target.value)} />
                             </Col>
                             <Col sm={2}>
                                 <Form.Label>History Points</Form.Label>
 
-                                <Form.Control placeholder="History Points" style={{ width: '150px' }} onBlur={(e) => setStat('historyPoints', e.target.value)}/>
+                                <Form.Control placeholder="History Points" style={{ width: '150px' }} onBlur={(e) => setStat('historyPoints', e.target.value)} />
                             </Col>
                             <Col sm={2}>
                                 <Form.Label>History FL</Form.Label>
@@ -390,8 +416,8 @@ const AdminHome = ({loggedIn, setLoggedIn}) => {
                         </Button>
                     </Form>
                 </div> : <div></div>
-            }
-            {selection === "Set Team Stats" ? <div style={{ marginLeft: '25%', marginRight: '25%' }}>
+                }
+                {selection === "Set Team Stats" ? <div style={{ marginLeft: '25%', marginRight: '25%' }}>
                     <h3>Set Team Stats</h3>
                     <Form>
                         <Form.Row>
@@ -402,8 +428,8 @@ const AdminHome = ({loggedIn, setLoggedIn}) => {
                         <Form.Row>
                             <Col sm={2}>
                                 <Form.Control as='select'
-                                onChange={(e) => setSelectedTeam(e.target.value)}
-                                value={selectedTeam}
+                                    onChange={(e) => setSelectedTeam(e.target.value)}
+                                    value={selectedTeam}
                                 >
                                     {teams.map(team => <option id={team._id} key={team._id} value={team._id}>{team.name}</option>)}
                                 </Form.Control>
@@ -412,38 +438,38 @@ const AdminHome = ({loggedIn, setLoggedIn}) => {
                         <Form.Row>
                             <Col sm={2} >
                                 <Form.Label>Season Wins</Form.Label>
-                                <Form.Control placeholder="Wins" style={{ width: '150px' }}  onBlur={(e) => setStat('wins', e.target.value)} />
+                                <Form.Control placeholder="Wins" style={{ width: '150px' }} onBlur={(e) => setStat('wins', e.target.value)} />
                             </Col>
                             <Col sm={2}>
                                 <Form.Label>Season Points</Form.Label>
 
-                                <Form.Control placeholder="Points" style={{ width: '150px' }}  onBlur={(e) => setStat('points', e.target.value)} />
+                                <Form.Control placeholder="Points" style={{ width: '150px' }} onBlur={(e) => setStat('points', e.target.value)} />
                             </Col>
                             <Col sm={2}>
                                 <Form.Label>Season FL</Form.Label>
 
-                                <Form.Control placeholder="Fastest Laps" style={{ width: '150px' }}  onBlur={(e) => setStat('fastestLaps', e.target.value)} />
+                                <Form.Control placeholder="Fastest Laps" style={{ width: '150px' }} onBlur={(e) => setStat('fastestLaps', e.target.value)} />
                             </Col>
                         </Form.Row>
                         <Form.Row style={{ marginTop: '25px' }}>
                             <Col sm={2} >
                                 <Form.Label>History Wins</Form.Label>
-                                <Form.Control placeholder="History Wins" style={{ width: '150px' }}  onBlur={(e) => setStat('historyWins', e.target.value)} />
+                                <Form.Control placeholder="History Wins" style={{ width: '150px' }} onBlur={(e) => setStat('historyWins', e.target.value)} />
                             </Col>
                             <Col sm={2}>
                                 <Form.Label>History Points</Form.Label>
 
-                                <Form.Control placeholder="History Points" style={{ width: '150px' }} onBlur={(e) => setStat('historyPoints', e.target.value)}/>
+                                <Form.Control placeholder="History Points" style={{ width: '150px' }} onBlur={(e) => setStat('historyPoints', e.target.value)} />
                             </Col>
                             <Col sm={2}>
                                 <Form.Label>History FL</Form.Label>
 
-                                <Form.Control placeholder="History Fastest Laps" style={{ width: '150px' }} onBlur={(e) => setStat('historyFastestLaps', e.target.value)}/>
+                                <Form.Control placeholder="History Fastest Laps" style={{ width: '150px' }} onBlur={(e) => setStat('historyFastestLaps', e.target.value)} />
                             </Col>
                             <Col sm={2}>
                                 <Form.Label>Constructor Champs</Form.Label>
 
-                                <Form.Control placeholder="Constructor Champs" style={{ width: '150px' }} onBlur={(e) => setStat('wcc', e.target.value)}/>
+                                <Form.Control placeholder="Constructor Champs" style={{ width: '150px' }} onBlur={(e) => setStat('wcc', e.target.value)} />
                             </Col>
                         </Form.Row>
                         <Button variant="warning" onClick={updateStats} style={{ marginTop: '10px' }}>
@@ -451,24 +477,49 @@ const AdminHome = ({loggedIn, setLoggedIn}) => {
                         </Button>
                     </Form>
                 </div> : <div></div>
-            }
-            {selection === "Update Practice" ? <div style={{ marginLeft: '25%', marginRight: '25%' }}>
-                <h1>Files to add</h1>
-                {filesTP.map(file => {
-                    if(file === ""){
-                        return;
-                    }
-                    
-                        return <Card body style={{marginTop: '25px'}}>
+                }
+                {selection === "Update Practice" ? <div style={{ marginLeft: '25%', marginRight: '25%' }}>
+                    <h1>Files to add</h1>
+                    {filesTP.map(file => {
+                        if (file === "") {
+                            return;
+                        }
+
+                        return <Card body style={{ marginTop: '25px' }}>
                             {file.fileName}
-                            <Button variant='warning' style={{marginLeft: '580px'}} id={file.fileName} onClick={addPractice}>Add File</Button>
-                            </Card>
-                    
-                })}
-                <Card body></Card>
-            </div> : <div></div>}
+                            <Button variant='warning' style={{ marginLeft: '580px' }} id={file.fileName} onClick={addPractice}>Add File</Button>
+                        </Card>
+
+                    })}
+                    <Card body></Card>
+                </div> : <div></div>}
+                {singleDriver ?
+                    <table className='table' > 
+                        <tr>
+                            <th>Name</th>
+                            <th>Team</th>
+                            <th>S Points</th>
+                            <th>S Wins</th>
+                            <th>S FL</th>
+                            <th>C Points</th>
+                            <th>C Wins</th>
+                            <th>C FL</th>
+                        </tr>
+                        <tr>
+                            <td>{singleDriver.name}</td>
+                            <td>{singleDriver.team}</td>
+                            <td>{singleDriver.points}</td>
+                            <td>{singleDriver.wins}</td>
+                            <td>{singleDriver.fastestLaps}</td>
+                            <td>{singleDriver.careerPoints}</td>
+                            <td>{singleDriver.careerWins}</td>
+                            <td>{singleDriver.careerFastestLaps}</td>
+                        </tr>
+                    </table> : <div></div> }
+
             </div>
-        : <Login loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>}
+                : <Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
+
         </div >
 
     )
