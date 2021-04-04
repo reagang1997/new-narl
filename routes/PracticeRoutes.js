@@ -66,6 +66,7 @@ router.get('/api/readFile/:fileName', async (req, res) => {
     
                     if (!driverInDB) {
                         const found = await Driver.find({name: driver.DriverName});
+                        console.log(found.team);
                         const newPR = {
                             driverName: driver.DriverName,
                             teamName: found.team
