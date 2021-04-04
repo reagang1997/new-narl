@@ -3,7 +3,7 @@ import {Button, Alert} from 'react-bootstrap';
 import axios from 'axios';
 import API from '../../utils/API';
 
-function PracticeResults() {
+function PracticeResults({loggedIn, setLoggedIn}) {
 
     const [practiceResults, setPracticeResults] = useState([]);
     const [status, setStatus] = useState(0);

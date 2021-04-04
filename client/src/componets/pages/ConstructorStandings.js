@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'
 import { Table, Td, Tr } from 'reactable';
-function ConstructorStandings() {
+function ConstructorStandings({loggedIn, setLoggedIn}) {
 
     const [teams, setTeams] = useState([]);
 
