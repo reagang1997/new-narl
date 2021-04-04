@@ -50,6 +50,14 @@ app.use(require('./routes/PracticeRoutes.js'));
 
 // routes
 
+app.get('/*', function(req, res) {
+  res.sendFile(path.join(__dirname, '/client/public/index.html'), function(err) {
+    if (err) {
+      res.status(500).send(err)
+    }
+  })
+})
+
 app.get('/api/clearPractice', async (req, res) => {
   const drivers = await Drivers.find({});
   console.log(drivers)

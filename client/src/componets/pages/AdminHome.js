@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Nav, Form, Button, Col, ToggleButton, ToggleButtonGroup } from 'react-bootstrap';
+import { Nav, Form, Button, Col, ToggleButton, ToggleButtonGroup, Card } from 'react-bootstrap';
 import Login from '../Login'
 import axios from 'axios';
 
@@ -14,11 +14,48 @@ const AdminHome = () => {
     const [selectedDriver, setSelectedDriver] = useState(''); //stores driver id
     const [selectedTeam, setSelectedTeam] = useState('')
     const [loggedIn, setLoggedIn] = useState(false)
+    const [allResults, setAllResults] = useState([]);
+    const [filesTP, setFilesTP] = useState([]);
+    const [clk, setClk] = useState(0);
     useEffect(() => {
 
         getDrivers();
         getTeams();
     }, [selection]);
+
+    useEffect(() => {
+        findFilesToParse();
+    },[clk] );
+
+    const getAllResults = async () => {
+        let results = await axios.get('/api/allResults');
+        let files = [];
+        for(let i = 2; i < results.data.length; i++){
+            let tmp = {
+                name: results.data[i].name
+            }
+            files.push(tmp);
+        }
+        
+        console.log(files);
+        setAllResults(files);
+    }
+
+    const findFilesToParse = async () => {
+        //turn to for each
+        let ftp = [];
+        allResults.forEach(async (result) => {
+            const file = await axios.get(`/api/findResult/${result.name}`);
+            ftp.push(file.data);
+            console.log(ftp);
+        });
+        setFilesTP(ftp)
+    }
+
+    const addPractice = async (e) => {
+        const added = await axios.get(`/api/readFile/${e.target.id}`);
+        setClk(clk + 1);
+    }
 
     const addTeam = async () => {
         const addedTeam = await axios.post('/api/CreateNewTeam', newTeam)
@@ -119,6 +156,11 @@ const AdminHome = () => {
                 <Nav.Link eventKey="link-2" onClick={(e) => setSelection(e.target.innerHTML)}>Set Driver Stats</Nav.Link>
                 <Nav.Link eventKey="link-2" onClick={(e) => setSelection(e.target.innerHTML)}>Inc Team Stats</Nav.Link>
                 <Nav.Link eventKey="link-2" onClick={(e) => setSelection(e.target.innerHTML)}>Set Team Stats</Nav.Link>
+                <Nav.Link eventKey="link-2" onClick={(e) => {
+                    setSelection(e.target.innerHTML);
+                    getAllResults();
+                    findFilesToParse();
+                    }}>Update Practice</Nav.Link>
                 <Nav.Link eventKey="disabled" disabled>
                     Disabled
             </Nav.Link>
@@ -411,6 +453,21 @@ const AdminHome = () => {
                     </Form>
                 </div> : <div></div>
             }
+            {selection === "Update Practice" ? <div style={{ marginLeft: '25%', marginRight: '25%' }}>
+                <h1>Files to add</h1>
+                {filesTP.map(file => {
+                    if(file === ""){
+                        return;
+                    }
+                    
+                        return <Card body style={{marginTop: '25px'}}>
+                            {file.fileName}
+                            <Button variant='warning' style={{marginLeft: '580px'}} id={file.fileName} onClick={addPractice}>Add File</Button>
+                            </Card>
+                    
+                })}
+                <Card body></Card>
+            </div> : <div></div>}
             </div>
         : <Login loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>}
         </div >
