@@ -18,11 +18,6 @@ function PracticeResults() {
         setPracticeResults(practice.data);
     }
 
-    const refresh = async (e) => {
-        const newPR = await axios.get('/api/lastPractice');
-        console.log(newPR);
-        setStatus(newPR.status)
-    }
 
     const getFormatted = (s) => {
         var ms = s % 1000;
@@ -61,8 +56,8 @@ function PracticeResults() {
                             <tr>
                                 <td>{i + 1}</td>
                                 <td>{driver.teamName}</td>
-                                <td>{driver.driverName}</td>
                                 <td>{time}</td>
+                                <td>{driver.driverName}</td>
                                 <td>{driver.tire}</td>
                                 <td>{driver.laps}</td>
                             </tr>
@@ -74,7 +69,6 @@ function PracticeResults() {
                 </tbody>
             </table>
         </div>
-        <Button variant='warning' style={ {marginLeft: '880px'}} onClick={refresh}>Refresh</Button>
     </div>
 
 
