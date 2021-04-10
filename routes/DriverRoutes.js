@@ -17,6 +17,16 @@ router.get('/api/singleDriver/:id', async (req, res) => {
     res.send(found);
 })
 
+router.get('/api/deleteDriver/:id', async (req, res) => {
+    const deleted = await Driver.deleteOne({_id: req.params.id});
+    res.send(deleted);
+})
+
+router.get('/api/drivers/:name', async (req, res) => {
+    const found = await Driver.find({ name: { $regex: req.params.name } });
+    res.send(found)
+})
+
 router.put('/api/setDriverStats/:driverID', async (req, res) => {
     const stat = req.body.stat;
     const value = req.body.value;

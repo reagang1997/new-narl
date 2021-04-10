@@ -9,8 +9,9 @@ function DriverStats() {
 
     const getDrivers = async () => {
         if(driverSearch === ''){
-            const driverList = await axios.get('/api/allDrivers')
+            const driverList = await axios.get('/api/getAllDrivers')
             console.log(driverList.data);
+            console.log(driverList.data[0].careerFastestLaps);
             setDrivers(driverList.data);
         }
         else{
@@ -34,8 +35,10 @@ function DriverStats() {
                 <table className="table rounded table-hover table-responsive-lg">
                     <thead>
                         <tr>
-                            <th scope="col">POS</th>
                             <th scope="col">Name</th>
+                            <th scope="col">Season Points</th>
+                            <th scope="col">Season Wins</th>
+                            <th scope="col">Season Fastest Laps</th>
                             <th scope="col">Career Points</th>
                             <th scope="col">Career Wins</th>
                             <th scope="col">Career Fastest Laps</th>
@@ -43,13 +46,15 @@ function DriverStats() {
                     </thead>
                     <tbody>
                         {drivers.map((driver, i) =>
-                            <CareerStatRow
-                                key={i}
-                                name={driver.name}
-                                careerPoints={driver.careerPoints}
-                                careerWins={driver.careerWins}
-                                careerFastestLaps={driver.careerFastestLaps}
-                            />
+                            <tr>
+                                <td>{driver.name}</td>
+                                <td>{driver.points}</td>
+                                <td>{driver.wins}</td>
+                                <td>{driver.fastestLaps}</td>
+                                <td>{driver.careerPoints}</td>
+                                <td>{driver.careerWins}</td>
+                                <td>{driver.careerFastestLaps}</td>
+                            </tr>
                         )}
                     </tbody>
                 </table>

@@ -10,56 +10,56 @@ function NavTabs() {
   const location = useLocation();
 
   return (
-  
+
     <div>
       <div className='center-logo'>
         <img src={logo} className='logo'></img>
-        <div className='links'>
+      </div>
+      <div className='links'>
 
-          <span>
-            <Link to='/practiceResults' className={location.pathname === "/practiceResults" ? 'active link-color' : 'link-color'}>
-              Practice Results
+        <span>
+          <Link to='/practiceResults' className={location.pathname === "/practiceResults" ? 'active link-color' : 'link-color'}>
+            Practice Results
           </Link>
-          </span>
+        </span>
 
-          <span>
-            <Link to='/driverStandings' className={location.pathname === "/driverStandings" ? 'active' : 'link-color'}>
-              Driver Standings
+        <span>
+          <Link to='/driverStandings' className={location.pathname === "/driverStandings" ? 'active' : 'link-color'}>
+            Driver Standings
           </Link>
-          </span>
+        </span>
 
-          <span>
-            <Link to='/constructorStandings' className={location.pathname === "/constructorStandings" ? 'active' : 'link-color'}>
-              Constructor Standings
+        <span>
+          <Link to='/constructorStandings' className={location.pathname === "/constructorStandings" ? 'active' : 'link-color'}>
+            Constructor Standings
           </Link>
-          </span>
+        </span>
 
-          {/* <span>
-            <Link to="/raceInformation" className={location.pathname === "/raceInformation" ? 'active' : 'link-color'} >
-              Information
+        <span>
+          <Link to="/raceInformation" className={location.pathname === "/raceInformation" ? 'active' : 'link-color'} >
+            Information
             </Link>
-          </span>
+        </span>
 
-          <span>
+        <span>
             <Link to="/driverStats" className={location.pathname === "/driverStats" ? 'active' : 'link-color'} >
               Driver Stats
             </Link>
           </span>
 
-          <span>
+          {/* <span>
             <Link to="/teamStats" className={location.pathname === "/teamStats" ? 'active' : 'link-color'} >
               Team Stats
             </Link>
           </span> */}
-          <span>
-            <Link to="/adminHome" className={location.pathname === "/adminHome" ? 'active' : 'link-color'} >
-              Admins
+        <span>
+          <Link to="/adminHome" className={location.pathname === "/adminHome" ? 'active' : 'link-color'} >
+            Admins
             </Link>
-          </span>
-        </div>
+        </span>
       </div>
-
     </div>
+
 
   );
 }

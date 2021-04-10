@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Nav, Form, Button, Col, ToggleButton, ToggleButtonGroup, Card } from 'react-bootstrap';
+import TrackInfo from '../SetTrackInfo';
 import Login from '../Login'
 import axios from 'axios';
 
@@ -81,7 +82,14 @@ const AdminHome = ({ loggedIn, setLoggedIn }) => {
     const addDriver = async () => {
         const addedDriver = await axios.post('/api/CreateNewDriver', newDriver);
         console.log(addedDriver);
+        setNewDriver({name: ""})
     };
+
+    const deleteDriver = async () => {
+        const deletedDriver = await axios.get(`/api/deleteDriver/${selectedDriver}`);
+        console.log(deleteDriver);
+        getDrivers();
+    }
 
     const setStat = (statName, value) => {
         let foundDupe = false;
@@ -135,7 +143,7 @@ const AdminHome = ({ loggedIn, setLoggedIn }) => {
                 stats.forEach(async (stat) => {
                     const updatedResult = await axios.put(`/api/IncTeamStats/${selectedTeam}`, stat);
                     console.log(updatedResult);
-                })
+                                })
             }
             else {
                 stats.forEach(async (stat) => {
@@ -168,6 +176,7 @@ const AdminHome = ({ loggedIn, setLoggedIn }) => {
                     <Nav.Link eventKey="link-2" onClick={(e) => setSelection(e.target.innerHTML)}>Set Driver Stats</Nav.Link>
                     <Nav.Link eventKey="link-2" onClick={(e) => setSelection(e.target.innerHTML)}>Inc Team Stats</Nav.Link>
                     <Nav.Link eventKey="link-2" onClick={(e) => setSelection(e.target.innerHTML)}>Set Team Stats</Nav.Link>
+                    <Nav.Link eventKey="link-2" onClick={(e) => setSelection(e.target.innerHTML)}>Set Track Info</Nav.Link>
                     <Nav.Link eventKey="link-2" onClick={(e) => {
                         setSelection(e.target.innerHTML);
                         getAllResults();
@@ -183,7 +192,7 @@ const AdminHome = ({ loggedIn, setLoggedIn }) => {
                     <Form>
                         <Form.Group controlId="formBasicEmail">
                             <Form.Label>Driver Name</Form.Label>
-                            <Form.Control style={{ width: '250px' }} placeholder="Enter Driver Name" onBlur={(e) => setNewDriver({ name: e.target.value })} />
+                            <Form.Control style={{ width: '250px' }} placeholder="Enter Driver Name" value={newDriver.name} onChange={(e) => setNewDriver({ name: e.target.value })} />
                         </Form.Group>
                         <Button variant="primary" onClick={addDriver}>
                             Add Driver
@@ -359,6 +368,9 @@ const AdminHome = ({ loggedIn, setLoggedIn }) => {
                         <Button variant="warning" style={{ marginTop: '10px' }} onClick={updateStats}>
                             Set Driver
                         </Button>
+                        <Button variant="danger" onClick={deleteDriver}>
+                            Delete Driver
+                        </Button>
                     </Form>
                 </div> : <div></div>
                 }
@@ -516,7 +528,7 @@ const AdminHome = ({ loggedIn, setLoggedIn }) => {
                             <td>{singleDriver.careerFastestLaps}</td>
                         </tr>
                     </table> : <div></div> }
-
+                {selection === "Set Track Info" ? <TrackInfo></TrackInfo> : <div></div>}    
             </div>
                 : <Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
 

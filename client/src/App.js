@@ -31,9 +31,9 @@ function App() {
         <Route exact path="/constructorStandings" component={ConstructorStandings} >
             <ConstructorStandings loggedIn={loggedIn} setLoggedIn={setLoggedIn}></ConstructorStandings>
         </Route>
-        {/* <Route exact path="/raceInformation" component={RaceInfo} /> */}
+        <Route exact path="/raceInformation" component={RaceInfo} />
         {/* <Route path="/teams" component={TeamPage}/> */}
-        {/* <Route exact path="/driverStats" component={DriverStats} /> */}
+        <Route exact path="/driverStats" component={DriverStats} />
       </div>
     </Router>
   );

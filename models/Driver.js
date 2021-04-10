@@ -8,6 +8,10 @@ const DriverSchema = new Schema({
         type: String,
         default: ''
     },
+    guid: {
+        type: String,
+        default: ''
+    },
     points: {
         type: Number,
         default: 0

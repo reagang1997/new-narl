@@ -24,6 +24,18 @@ const PracticeTableSchema = new Schema({
         type: Number,
         default: 0
     },
+    sector1: {
+        type: Number,
+        default: 9999999999
+    },
+    sector2: {
+        type: Number,
+        default: 9999999999
+    },
+    sector3: {
+        type: Number,
+        default: 9999999999
+    },
 });
 
 const PracticeTable = mongoose.model('PracticeTable', PracticeTableSchema);
