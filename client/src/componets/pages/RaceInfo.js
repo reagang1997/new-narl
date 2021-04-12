@@ -5,13 +5,13 @@ const RaceInfo = () => {
   return (
 
     <div className="col-md-12">
-      <h1 style={{marginLeft: '225px'}}>This Weeks Race</h1>
+      <h1 className='this-week'>This Weeks Race</h1>
       <div>
         <CurrentTrack/>
       </div>
-      <h1 style={{marginLeft: '225px'}}>Current Schedule</h1>
+      <h1 className='current-schedule'>Current Schedule</h1>
 
-      <table className="table" style={{ width: "800px", margin: 'auto' }}>
+      <table className="table" >
 
         <thead>
           <tr>

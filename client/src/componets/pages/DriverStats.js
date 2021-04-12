@@ -32,7 +32,7 @@ function DriverStats() {
 
             </div>
             <div className='driver-stats-container'>
-                <table className="table rounded table-hover table-responsive-lg">
+                <table className="table" id='driver-stats'>
                     <thead>
                         <tr>
                             <th scope="col">Name</th>
