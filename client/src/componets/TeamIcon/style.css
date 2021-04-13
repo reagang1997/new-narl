@@ -4,8 +4,13 @@
 }
 
 .center-icon{
+    width: 10%;
+    margin: auto;
+}
+
+.icon-container{
     width: 100px;
-    
+    margin-right: 0px;
 }
 
 .height{
@@ -38,9 +43,13 @@
 .Red-Bull{
     margin-left: -38px;
 }
+table{
+    table-layout: fixed;
+}
 
-.Ferrari{
+#Ferrari{
     margin-left: -6px;
+    margin-right: -50px;
 }
 
 .HAAS{

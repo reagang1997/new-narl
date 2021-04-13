@@ -91,6 +91,10 @@ const AdminHome = ({ loggedIn, setLoggedIn }) => {
         getDrivers();
     }
 
+    const clearPractice = async (e) => {
+        const deleted = await axios.get('/api/clearPracticeResults');
+    }
+
     const setStat = (statName, value) => {
         let foundDupe = false;
         const filteredStats = stats.map(stat => {
@@ -497,13 +501,15 @@ const AdminHome = ({ loggedIn, setLoggedIn }) => {
                             return;
                         }
 
-                        return <Card body style={{ marginTop: '25px' }}>
+                        return (<div><Card body style={{ marginTop: '25px' }}>
                             {file.fileName}
                             <Button variant='warning' style={{ marginLeft: '580px' }} id={file.fileName} onClick={addPractice}>Add File</Button>
                         </Card>
-
-                    })}
-                    <Card body></Card>
+                        </div>)
+                    })
+                    }
+                    
+                    <Button variant='danger' onClick={clearPractice}>Clear Practice</Button>
                 </div> : <div></div>}
                 {singleDriver ?
                     <table className='table' > 

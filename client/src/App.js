@@ -32,7 +32,7 @@ function App() {
             <ConstructorStandings loggedIn={loggedIn} setLoggedIn={setLoggedIn}></ConstructorStandings>
         </Route>
         <Route exact path="/raceInformation" component={RaceInfo} />
-        {/* <Route path="/teams" component={TeamPage}/> */}
+        <Route path="/teams" component={TeamPage}/>
         <Route exact path="/driverStats" component={DriverStats} />
       </div>
     </Router>

@@ -88,5 +88,10 @@ router.put('/api/IncTeamStats/:TeamID', async (req, res) => {
     res.send(updatedTeam);
 });
 
+router.get('/api/teams/:name', async (req, res) => {
+    const found = await Team.findOne({name: req.params.name});
+    res.send(found);
+})
+
 
 module.exports = router;

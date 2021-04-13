@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Row, Col } from 'react-bootstrap';
 
 import alfaR from './img/alfa.png';
 import alphaT from './img/alpha.png';
@@ -16,9 +16,10 @@ import './style.css';
 
 function TeamIcon({ teamName }) {
     let img;
-    const teamClass = teamName.split(' ').join('-');
+    let teamClass = teamName.split(' ').join('-');
     console.log(teamClass);
     console.log(teamName);
+    teamClass += " teams"
     switch (teamName) {
         case 'Alfa Romeo':
             img = alfaR;
@@ -54,11 +55,9 @@ function TeamIcon({ teamName }) {
             break;
     }
     return (
-        <div className='center-icon'>
-            <div className='teams'>
-                <img className='{teamClass} teams' src={img} />
-            </div>
-        </div>
+
+                <img className={teamClass} src={img} />
+
 
     )
 }

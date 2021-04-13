@@ -6,6 +6,11 @@ const PracticeTable = require('../models/PracticeTable');
 const PracticeResult = require('../models/PracticeResult');
 const Driver = require('../models/Driver');
 
+router.get('/api/clearPracticeResults', async (req, res) => {
+    const deleted = await PracticeTable.deleteMany({});
+    res.send(deleted);
+})
+
 router.get('/api/allResults', async (req, res) => {
     const c = new Client();
 
