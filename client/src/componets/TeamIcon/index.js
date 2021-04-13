@@ -1,4 +1,5 @@
 import React from 'react';
+import {useHistory} from 'react-router-dom';
 import { Row, Col } from 'react-bootstrap';
 
 import alfaR from './img/alfa.png';
@@ -15,6 +16,8 @@ import williams from './img/w.png';
 import './style.css';
 
 function TeamIcon({ teamName }) {
+
+    const history = useHistory();
     let img;
     let teamClass = teamName.split(' ').join('-');
     console.log(teamClass);
@@ -54,9 +57,15 @@ function TeamIcon({ teamName }) {
             img = williams;
             break;
     }
+
+    const handleClick = (e) => {
+        console.log(e.target.id)
+        history.push(`/teams/${e.target.id}`);
+    }
+
     return (
 
-                <img className={teamClass} src={img} />
+                <img className={teamClass} id={teamName} onClick={handleClick} src={img} />
 
 
     )

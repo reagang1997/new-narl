@@ -20,9 +20,7 @@ function ConstructorStandings({loggedIn, setLoggedIn}) {
         getStandings();
     }, []);
 
-    const handleClick = (e) => {
-        history.push(`/teams/${e.target.id}`);
-    }
+    
 
     return (
         // <WCCTable teams={ConstructorStandings} />
@@ -40,7 +38,7 @@ function ConstructorStandings({loggedIn, setLoggedIn}) {
                     return (
                         <tr>
                             <td>{i+1}</td>
-                            <td column='Team' className='team' onClick={handleClick} id={team.name}><TeamIcon teamName={team.name}/></td>
+                            <td column='Team' className='team' id={team.name}><TeamIcon teamName={team.name}/></td>
                             <td column='Points'>{team.points}</td>
                             <td column='Wins'>{team.wins}</td>
                             <td column='Fastest Laps'>{team.fastestLaps}</td>

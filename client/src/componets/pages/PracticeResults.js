@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {Button, Alert} from 'react-bootstrap';
+import TeamIcon from '../TeamIcon';
 import axios from 'axios';
 import API from '../../utils/API';
 
@@ -55,7 +56,7 @@ function PracticeResults({loggedIn, setLoggedIn}) {
                         return (
                             <tr>
                                 <td>{i + 1}</td>
-                                <td>{driver.teamName}</td>
+                                <td><TeamIcon teamName={driver.teamName}/></td>
                                 <td>{time}</td>
                                 <td>{driver.driverName}</td>
                                 <td>{driver.tire}</td>
