@@ -68,8 +68,9 @@ router.get('/api/readFile/:fileName', async (req, res) => {
                     let driverInDB = await PracticeTable.findOne({ driverName: driver.DriverName });
     
                     if (!driverInDB) {
-                        const found = await Drivers.find({name: driver.DriverName});
-                        console.log(found.team);
+                        const found = await Drivers.findOne({name: driver.DriverName});
+                        console.log("found" + found);
+                        console.log('TEAM');
                         const newPR = {
                             driverName: driver.DriverName,
                             teamName: found.team
