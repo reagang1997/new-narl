@@ -1,3 +1,67 @@
 .alfa{
     background-image: url(../../../img/alfa.png);
 }
+
+#Ferrari-head{
+    margin-left: 165px;
+
+}
+
+#Racing-Point{
+    height: 300px;
+    margin-bottom: 25px;
+    margin-left: 172px;
+
+}
+
+#Mercedes-head{
+    margin-bottom: 25px;
+    height: 250px;
+    margin-left: 165px;
+
+}
+
+#Alfa-Romeo{
+    height: 200px;
+    margin-top: 50px;
+    margin-left: 110px;
+
+}
+
+#HAAS-head{
+    height: 500px;
+    margin-top: -100px;
+    margin-bottom: -75px;
+    margin-left: 140px;
+
+}
+
+#Alpha-Tauri{
+    margin-left: 165px;
+}
+
+#Williams-head{
+    margin-left: 180px;
+    margin-top: 50px;
+    
+}
+
+#Red-Bull{
+    height: 190px;
+    margin-left: 155px;
+    margin-top: 50px;
+
+}
+
+#McLaren-head{
+    height: 300px;
+    margin-left: 165px;
+
+}
+
+#Renault-head{
+    margin-left: 180px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+
+}
