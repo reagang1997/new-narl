@@ -23,5 +23,55 @@ code {
 
 }
 
+@media only screen and (max-width: 500px){
+  .logo{
+      height: 85px;
+  }
+
+  .center-logo{
+      width: 100%;
+  }
+
+  span{
+      margin-right: -5px;
+  }
+
+  .practice-container{
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 20px;
+    border: 0px
+  }
+
+  .this-week{
+      margin-left: 22px;
+  }
+
+  .current-schedule{
+      margin-left: 22px;
+  }
+
+  .table{
+      width: 100%
+  }
+
+  .driver-stats-container{
+      border: 0;
+      margin: 0;
+      margin-top: 25px;
+  }
+
+  .center{
+      width: 215px;
+      margin: auto;
+  }
+
+  .driver-search{
+      margin: 0;
+  }
+
+}
+
+
 
 
