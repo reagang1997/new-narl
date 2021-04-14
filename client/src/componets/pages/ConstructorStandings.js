@@ -37,9 +37,19 @@ function ConstructorStandings({loggedIn, setLoggedIn}) {
                 </tr>
 
                 {teams.map((team, i) => {
+                    let pos;
+                    if (i === 0){
+                        pos = 'first'
+                    }
+                    else if( i === 1){
+                        pos = 'second'
+                    }
+                    else if( i === 2){
+                        pos = 'third'
+                    }
                     return (
                         <tr>
-                            <td>{i+1}</td>
+                            <td className={pos}>{i+1}</td>
                             <td column='Team' className='team' id={team.name}><TeamIcon teamName={team.name}/></td>
                             <td column='Points'>{team.points}</td>
                             <td column='Wins'>{team.wins}</td>

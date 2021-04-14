@@ -33,15 +33,27 @@ function DriverStandings({loggedIn, setLoggedIn}) {
 
             <table className='table table-responsive-lg' id='table'>
                 <tr>
+                    <th>POS</th>
                     <th>Driver Name</th>
                     <th>Points</th>
                     <th>Wins</th>
                     <th>Fastest Laps</th>
                 </tr>
                 
-                {drivers.map(driver => {
+                {drivers.map((driver, i) => {
+                    let pos;
+                    if (i === 0){
+                        pos = 'first'
+                    }
+                    else if( i === 1){
+                        pos = 'second'
+                    }
+                    else if( i === 2){
+                        pos = 'third'
+                    }
                     return (
                         <tr>
+                            <td className={pos}>{i+1}</td>
                             <td column='Driver Name'>{driver.name}</td>
                             <td column='Points'>{driver.points}</td>
                             <td column='Wins'>{driver.wins}</td>
