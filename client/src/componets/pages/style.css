@@ -84,6 +84,31 @@
     font-family: F1-Regular;
 }
 
+.practice-card{
+    width: 1250px;
+    margin: auto;
+    margin-top: 50px
+}
+
+.driver-card{
+    width: 800px;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.construct-card{
+    width: 800px;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.week-card{
+    width: fit-content;
+    margin: auto;
+}
+.practice-table{
+    width: 1250px;
+}
 
 
 

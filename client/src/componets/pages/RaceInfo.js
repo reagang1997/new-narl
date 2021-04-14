@@ -11,10 +11,10 @@ const RaceInfo = () => {
       </div>
       <h1 className='current-schedule' style={{width: 'fit-content', margin: 'auto', marginBottom: '25px'}}>Current Schedule</h1>
 
-      <Card body style={{width: 'fit-content', margin: 'auto'}} className='box'>
+      <Card body className='box schedule-card'>
 
       
-      <table className="table table-responsive-lg" style={{width: '800px'}}>
+      <table className="table table-responsive-lg">
 
         <thead>
           <tr>

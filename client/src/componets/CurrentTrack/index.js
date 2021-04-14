@@ -18,8 +18,8 @@ const CurrentTrack = () => {
     }
 
     return (
-        <div style={{ width: 'fit-content', margin: '0 auto' }} className='f1'>
-            <Card body className='box' style={{marginTop: '50px'}}>
+        <div className='f1'>
+            <Card body className='box  week-card' style={{marginTop: '50px', marginBottom: '50px'}}>
                 <h1 className='this-week'>This Weeks Race</h1>
 
                 <h2>{currentTrack.name}</h2>

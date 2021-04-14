@@ -33,9 +33,9 @@ function PracticeResults({loggedIn, setLoggedIn}) {
         {status === 204 ? 
             <Alert variant='Warning'>Pratice Is Up-To-Date</Alert>   : <div></div> 
         }
-        <Card body className='f1 box' style={{width: 'fit-content', margin: 'auto', marginTop: '50px'}}>
+        <Card body className='f1 box practice-card'>
 
-            <table className="table rounded table-hover table-responsive-lg" style={{width: '1250px'}}>
+            <table className="table rounded table-hover table-responsive-lg">
                 <thead>
                     <tr>
                         <th scope="col">#</th>

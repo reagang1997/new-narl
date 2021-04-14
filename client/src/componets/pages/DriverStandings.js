@@ -29,7 +29,7 @@ function DriverStandings({loggedIn, setLoggedIn}) {
     // const td = Reactable.td;
 
     return (
-        <Card body className='f1 box' style={{width: '800px', margin: 'auto', marginTop: '50px'}}>
+        <Card body className='f1 box driver-card'>
 
             <table className='table table-responsive-lg' id='table'>
                 <tr>
