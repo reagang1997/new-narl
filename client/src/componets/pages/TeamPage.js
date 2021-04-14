@@ -40,7 +40,7 @@ function TeamPage() {
                     <SeasonStats pts={teamData.points} wins={teamData.wins} fl={teamData.fastestLaps} />
                 </Col>
                 <Col md={6}>
-                    <HistoryStats pts={teamData.historyPoints} wins={teamData.historWins} fl={teamData.historyFastestLaps} />
+                    <HistoryStats pts={teamData.historyPoints} wins={teamData.historyWins} fl={teamData.historyFastestLaps} />
                 </Col>
             </Row>
             {/* <CurrentDrivers drivers={teamData.drivers}/> */}
