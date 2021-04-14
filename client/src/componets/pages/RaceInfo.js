@@ -1,23 +1,26 @@
 import React from 'react';
 import CurrentTrack from '../CurrentTrack';
+import {Card} from 'react-bootstrap';
 
 const RaceInfo = () => {
   return (
 
-    <div className="col-md-12">
-      <h1 className='this-week'>This Weeks Race</h1>
+    <div className="col-md-12 f1">
       <div>
         <CurrentTrack/>
       </div>
-      <h1 className='current-schedule'>Current Schedule</h1>
+      <h1 className='current-schedule' style={{width: 'fit-content', margin: 'auto', marginBottom: '25px'}}>Current Schedule</h1>
 
-      <table className="table table-responsive" >
+      <Card body style={{width: 'fit-content', margin: 'auto'}} className='box'>
+
+      
+      <table className="table table-responsive-lg" style={{width: '800px'}}>
 
         <thead>
           <tr>
-            <th scope="col" style={{ width: "266px" }}>Date</th>
-            <th scope="col" style={{ width: "266px" }}>Track</th>
-            <th scope="col" style={{ width: "266px" }}>Download Link</th>
+            <th scope="col" style={{ width: "50px" }}>Date</th>
+            <th scope="col" style={{ width: "100px" }}>Track</th>
+            <th scope="col" style={{ width: "100px" }}>Download Link</th>
           </tr>
         </thead>
         <tbody>
@@ -205,6 +208,7 @@ const RaceInfo = () => {
           </tr>
         </tbody>
       </table>
+      </Card>
     </div>
   )
 }

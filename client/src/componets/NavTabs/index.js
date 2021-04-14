@@ -15,7 +15,7 @@ function NavTabs() {
       <div className='center-logo'>
         <img src={logo} className='logo'></img>
       </div>
-      <div className='links'>
+      <div className='links f1'>
 
         <span>
           <Link to='/practiceResults' className={location.pathname === "/practiceResults" ? 'active link-color' : 'link-color'}>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import {Card} from 'react-bootstrap';
 import CareerStatRow from '../StatsComponents/CareerStatRow';
 import './style.css'
 
@@ -8,13 +9,13 @@ function DriverStats() {
     const [driverSearch, setDriverSearch] = useState('');
 
     const getDrivers = async () => {
-        if(driverSearch === ''){
+        if (driverSearch === '') {
             const driverList = await axios.get('/api/getAllDrivers')
             console.log(driverList.data);
             console.log(driverList.data[0].careerFastestLaps);
             setDrivers(driverList.data);
         }
-        else{
+        else {
             const filterd = await axios.get(`/api/drivers/${driverSearch}`);
             setDrivers(filterd.data);
         }
@@ -26,13 +27,14 @@ function DriverStats() {
     }, [driverSearch])
 
     return (
-        <div >
-            <div className='center'>
-                <input className='driver-search' placeholder='Filter Drivers ex: Reagan G' onChange={(e) => setDriverSearch(e.target.value)}></input>
+        <div className='f1'>
+            <div style={{width: 'fit-content', margin:'auto'}}>
+                <input className='driver-search' style={{width: '500px'}} placeholder='Filter Drivers ex: Reagan G' onChange={(e) => setDriverSearch(e.target.value)}></input>
 
             </div>
-            
-                <table className="table table-responsive-lg" id='driver-stats' style={{marginTop: '25px'}}>
+            <Card body className='f1 box' style={{ width: '1250px', margin: 'auto', marginTop: '50px' }}>
+
+                <table className="table table-responsive-lg" id='driver-stats' style={{ marginTop: '25px' }}>
                     <thead>
                         <tr>
                             <th scope="col">Name</th>
@@ -58,6 +60,7 @@ function DriverStats() {
                         )}
                     </tbody>
                 </table>
+                </Card>
             
         </div>
 

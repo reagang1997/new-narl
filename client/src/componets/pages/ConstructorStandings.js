@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'
+import {Card} from 'react-bootstrap';
 import TeamIcon from '../TeamIcon'
 import  { useHistory } from 'react-router-dom'
 
@@ -24,8 +25,9 @@ function ConstructorStandings({loggedIn, setLoggedIn}) {
 
     return (
         // <WCCTable teams={ConstructorStandings} />
-        <div>
-            <table className='table table-responsive-lg' id='table'>
+        <Card body className='f1 box' style={{width: '800px', margin: 'auto', marginTop: '50px'}}>
+
+            <table className='table table-responsive-lg f1' id='table'>
                 <tr>
                     <th style={{ width: "50px" }}>POS</th>
                     <th style={{ width: "75px" }}>Team</th>
@@ -46,7 +48,7 @@ function ConstructorStandings({loggedIn, setLoggedIn}) {
                 })}
 
             </table>
-        </div>
+        </Card>
     )
 }
 

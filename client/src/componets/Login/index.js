@@ -39,7 +39,7 @@ const Login = ({ loggedIn, setLoggedIn }) => {
     }
 
     return (
-        <div className='login'>
+        <div className='login f1'>
             {/* {show ? 
             <Alert variant="success">
                 <Alert.Heading>Thank you for applying to be an Admin! We will get back to you shortly!</Alert.Heading>

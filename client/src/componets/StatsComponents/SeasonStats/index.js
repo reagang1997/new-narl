@@ -3,7 +3,7 @@ import { Row, Col, Card } from 'react-bootstrap';
 
 function SeasonStats({ wins, pts, fl }) {
     return (
-        <Card className='box'>
+        <Card className='box f1'>
             <div className='stats-container'>
                 <h1>Season Stats</h1>
                 <Row>

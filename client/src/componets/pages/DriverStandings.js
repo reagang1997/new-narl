@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import {Card} from 'react-bootstrap'
 import axios from 'axios';
 import WDCTable from '../WDCTable';
 import fs from 'fs';
@@ -28,7 +29,8 @@ function DriverStandings({loggedIn, setLoggedIn}) {
     // const td = Reactable.td;
 
     return (
-        <div>
+        <Card body className='f1 box' style={{width: '800px', margin: 'auto', marginTop: '50px'}}>
+
             <table className='table table-responsive-lg' id='table'>
                 <tr>
                     <th>Driver Name</th>
@@ -48,7 +50,7 @@ function DriverStandings({loggedIn, setLoggedIn}) {
                 })}
 
             </table>
-        </div>
+        </Card>
         // <WDCTable drivers={driverStandings}/>
     )
 }

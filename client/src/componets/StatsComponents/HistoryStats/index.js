@@ -4,7 +4,7 @@ import './style.css';
 
 function HistoryStats({ wins, fl, pts }) {
     return (
-        <Card className='box'>
+        <Card className='box f1'>
             <div className='stats-container'>
                 <h1>History Stats</h1>
                 <Row>

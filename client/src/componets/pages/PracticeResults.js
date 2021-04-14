@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {Button, Alert} from 'react-bootstrap';
+import {Button, Alert, Card} from 'react-bootstrap';
 import TeamIcon from '../TeamIcon';
 import axios from 'axios';
 import API from '../../utils/API';
@@ -33,9 +33,9 @@ function PracticeResults({loggedIn, setLoggedIn}) {
         {status === 204 ? 
             <Alert variant='Warning'>Pratice Is Up-To-Date</Alert>   : <div></div> 
         }
-        <div className='practice-container'>
+        <Card body className='f1 box' style={{width: 'fit-content', margin: 'auto', marginTop: '50px'}}>
 
-            <table className="table rounded table-hover table-responsive-lg">
+            <table className="table rounded table-hover table-responsive-lg" style={{width: '1250px'}}>
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -69,7 +69,7 @@ function PracticeResults({loggedIn, setLoggedIn}) {
 
                 </tbody>
             </table>
-        </div>
+        </Card>
     </div>
 
 
