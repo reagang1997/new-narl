@@ -12,7 +12,7 @@ function NavTabs() {
   return (
 
     <div>
-      <div className='center-logo'>
+      <div style={{width: 'fit-content', margin: 'auto'}}>
         <img src={logo} className='logo'></img>
       </div>
       <div className='links f1'>
