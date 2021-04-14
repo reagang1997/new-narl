@@ -52,10 +52,19 @@ function PracticeResults({loggedIn, setLoggedIn}) {
                         if (driver.rawLapTime === 99999999999) return;
 
                         let time = getFormatted(driver.rawLapTime);
-
+                        let pos;
+                        if (i === 0){
+                            pos = 'first'
+                        }
+                        else if( i === 1){
+                            pos = 'second'
+                        }
+                        else if( i === 2){
+                            pos = 'third'
+                        }
                         return (
                             <tr>
-                                <td>{i + 1}</td>
+                                <td className={pos}>{i + 1}</td>
                                 <td><TeamIcon teamName={driver.teamName}/></td>
                                 <td>{time}</td>
                                 <td>{driver.driverName}</td>
