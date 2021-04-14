@@ -11,7 +11,7 @@ const RaceInfo = () => {
       </div>
       <h1 className='current-schedule'>Current Schedule</h1>
 
-      <table className="table" >
+      <table className="table table-responsive" >
 
         <thead>
           <tr>
