@@ -50,7 +50,7 @@ function TeamLogo({ teamName }) {
     }
     return (
         <div >
-            <img src={img}/>
+            <img  src={img}/>
 
         </div>
     )

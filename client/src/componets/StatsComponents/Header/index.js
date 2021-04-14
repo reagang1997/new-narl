@@ -5,7 +5,7 @@ function Header({ teamName, drivers }) {
 
     return (
         <div>
-            <h1 className='header'>{teamName}</h1>
+            <h1 className='header f1'>{teamName}</h1>
             
         </div>
     )

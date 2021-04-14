@@ -29,7 +29,7 @@ function DriverStandings({loggedIn, setLoggedIn}) {
 
     return (
         <div>
-            <table className='table table-responsive' id='table'>
+            <table className='table table-responsive-lg' id='table'>
                 <tr>
                     <th>Driver Name</th>
                     <th>Points</th>

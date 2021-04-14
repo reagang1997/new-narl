@@ -25,7 +25,7 @@ function ConstructorStandings({loggedIn, setLoggedIn}) {
     return (
         // <WCCTable teams={ConstructorStandings} />
         <div>
-            <table className='table table-responsive' id='table'>
+            <table className='table table-responsive-lg' id='table'>
                 <tr>
                     <th style={{ width: "50px" }}>POS</th>
                     <th style={{ width: "75px" }}>Team</th>

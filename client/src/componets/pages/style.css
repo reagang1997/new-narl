@@ -68,6 +68,17 @@
     width: fit-content;
 }
 
+@font-face {
+    font-family: 'F1-Regular';
+    src: url('../../fonts/FORMULA1-REGULAR.OTF');
+}
+
+
+.f1{
+    font-family: F1-Regular;
+}
+
+
 
 @media only screen and (max-width: 375px){
     .practice-container{

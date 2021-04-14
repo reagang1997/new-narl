@@ -512,7 +512,7 @@ const AdminHome = ({ loggedIn, setLoggedIn }) => {
                     <Button variant='danger' onClick={clearPractice}>Clear Practice</Button>
                 </div> : <div></div>}
                 {singleDriver ?
-                    <table className='table table-responsive' > 
+                    <table className='table table-responsive-lg' > 
                         <tr>
                             <th>Name</th>
                             <th>Team</th>

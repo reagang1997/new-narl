@@ -31,8 +31,8 @@ function DriverStats() {
                 <input className='driver-search' placeholder='Filter Drivers ex: Reagan G' onChange={(e) => setDriverSearch(e.target.value)}></input>
 
             </div>
-            <div className='driver-stats-container'>
-                <table className="table table-responsive" id='driver-stats'>
+            
+                <table className="table table-responsive-lg" id='driver-stats' style={{marginTop: '25px'}}>
                     <thead>
                         <tr>
                             <th scope="col">Name</th>
@@ -58,7 +58,7 @@ function DriverStats() {
                         )}
                     </tbody>
                 </table>
-            </div>
+            
         </div>
 
     )
