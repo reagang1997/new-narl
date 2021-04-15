@@ -5,7 +5,7 @@ import { Row, Col, Jumbotron, Button } from 'react-bootstrap';
 function Home() {
     return (
         <Jumbotron className='f1 box' style={{width: 'fit-content', margin: 'auto', marginTop:'25px'}}>
-            <div style={{width: '1250px', margin: 'auto'}}>
+            <div className='home-jumbo'>
                 <h1 style={{fontSize: '50px'}}>North American Racing League</h1>
                 <h4>North Americas Finest Racing League.</h4>
                 <br/>
