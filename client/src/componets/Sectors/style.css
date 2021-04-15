@@ -1,0 +1,17 @@
+.pink{
+    background-color: magenta;
+    padding: 2px;
+    border-radius: 5px;
+}
+
+.green{
+    background-color: lime;
+    padding: 2px;
+    border-radius: 5px;
+}
+
+.yellow{
+    background-color: yellow;
+    padding: 2px;
+    border-radius: 5px;
+}
