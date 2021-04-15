@@ -81,15 +81,36 @@ router.get('/api/readFile/:fileName', async (req, res) => {
     
                     if (driver.BestLap < driverInDB.rawLapTime) {
                         let updatedDriver = await PracticeTable.findOneAndUpdate({ driverName: driver.DriverName }, { $set: { rawLapTime: driver.BestLap } });
-                        practiceLaps.forEach(async (lap) => {
-                            if (lap.LapTime === driver.BestLap) {
-                                let updatedTire = await PracticeTable.findOneAndUpdate({ driverName: driver.DriverName }, { $set: { tire: lap.Tyre } });
-                            }
-    
-                            let updatedCDriver = await Drivers.findOneAndUpdate({ name: lap.DriverName }, { $inc: { careerLaps: 1 } });
-                            let updatedPDriver = await PracticeTable.findOneAndUpdate({ driverName: lap.DriverName }, { $inc: { laps: 1 } });
-                        })
+                        
                     }
+                    practiceLaps.forEach(async (lap) => {
+                        if (lap.LapTime === driver.BestLap) {
+                            let updatedTire = await PracticeTable.findOneAndUpdate({ driverName: driver.DriverName }, { $set: { tire: lap.Tyre } });
+                        }
+                    })
+                })
+
+               
+
+                //set sector times
+                const allPractice = await PracticeTable.find({});
+                allPractice.forEach(driver => {
+                    practiceLaps.forEach(async (lap) => {
+                        console.log('counting lap');
+                        if(driver.rawLapTime == lap.LapTime){
+                            console.log('found sector')
+                            const sector1 = lap.Sectors[0];
+                            const sector2 = lap.Sectors[1];
+                            const sector3 = lap.Sectors[2];
+                            const updated = await PracticeTable.findOneAndUpdate({driverName: driver.driverName}, { $set: { sector1time: sector1, sector2time: sector2, sector3time: sector3 } });
+                           
+                        }
+                    })
+                })
+
+                practiceLaps.forEach(async (lap) => {
+                    let updatedCDriver = await Drivers.findOneAndUpdate({ name: lap.DriverName }, { $inc: { careerLaps: 1 } });
+                    let updatedPDriver = await PracticeTable.findOneAndUpdate({ driverName: lap.DriverName }, { $inc: { laps: 1 } });
                 })
 
                 const newPR = await PracticeResult.create({fileName: req.params.fileName});

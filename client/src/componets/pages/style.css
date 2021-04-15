@@ -53,8 +53,8 @@
 }
 
 .driver-search{
-    width: 100%;
-    margin-left: -50px;
+    width: 500px;
+    margin: auto;
 }
 
 .current-schedule{
@@ -105,6 +105,12 @@
 .week-card{
     width: fit-content;
     margin: auto;
+}
+
+.driver-stat-card{
+    width: 1250px;
+    margin: auto;
+    margin-top: 50px;
 }
 .practice-table{
     width: 1250px;

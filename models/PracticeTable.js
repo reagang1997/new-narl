@@ -24,18 +24,28 @@ const PracticeTableSchema = new Schema({
         type: Number,
         default: 0
     },
-    sector1: {
+    sector1time: {
         type: Number,
         default: 9999999999
     },
-    sector2: {
+    sector2time: {
         type: Number,
         default: 9999999999
     },
-    sector3: {
+    sector3time: {
         type: Number,
         default: 9999999999
     },
+    sector1color: {
+        type: String,
+        default: ""
+    },sector2color: {
+        type: String,
+        default: ""
+    },sector3color: {
+        type: String,
+        default: ""
+    }
 });
 
 const PracticeTable = mongoose.model('PracticeTable', PracticeTableSchema);

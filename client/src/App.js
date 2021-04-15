@@ -18,7 +18,7 @@ function App() {
     <Router>
       <div>
         <NavTabs />
-        {/* <Route exact path="/" component={Home}/> */}
+        <Route exact path="/" component={Home}/>
         <Route exact path="/adminHome" component={AdminHome}>
           <AdminHome loggedIn={loggedIn} setLoggedIn={setLoggedIn}></AdminHome>
         </Route>

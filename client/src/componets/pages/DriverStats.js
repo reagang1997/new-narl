@@ -29,12 +29,12 @@ function DriverStats() {
     return (
         <div className='f1'>
             <div style={{width: 'fit-content', margin:'auto'}}>
-                <input className='driver-search' style={{width: '500px'}} placeholder='Filter Drivers ex: Reagan G' onChange={(e) => setDriverSearch(e.target.value)}></input>
+                <input className='driver-search' placeholder='Filter Drivers ex: Reagan G' onChange={(e) => setDriverSearch(e.target.value)}></input>
 
             </div>
-            <Card body className='f1 box' style={{ width: '1250px', margin: 'auto', marginTop: '50px' }}>
+            <Card body className='f1 box driver-stat-card'>
 
-                <table className="table table-responsive-lg" id='driver-stats' style={{ marginTop: '25px' }}>
+                <table className="table table-hover table-responsive-lg" id='driver-stats' style={{ marginTop: '25px' }}>
                     <thead>
                         <tr>
                             <th scope="col">Name</th>

@@ -58,6 +58,14 @@ code {
   .schedule-card{
     width: 100%
   }
+
+  .driver-stat-card{
+    width: 100%;
+  }
+
+  .driver-search{
+    width: 200px;
+  }
   .this-week{
       margin-left: 22px;
   }

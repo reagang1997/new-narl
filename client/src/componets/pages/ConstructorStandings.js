@@ -27,7 +27,7 @@ function ConstructorStandings({loggedIn, setLoggedIn}) {
         // <WCCTable teams={ConstructorStandings} />
         <Card body className='f1 box construct-card'>
 
-            <table className='table table-responsive-lg f1' id='table'>
+            <table className='table table-hover table-responsive-lg f1' id='table'>
                 <tr>
                     <th style={{ width: "50px" }}>POS</th>
                     <th style={{ width: "75px" }}>Team</th>

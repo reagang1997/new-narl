@@ -25,51 +25,51 @@ const TrackSchema = new Schema({
     },
     turns: {
         type: Number,
-        default: 0
+        default: 99999999999
     },
     fastestQualy: {
         type: Number,
-        default: 0
+        default: 99999999999
     },
     fastestRace: {
         type: Number,
-        default: 0
+        default: 99999999999
     },
     rSector1: {
         type: Number, 
-        default: 0
+        default: 99999999999
     },
     rSector2: {
         type: Number, 
-        default: 0
+        default: 99999999999
     },
     rSector3: {
         type: Number, 
-        default: 0
+        default: 99999999999
     },
     pSector1: {
         type: Number, 
-        default: 0
+        default: 99999999999
     },
     pSector2: {
         type: Number, 
-        default: 0
+        default: 99999999999
     },
     pSector3: {
         type: Number, 
-        default: 0
+        default: 99999999999
     },
     qSector1: {
         type: Number, 
-        default: 0
+        default: 99999999999
     },
     qSector2: {
         type: Number, 
-        default: 0
+        default: 99999999999
     },
     qSector3: {
         type: Number, 
-        default: 0
+        default: 99999999999
     },
 });
 

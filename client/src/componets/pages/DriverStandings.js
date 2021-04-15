@@ -31,7 +31,7 @@ function DriverStandings({loggedIn, setLoggedIn}) {
     return (
         <Card body className='f1 box driver-card'>
 
-            <table className='table table-responsive-lg' id='table'>
+            <table className='table table-hover table-responsive-lg' id='table'>
                 <tr>
                     <th>POS</th>
                     <th>Driver Name</th>
