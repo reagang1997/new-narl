@@ -10,7 +10,7 @@ function PracticeResults({ loggedIn, setLoggedIn }) {
     const [practiceResults, setPracticeResults] = useState([]);
     const [trackSectors, setTrackSectors] = useState({s1: 0, s2: 0, s3: 0});
     const [hit, setHit] = useState(0)
-
+    const [p1, setP1] = useState(0);
     const [status, setStatus] = useState(0);
 
     useEffect(() => {
@@ -27,6 +27,7 @@ function PracticeResults({ loggedIn, setLoggedIn }) {
         }
         console.log(practice);
         setPracticeResults(practice.data);
+        setP1(practice.data[0].rawLapTime);
     }
 
 
@@ -68,7 +69,12 @@ function PracticeResults({ loggedIn, setLoggedIn }) {
                 </thead>
                 <tbody>
                     {practiceResults.map((driver, i) => {
-
+                       
+                        let split;
+                        if (i > 0){
+                            split = driver.rawLapTime - p1;
+                            split = getSetor(split);
+                        }
                         if (driver.rawLapTime === 99999999999) return;
                         let sector1color, sector2color, sector3color;
                         let time = getFormatted(driver.rawLapTime);
@@ -123,7 +129,7 @@ function PracticeResults({ loggedIn, setLoggedIn }) {
                             <tr>
                                 <td className={pos}>{i + 1}</td>
                                 <td><TeamIcon teamName={driver.teamName} /></td>
-                                <td>{time}<br /><Sectors
+                                <td>{time}<br />{i > 0 ? <div>+{split}</div> : ''}<Sectors
                                     sector1T={sector1Time}
                                     sector2T={sector2Time}
                                     sector3T={sector3Time}
