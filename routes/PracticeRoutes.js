@@ -171,14 +171,24 @@ router.get('/api/readFile/:fileName', async (req, res) => {
 
                     if (!driverInDB) {
                         const found = await Drivers.findOne({ name: driver.DriverName });
-                        console.log("found" + found);
-                        console.log('TEAM');
-                        const newPR = {
-                            driverName: driver.DriverName,
-                            teamName: found.team
-                        };
-                        driverInDB = await PracticeTable.create(newPR)
-                        driverInDB.save();
+                        if(!found){
+                            const created = await Drivers.create({name: driver.DriverName})
+                            const newPR = {
+                                driverName: driver.DriverName
+                            };
+                            driverInDB = await PracticeTable.create(newPR)
+                            driverInDB.save();
+                        }
+                        else{
+                            console.log("found" + found);
+                            console.log('TEAM');
+                            const newPR = {
+                                driverName: driver.DriverName,
+                                teamName: found.team
+                            };
+                            driverInDB = await PracticeTable.create(newPR)
+                            driverInDB.save();
+                        }
                     }
 
 
