@@ -175,7 +175,7 @@ router.get('/api/readFile/:fileName', async (req, res) => {
                         console.log('TEAM');
                         const newPR = {
                             driverName: driver.DriverName
-                            // teamName: found.team
+                            teamName: found.team
                         };
                         driverInDB = await PracticeTable.create(newPR)
                         driverInDB.save();
