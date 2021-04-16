@@ -8,14 +8,23 @@ import API from '../../utils/API';
 function PracticeResults({ loggedIn, setLoggedIn }) {
 
     const [practiceResults, setPracticeResults] = useState([]);
+    const [trackSectors, setTrackSectors] = useState({s1: 0, s2: 0, s3: 0});
+    const [hit, setHit] = useState(0)
+
     const [status, setStatus] = useState(0);
 
     useEffect(() => {
         getPractice();
-    }, [])
+    }, [hit])
 
     const getPractice = async () => {
         const practice = await axios.get('/api/practiceResults');
+        const sectors = await axios.get('/api/getTrackSectors');
+        console.log('HITTTTT' + sectors.data);
+        setTrackSectors({s1: sectors.data.pSector1, s2: sectors.data.pSector2, s3: sectors.data.pSector3});
+        if(hit === 0){
+            setHit(hit+1)
+        }
         console.log(practice);
         setPracticeResults(practice.data);
     }
@@ -61,14 +70,44 @@ function PracticeResults({ loggedIn, setLoggedIn }) {
                     {practiceResults.map((driver, i) => {
 
                         if (driver.rawLapTime === 99999999999) return;
-
+                        let sector1color, sector2color, sector3color;
                         let time = getFormatted(driver.rawLapTime);
+                        console.log(trackSectors.s1);
+                        if(driver.sector1time === trackSectors.s1){
+                             sector1color = 'pink'
+                             console.log('hit')
+                        }
+                        else if(driver.sector1time === driver.sector1pb){
+                            console.log(driver.sector1time)
+                            console.log(driver.sector1pb)
+                             sector1color = 'green'
+                        }
+                        else{
+                            sector1color = 'yellow'
+                        }
+                        if(driver.sector2time === trackSectors.s2){
+                             sector2color = 'pink'
+                        }
+                        else if(driver.sector2time === driver.sector2pb){
+                             sector2color = 'green'
+                        }
+                        else{
+                             sector2color = 'yellow'
+                        }
+
+                        if(driver.sector3time === trackSectors.s3){
+                             sector3color = 'pink'
+                        }
+                        else if(driver.sector3time === driver.sector3pb){
+                             sector3color = 'green'
+                        }
+                        else{
+                             sector3color = 'yellow'
+                        }
                         let sector1Time = getSetor(driver.sector1time);
                         let sector2Time = getSetor(driver.sector2time);
                         let sector3Time = getSetor(driver.sector3time);
-                        let sector1color = driver.sector1color;
-                        let sector2color = driver.sector2color;
-                        let sector3color = driver.sector3color;
+
                         console.log(sector1Time, sector2color);
                         let pos;
                         if (i === 0) {

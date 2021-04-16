@@ -36,6 +36,18 @@ const PracticeTableSchema = new Schema({
         type: Number,
         default: 9999999999
     },
+    sector1pb: {
+        type: Number,
+        default: 9999999999
+    },
+    sector2pb: {
+        type: Number,
+        default: 9999999999
+    },
+    sector3pb: {
+        type: Number,
+        default: 9999999999
+    },
     sector1color: {
         type: String,
         default: ""

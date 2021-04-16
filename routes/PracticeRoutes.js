@@ -43,6 +43,105 @@ router.get('/api/findResult/:fileName', async (req, res) => {
     }
 })
 
+const colorSectors = async () => {
+    let currentTrack = await CurrentTrack.find({});
+    currentTrack = currentTrack[0];
+
+    const sector1Times = await PracticeTable.find({});
+    const sector2Times = await PracticeTable.find({}).sort({ sector2time: 1 });
+    const sector3Times = await PracticeTable.find({}).sort({ sector3time: 1 });
+    console.log(sector1Times);
+
+    let color1;
+    sector1Times.forEach(async (driver) => {
+        console.log('hit');
+        const track = await Track.findOne({ _id: currentTrack.track });
+        let tmpTrackBest1 = track.pSector1;
+        let tmp1 = driver.sector1time;
+        let tmpPB = driver.sector1pb;
+        if (tmp1 <= tmpTrackBest1) {
+            color1 = 'pink';
+            let updatedTrack = await Track.findOneAndUpdate({ _id: currentTrack.track }, { $set: { pSector1: tmp1 } });
+            sector1Times.forEach(async (old) => {
+                if (driver.driverName === old.driverName) {
+                    return;
+                }
+                if (driver.sector1color === 'pink') {
+                    let updatedColor = await PracticeTable.findOneAndUpdate({ driverName: old.driverName }, {
+                        $set:
+                        {
+                            sector1color: 'green'
+                        }
+                    });
+                }
+            })
+        }
+        else if (tmp1 > tmpPB) {
+            color1 = 'yellow'
+        }
+        else if (tmp1 < tmpPB) {
+            color1 = 'green'
+        }
+        let updatedSectors = await PracticeTable.findOneAndUpdate({ driverName: driver.driverName }, {
+            $set:
+            {
+                sector1color: color1
+            }
+        });
+    })
+
+    // sector2Times.forEach(async (driver) => {
+    //     const track = await Track.findOne({ _id: currentTrack.track });
+    //     let tmpTrackBest2 = track.pSector2;
+    //     let tmpSector = driver.sector2time;
+    //     let tmpPB = driver.sector2pb;
+    //     if (tmpSector <= tmpTrackBest2) {
+    //         color1 = 'pink';
+    //         let updatedTrack = await Track.findOneAndUpdate({ _id: currentTrack.track }, { $set: { pSector2: tmpSector } });
+    //         colorSectors();
+    //         return;
+    //     }
+    //     else if (tmpSector > tmpPB) {
+    //         color1 = 'yellow'
+    //     }
+    //     else if (tmpSector < tmpPB) {
+    //         color1 = 'green'
+    //     }
+    //     let updatedSectors = await PracticeTable.findOneAndUpdate({ driverName: driver.driverName }, {
+    //         $set:
+    //         {
+    //             sector2color: color1
+    //         }
+    //     });
+    // })
+
+    // sector3Times.forEach(async (driver) => {
+    //     const track = await Track.findOne({ _id: currentTrack.track });
+    //     let tmpTrackBest3 = track.pSector3;
+    //     let tmpSector = driver.sector3time;
+    //     let tmpPB = driver.sector3pb;
+    //     if (tmpSector <= tmpTrackBest3) {
+    //         color1 = 'pink';
+    //         let updatedTrack = await Track.findOneAndUpdate({ _id: currentTrack.track }, { $set: { pSector3: tmpSector } });
+    //         colorSectors();
+    //         return;
+    //     }
+    //     else if (tmpSector > tmpPB) {
+    //         color1 = 'yellow'
+    //     }
+    //     else if (tmpSector < tmpPB) {
+    //         color1 = 'green'
+    //     }
+    //     let updatedSectors = await PracticeTable.findOneAndUpdate({ driverName: driver.driverName }, {
+    //         $set:
+    //         {
+    //             sector3color: color1
+    //         }
+    //     });
+    // })
+
+}
+
 router.get('/api/readFile/:fileName', async (req, res) => {
     const c = new Client();
     c.on('ready', () => {
@@ -61,7 +160,8 @@ router.get('/api/readFile/:fileName', async (req, res) => {
 
 
                 let updatedDriver;
-
+                let currentTrack = await CurrentTrack.find({});
+                currentTrack = currentTrack[0];
                 practiceResults.forEach(async (driver) => {
 
                     if (driver.BestLap === 999999999) {
@@ -74,10 +174,11 @@ router.get('/api/readFile/:fileName', async (req, res) => {
                         console.log("found" + found);
                         console.log('TEAM');
                         const newPR = {
-                            driverName: driver.DriverName,
-                            teamName: found.team
+                            driverName: driver.DriverName
+                            // teamName: found.team
                         };
                         driverInDB = await PracticeTable.create(newPR)
+                        driverInDB.save();
                     }
 
 
@@ -85,86 +186,79 @@ router.get('/api/readFile/:fileName', async (req, res) => {
                         let updatedDriver = await PracticeTable.findOneAndUpdate({ driverName: driver.DriverName }, { $set: { rawLapTime: driver.BestLap } });
 
                     }
-                    let currentTrack = await CurrentTrack.find({});
-                    currentTrack = currentTrack[0];
 
                     practiceLaps.forEach(async (lap) => {
-                        const trackSectors = await Track.findOne({ _id: currentTrack.track });
-                        let trackSector1 = trackSectors.pSector1;
-                        let trackSector2 = trackSectors.pSector2;
-                        let trackSector3 = trackSectors.pSector3;
+
                         if (lap.LapTime === driver.BestLap) {
-                            let updatedTire = await PracticeTable.findOneAndUpdate({ driverName: driver.DriverName }, { $set: { tire: lap.Tyre } }, { new: true });
+                            let updatedDriver = await PracticeTable.findOneAndUpdate({ driverName: driver.DriverName }, { $set: { tire: lap.Tyre } }, { new: true });
+                            let track = await Track.findOne({ _id: currentTrack.track });
+                            let trackSector1 = track.pSector1;
+                            let trackSector2 = track.pSector2;
+                            let trackSector3 = track.pSector3;
                             let tmp1 = lap.Sectors[0]
                             let tmp2 = lap.Sectors[1]
                             let tmp3 = lap.Sectors[2]
-                            let prev1 = updatedTire.sector1time;
-                            let prev2 = updatedTire.sector2time;
-                            let prev3 = updatedTire.sector3time;
-                            let color1, color2, color3;
+
+                            if (tmp1 < updatedDriver.sector1time) {
+                                let updatedSectors = await PracticeTable.findOneAndUpdate({ driverName: driver.DriverName }, {
+                                    $set:
+                                    {
+                                        sector1pb: tmp1
+                                    }
+                                });
+                            }
                             if (tmp1 < trackSector1) {
-                                color1 = 'pink';
-                                let updatedTrackSector = await Track.findOneAndUpdate({ _id: currentTrack.track }, { $set: { pSector1: tmp1 } });
+                                let updatedSectors = await Track.findOneAndUpdate({ _id: currentTrack.track }, {
+                                    $set:
+                                    {
+                                        pSector1: tmp1
+                                    }
+                                });
                             }
-                            else if (tmp1 > prev1) {
-                                color1 = 'yellow'
+                            if (tmp2 < updatedDriver.sector2time) {
+                                let updatedSectors = await PracticeTable.findOneAndUpdate({ driverName: driver.DriverName }, {
+                                    $set:
+                                    {
+                                        sector2pb: tmp2
+                                    }
+                                });
                             }
-                            else if (tmp1 < prev1) {
-                                color1 = 'green'
-                            }
-                            else {
-                                color1 = 'yellow'
-                            }
-
                             if (tmp2 < trackSector2) {
-                                color2 = 'pink';
-                                let updatedTrackSector = await Track.findOneAndUpdate({ _id: currentTrack.track }, { $set: { pSector2: tmp2 } });
-
+                                let updatedSectors = await Track.findOneAndUpdate({ _id: currentTrack.track }, {
+                                    $set:
+                                    {
+                                        pSector2: tmp2
+                                    }
+                                });
                             }
-                            else if (tmp2 > prev2) {
-                                color2 = 'yellow'
+                            if (tmp3 < updatedDriver.sector3time) {
+                                let updatedSectors = await PracticeTable.findOneAndUpdate({ driverName: driver.DriverName }, {
+                                    $set:
+                                    {
+                                        sector3pb: tmp3
+                                    }
+                                });
                             }
-                            else if (tmp2 < prev2) {
-                                color2 = 'green'
-                            }
-                            else {
-                                color2 = 'yellow'
-                            }
-
                             if (tmp3 < trackSector3) {
-                                color3 = 'pink';
-                                let updatedTrackSector = await Track.findOneAndUpdate({ _id: currentTrack.track }, { $set: { pSector3: tmp3 } });
-
+                                let updatedSectors = await Track.findOneAndUpdate({ _id: currentTrack.track }, {
+                                    $set:
+                                    {
+                                        pSector3: tmp3
+                                    }
+                                });
                             }
-                            else if (tmp3 > prev3) {
-                                color3 = 'yellow'
-                            }
-                            else if (tmp3 < prev3) {
-                                color3 = 'green'
-                            }
-                            else {
-                                color3 = 'yellow'
-                            }
-
 
                             let updatedSectors = await PracticeTable.findOneAndUpdate({ driverName: driver.DriverName }, {
                                 $set:
                                 {
                                     sector1time: tmp1,
-                                    sector1color: color1,
                                     sector2time: tmp2,
-                                    sector2color: color2,
                                     sector3time: tmp3,
-                                    sector3color: color3
                                 }
                             });
                         }
                     })
-
-
                 })
-
-
 
                 practiceLaps.forEach(async (lap) => {
                     let updatedCDriver = await Drivers.findOneAndUpdate({ name: lap.DriverName }, { $inc: { careerLaps: 1 } });
@@ -175,6 +269,9 @@ router.get('/api/readFile/:fileName', async (req, res) => {
 
                 res.status(200);
                 res.send({});
+
+
+
 
             });
         });
@@ -191,7 +288,14 @@ router.get('/api/readFile/:fileName', async (req, res) => {
 
 
 
+router.get('/api/getTrackSectors', async (req, res) => {
+    let currentTrack = await CurrentTrack.find({});
+    currentTrack = currentTrack[0];
 
+    const track = await Track.findOne({_id: currentTrack.track});
+
+    res.send(track);
+})
 
 
 //get practice results
