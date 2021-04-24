@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import NavTabs from './componets/NavTabs'
 import ConstructorStandings from "./componets/pages/ConstructorStandings";
@@ -13,20 +13,28 @@ import DriverStats from './componets/pages/DriverStats';
 import LoginSignup from './componets/pages/LoginSignup';
 import './index.css';
 import DriverHome from "./componets/pages/DriverHome";
-function App() {
+const App = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [driver, setDriver] = useState({});
   const [guid, setGuid] = useState("");
 
+  useEffect(() => {
+    getDriver();
+  }, [guid])
+
+
+  const getDriver = async () => {
+    const foundDriver = await axios.get(`/api/driver/${guid}`);
+    console.log(foundDriver);
+    setDriver(foundDriver.data);
+  }
 
   const getGuid = async () => {
     let url = window.location.href.split('/');
     const guidTmp = url[url.length - 1];
     setGuid(guidTmp);
 
-    const foundDriver = await axios.get(`/api/driver/${guidTmp}`);
-    console.log(foundDriver);
-    setDriver(foundDriver.data);
+    
 }
 
 

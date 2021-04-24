@@ -13,6 +13,8 @@ const DriverHome = ({loggedIn, driver, setDriver, guid, setGuid}) => {
     const [team, setTeam] = useState('');
     const [number, setNumber] = useState('')
 
+    
+
     useEffect(() => {
     }, [rsvp]);
 
@@ -54,6 +56,7 @@ const DriverHome = ({loggedIn, driver, setDriver, guid, setGuid}) => {
     
     return (
         <div>
+            {console.log(driver)}
             { driver ?
                 <div className='f1' style={{ width: '1250px', margin: 'auto', marginTop: '25px' }} >
 
