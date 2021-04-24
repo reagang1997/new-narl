@@ -1,11 +1,11 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const raceResults = require('./models/RaceResult');
+// const raceResults = require('./models/RaceResult');
 const Teams = require('./models/Team');
 const WDC = require('./models/WDC');
 const WCC = require('./models/WCC');
 const Drivers = require('./models/Driver');
-const RaceHistory = require('./models/RaceResult');
+// const RaceHistory = require('./models/RaceResult');
 const PracticeHistory = require('./models/PracticeResult');
 const PracticeTable = require('./models/PracticeTable');
 const session = require('express-session');
@@ -48,6 +48,7 @@ app.use(require('./routes/UserRoutes.js'));
 app.use(require('./routes/ChampRoutes.js'));
 app.use(require('./routes/PracticeRoutes.js'));
 app.use(require('./routes/TrackRoutes.js'));
+app.use(require('./routes/EntryListRoutes'));
 
 // routes
 

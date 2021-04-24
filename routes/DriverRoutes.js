@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const Driver = require('../models/Driver');
 const Team = require('../models/Team');
+const EntryList = require('../models/EntryList');
 
 router.post('/api/CreateNewDriver', async (req, res) => {
     const newDriver = await Driver.create(req.body);
@@ -13,18 +14,45 @@ router.get('/api/getAllDrivers', async (req, res) => {
 })
 
 router.get('/api/singleDriver/:id', async (req, res) => {
-    const found = await Driver.findOne({_id: req.params.id});
+    const found = await Driver.findOne({ _id: req.params.id });
     res.send(found);
 })
 
 router.get('/api/deleteDriver/:id', async (req, res) => {
-    const deleted = await Driver.deleteOne({_id: req.params.id});
+    const deleted = await Driver.deleteOne({ _id: req.params.id });
     res.send(deleted);
 })
 
 router.get('/api/drivers/:name', async (req, res) => {
     const found = await Driver.find({ name: { $regex: req.params.name } });
     res.send(found)
+})
+
+router.post('/api/updateRSVP', async (req, res) => {
+    const updated = await Driver.findOneAndUpdate({ guid: req.body.guid }, { $set: { rsvp: req.body.rsvp } });
+    console.log(req.body);
+    res.send(updated);
+})
+
+router.get('/api/openSeats', async (req, res) => {
+    const seats = await Driver.find({ rsvp: 'No' });
+    const entryList = await EntryList.find({});
+
+    let open = seats.map(seat => {
+        let found = false;
+        entryList.forEach(entry => {
+            if (seat.driverNumber == entry.driverNumber) {
+                found = true;
+                console.log('hit')
+            }
+        })
+
+        if (!found) {
+            return seat;
+        }
+    })
+
+    res.send(open);
 })
 
 router.put('/api/setDriverStats/:driverID', async (req, res) => {
@@ -57,7 +85,7 @@ router.put('/api/setDriverStats/:driverID', async (req, res) => {
             console.log(value);
             break;
         case 'team':
-            const foundTeam = await Team.findOne({_id: value});
+            const foundTeam = await Team.findOne({ _id: value });
             updatedDriver = await Driver.findOneAndUpdate({ _id: req.params.driverID }, { $set: { team: foundTeam.name } }, { new: true });
         case 'teamHistory':
             updatedDriver = await Driver.findOneAndUpdate({ _id: req.params.driverID }, { $push: { teamHistory: value } }, { new: true });
@@ -112,6 +140,14 @@ router.put('/api/IncDriverStats/:driverID', async (req, res) => {
 
     res.send(updatedDriver);
 });
+
+router.get('/api/driver/:guid', async (req, res) => {
+    //left off here
+    const tmp = req.params.guid;
+    const foundDriver = await Driver.findOne({ guid: tmp });
+    console.log(foundDriver);
+    res.send(foundDriver);
+})
 
 
 module.exports = router;

@@ -13,6 +13,10 @@
     border-radius: 25px;
 }
 
+.signup{
+    margin-top: 50px;
+}
+
 .first{
     color: gold;
 }
@@ -34,13 +38,12 @@
   
     
     
-    min-height: 200px;
     width: 39vw;
     margin: 0 auto;
     background: white;
     border-radius: 5px;
     margin-bottom: 200px;
-  }
+}
 
 .stats-container{
     margin-left: 15px;

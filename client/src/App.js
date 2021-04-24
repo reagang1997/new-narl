@@ -9,8 +9,10 @@ import TeamPage from './componets/pages/TeamPage';
 import RaceInfo from './componets/pages/RaceInfo';
 import Home from './componets/pages/Home';
 import DriverStats from './componets/pages/DriverStats';
-import AdminHome from './componets/pages/AdminHome';
+// import AdminHome from './componets/pages/AdminHome';
+import LoginSignup from './componets/pages/LoginSignup';
 import './index.css';
+import DriverHome from "./componets/pages/DriverHome";
 function App() {
   const [loggedIn, setLoggedIn] = useState(false)
 
@@ -19,8 +21,9 @@ function App() {
       <div>
         <NavTabs />
         <Route exact path="/" component={Home}/>
-        <Route exact path="/adminHome" component={AdminHome}>
-          <AdminHome loggedIn={loggedIn} setLoggedIn={setLoggedIn}></AdminHome>
+        <Route path='/driverHome' component={DriverHome}/>
+        <Route exact path="/loginSignup" component={LoginSignup}>
+          <LoginSignup loggedIn={loggedIn} setLoggedIn={setLoggedIn}></LoginSignup>
         </Route>
         <Route exact path="/practiceResults" component={PracticeResults} >
             <PracticeResults loggedIn={loggedIn} setLoggedIn={setLoggedIn}></PracticeResults>

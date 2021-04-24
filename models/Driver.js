@@ -4,6 +4,8 @@ const Schema = mongoose.Schema;
 
 const DriverSchema = new Schema({
     name: String,
+    rsvp: {type: String, default: ''},
+    driverNumber: {type: Number, default: 000},
     team: {
         type: String,
         default: ''

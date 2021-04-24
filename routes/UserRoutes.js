@@ -5,7 +5,7 @@ const User = require('../models/User');
 router.post("/signup", (req, res) => {
   console.log("user signup");
   console.log(req.body);
-  const { email, password, username } = req.body;
+  const { email, password, username, guid } = req.body;
 
   User.findOne({ username: username }, (err, user) => {
     if (err) {
@@ -19,7 +19,8 @@ router.post("/signup", (req, res) => {
       const newUser = new User({
         username: username,
         password: password,
-        email: email
+        email: email,
+        guid: guid
       });
       newUser.save((err, savedUser) => {
         if (err) return res.json(err);
@@ -40,5 +41,10 @@ router.post('/login', passport.authenticate("local", {
     console.log(process.env.PORT)
   }
 );
+
+router.get('/api/user/:id', async (req, res) => {
+  const found = await User.findOne({_id: req.params.id});
+  res.send(found);
+})
 
 module.exports = router;

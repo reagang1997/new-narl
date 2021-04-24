@@ -1,5 +1,5 @@
 import React from 'react';
-import {useHistory} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { Row, Col } from 'react-bootstrap';
 
 import alfaR from './img/alfa.png';
@@ -19,7 +19,14 @@ function TeamIcon({ teamName }) {
 
     const history = useHistory();
     let img;
-    let teamClass = teamName.split(' ').join('-');
+    let teamClass;
+    if (teamName.indexOf(' ') < 0) {
+        teamClass = teamName;
+    }
+    else {
+        teamClass = teamName.split(' ').join('-');
+
+    }
     console.log(teamClass);
     console.log(teamName);
     teamClass += " teams"
@@ -65,7 +72,7 @@ function TeamIcon({ teamName }) {
 
     return (
 
-                <img className={teamClass} id={teamName} onClick={handleClick} src={img} />
+        <img className={teamClass} id={teamName} onClick={handleClick} src={img} />
 
 
     )
