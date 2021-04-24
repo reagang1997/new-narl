@@ -24,6 +24,10 @@ code {
 }
 
 @media only screen and (max-width: 500px){
+
+  .signup{
+    width: 100%
+  }
   
   .logo{
       height: 85px;
