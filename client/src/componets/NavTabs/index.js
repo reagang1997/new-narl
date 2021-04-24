@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useHistory } from "react-router-dom";
 import logo from './logo.png';
 import { Navbar, NavDropdown, Nav } from 'react-bootstrap';
 import './style.css';
@@ -9,20 +9,21 @@ function NavTabs() {
   // from the react-router docs (https://reacttraining.com/react-router/web/api/Hooks/uselocation)
   // This allows the component to check the route any time the user uses a link to navigate.
   const location = useLocation();
+  const history = useHistory();
 
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className='f1'>
-      <Navbar.Brand href="/">
+      <Navbar.Brand onClick={e => history.push('/')}>
         <img src={logo} style={{ height: '50px' }} />
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link href="/practiceResults">Practice Results</Nav.Link>
-          <Nav.Link href="/raceInformation">Information</Nav.Link>
+          <Nav.Link onClick={e => history.push('/practiceResults')}>Practice Results</Nav.Link>
+          <Nav.Link  onClick={e => history.push('/raceInformation')}>Information</Nav.Link>
           <NavDropdown title="Standings" id="collasible-nav-dropdown">
-            <NavDropdown.Item href="/driverStandings">Driver Standings</NavDropdown.Item>
-            <NavDropdown.Item href="/constructorStandings">Constructor Standings</NavDropdown.Item>
+            <NavDropdown.Item  onClick={e => history.push('/driverStandings')}>Driver Standings</NavDropdown.Item>
+            <NavDropdown.Item  onClick={e => history.push('/constructorStandings')}>Constructor Standings</NavDropdown.Item>
             
           </NavDropdown>
 
