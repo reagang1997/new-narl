@@ -29,7 +29,7 @@ function NavTabs() {
 
         </Nav>
         <Nav>
-        <Nav.Link href="/loginSignup">Log in / Signup</Nav.Link>
+        <Nav.Link onClick={e => history.push('/loginSignup')} >Log in / Signup</Nav.Link>
           {/* <Nav.Link href="/adminHome">Admin Home</Nav.Link> */}
         </Nav>
       </Navbar.Collapse>
