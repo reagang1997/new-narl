@@ -6,6 +6,7 @@ const DriverSchema = new Schema({
     name: String,
     rsvp: {type: String, default: ''},
     driverNumber: {type: Number, default: 000},
+    admin: {type: Boolean, default: false},
     team: {
         type: String,
         default: ''

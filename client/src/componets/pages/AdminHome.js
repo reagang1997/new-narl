@@ -171,7 +171,7 @@ const AdminHome = ({ loggedIn, setLoggedIn }) => {
 
     return (
         <div>
-            {loggedIn ? <div>
+            <div>
                 <Nav defaultActiveKey="/home" className="justify-content-center">
                     <Nav.Link href="/adminHome">Admin Home</Nav.Link>
                     <Nav.Link eventKey="link-1" onClick={(e) => setSelection(e.target.innerHTML)}>Add Driver</Nav.Link>
@@ -536,7 +536,7 @@ const AdminHome = ({ loggedIn, setLoggedIn }) => {
                     </table> : <div></div> }
                 {selection === "Set Track Info" ? <TrackInfo></TrackInfo> : <div></div>}    
             </div>
-                : <Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
+              
 
         </div >
 

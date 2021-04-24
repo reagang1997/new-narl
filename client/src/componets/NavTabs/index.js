@@ -4,7 +4,7 @@ import logo from './logo.png';
 import { Navbar, NavDropdown, Nav } from 'react-bootstrap';
 import './style.css';
 
-function NavTabs() {
+function NavTabs({loggedIn, guid}) {
   // We'll go into the Hooks API later, for now, we are just using some code
   // from the react-router docs (https://reacttraining.com/react-router/web/api/Hooks/uselocation)
   // This allows the component to check the route any time the user uses a link to navigate.
@@ -29,7 +29,8 @@ function NavTabs() {
 
         </Nav>
         <Nav>
-        <Nav.Link onClick={e => history.push('/loginSignup')} >Log in / Signup</Nav.Link>
+        
+          {loggedIn ? <Nav.Link onClick={e => history.push(`/driverHome/${guid}`)}>Driver Home</Nav.Link> :  <Nav.Link onClick={e => history.push('/loginSignup')} >Log in / Signup</Nav.Link>}
           {/* <Nav.Link href="/adminHome">Admin Home</Nav.Link> */}
         </Nav>
       </Navbar.Collapse>

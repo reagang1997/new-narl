@@ -5,7 +5,7 @@ import TeamIcon from '../TeamIcon'
 import { useHistory } from 'react-router-dom'
 
 
-const LoginSignup = () => {
+const LoginSignup = ({setLoggedIn, guid, setGuid}) => {
 
 
     const history = useHistory();
@@ -16,7 +16,6 @@ const LoginSignup = () => {
 
     const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
-    const [guid, setGuid] = useState(0);
     const [password, setPassword] = useState('');
 
     useEffect(() => {
@@ -38,10 +37,14 @@ const LoginSignup = () => {
             if(loggedIn.status === 200) {
                 const user = loggedIn.data.user;
                 console.log(user);
-                let userGUID = await axios.get(`/api/user/${user._id}`);
-                userGUID = userGUID.data.guid;
-                console.log(userGUID);
-                history.push(`/driverHome/${userGUID}`);
+                setGuid(user.guid)
+                let tmp = user.guid;
+                // let userGUID = await axios.get(`/api/user/${user._id}`);
+                // setGuid(user.data.guid);
+                // userGUID = userGUID.data.guid;
+                // console.log(userGUID);
+                setLoggedIn(true);
+                history.push(`/driverHome/${tmp}`);
             }
         } 
         else {
@@ -57,6 +60,7 @@ const LoginSignup = () => {
             console.log(signedUp)
 
             if(signedUp.status === 200){
+                setLoggedIn(true);
 
                 history.push(`/driverHome/${guid}`);
             }

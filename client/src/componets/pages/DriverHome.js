@@ -5,17 +5,15 @@ import TeamIcon from '../TeamIcon'
 import { useHistory } from 'react-router-dom'
 import RSVP from '../RSVP';
 import ReserveSignup from '../ReserveSignup/ReserveSignup';
+import AdminHome from './AdminHome';
 import e from 'cors';
 
-const DriverHome = () => {
-    const [guid, setGuid] = useState("");
-    const [driver, setDriver] = useState({});
+const DriverHome = ({loggedIn, driver, setDriver, guid, setGuid}) => {
     const [rsvp, setRsvp] = useState('');
     const [team, setTeam] = useState('');
     const [number, setNumber] = useState('')
 
     useEffect(() => {
-        getGuid();
     }, [rsvp]);
 
   
@@ -53,15 +51,7 @@ const DriverHome = () => {
         }
         console.log(e.target.innerHTML);
     }
-    const getGuid = async () => {
-        let url = window.location.href.split('/');
-        const guidTmp = url[url.length - 1];
-        setGuid(guidTmp);
-
-        const foundDriver = await axios.get(`/api/driver/${guidTmp}`);
-        console.log(foundDriver);
-        setDriver(foundDriver.data);
-    }
+    
     return (
         <div>
             { driver ?
@@ -74,6 +64,7 @@ const DriverHome = () => {
 
 
                 </div > : <div></div>}
+                {driver.admin ? <AdminHome></AdminHome> : <div></div>}
         </div>
     )
 }

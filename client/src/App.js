@@ -14,16 +14,32 @@ import LoginSignup from './componets/pages/LoginSignup';
 import './index.css';
 import DriverHome from "./componets/pages/DriverHome";
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false)
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [driver, setDriver] = useState({});
+  const [guid, setGuid] = useState("");
+
+
+  const getGuid = async () => {
+    let url = window.location.href.split('/');
+    const guidTmp = url[url.length - 1];
+    setGuid(guidTmp);
+
+    const foundDriver = await axios.get(`/api/driver/${guidTmp}`);
+    console.log(foundDriver);
+    setDriver(foundDriver.data);
+}
+
 
   return (
     <Router>
       <div>
-        <NavTabs />
+        <NavTabs loggedIn={loggedIn} guid={guid}/>
         <Route exact path="/" component={Home}/>
-        <Route path='/driverHome' component={DriverHome}/>
+        <Route path='/driverHome' component={DriverHome}>
+          <DriverHome loggedIn={loggedIn} driver={driver} setDriver={setDriver} getGuid={getGuid} guid={guid} setGuid={setGuid}/>
+        </Route>
         <Route exact path="/loginSignup" component={LoginSignup}>
-          <LoginSignup loggedIn={loggedIn} setLoggedIn={setLoggedIn}></LoginSignup>
+          <LoginSignup loggedIn={loggedIn} setLoggedIn={setLoggedIn} guid={guid} setGuid={setGuid}></LoginSignup>
         </Route>
         <Route exact path="/practiceResults" component={PracticeResults} >
             <PracticeResults loggedIn={loggedIn} setLoggedIn={setLoggedIn}></PracticeResults>
