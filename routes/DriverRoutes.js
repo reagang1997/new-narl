@@ -149,5 +149,229 @@ router.get('/api/driver/:guid', async (req, res) => {
     res.send(foundDriver);
 })
 
+router.get('/api/openTeamSeats', async (req, res) => {
+    const ferrari = [16, 55];
+    const williams = [6, 63];
+    const mercedes = [77, 44];
+    const aston = [18, 5];
+    const haas = [47, 9];
+    const mclaren = [3, 4];
+    const redbull = [33, 11];
+    const alpine = [31, 14];
+    const alfa = [99, 7];
+    const alpha = [10, 22];
 
+    let openSeats = [];
+
+    const allOpen = await Team.find({drivers: {$size: 0}}).select('name drivers -_id').populate('drivers', 'driverNumber');
+    allOpen.forEach(team => {
+        let tmp = {
+            numbers: [],
+            team: team.name
+        }
+        switch (team.name){
+            case 'HAAS':
+                tmp.numbers = haas;
+                break;
+            case 'Alpha Tauri':
+                tmp.numbers = alpha;
+                break;
+            case 'Williams':
+                tmp.numbers = williams;
+                break;
+            case 'Red Bull':
+                tmp.numbers = redbull;
+                break;
+            case 'Renault':
+                tmp.numbers = alpine;
+                break;
+            case 'Mercedes':
+                tmp.numbers = mercedes;
+                break;
+            case 'McLaren':
+                tmp.numbers = mclaren;
+                break;
+            case 'Alfa Romeo':
+                tmp.numbers = alfa;
+                break;
+            case 'Racing Point':
+                tmp.numbers = aston;
+                break;
+            case 'Ferrari':
+                tmp.numbers = ferrari;
+                break;
+        }
+
+        openSeats.push(tmp);
+    })
+    const oneOpen = await Team.find({drivers: {$size: 1}}).select('name drivers -_id').populate('drivers', 'driverNumber');
+    oneOpen.forEach(team => {
+        console.log(team.name);
+        let tmp = {
+            numbers: [],
+            team: team.name
+        }
+        switch (team.name){
+            case 'HAAS':
+                team.drivers.forEach(driver => {
+                    const numberIndex = haas.indexOf(driver.driverNumber);
+                    console.log(numberIndex);
+                    // if(numberIndex === -1){console.log(driver)}
+                    if(numberIndex === 1){
+                        tmp.numbers.push(haas[0]);
+                    }
+                    else{
+                        tmp.numbers.push(haas[1]);
+                    }
+                })
+                break;
+            case 'Alpha Tauri':
+                team.drivers.forEach(driver => {
+                    const numberIndex = alpha.indexOf(driver.driverNumber);
+                    console.log(numberIndex);
+                    // if(numberIndex === -1){console.log(driver)}
+
+                    if(numberIndex === 1){
+                        tmp.numbers.push(alpha[0]);
+                    }
+                    else{
+                        tmp.numbers.push(alpha[1]);
+                    }
+                })
+                break;
+
+            case 'Williams':
+                team.drivers.forEach(driver => {
+                    const numberIndex = williams.indexOf(driver.driverNumber);
+                    console.log(numberIndex);
+                    // if(numberIndex === -1){console.log(driver)}
+
+                    if(numberIndex === 1){
+                        tmp.numbers.push(williams[0]);
+                    }
+                    else{
+                        tmp.numbers.push(williams[1]);
+                    }
+                })
+                break;
+
+            case 'Red Bull':
+                team.drivers.forEach(driver => {
+                    const numberIndex = redbull.indexOf(driver.driverNumber);
+                    console.log(numberIndex);
+                    // if(numberIndex === -1){console.log(driver)}
+
+                    if(numberIndex === 1){
+                        tmp.numbers.push(redbull[0]);
+                    }
+                    else{
+                        tmp.numbers.push(redbull[1]);
+                    }
+                })
+                break;
+
+            case 'Renault':
+                team.drivers.forEach(driver => {
+                    const numberIndex = alpine.indexOf(driver.driverNumber);
+                    console.log(numberIndex);
+                    // if(numberIndex === -1){console.log(driver)}
+
+                    if(numberIndex === 1){
+                        tmp.numbers.push(alpine[0]);
+                    }
+                    else{
+                        tmp.numbers.push(alpine[1]);
+                    }
+                })
+                break;
+
+            case 'Mercedes':
+                team.drivers.forEach(driver => {
+                    const numberIndex = mercedes.indexOf(driver.driverNumber);
+                    console.log(numberIndex);
+                    // if(numberIndex === -1){console.log(driver)}
+
+                    if(numberIndex === 1){
+                        tmp.numbers.push(mercedes[0]);
+                    }
+                    else{
+                        tmp.numbers.push(mercedes[1]);
+                    }
+                })
+                break;
+
+            case 'McLaren':
+                team.drivers.forEach(driver => {
+                    const numberIndex = mclaren.indexOf(driver.driverNumber);
+                    console.log(numberIndex);
+                    // if(numberIndex === -1){console.log(driver)}
+
+                    if(numberIndex === 1){
+                        tmp.numbers.push(mclaren[0]);
+                    }
+                    else{
+                        tmp.numbers.push(mclaren[1]);
+                    }
+                })
+                break;
+
+            case 'Alfa Romeo':
+                team.drivers.forEach(driver => {
+                    console.log(driver);
+                    const numberIndex = alfa.indexOf(driver.driverNumber);
+                    console.log(numberIndex);
+                    if(numberIndex === -1){console.log(driver)}
+
+                    if(numberIndex === 1){
+                        tmp.numbers.push(alfa[0]);
+                    }
+                    else{
+                        tmp.numbers.push(alfa[1]);
+                    }
+                })
+                break;
+
+            case 'Racing Point':
+                team.drivers.forEach(driver => {
+                    const numberIndex = aston.indexOf(driver.driverNumber);
+                    console.log(numberIndex);
+                    if(numberIndex === -1){console.log(driver)}
+
+                    if(numberIndex === 1){
+                        tmp.numbers.push(aston[0]);
+                    }
+                    else{
+                        tmp.numbers.push(aston[1]);
+                    }
+                })
+                break;
+
+            case 'Ferrari':
+                team.drivers.forEach(driver => {
+                    const numberIndex = ferrari.indexOf(driver.driverNumber);
+                    console.log(numberIndex);
+                    if(numberIndex === -1){console.log(driver)}
+
+                    if(numberIndex === 1){
+                        tmp.numbers.push(ferrari[0]);
+                    }
+                    else{
+                        tmp.numbers.push(ferrari[1]);
+                    }
+                })
+                break;
+
+        }
+
+        openSeats.push(tmp);
+    })
+    res.send(openSeats)
+})
+
+const findSeats = (team) => {
+    if(team.drivers.length < 2){
+        let numbers = team.drivers.map(driver => driverNumber);
+
+    }
+}
 module.exports = router;

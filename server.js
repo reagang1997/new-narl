@@ -49,6 +49,7 @@ app.use(require('./routes/ChampRoutes.js'));
 app.use(require('./routes/PracticeRoutes.js'));
 app.use(require('./routes/TrackRoutes.js'));
 app.use(require('./routes/EntryListRoutes'));
+app.use(require('./routes/ACRoutes'));
 
 // routes
 

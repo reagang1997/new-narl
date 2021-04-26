@@ -4,6 +4,8 @@ const Schema = mongoose.Schema;
 
 const TrackSchema = new Schema({
     name: String,
+    config: String,
+    trackFile: String,
     download: {
         type: String,
         default: ""
