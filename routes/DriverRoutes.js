@@ -366,6 +366,11 @@ router.get('/api/openTeamSeats', async (req, res) => {
         openSeats.push(tmp);
     })
     res.send(openSeats)
+});
+
+router.get('/api/setRSVP', async (req, res) => {
+    const updated = await Driver.updateMany({}, {$set: {rsvp: ''}});
+    res.send(updated);
 })
 
 const findSeats = (team) => {
