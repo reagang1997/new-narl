@@ -22,7 +22,7 @@ const CurrentGrid = () => {
                 <h1 className='this-week'>This Weeks Grid</h1>
                 {grid.map(driver => {
                     return (
-                        <Card body className='box' style={{width: 'fit-content'}}>
+                        <Card body className='shadow' style={{width: '95%', margin: 'auto', marginTop: '5px'}}>
                             <TeamIcon teamName={driver.team}></TeamIcon>
                             <span>#{driver.driverNumber}   {driver.name}</span>
                         </Card>
