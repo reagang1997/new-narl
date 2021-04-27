@@ -43,12 +43,12 @@ router.get('/api/openSeats', async (req, res) => {
     rsvpNo.forEach(seat => {
         let found = false;
         openSeats.forEach(openSeat => {
-            if(seat.team === openSeat.team){
+            if (seat.team === openSeat.team) {
                 openSeat.numbers.push(seat.driverNumber);
                 found = true;
             }
         })
-        if(!found){
+        if (!found) {
             let tmp = {
                 numbers: [seat.driverNumber],
                 team: seat.team
@@ -56,22 +56,19 @@ router.get('/api/openSeats', async (req, res) => {
             openSeats.push(tmp);
         }
     })
-    openSeats.forEach(seat => {
-        rsvpNo.push(seat);
-    });
+
 
     let open = openSeats.map(seat => {
-        let found = false;
-        entryList.forEach(entry => {
-            if (seat.driverNumber == entry.driverNumber) {
-                found = true;
-                console.log('hit')
-            }
+        seat.numbers.forEach(number => {
+            entryList.forEach(entry => {
+                if (number === +entry.driverNumber) {
+                    let index = seat.numbers.indexOf(number);
+                    seat.numbers.splice(index, 1);
+                }
+            })
         })
+        return seat;
 
-        if (!found) {
-            return seat;
-        }
     })
 
     res.send(open);
@@ -172,15 +169,15 @@ router.get('/api/driver/:guid', async (req, res) => {
 })
 
 router.get('/api/openTeamSeats', async (req, res) => {
-  
+
     const openSeats = await findOpenSeats();
     console.log(openSeats);
-    
+
     res.send(openSeats)
 });
 
 router.get('/api/setRSVP', async (req, res) => {
-    const updated = await Driver.updateMany({}, {$set: {rsvp: ''}});
+    const updated = await Driver.updateMany({}, { $set: { rsvp: '' } });
     res.send(updated);
 })
 
@@ -198,13 +195,13 @@ const findOpenSeats = async () => {
 
     let openSeats = [];
 
-    const allOpen = await Team.find({drivers: {$size: 0}}).select('name drivers -_id').populate('drivers', 'driverNumber');
+    const allOpen = await Team.find({ drivers: { $size: 0 } }).select('name drivers -_id').populate('drivers', 'driverNumber');
     allOpen.forEach(team => {
         let tmp = {
             numbers: [],
             team: team.name
         }
-        switch (team.name){
+        switch (team.name) {
             case 'HAAS':
                 tmp.numbers = haas;
                 break;
@@ -240,23 +237,23 @@ const findOpenSeats = async () => {
         openSeats.push(tmp);
     })
 
-    const oneOpen = await Team.find({drivers: {$size: 1}}).select('name drivers -_id').populate('drivers', 'driverNumber');
+    const oneOpen = await Team.find({ drivers: { $size: 1 } }).select('name drivers -_id').populate('drivers', 'driverNumber');
     oneOpen.forEach(team => {
         console.log(team.name);
         let tmp = {
             numbers: [],
             team: team.name
         }
-        switch (team.name){
+        switch (team.name) {
             case 'HAAS':
                 team.drivers.forEach(driver => {
                     const numberIndex = haas.indexOf(driver.driverNumber);
                     console.log(numberIndex);
                     // if(numberIndex === -1){console.log(driver)}
-                    if(numberIndex === 1){
+                    if (numberIndex === 1) {
                         tmp.numbers.push(haas[0]);
                     }
-                    else{
+                    else {
                         tmp.numbers.push(haas[1]);
                     }
                 })
@@ -267,10 +264,10 @@ const findOpenSeats = async () => {
                     console.log(numberIndex);
                     // if(numberIndex === -1){console.log(driver)}
 
-                    if(numberIndex === 1){
+                    if (numberIndex === 1) {
                         tmp.numbers.push(alpha[0]);
                     }
-                    else{
+                    else {
                         tmp.numbers.push(alpha[1]);
                     }
                 })
@@ -282,10 +279,10 @@ const findOpenSeats = async () => {
                     console.log(numberIndex);
                     // if(numberIndex === -1){console.log(driver)}
 
-                    if(numberIndex === 1){
+                    if (numberIndex === 1) {
                         tmp.numbers.push(williams[0]);
                     }
-                    else{
+                    else {
                         tmp.numbers.push(williams[1]);
                     }
                 })
@@ -297,10 +294,10 @@ const findOpenSeats = async () => {
                     console.log(numberIndex);
                     // if(numberIndex === -1){console.log(driver)}
 
-                    if(numberIndex === 1){
+                    if (numberIndex === 1) {
                         tmp.numbers.push(redbull[0]);
                     }
-                    else{
+                    else {
                         tmp.numbers.push(redbull[1]);
                     }
                 })
@@ -312,10 +309,10 @@ const findOpenSeats = async () => {
                     console.log(numberIndex);
                     // if(numberIndex === -1){console.log(driver)}
 
-                    if(numberIndex === 1){
+                    if (numberIndex === 1) {
                         tmp.numbers.push(alpine[0]);
                     }
-                    else{
+                    else {
                         tmp.numbers.push(alpine[1]);
                     }
                 })
@@ -327,10 +324,10 @@ const findOpenSeats = async () => {
                     console.log(numberIndex);
                     // if(numberIndex === -1){console.log(driver)}
 
-                    if(numberIndex === 1){
+                    if (numberIndex === 1) {
                         tmp.numbers.push(mercedes[0]);
                     }
-                    else{
+                    else {
                         tmp.numbers.push(mercedes[1]);
                     }
                 })
@@ -342,10 +339,10 @@ const findOpenSeats = async () => {
                     console.log(numberIndex);
                     // if(numberIndex === -1){console.log(driver)}
 
-                    if(numberIndex === 1){
+                    if (numberIndex === 1) {
                         tmp.numbers.push(mclaren[0]);
                     }
-                    else{
+                    else {
                         tmp.numbers.push(mclaren[1]);
                     }
                 })
@@ -356,12 +353,12 @@ const findOpenSeats = async () => {
                     console.log(driver);
                     const numberIndex = alfa.indexOf(driver.driverNumber);
                     console.log(numberIndex);
-                    if(numberIndex === -1){console.log(driver)}
+                    if (numberIndex === -1) { console.log(driver) }
 
-                    if(numberIndex === 1){
+                    if (numberIndex === 1) {
                         tmp.numbers.push(alfa[0]);
                     }
-                    else{
+                    else {
                         tmp.numbers.push(alfa[1]);
                     }
                 })
@@ -371,12 +368,12 @@ const findOpenSeats = async () => {
                 team.drivers.forEach(driver => {
                     const numberIndex = aston.indexOf(driver.driverNumber);
                     console.log(numberIndex);
-                    if(numberIndex === -1){console.log(driver)}
+                    if (numberIndex === -1) { console.log(driver) }
 
-                    if(numberIndex === 1){
+                    if (numberIndex === 1) {
                         tmp.numbers.push(aston[0]);
                     }
-                    else{
+                    else {
                         tmp.numbers.push(aston[1]);
                     }
                 })
@@ -386,12 +383,12 @@ const findOpenSeats = async () => {
                 team.drivers.forEach(driver => {
                     const numberIndex = ferrari.indexOf(driver.driverNumber);
                     console.log(numberIndex);
-                    if(numberIndex === -1){console.log(driver)}
+                    if (numberIndex === -1) { console.log(driver) }
 
-                    if(numberIndex === 1){
+                    if (numberIndex === 1) {
                         tmp.numbers.push(ferrari[0]);
                     }
-                    else{
+                    else {
                         tmp.numbers.push(ferrari[1]);
                     }
                 })
@@ -403,6 +400,6 @@ const findOpenSeats = async () => {
     })
 
     return (openSeats);
-    
+
 }
 module.exports = router;
