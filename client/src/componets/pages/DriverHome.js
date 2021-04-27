@@ -16,9 +16,12 @@ const DriverHome = ({loggedIn, driver, setDriver, guid, setGuid}) => {
     
 
     useEffect(() => {
+
     }, [rsvp]);
 
-  
+    const getRsvp = () => {
+        setRsvp(driver.rsvp);
+    }
     const reserveRsvp = async (e)  => {
         const entry = {
             name: driver.name,
@@ -34,7 +37,7 @@ const DriverHome = ({loggedIn, driver, setDriver, guid, setGuid}) => {
     }
 
     const updateRsvp = async (e) => {
-        setRsvp(e.target.innerHTML);
+        setDriver({...driver, rsvp: e.target.innerHTML});
         const entry = {
             rsvp: e.target.innerHTML,
             guid: guid
@@ -63,7 +66,7 @@ const DriverHome = ({loggedIn, driver, setDriver, guid, setGuid}) => {
                     <h1 style={{ fontSize: '55px' }}>{driver.name}</h1>
                     {/* <h4><TeamIcon teamName={driver.team} /><span>{driver.team}</span></h4> */}
                     {driver.team !== 'Reserve' ? <RSVP setRsvp={setRsvp} updateRsvp={updateRsvp} driver={driver} rsvp={rsvp} /> : 
-                    <ReserveSignup reserveRsvp={reserveRsvp} setTeam={setTeam} setNumber={setNumber}/>}
+                    <ReserveSignup reserveRsvp={reserveRsvp} setTeam={setTeam} setNumber={setNumber} driver={driver}/>}
 
 
                 </div > : <div></div>}

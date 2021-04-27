@@ -5,7 +5,7 @@ const RSVP = ({ setRsvp, updateRsvp, driver, rsvp }) => {
 
     useEffect(() => {
 
-    }, [rsvp])
+    }, [driver])
 
     return (
         <div>{driver.rsvp === '' ?
