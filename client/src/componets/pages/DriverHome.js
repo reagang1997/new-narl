@@ -30,6 +30,7 @@ const DriverHome = ({loggedIn, driver, setDriver, guid, setGuid}) => {
             guid: guid
         }
         console.log(entry);
+        setDriver({...driver, rsvp: 'Yes'});
         const addedEntry = await axios.post('/api/createEntry', entry);
         const tmpRsvp = { rsvp: 'Yes', guid: guid}
         const updatedRsvp = await axios.post(`/api/updateRSVP`, tmpRsvp);

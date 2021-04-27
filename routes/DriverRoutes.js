@@ -35,10 +35,32 @@ router.post('/api/updateRSVP', async (req, res) => {
 })
 
 router.get('/api/openSeats', async (req, res) => {
-    const seats = await Driver.find({ rsvp: 'No' });
+    let rsvpNo = await Driver.find({ rsvp: 'No' });
     const entryList = await EntryList.find({});
 
-    let open = seats.map(seat => {
+    const openSeats = await findOpenSeats();
+
+    rsvpNo.forEach(seat => {
+        let found = false;
+        openSeats.forEach(openSeat => {
+            if(seat.team === openSeat.team){
+                openSeat.numbers.push(seat.driverNumber);
+                found = true;
+            }
+        })
+        if(!found){
+            let tmp = {
+                numbers: [seat.driverNumber],
+                team: seat.team
+            };
+            openSeats.push(tmp);
+        }
+    })
+    openSeats.forEach(seat => {
+        rsvpNo.push(seat);
+    });
+
+    let open = openSeats.map(seat => {
         let found = false;
         entryList.forEach(entry => {
             if (seat.driverNumber == entry.driverNumber) {
@@ -150,6 +172,19 @@ router.get('/api/driver/:guid', async (req, res) => {
 })
 
 router.get('/api/openTeamSeats', async (req, res) => {
+  
+    const openSeats = await findOpenSeats();
+    console.log(openSeats);
+    
+    res.send(openSeats)
+});
+
+router.get('/api/setRSVP', async (req, res) => {
+    const updated = await Driver.updateMany({}, {$set: {rsvp: ''}});
+    res.send(updated);
+})
+
+const findOpenSeats = async () => {
     const ferrari = [16, 55];
     const williams = [6, 63];
     const mercedes = [77, 44];
@@ -204,6 +239,7 @@ router.get('/api/openTeamSeats', async (req, res) => {
 
         openSeats.push(tmp);
     })
+
     const oneOpen = await Team.find({drivers: {$size: 1}}).select('name drivers -_id').populate('drivers', 'driverNumber');
     oneOpen.forEach(team => {
         console.log(team.name);
@@ -365,18 +401,8 @@ router.get('/api/openTeamSeats', async (req, res) => {
 
         openSeats.push(tmp);
     })
-    res.send(openSeats)
-});
 
-router.get('/api/setRSVP', async (req, res) => {
-    const updated = await Driver.updateMany({}, {$set: {rsvp: ''}});
-    res.send(updated);
-})
-
-const findSeats = (team) => {
-    if(team.drivers.length < 2){
-        let numbers = team.drivers.map(driver => driverNumber);
-
-    }
+    return (openSeats);
+    
 }
 module.exports = router;

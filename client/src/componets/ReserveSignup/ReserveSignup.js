@@ -39,17 +39,25 @@ const ReserveSignup = ({ reserveRsvp, driver }) => {
 
                     {openSeats ? openSeats.map(seat => {
                         if (seat === null) { return }
-                        return (<div><Card body>
-                            <Row>
-                                <Col md={9}>
-                                    <h3> #{seat.driverNumber}  {seat.team} </h3>
-                                </Col>
-                                <Col md={3}>
-                                    <Button variant='success' value={seat.team} onClick={reserveRsvp} id={seat.driverNumber}>Take #{seat.driverNumber}</Button>
+                        return (<div>
+                            {seat.numbers.map(number => {
+                                return (
+                                    <Card body className='shadow' style={{marginTop: '5px'}}>
+                                        <Row>
+                                            <Col md={9}>
+                                                <h3> #{number}  {seat.team} </h3>
+                                            </Col>
+                                            <Col md={3}>
+                                                <Button variant='success' value={seat.team} onClick={reserveRsvp} id={number}>Take #{number}</Button>
 
-                                </Col>
-                            </Row>
-                        </Card></div>)
+                                            </Col>
+                                        </Row>
+                                    </Card>
+
+                                )
+                            }
+                            )}
+                        </div>)
                     }) : <div></div>}
                 </div>}
 
