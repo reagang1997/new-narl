@@ -1,5 +1,6 @@
 import React from 'react';
 import CurrentTrack from '../CurrentTrack';
+import CurrentGrid from '../CurrentGrid';
 import {Card} from 'react-bootstrap';
 
 const RaceInfo = () => {
@@ -8,6 +9,9 @@ const RaceInfo = () => {
     <div className="col-md-12 f1">
       <div>
         <CurrentTrack/>
+      </div>
+      <div>
+        <CurrentGrid/>
       </div>
       <h1 className='current-schedule' style={{width: 'fit-content', margin: 'auto', marginBottom: '25px'}}>Current Schedule</h1>
 

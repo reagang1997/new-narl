@@ -7,5 +7,9 @@ router.post('/api/createEntry', async (req, res) => {
     res.send(created);
 })
 
+router.get('/api/currentGrid', async (req, res) => {
+    const grid = await EntryList.find({});
+    res.send(grid);
+})
 
 module.exports = router;
