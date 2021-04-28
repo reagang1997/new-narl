@@ -13,10 +13,12 @@ const fs = require('fs');
 const path = require('path');
 const cors = require('cors');
 const passport = require('./config/passport');
+const flash = require('connect-flash');
 
 const PORT = process.env.PORT || 8080;
 
 const app = express();
+app.use(flash());
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -53,13 +55,13 @@ app.use(require('./routes/ACRoutes'));
 
 // routes
 
-app.get('/*', function(req, res) {
-  res.sendFile(path.join(__dirname, '/client/public/index.html'), function(err) {
-    if (err) {
-      res.status(500).send(err)
-    }
-  })
-})
+// app.get('/*', function(req, res) {
+//   res.sendFile(path.join(__dirname, '/client/public/index.html'), function(err) {
+//     if (err) {
+//       res.status(500).send(err)
+//     }
+//   })
+// })
 
 app.get('/api/clearPractice', async (req, res) => {
   const drivers = await Drivers.find({});

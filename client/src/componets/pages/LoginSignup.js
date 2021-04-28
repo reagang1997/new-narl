@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'
-import { Card, Form, Button } from 'react-bootstrap';
+import { Card, Form, Button, Alert } from 'react-bootstrap';
 import TeamIcon from '../TeamIcon'
 import { useHistory } from 'react-router-dom'
 
@@ -14,6 +14,9 @@ const LoginSignup = ({setLoggedIn, guid, setGuid}) => {
     const [hide, setHide] = useState({display: 'none'});
     const [hideLogin, setHideLogin] = useState({fontSize: '12px'});
 
+    const [showAlert, setShowAlert] = useState(false);
+    const [msg, setMsg] = useState('');
+
     const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -22,10 +25,18 @@ const LoginSignup = ({setLoggedIn, guid, setGuid}) => {
 
     }, [toLogin]);
 
+    useEffect(() => {
+
+    }, [msg]);
+
     const handleClick = (e) => {
         setHide({display: 'block'});
         setHideLogin({ fontSize: '12px', display: 'none'})
         setToLogin(false);
+        if(showAlert){
+            setShowAlert(false);
+            setMsg('');
+        }
     }
 
     const loginSignup = async (e) => {
@@ -34,8 +45,14 @@ const LoginSignup = ({setLoggedIn, guid, setGuid}) => {
             // login
 
             const loggedIn = await axios.post('/login', {email: email, password: password});
-            if(loggedIn.status === 200) {
-                const user = loggedIn.data.user;
+            console.log(loggedIn);
+            if(loggedIn.data.error){
+                console.log('hit')
+                setMsg(loggedIn.data.error[0]);
+                setShowAlert(true);
+            }
+            else{
+                const user = loggedIn.data;
                 console.log(user);
                 setGuid(user.guid)
                 let tmp = user.guid;
@@ -46,6 +63,7 @@ const LoginSignup = ({setLoggedIn, guid, setGuid}) => {
                 setLoggedIn(true);
                 history.push(`/driverHome/${tmp}`);
             }
+            
         } 
         else {
             //signup
@@ -58,8 +76,11 @@ const LoginSignup = ({setLoggedIn, guid, setGuid}) => {
 
             const signedUp = await axios.post('/signup', newUser);
             console.log(signedUp)
-
-            if(signedUp.status === 200){
+            if(signedUp.data.error){
+                setShowAlert(true);
+                setMsg(signedUp.data.error);
+            }
+            else{
                 setLoggedIn(true);
 
                 history.push(`/driverHome/${guid}`);
@@ -68,6 +89,8 @@ const LoginSignup = ({setLoggedIn, guid, setGuid}) => {
     }
     return (
         <Card body className='box f1 signup' style={{marginTop: '50px'}}>
+            {showAlert ? <Alert variant='danger'>{msg}</Alert>  : <div></div>}
+            
             <Form>
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
