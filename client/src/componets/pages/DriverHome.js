@@ -7,6 +7,7 @@ import RSVP from '../RSVP';
 import ReserveSignup from '../ReserveSignup/ReserveSignup';
 import AdminHome from './AdminHome';
 import e from 'cors';
+import ReserveTeamSignup from '../ReserveTeamSignup';
 
 const DriverHome = ({loggedIn, driver, setDriver, guid, setGuid}) => {
     const [rsvp, setRsvp] = useState('');
@@ -18,6 +19,10 @@ const DriverHome = ({loggedIn, driver, setDriver, guid, setGuid}) => {
     useEffect(() => {
 
     }, [rsvp]);
+
+    useEffect(() => {
+
+    }, [driver]);
 
     const getRsvp = () => {
         setRsvp(driver.rsvp);
@@ -67,7 +72,10 @@ const DriverHome = ({loggedIn, driver, setDriver, guid, setGuid}) => {
                     <h1 style={{ fontSize: '55px' }}>{driver.name}</h1>
                     {/* <h4><TeamIcon teamName={driver.team} /><span>{driver.team}</span></h4> */}
                     {driver.team !== 'Reserve' ? <RSVP setRsvp={setRsvp} updateRsvp={updateRsvp} driver={driver} rsvp={rsvp} /> : 
-                    <ReserveSignup reserveRsvp={reserveRsvp} setTeam={setTeam} setNumber={setNumber} driver={driver}/>}
+                    <div>
+                        <ReserveSignup reserveRsvp={reserveRsvp} setTeam={setTeam} setNumber={setNumber} driver={driver}/> 
+                        <ReserveTeamSignup driver={driver} setDriver={setDriver}></ReserveTeamSignup>
+                    </div>}
 
 
                 </div > : <div></div>}
