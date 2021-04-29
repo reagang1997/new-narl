@@ -32,7 +32,7 @@ const ReserveTeamSignup = ({driver, setDriver}) => {
             <Card body className='box'>
                 <h1>Join A Team Today!</h1>
                 <div>
-                    {openSeats.length === 0 ? <h1>There are no open seats</h1> : <h1>Avalible Seats For This Week</h1>}
+                    {openSeats.length === 0 ? <h1>Teams Are Full</h1> : <div></div>}
 
 
                     {openSeats ? openSeats.map(seat => {
