@@ -179,6 +179,7 @@ router.get('/api/openTeamSeats', async (req, res) => {
 router.put('/api/joinTeam', async (req, res) => {
     const {guid, team, driverNumber} = req.body;
     const updated = await Driver.findOneAndUpdate({guid: guid}, {$set: {team: team, driverNumber: driverNumber}});
+    const updatedTeam = await Team.findOneAndUpdate({name: updated.team}, {$push: {drivers: updated._id}});
     res.send(updated);
 })
 
