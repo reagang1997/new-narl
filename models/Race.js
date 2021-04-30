@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const RaceSchema = new Schema({
+const RaceResultSchema = new Schema({
     results: [
         {
             type: Schema.Types.ObjectId,
@@ -11,6 +11,6 @@ const RaceSchema = new Schema({
     ]
 });
 
-const Race = mongoose.model('Race', RaceSchema);
+const RaceResult = mongoose.model('RaceResult', RaceResultSchema);
 
-module.exports = Race;
+module.exports = RaceResult;

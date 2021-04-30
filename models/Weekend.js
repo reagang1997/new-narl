@@ -3,18 +3,24 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const WeekendSchema = new Schema({
-    practice: {
+    currentTrack: {type: Schema.Types.ObjectId, ref: 'CurrentTrack'},
+    practice: [{
         type: Schema.Types.ObjectId,
-        ref: 'Practice'
-    },
-    qualy: {
+        ref: 'PracticeResult',
+        default: []
+    }],
+    qualy: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'QualyResult',
+            default: []
+        }
+    ],
+    race: [{
         type: Schema.Types.ObjectId,
-        ref: 'Qualy'
-    },
-    race: {
-        type: Schema.Types.ObjectId,
-        ref: 'Race'
-    },
+        ref: 'RaceResult',
+        default: []
+    }],
 });
 
 const Weekend = mongoose.model('Weekend', WeekendSchema);

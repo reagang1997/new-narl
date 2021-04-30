@@ -6,7 +6,8 @@ const SeasonSchema = new Schema({
     weekends: [
         {
             type: Schema.Types.ObjectId,
-            ref: 'Weekend'
+            ref: 'Weekend',
+            default: []
         }
     ]
 });

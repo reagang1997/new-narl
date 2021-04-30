@@ -215,8 +215,31 @@ router.get('/api/generateServerFiles', async (req, res) => {
     [DATA]
     WEBLINK=https://www.elitegameservers.net`;
 
-    console.log(entry_list);
-    res.send(server_cfg);
+    const c = new Client();
+
+    c.on('ready', function() {
+        c.put( entry_list, '/173.234.30.178_11576/cfg/entry_list.ini', function(err) {
+          if (err) throw err;
+          console.log('sent');
+          c.end();
+        });
+
+        c.put( server_cfg, '/173.234.30.178_11576/cfg/server_cfg.ini', function(err) {
+            if (err) throw err;
+            console.log('sent');
+            c.end();
+          });
+      });
+
+      c.connect({
+        host: '173.234.30.178',
+        port: 8821,
+        user: 'nbhapsgs',
+        password: '9p:I0*xA59KMfh'
+    });
+
+    // console.log(entry_list);
+    // res.send(server_cfg);
 })
 
 module.exports = router;

@@ -7,7 +7,6 @@ const WCC = require('./models/WCC');
 const Drivers = require('./models/Driver');
 // const RaceHistory = require('./models/RaceResult');
 const PracticeHistory = require('./models/PracticeResult');
-const PracticeTable = require('./models/PracticeTable');
 const session = require('express-session');
 const fs = require('fs');
 const path = require('path');
@@ -52,6 +51,8 @@ app.use(require('./routes/PracticeRoutes.js'));
 app.use(require('./routes/TrackRoutes.js'));
 app.use(require('./routes/EntryListRoutes'));
 app.use(require('./routes/ACRoutes'));
+app.use(require('./routes/SeasonRoutes'));
+app.use(require('./routes/WeekendRoutes'));
 
 // routes
 
