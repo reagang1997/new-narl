@@ -170,6 +170,7 @@ router.get('/api/readFile/:fileName', async (req, res) => {
 
                 let currentTrack = await Weekend.findOne({ _id: currentWeekend }).populate('currentTrack');
                 currentTrack = currentTrack.currentTrack;
+                console.log('CURRENT TRACK' + currentTrack);
 
                 practiceResults.forEach(async (result) => {
                     if(result.BestLap === 999999999){
@@ -218,24 +219,85 @@ router.get('/api/readFile/:fileName', async (req, res) => {
 
                         }
                     }   
-                })
-              
 
-                practiceLaps.forEach(async (lap) => {
-                    let updatedCDriver = await Drivers.findOneAndUpdate({ guid: lap.DriverGuid }, { $inc: { careerLaps: 1 } });
-                    let updatedPDriver = await PracticeTable.findOneAndUpdate({ guid: lap.DriverGuid }, { $inc: { laps: 1 } });
+                    practiceLaps.forEach(async (lap) => {
+
+                        if (lap.LapTime === result.BestLap) {
+                            let updatedDriver = await PracticeTable.findOneAndUpdate({ guid: lap.DriverGuid }, { $set: { tire: lap.Tyre } }, { new: true });
+                            let track = await Track.findOne({ _id: currentTrack._id });
+                            let trackSector1 = track.pSector1;
+                            let trackSector2 = track.pSector2;
+                            let trackSector3 = track.pSector3;
+                            let tmp1 = lap.Sectors[0]
+                            let tmp2 = lap.Sectors[1]
+                            let tmp3 = lap.Sectors[2]
+
+                            if (tmp1 < updatedDriver.sector1time) {
+                                let updatedSectors = await PracticeTable.findOneAndUpdate({ guid: lap.DriverGuid }, {
+                                    $set:
+                                    {
+                                        sector1pb: tmp1
+                                    }
+                                });
+                            }
+                            if (tmp1 < trackSector1) {
+                                let updatedSectors = await Track.findOneAndUpdate({ _id: currentTrack._id }, {
+                                    $set:
+                                    {
+                                        pSector1: tmp1
+                                    }
+                                });
+                            }
+                            if (tmp2 < updatedDriver.sector2time) {
+                                let updatedSectors = await PracticeTable.findOneAndUpdate({ guid: lap.DriverGuid }, {
+                                    $set:
+                                    {
+                                        sector2pb: tmp2
+                                    }
+                                });
+                            }
+                            if (tmp2 < trackSector2) {
+                                let updatedSectors = await Track.findOneAndUpdate({ _id: currentTrack._id }, {
+                                    $set:
+                                    {
+                                        pSector2: tmp2
+                                    }
+                                });
+                            }
+                            if (tmp3 < updatedDriver.sector3time) {
+                                let updatedSectors = await PracticeTable.findOneAndUpdate({ guid: lap.DriverGuid }, {
+                                    $set:
+                                    {
+                                        sector3pb: tmp3
+                                    }
+                                });
+                            }
+                            if (tmp3 < trackSector3) {
+                                let updatedSectors = await Track.findOneAndUpdate({ _id: currentTrack._id }, {
+                                    $set:
+                                    {
+                                        pSector3: tmp3
+                                    }
+                                });
+                            }
+
+                            let updatedSectors = await PracticeTable.findOneAndUpdate({ guid: lap.DriverGuid }, {
+                                $set:
+                                {
+                                    sector1time: tmp1,
+                                    sector2time: tmp2,
+                                    sector3time: tmp3,
+                                }
+                            });
+                        }
+                    })
                 })
 
                 const newPR = await PracticeResult.create({ fileName: req.params.fileName });
 
-                let weekend = await Weekend.findOne({ _id: currentWeekend._id }, {new: true});
-
+                const newResults = await Weekend.find({_id: currentWeekend}).populate('practice');
                 res.status(200);
-                res.send(weekend);
-
-
-
-
+                res.send(newResults);
             });
         });
     });
