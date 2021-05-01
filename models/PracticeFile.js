@@ -6,6 +6,6 @@ const PracticeFileSchema = new Schema({
     fileName: String
 });
 
-const PracticeFile = mongoose.model('PracticeFile', PracticeFileSchema);
+const PracticeResult = mongoose.model('PracticeResult', PracticeFileSchema);
 
-module.exports = PracticeFile;
+module.exports = PracticeResult;
