@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Row, Col, Jumbotron, Button } from 'react-bootstrap';
+import { useHistory } from 'react-router-dom'
+
 // import logo from './img/logo.png'
 
 function Home() {
+
+
+    const history = useHistory();
     return (
         <Jumbotron className='f1 box' style={{width: 'fit-content', margin: 'auto', marginTop:'25px'}}>
             <div className='home-jumbo'>
@@ -19,7 +24,7 @@ function Home() {
                 <p>
                     Think you have what it takes? Apply to Drive!
                 </p>
-                <Button variant='warning'>Apply</Button>
+                <Button variant='warning' onClick={e => history.push('/loginSignup')}>Apply</Button>
                 <p style={{fontSize:'10px'}}>Functionality pending</p>
                 <br/>
                 <br/>

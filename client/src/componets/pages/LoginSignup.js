@@ -5,7 +5,7 @@ import TeamIcon from '../TeamIcon'
 import { useHistory } from 'react-router-dom'
 
 
-const LoginSignup = ({setLoggedIn, guid, setGuid}) => {
+const LoginSignup = ({setLoggedIn, guid, setGuid, driver, setDriver}) => {
 
 
     const history = useHistory();
@@ -74,6 +74,12 @@ const LoginSignup = ({setLoggedIn, guid, setGuid}) => {
                 guid: guid
             }
 
+            const newDriver = {
+                name: username,
+                guid: guid,
+                team: 'Reserve'
+            }
+
             const signedUp = await axios.post('/signup', newUser);
             console.log(signedUp)
             if(signedUp.data.error){
@@ -82,7 +88,8 @@ const LoginSignup = ({setLoggedIn, guid, setGuid}) => {
             }
             else{
                 setLoggedIn(true);
-
+                const createdDriver = await axios.post('/api/CreateNewDriver', newDriver);
+                setDriver(createdDriver.data);
                 history.push(`/driverHome/${guid}`);
             }
         }

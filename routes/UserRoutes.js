@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const passport = require('../config/passport');
 const User = require('../models/User');
-
+const Driver = require('../models/Driver');
 router.post("/signup", (req, res) => {
   console.log("user signup");
   console.log(req.body);
@@ -11,7 +11,7 @@ router.post("/signup", (req, res) => {
     res.json({error: 'GUID not valid'})
   }
 
-  User.findOne({ username: username }, (err, user) => {
+  User.findOne({ username: username }, async (err, user) => {
     if (err) {
       console.log(err);
     } else if (user) {
