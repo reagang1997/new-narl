@@ -9,6 +9,11 @@ const WeekendSchema = new Schema({
         ref: 'PracticeResult',
         default: []
     }],
+    grid: [{
+        type: Schema.Types.ObjectId,
+        ref: 'EntryList',
+        default: []
+    }],
     qualy: [
         {
             type: Schema.Types.ObjectId,
