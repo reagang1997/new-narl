@@ -75,7 +75,7 @@ router.get('/api/sendForgotPasswordEmail/:guid', async (req, res) => {
     from: 'rbgrunwald1997@gmail.com',
     to: user.email,
     subject: 'NARL Password Reset',
-    html: `<a href='http://localhost:3000/passwordReset/${user.guid}'>Click here to reset password</a>`
+    html: `<a href='https://north-american-racing-league.herokuapp.com/passwordReset/${user.guid}'>Click here to reset password</a>`
 
   };
 
