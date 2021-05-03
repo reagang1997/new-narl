@@ -131,6 +131,8 @@ const LoginSignup = ({setLoggedIn, guid, setGuid, driver, setDriver}) => {
             </Form>
             <div style={{width: 'fit-content', margin: 'auto'}}>
                 <a href="#" style={hideLogin} onClick={handleClick}>Dont have an account? Sign up!</a>
+                <br/>
+                <a href="#" style={{marginLeft: '45px', fontSize: '12px'}} onClick={e => history.push('/forgotPassword')}>Forgot Password?</a>
             </div>
         </Card>
     )
