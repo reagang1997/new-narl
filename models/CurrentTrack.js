@@ -9,6 +9,6 @@ const CurrentTrackSchema = new Schema({
     }
 });
 
-const CurrentTrack = mongoose.model('CurrentTrack', CurrentTrackSchema);
+const CurrentTack = mongoose.model('CurrentTack', CurrentTrackSchema);
 
-module.exports = CurrentTrack;
+module.exports = CurrentTack;

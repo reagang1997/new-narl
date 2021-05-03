@@ -14,64 +14,64 @@ router.get('/api/generateServerFiles', async (req, res) => {
         let livery = ""
         switch (entry.driverNumber) {
             case "16":
-                livery = '16_Ferrari_SF21'
+                livery = 'k_16_Scuderia_Ferrari_SF21'
                 break;
             case "55":
-                livery = "55_Ferrari_SF21_MW"
+                livery = "l_55_Scuderia_Ferrari_SF21"
                 break;
             case "63":
-                livery = "63_Williams"
+                livery = "s_63_Williams_Racing_FW43B"
                 break;
             case "6":
-                livery = "6_Williams";
+                livery = "t_6_Williams_Racing_FW43B";
                 break;
             case "44":
-                livery = "44_Mercedes_W12";
+                livery = "a_44_Mercedes-AMG_F1_W12_E_Performance";
                 break;
             case "77":
-                livery = "77_Mercedes_W12";
+                livery = "b_77_Mercedes-AMG_F1_W12_E_Performance";
                 break;
             case "18":
-                livery = "18_AMR21";
+                livery = "g_18_Aston_Martin_Cognizant_F1_Team_AMR21";
                 break;
             case "5":
-                livery = "5_AMR21";
+                livery = "h_5_Aston_Martin_Cognizant_F1_Team_AMR21";
                 break;
             case "47":
-                livery = "Haas_VF21_47_Schumacher_4KHD";
+                livery = "r_47_Uralkali_Haas_F1_Team_VF-21";
                 break;
             case "9":
-                livery = "Haas_VF21_09_Schumacher_4KHD";
+                livery = "q_9_Uralkali_Haas_F1_Team_VF-21";
                 break;
             case "3":
-                livery = "03_McLaren_MCL35M";
+                livery = "e_3_McLaren_F1_Team_MCL35M";
                 break;
             case "4":
-                livery = "04_McLaren_MCL35M";
+                livery = "f_4_McLaren_F1_Team_MCL35M";
                 break;
             case "33":
-                livery = "33_RedBull_RB16B";
+                livery = "c_33_Red_Bull_Racing_Honda_RB16B";
                 break;
             case "11":
-                livery = "11_RedBull_RB16B";
+                livery = "d_11_Red_Bull_Racing_Honda_RB16B";
                 break;
             case "31":
-                livery = "31_Alpine_Ocon";
+                livery = "j_31_Alpine_F1_Team_A521";
                 break;
             case "14":
-                livery = "14_Alpine_Alonso";
+                livery = "i_14_Alpine_F1_Team_A521";
                 break;
             case "99":
-                livery = "99_Alfa_Romeo_C41";
+                livery = "p_99_Alfa_Romeo_Racing_Orlen_C41";
                 break;
             case "7":
-                livery = "7_Alfa_Romeo_C41";
+                livery = "o_7_Alfa_Romeo_Racing_Orlen_C41";
                 break;
             case "10":
-                livery = "10_Scuderia_AlphaTauri_AT02";
+                livery = "n_10_Scuderia_AlphaTauri_Honda_AT02";
                 break;
             case "22":
-                livery = "22_Scuderia_AlphaTauri_AT02";
+                livery = "m_22_Scuderia_AlphaTauri_Honda_AT02";
                 break;
 
         }
@@ -86,6 +86,17 @@ router.get('/api/generateServerFiles', async (req, res) => {
         entry_list += `\nBALLAST=0`;
         entry_list += `\nRESTRICTOR=0`;
     });
+
+    entry_list += '\n';
+    entry_list += `\n[CAR_${entryList.length}]`;
+    entry_list += `\nMODEL=mercedes_sls`;
+    entry_list += `\nSKIN=Rosso_Opale`;
+    entry_list += `\nSPECTATOR_MODE=0`;
+    entry_list += `\nDRIVERNAME=DontReadBooks}`;
+    entry_list += `\nTEAM=Commentator`;
+    entry_list += `\nGUID=$76561198979147896`;
+    entry_list += `\nBALLAST=0`;
+    entry_list += `\nRESTRICTOR=0`;
 
     let server_cfg = `[SERVER]
     NAME=NARL - ${currentTrack.track.name}
@@ -217,21 +228,21 @@ router.get('/api/generateServerFiles', async (req, res) => {
 
     const c = new Client();
 
-    c.on('ready', function() {
-        c.put( entry_list, '/173.234.30.178_11576/cfg/entry_list.ini', function(err) {
-          if (err) throw err;
-          console.log('sent');
-          c.end();
-        });
-
-        c.put( server_cfg, '/173.234.30.178_11576/cfg/server_cfg.ini', function(err) {
+    c.on('ready', function () {
+        c.put(entry_list, '/173.234.30.178_11576/cfg/entry_list.ini', function (err) {
             if (err) throw err;
             console.log('sent');
             c.end();
-          });
-      });
+        });
 
-      c.connect({
+        c.put(server_cfg, '/173.234.30.178_11576/cfg/server_cfg.ini', function (err) {
+            if (err) throw err;
+            console.log('sent');
+            c.end();
+        });
+    });
+
+    c.connect({
         host: '173.234.30.178',
         port: 8821,
         user: 'nbhapsgs',

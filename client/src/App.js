@@ -47,7 +47,7 @@ const App = () => {
           <DriverHome loggedIn={loggedIn} driver={driver} setDriver={setDriver} getGuid={getGuid} guid={guid} setGuid={setGuid}/>
         </Route>
         <Route exact path="/loginSignup" component={LoginSignup}>
-          <LoginSignup loggedIn={loggedIn} setLoggedIn={setLoggedIn} guid={guid} setGuid={setGuid}></LoginSignup>
+          <LoginSignup loggedIn={loggedIn} setLoggedIn={setLoggedIn} guid={guid} setGuid={setGuid} driver={driver} setDriver={setDriver}></LoginSignup>
         </Route>
         <Route exact path="/practiceResults" component={PracticeResults} >
             <PracticeResults loggedIn={loggedIn} setLoggedIn={setLoggedIn}></PracticeResults>
