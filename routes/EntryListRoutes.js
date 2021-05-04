@@ -13,12 +13,12 @@ router.post('/api/createEntry', async (req, res) => {
 })
 
 router.get('/api/currentGrid', async (req, res) => {
-    const grid = await EntryList.find({});
     let currentSeason = await Season.find({});
     currentSeason = currentSeason[0];
 
     const newWeekend = await Weekend.create({});
-    const updatedSeason = await Season.findOneAndUpdate({_id: currentSeason._id}).populate('grid');
+    const updatedSeason = await Season.findOneAndUpdate({_id: currentSeason._id}).populate('grid')
+    let grid = updatedSeason.grid;
     res.send(grid);
 })
 
