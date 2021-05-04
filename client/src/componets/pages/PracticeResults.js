@@ -26,8 +26,8 @@ function PracticeResults({ loggedIn, setLoggedIn }) {
             setHit(hit+1)
         }
         console.log(practice);
-        setPracticeResults(practice.data);
-        setP1(practice.data[0].rawLapTime);
+        setPracticeResults(practice.data.practice);
+        setP1(practice.data.practice[0].rawLapTime);
     }
 
 

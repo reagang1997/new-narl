@@ -14,7 +14,7 @@ const CurrentTrack = () => {
     const getCurrentTrack = async () => {
         const track = await axios.get('/api/getCurrentTrack');
         console.log(track.data);
-        setCurrentTrack(track.data.track);
+        setCurrentTrack(track.data);
     }
 
     return (
