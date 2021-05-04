@@ -2,14 +2,16 @@ const Client = require('ftp');
 const fs = require('fs')
 const router = require("express").Router();
 const Drivers = require('../models/Driver');
-const PracticeTable = require('../models/PracticeResult');
-const PracticeResult = require('../models/PracticeFile');
+const PracticeResult = require('../models/PracticeResult');
+const PracticeFile = require('../models/PracticeFile');
 const Driver = require('../models/Driver');
 const Track = require('../models/Track');
 const CurrentTrack = require('../models/CurrentTrack');
+const Season = require('../models/Season');
+const Weekend = require('../models/Weekend');
 
 router.get('/api/clearPracticeResults', async (req, res) => {
-    const deleted = await PracticeTable.deleteMany({});
+    const deleted = await PracticeResult.deleteMany({});
     res.send(deleted);
 })
 
@@ -34,7 +36,7 @@ router.get('/api/allResults', async (req, res) => {
 });
 
 router.get('/api/findResult/:fileName', async (req, res) => {
-    const found = await PracticeResult.findOne({ fileName: req.params.fileName });
+    const found = await PracticeFile.findOne({ fileName: req.params.fileName });
     if (found) {
         res.send();
     }
@@ -47,9 +49,9 @@ const colorSectors = async () => {
     let currentTrack = await CurrentTrack.find({});
     currentTrack = currentTrack[0];
 
-    const sector1Times = await PracticeTable.find({});
-    const sector2Times = await PracticeTable.find({}).sort({ sector2time: 1 });
-    const sector3Times = await PracticeTable.find({}).sort({ sector3time: 1 });
+    const sector1Times = await PracticeResult.find({});
+    const sector2Times = await PracticeResult.find({}).sort({ sector2time: 1 });
+    const sector3Times = await PracticeResult.find({}).sort({ sector3time: 1 });
     console.log(sector1Times);
 
     let color1;
@@ -67,7 +69,7 @@ const colorSectors = async () => {
                     return;
                 }
                 if (driver.sector1color === 'pink') {
-                    let updatedColor = await PracticeTable.findOneAndUpdate({ driverName: old.driverName }, {
+                    let updatedColor = await PracticeResult.findOneAndUpdate({ driverName: old.driverName }, {
                         $set:
                         {
                             sector1color: 'green'
@@ -82,7 +84,7 @@ const colorSectors = async () => {
         else if (tmp1 < tmpPB) {
             color1 = 'green'
         }
-        let updatedSectors = await PracticeTable.findOneAndUpdate({ driverName: driver.driverName }, {
+        let updatedSectors = await PracticeResult.findOneAndUpdate({ driverName: driver.driverName }, {
             $set:
             {
                 sector1color: color1
@@ -107,7 +109,7 @@ const colorSectors = async () => {
     //     else if (tmpSector < tmpPB) {
     //         color1 = 'green'
     //     }
-    //     let updatedSectors = await PracticeTable.findOneAndUpdate({ driverName: driver.driverName }, {
+    //     let updatedSectors = await PracticeResult.findOneAndUpdate({ driverName: driver.driverName }, {
     //         $set:
     //         {
     //             sector2color: color1
@@ -132,7 +134,7 @@ const colorSectors = async () => {
     //     else if (tmpSector < tmpPB) {
     //         color1 = 'green'
     //     }
-    //     let updatedSectors = await PracticeTable.findOneAndUpdate({ driverName: driver.driverName }, {
+    //     let updatedSectors = await PracticeResult.findOneAndUpdate({ driverName: driver.driverName }, {
     //         $set:
     //         {
     //             sector3color: color1
@@ -159,49 +161,70 @@ router.get('/api/readFile/:fileName', async (req, res) => {
                 const practiceLaps = rawdata.Laps;
 
 
-                let updatedDriver;
-                let currentTrack = await CurrentTrack.find({});
-                currentTrack = currentTrack[0];
-                practiceResults.forEach(async (driver) => {
+                let foundDriver = false;
 
-                    if (driver.BestLap === 999999999) {
-                        return;
-                    }
-                    let driverInDB = await PracticeTable.findOne({ driverName: driver.DriverName });
+                let currentSeason = await Season.find({}).populate('weekends');
+                currentSeason = currentSeason[currentSeason.length - 1];
 
-                    if (!driverInDB) {
-                        const found = await Drivers.findOne({ name: driver.DriverName });
-                        if(!found){
-                            const created = await Drivers.create({name: driver.DriverName})
-                            const newPR = {
-                                driverName: driver.DriverName
-                            };
-                            driverInDB = await PracticeTable.create(newPR)
-                            driverInDB.save();
-                        }
-                        else{
-                            console.log("found" + found);
-                            console.log('TEAM');
-                            const newPR = {
-                                driverName: driver.DriverName,
-                                teamName: found.team
-                            };
-                            driverInDB = await PracticeTable.create(newPR)
-                            driverInDB.save();
-                        }
+                let currentWeekend = currentSeason.weekends[currentSeason.weekends.length - 1];
+
+                let currentTrack = await Weekend.findOne({ _id: currentWeekend }).populate('currentTrack');
+                currentTrack = currentTrack.currentTrack;
+                console.log('CURRENT TRACK' + currentTrack);
+
+                practiceResults.forEach(async (result) => {
+                    if (result.BestLap === 999999999) {
+                        return
                     }
 
+                    // see if driver is in weekends practice session (array)
+                    const driverInPR = await PracticeResult.findOne({ guid: result.DriverGuid });
 
-                    if (driver.BestLap < driverInDB.rawLapTime) {
-                        let updatedDriver = await PracticeTable.findOneAndUpdate({ driverName: driver.DriverName }, { $set: { rawLapTime: driver.BestLap } });
+                    if (!driverInPR) {
+                        // see if driver exists
+                        const driverExists = await Driver.findOne({ guid: result.DriverGuid });
 
+                        // if exists
+                        if (driverExists) {
+                            //create practice Result
+                            let tmpPR = {
+                                driverName: driverExists.name,
+                                team: driverExists.team,
+                                rawLapTime: result.BestLap,
+                                guid: driverExists.guid
+                            }
+                            const newPR = await PracticeResult.create(tmpPR);
+                            //push new result into current weekend
+                            const updatedWeekend = await Weekend.findOneAndUpdate({ _id: currentWeekend }, { $push: { practice: newPR._id } });
+                        }
+                        else {
+                            //create driver
+                            let tmpDriver = {
+                                name: result.DriverName,
+                                guid: result.DriverGuid,
+                                team: 'Reserve'
+                            }
+                            const newDriver = await Driver.create(tmpDriver);
+
+                            //create new practice result
+                            let tmpPR = {
+                                driverName: result.name,
+                                team: 'Reserve',
+                                rawLapTime: result.BestLap,
+                                guid: result.DriverGuid
+                            }
+                            const newPR = await PracticeResult.create(tmpPR);
+                            //push new result into current weekend
+                            const updatedWeekend = await Weekend.findOneAndUpdate({ _id: currentWeekend }, { $push: { practice: newPR._id } });
+
+                        }
                     }
 
                     practiceLaps.forEach(async (lap) => {
 
-                        if (lap.LapTime === driver.BestLap) {
-                            let updatedDriver = await PracticeTable.findOneAndUpdate({ driverName: driver.DriverName }, { $set: { tire: lap.Tyre } }, { new: true });
-                            let track = await Track.findOne({ _id: currentTrack.track });
+                        if (lap.LapTime === result.BestLap) {
+                            let updatedDriver = await PracticeResult.findOneAndUpdate({ guid: lap.DriverGuid }, { $set: { tire: lap.Tyre } }, { new: true });
+                            let track = await Track.findOne({ _id: currentTrack._id });
                             let trackSector1 = track.pSector1;
                             let trackSector2 = track.pSector2;
                             let trackSector3 = track.pSector3;
@@ -210,7 +233,7 @@ router.get('/api/readFile/:fileName', async (req, res) => {
                             let tmp3 = lap.Sectors[2]
 
                             if (tmp1 < updatedDriver.sector1time) {
-                                let updatedSectors = await PracticeTable.findOneAndUpdate({ driverName: driver.DriverName }, {
+                                let updatedSectors = await PracticeResult.findOneAndUpdate({ guid: lap.DriverGuid }, {
                                     $set:
                                     {
                                         sector1pb: tmp1
@@ -218,7 +241,7 @@ router.get('/api/readFile/:fileName', async (req, res) => {
                                 });
                             }
                             if (tmp1 < trackSector1) {
-                                let updatedSectors = await Track.findOneAndUpdate({ _id: currentTrack.track }, {
+                                let updatedSectors = await Track.findOneAndUpdate({ _id: currentTrack._id }, {
                                     $set:
                                     {
                                         pSector1: tmp1
@@ -226,7 +249,7 @@ router.get('/api/readFile/:fileName', async (req, res) => {
                                 });
                             }
                             if (tmp2 < updatedDriver.sector2time) {
-                                let updatedSectors = await PracticeTable.findOneAndUpdate({ driverName: driver.DriverName }, {
+                                let updatedSectors = await PracticeResult.findOneAndUpdate({ guid: lap.DriverGuid }, {
                                     $set:
                                     {
                                         sector2pb: tmp2
@@ -234,7 +257,7 @@ router.get('/api/readFile/:fileName', async (req, res) => {
                                 });
                             }
                             if (tmp2 < trackSector2) {
-                                let updatedSectors = await Track.findOneAndUpdate({ _id: currentTrack.track }, {
+                                let updatedSectors = await Track.findOneAndUpdate({ _id: currentTrack._id }, {
                                     $set:
                                     {
                                         pSector2: tmp2
@@ -242,7 +265,7 @@ router.get('/api/readFile/:fileName', async (req, res) => {
                                 });
                             }
                             if (tmp3 < updatedDriver.sector3time) {
-                                let updatedSectors = await PracticeTable.findOneAndUpdate({ driverName: driver.DriverName }, {
+                                let updatedSectors = await PracticeResult.findOneAndUpdate({ guid: lap.DriverGuid }, {
                                     $set:
                                     {
                                         sector3pb: tmp3
@@ -250,7 +273,7 @@ router.get('/api/readFile/:fileName', async (req, res) => {
                                 });
                             }
                             if (tmp3 < trackSector3) {
-                                let updatedSectors = await Track.findOneAndUpdate({ _id: currentTrack.track }, {
+                                let updatedSectors = await Track.findOneAndUpdate({ _id: currentTrack._id }, {
                                     $set:
                                     {
                                         pSector3: tmp3
@@ -258,7 +281,7 @@ router.get('/api/readFile/:fileName', async (req, res) => {
                                 });
                             }
 
-                            let updatedSectors = await PracticeTable.findOneAndUpdate({ driverName: driver.DriverName }, {
+                            let updatedSectors = await PracticeResult.findOneAndUpdate({ guid: lap.DriverGuid }, {
                                 $set:
                                 {
                                     sector1time: tmp1,
@@ -270,19 +293,11 @@ router.get('/api/readFile/:fileName', async (req, res) => {
                     })
                 })
 
-                practiceLaps.forEach(async (lap) => {
-                    let updatedCDriver = await Drivers.findOneAndUpdate({ name: lap.DriverName }, { $inc: { careerLaps: 1 } });
-                    let updatedPDriver = await PracticeTable.findOneAndUpdate({ driverName: lap.DriverName }, { $inc: { laps: 1 } });
-                })
+                const newPR = await PracticeFile.create({ fileName: req.params.fileName });
 
-                const newPR = await PracticeResult.create({ fileName: req.params.fileName });
-
+                const newResults = await Weekend.find({ _id: currentWeekend }).populate('practice');
                 res.status(200);
-                res.send({});
-
-
-
-
+                res.send(newResults);
             });
         });
     });
@@ -299,18 +314,28 @@ router.get('/api/readFile/:fileName', async (req, res) => {
 
 
 router.get('/api/getTrackSectors', async (req, res) => {
-    let currentTrack = await CurrentTrack.find({});
-    currentTrack = currentTrack[0];
+    let currentSeason = await Season.find({});
+    currentSeason = currentSeason[currentSeason.length - 1];
+    // let weekend = currentSeason.weeekends[ - 1];
+    let weekend = currentSeason.weekends.length - 1;
+    weekend = currentSeason.weekends[weekend];
+    console.log(weekend);
+    let currentTrack = await Weekend.findOne({ _id: weekend }).populate('currentTrack');
+    currentTrack = currentTrack.currentTrack;
 
-    const track = await Track.findOne({_id: currentTrack.track});
-
-    res.send(track);
+    res.send(currentTrack);
 })
 
 
 //get practice results
 router.get('/api/practiceResults', async (req, res) => {
-    const practiceResults = await PracticeTable.find({}).sort({ rawLapTime: 1 });
+    let currentSeason = await Season.find({});
+    currentSeason = currentSeason[currentSeason.length - 1];
+    // let weekend = currentSeason.weeekends[ - 1];
+    let weekend = currentSeason.weekends.length - 1;
+    weekend = currentSeason.weekends[weekend];
+    console.log(weekend);
+    let practiceResults = await Weekend.findOne({ _id: weekend }).populate('practice').sort({ rawLapTime: 1 });
 
     res.send(practiceResults);
 });

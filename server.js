@@ -53,6 +53,8 @@ app.use(require('./routes/EntryListRoutes'));
 app.use(require('./routes/ACRoutes'));
 app.use(require('./routes/SeasonRoutes'));
 app.use(require('./routes/WeekendRoutes'));
+app.use(require('./routes/QualyRoutes'));
+app.use(require('./routes/RaceRoutes'));
 
 // routes
 
