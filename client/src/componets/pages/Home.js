@@ -25,7 +25,7 @@ function Home() {
                     Think you have what it takes? Apply to Drive!
                 </p>
                 <Button variant='warning' onClick={e => history.push('/loginSignup')}>Apply</Button>
-                <p style={{fontSize:'10px'}}>Functionality pending</p>
+                
                 <br/>
                 <br/>
                 <br/>
