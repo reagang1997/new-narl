@@ -58,13 +58,9 @@ app.use(require('./routes/RaceRoutes'));
 
 // routes
 
-// app.get('/*', function(req, res) {
-//   res.sendFile(path.join(__dirname, '/client/public/index.html'), function(err) {
-//     if (err) {
-//       res.status(500).send(err)
-//     }
-//   })
-// })
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+});
 
 app.get('/api/clearPractice', async (req, res) => {
   const drivers = await Drivers.find({});

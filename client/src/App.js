@@ -13,6 +13,8 @@ import DriverStats from './componets/pages/DriverStats';
 import LoginSignup from './componets/pages/LoginSignup';
 import './index.css';
 import DriverHome from "./componets/pages/DriverHome";
+import ForgotPassword from "./componets/pages/ForgotPassword";
+import PasswordReset from "./componets/pages/PasswordReset";
 const App = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [driver, setDriver] = useState({});
@@ -46,8 +48,14 @@ const App = () => {
         <Route path='/driverHome' component={DriverHome}>
           <DriverHome loggedIn={loggedIn} driver={driver} setDriver={setDriver} getGuid={getGuid} guid={guid} setGuid={setGuid}/>
         </Route>
+        <Route path='/passwordReset'>
+          <PasswordReset/>
+        </Route>
         <Route exact path="/loginSignup" component={LoginSignup}>
           <LoginSignup loggedIn={loggedIn} setLoggedIn={setLoggedIn} guid={guid} setGuid={setGuid} driver={driver} setDriver={setDriver}></LoginSignup>
+        </Route>
+        <Route exact path="/forgotPassword" >
+          <ForgotPassword></ForgotPassword>
         </Route>
         <Route exact path="/practiceResults" component={PracticeResults} >
             <PracticeResults loggedIn={loggedIn} setLoggedIn={setLoggedIn}></PracticeResults>
