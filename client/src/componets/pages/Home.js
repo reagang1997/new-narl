@@ -25,6 +25,7 @@ function Home() {
                     Think you have what it takes? Apply to Drive!
                 </p>
                 <Button variant='warning' onClick={e => history.push('/loginSignup')}>Apply</Button>
+                <Button variant='warning' href='https://discord.gg/emxn6C6' target='blank'>Join our Discord</Button>
                 
                 <br/>
                 <br/>
