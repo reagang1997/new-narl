@@ -8,6 +8,7 @@ import ReserveSignup from '../ReserveSignup/ReserveSignup';
 import AdminHome from './AdminHome';
 import e from 'cors';
 import ReserveTeamSignup from '../ReserveTeamSignup';
+import SeasonStats from '../StatsComponents/SeasonStats'
 
 const DriverHome = ({loggedIn, driver, setDriver, guid, setGuid}) => {
     const [rsvp, setRsvp] = useState('');
@@ -79,6 +80,11 @@ const DriverHome = ({loggedIn, driver, setDriver, guid, setGuid}) => {
 
 
                 </div > : <div></div>}
+                <Row>
+                    <Col md={6}>
+                        <SeasonStats wins={driver.wins} pts={driver.points} fl={driver.fastestLaps}></SeasonStats>
+                    </Col>
+                </Row>
                 {driver.admin ? <AdminHome></AdminHome> : <div></div>}
         </div>
     )
