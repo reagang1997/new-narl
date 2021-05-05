@@ -8,14 +8,15 @@ import ReserveSignup from '../ReserveSignup/ReserveSignup';
 import AdminHome from './AdminHome';
 import e from 'cors';
 import ReserveTeamSignup from '../ReserveTeamSignup';
-import SeasonStats from '../StatsComponents/SeasonStats'
+import SeasonStats from '../StatsComponents/SeasonStats';
+import CareerStats from '../StatsComponents/CareerStats';
 
-const DriverHome = ({loggedIn, driver, setDriver, guid, setGuid}) => {
+const DriverHome = ({ loggedIn, driver, setDriver, guid, setGuid }) => {
     const [rsvp, setRsvp] = useState('');
     const [team, setTeam] = useState('');
     const [number, setNumber] = useState('')
 
-    
+
 
     useEffect(() => {
 
@@ -28,7 +29,7 @@ const DriverHome = ({loggedIn, driver, setDriver, guid, setGuid}) => {
     const getRsvp = () => {
         setRsvp(driver.rsvp);
     }
-    const reserveRsvp = async (e)  => {
+    const reserveRsvp = async (e) => {
         const entry = {
             name: driver.name,
             team: e.target.value,
@@ -36,34 +37,34 @@ const DriverHome = ({loggedIn, driver, setDriver, guid, setGuid}) => {
             guid: guid
         }
         console.log(entry);
-        setDriver({...driver, rsvp: 'Yes'});
+        setDriver({ ...driver, rsvp: 'Yes' });
         const addedEntry = await axios.post('/api/createEntry', entry);
-        const tmpRsvp = { rsvp: 'Yes', guid: guid}
+        const tmpRsvp = { rsvp: 'Yes', guid: guid }
         const updatedRsvp = await axios.post(`/api/updateRSVP`, tmpRsvp);
 
     }
 
     const updateRsvp = async (e) => {
-        setDriver({...driver, rsvp: e.target.innerHTML});
+        setDriver({ ...driver, rsvp: e.target.innerHTML });
         const entry = {
             rsvp: e.target.innerHTML,
             guid: guid
         }
         const updated = await axios.post(`/api/updateRSVP`, entry);
-        if(driver.team !== 'Reserve')
-        if(e.target.innerHTML === 'Yes'){
-            const entry = {
-                guid: guid,
-                team: driver.team,
-                driverNumber: driver.driverNumber,
-                name: driver.name
-            };
-            const newEntry = await axios.post('/api/createEntry', entry);
-            console.log(newEntry.data);
-        }
+        if (driver.team !== 'Reserve')
+            if (e.target.innerHTML === 'Yes') {
+                const entry = {
+                    guid: guid,
+                    team: driver.team,
+                    driverNumber: driver.driverNumber,
+                    name: driver.name
+                };
+                const newEntry = await axios.post('/api/createEntry', entry);
+                console.log(newEntry.data);
+            }
         console.log(e.target.innerHTML);
     }
-    
+
     return (
         <div>
             {console.log(driver)}
@@ -72,20 +73,28 @@ const DriverHome = ({loggedIn, driver, setDriver, guid, setGuid}) => {
 
                     <h1 style={{ fontSize: '55px' }}>{driver.name}</h1>
                     {/* <h4><TeamIcon teamName={driver.team} /><span>{driver.team}</span></h4> */}
-                    {driver.team !== 'Reserve' ? <RSVP setRsvp={setRsvp} updateRsvp={updateRsvp} driver={driver} rsvp={rsvp} /> : 
-                    <div>
-                        <ReserveSignup reserveRsvp={reserveRsvp} setTeam={setTeam} setNumber={setNumber} driver={driver}/> 
-                        <ReserveTeamSignup driver={driver} setDriver={setDriver}></ReserveTeamSignup>
-                    </div>}
+                    {driver.team !== 'Reserve' ? <RSVP setRsvp={setRsvp} updateRsvp={updateRsvp} driver={driver} rsvp={rsvp} /> :
+                        <div>
+                            <ReserveSignup reserveRsvp={reserveRsvp} setTeam={setTeam} setNumber={setNumber} driver={driver} />
+                            <ReserveTeamSignup driver={driver} setDriver={setDriver}></ReserveTeamSignup>
+                        </div>}
 
 
                 </div > : <div></div>}
+            <div style={{width: 'fit-content', margin: 'auto'}}>
                 <Row>
-                    <Col md={6}>
+
+                    <Col lg={6}>
                         <SeasonStats wins={driver.wins} pts={driver.points} fl={driver.fastestLaps}></SeasonStats>
                     </Col>
+
+                    <Col lg={6}>
+                        <CareerStats wins={driver.careerWins} pts={driver.careerPoints} fl={driver.careerFastestLaps}></CareerStats>
+                    </Col>
+
                 </Row>
-                {driver.admin ? <AdminHome></AdminHome> : <div></div>}
+            </div>
+            {driver.admin ? <AdminHome></AdminHome> : <div></div>}
         </div>
     )
 }

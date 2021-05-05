@@ -1,11 +1,11 @@
 import React from 'react';
 import { Row, Col, Card } from 'react-bootstrap';
 
-function SeasonStats({ wins, pts, fl }) {
+function CareerStats({ wins, fl, pts }) {
     return (
         <Card className='box f1' style={{width: '500px'}}>
-            <div className='stats-container'>
-                <h1>Season Stats</h1>
+            <div className='stats-container' >
+                <h1>Career Stats</h1>
                 <Row>
                     <Col md={5}>
                         <h2>Points:</h2>
@@ -35,4 +35,4 @@ function SeasonStats({ wins, pts, fl }) {
     )
 }
 
-export default SeasonStats;
+export default CareerStats;
