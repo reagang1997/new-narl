@@ -72,7 +72,7 @@ function PracticeResults({ loggedIn, setLoggedIn }) {
                        
                         let split;
                         if (i > 0){
-                            split = driver.rawLapTime - p1;
+                            split = p1 - driver.rawLapTime;
                             split = getSetor(split);
                         }
                         if (driver.rawLapTime === 99999999999) return;

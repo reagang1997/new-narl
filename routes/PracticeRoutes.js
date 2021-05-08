@@ -353,7 +353,8 @@ router.get('/api/practiceResults', async (req, res) => {
     let weekend = currentSeason.weekends.length - 1;
     weekend = currentSeason.weekends[weekend];
     console.log(weekend);
-    let practiceResults = await Weekend.findOne({ _id: weekend }).populate('practice').sort({ rawLapTime: 1 });
+    let practiceResults = await Weekend.findOne({ _id: weekend }).populate('practice');
+    practiceResults.practice.sort(sortLapTime);
 
     res.send(practiceResults);
 });
@@ -365,6 +366,16 @@ function compare(a, b) {
         return 1;
     }
     if (a.name > b.name) {
+        return -1;
+    }
+    return 0;
+}
+
+function sortLapTime(a, b) {
+    if (a.rawLapTime < b.rawLapTime) {
+        return 1;
+    }
+    if (a.rawLapTime > b.rawLapTime) {
         return -1;
     }
     return 0;
