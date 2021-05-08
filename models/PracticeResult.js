@@ -61,6 +61,6 @@ const PracticeResultSchema = new Schema({
     }
 });
 
-const PracticeTable = mongoose.model('PracticeTable', PracticeResultSchema);
+const PracticeResult = mongoose.model('PracticeResult', PracticeResultSchema);
 
-module.exports = PracticeTable;
+module.exports = PracticeResult;
