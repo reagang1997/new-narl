@@ -373,10 +373,10 @@ function compare(a, b) {
 
 function sortLapTime(a, b) {
     if (a.rawLapTime < b.rawLapTime) {
-        return 1;
+        return -1;
     }
     if (a.rawLapTime > b.rawLapTime) {
-        return -1;
+        return 1;
     }
     return 0;
 }
