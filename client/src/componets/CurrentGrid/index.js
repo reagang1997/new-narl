@@ -6,6 +6,7 @@ import {Card} from 'react-bootstrap';
 const CurrentGrid = () => {
 
     const [grid, setGrid] = useState([]);
+    const [driverCount, setDriverCount] = useState(0);
 
     useEffect(() => {
         getGrid();
@@ -14,12 +15,14 @@ const CurrentGrid = () => {
     const getGrid = async () => {
         const currentGrid = await axios.get('/api/currentGrid');
         setGrid(currentGrid.data);
+        setDriverCount(currentGrid.data.length);
     }
 
     return(
         <div className='f1'>
             <Card body className='box  week-card' style={{marginTop: '50px', marginBottom: '50px'}}>
-                <h1 className='this-week'>This Weeks Grid</h1>
+                <h1 className='this-week'>Grid</h1>
+                <p>Drivers: {driverCount}</p>
                 {grid.map(driver => {
                     return (
                         <Card body className='shadow' style={{width: '95%', margin: 'auto', marginTop: '5px'}}>
