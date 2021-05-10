@@ -108,9 +108,10 @@
 }
 
 .practice-card{
-    width: 1250px;
+    width: fit-content;
     margin: auto;
-    margin-top: 50px
+    margin-top: 50px;
+    margin-left: 50px;
 }
 
 .driver-card{

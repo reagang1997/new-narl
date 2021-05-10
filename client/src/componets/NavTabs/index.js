@@ -4,7 +4,7 @@ import logo from './logo.png';
 import { Navbar, NavDropdown, Nav } from 'react-bootstrap';
 import './style.css';
 
-function NavTabs({loggedIn, guid}) {
+function NavTabs({ loggedIn, guid }) {
   // We'll go into the Hooks API later, for now, we are just using some code
   // from the react-router docs (https://reacttraining.com/react-router/web/api/Hooks/uselocation)
   // This allows the component to check the route any time the user uses a link to navigate.
@@ -20,17 +20,22 @@ function NavTabs({loggedIn, guid}) {
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
           <Nav.Link onClick={e => history.push('/practiceResults')}>Practice Results</Nav.Link>
-          <Nav.Link  onClick={e => history.push('/raceInformation')}>Information</Nav.Link>
+          <Nav.Link onClick={e => history.push('/raceInformation')}>Information</Nav.Link>
+          <NavDropdown title='Results' id="collasible-nav-dropdown">
+            <NavDropdown.Item onClick={e => history.push('/weekendResults')}>Weekend Results</NavDropdown.Item>
+            <NavDropdown.Item onClick={e => history.push('/seasonResults')}>Season Results</NavDropdown.Item>
+            <NavDropdown.Item onClick={e => history.push('/allResults')}>All Results</NavDropdown.Item>
+          </NavDropdown>
           <NavDropdown title="Standings" id="collasible-nav-dropdown">
-            <NavDropdown.Item  onClick={e => history.push('/driverStandings')}>Driver Standings</NavDropdown.Item>
-            <NavDropdown.Item  onClick={e => history.push('/constructorStandings')}>Constructor Standings</NavDropdown.Item>
-            
+            <NavDropdown.Item onClick={e => history.push('/driverStandings')}>Driver Standings</NavDropdown.Item>
+            <NavDropdown.Item onClick={e => history.push('/constructorStandings')}>Constructor Standings</NavDropdown.Item>
+
           </NavDropdown>
 
         </Nav>
         <Nav>
-        
-          {loggedIn ? <Nav.Link onClick={e => history.push(`/driverHome/${guid}`)}>Driver Home</Nav.Link> :  <Nav.Link onClick={e => history.push('/loginSignup')} >Log in / Signup</Nav.Link>}
+
+          {loggedIn ? <Nav.Link onClick={e => history.push(`/driverHome/${guid}`)}>Driver Home</Nav.Link> : <Nav.Link onClick={e => history.push('/loginSignup')} >Log in / Signup</Nav.Link>}
           {/* <Nav.Link href="/adminHome">Admin Home</Nav.Link> */}
         </Nav>
       </Navbar.Collapse>

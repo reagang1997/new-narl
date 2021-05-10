@@ -15,6 +15,7 @@ import './index.css';
 import DriverHome from "./componets/pages/DriverHome";
 import ForgotPassword from "./componets/pages/ForgotPassword";
 import PasswordReset from "./componets/pages/PasswordReset";
+import WeekendResults from "./componets/pages/WeekendResults";
 const App = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [driver, setDriver] = useState({});
@@ -45,6 +46,9 @@ const App = () => {
       <div>
         <NavTabs loggedIn={loggedIn} guid={guid}/>
         <Route exact path="/" component={Home}/>
+        <Route exact path='/weekendResults'>
+          <WeekendResults loggedIn={loggedIn}></WeekendResults>
+        </Route>
         <Route path='/driverHome' component={DriverHome}>
           <DriverHome loggedIn={loggedIn} driver={driver} setDriver={setDriver} getGuid={getGuid} guid={guid} setGuid={setGuid}/>
         </Route>
