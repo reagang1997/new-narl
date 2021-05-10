@@ -61,6 +61,10 @@
     margin-top: 15px;
 }
 
+.schedule-card{
+    width: fit-content;
+}
+
 .center{
     width: 25%;
     margin: auto;
