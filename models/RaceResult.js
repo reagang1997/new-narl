@@ -5,6 +5,11 @@ const Schema = mongoose.Schema;
 const RaceResultSchema = new Schema({
     driverName: String,
     guid: String,
+    points: Number,
+    fastestLap: {
+        type: Boolean,
+        default: false
+    },
     driverID: {
         type: Schema.Types.ObjectId,
         ref: 'Driver'
