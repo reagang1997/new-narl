@@ -167,5 +167,17 @@ router.get('/api/readQualyFile/:fileName', async (req, res) => {
     });
 })
 
+router.get('/api/currentQualyResults', async (req, res) => {
+    let currentSeason = await Season.find({});
+    currentSeason = currentSeason[currentSeason.length - 1];
+    // let weekend = currentSeason.weeekends[ - 1];
+    let weekend = currentSeason.weekends.length - 1;
+    let weekendID = currentSeason.weekends[weekend];
+    console.log(weekend);
+    let qualyResults = await Weekend.findOne({ _id: weekendID }).populate('qualy');
+
+    res.send(qualyResults);
+})
+
 
 module.exports = router;

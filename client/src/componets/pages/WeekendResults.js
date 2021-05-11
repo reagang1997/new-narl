@@ -3,22 +3,32 @@ import Sectors from '../Sectors';
 import TeamIcon from '../TeamIcon';
 import React, { useEffect, useState } from 'react';
 import { Card, Col, Row } from 'react-bootstrap';
+import QualyResult from '../QualyResult';
 
 const WeekendResults = () => {
 
     const [pr, setPR] = useState([]);
-    const [p1, setP1] = useState(0);
+    const [prP1, setPRP1] = useState(0);
+    const [qrP1, setQRP1] = useState(0);
+    const [qr, setQR] = useState([]);
     const [trackSectors, setTrackSectors] = useState({ s1: 0, s2: 0, s3: 0 });
 
     useEffect(() => {
         getPR();
+        getQR();
     }, [])
 
     const getPR = async () => {
         const tmpPR = await axios.get('/api/practiceResults');
         console.log(tmpPR.data)
         setPR(tmpPR.data.practice);
-        setP1(tmpPR.data.practice[0].rawLapTime)
+        setPRP1(tmpPR.data.practice[0].rawLapTime)
+    }
+
+    const getQR = async () => {
+        const tmpQR = await axios.get('/api/currentQualyResult');
+        setQR(tmpQR.data.qualy);
+        setQRP1(tmpQR.data.qualy[0].rawLapTime);
     }
     const getFormatted = (s) => {
         var ms = s % 1000;
@@ -45,7 +55,7 @@ const WeekendResults = () => {
             <Row>
                 <Col md={6}>
                     <Card body className='f1 box practice-card'>
-                        <h1 style={{width: 'fit-content', margin: 'auto', marginBottom: '8px'}}>Practice Results</h1>
+                        <h1 style={{ width: 'fit-content', margin: 'auto', marginBottom: '8px' }}>Practice Results</h1>
 
                         <table className="table rounded table-hover table-responsive-sm">
                             <thead>
@@ -63,7 +73,7 @@ const WeekendResults = () => {
 
                                     let split;
                                     if (i > 0) {
-                                        split = driver.rawLapTime - p1;
+                                        split = driver.rawLapTime - prP1;
                                         split = getSetor(split);
                                     }
                                     if (driver.rawLapTime === 99999999999) return;
@@ -140,6 +150,19 @@ const WeekendResults = () => {
 
                             </tbody>
                         </table>
+                    </Card>
+                </Col>
+                <Col md={6}>
+                    <Card body className='box f1' style={{ marginTop: '50px' }}>
+                        <h1 style={{ width: 'fit-content', margin: 'auto' }}>Qualy Results</h1>
+                        {qr.length > 0 ? <QualyResult qr={qr}/> : <h3 style={{width: 'fit-content', margin: 'auto'}}>Qualy will be approx Sunday 8:10pm</h3>}
+                    </Card>
+                </Col>
+            </Row>
+            <Row>
+                <Col md={12}>
+                    <Card body className='box f1' style={{ marginTop: '50px' }}>
+                        <h1 style={{ width: 'fit-content', margin: 'auto' }}>Race Results</h1>
                     </Card>
                 </Col>
             </Row>
