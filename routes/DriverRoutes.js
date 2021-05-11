@@ -166,6 +166,11 @@ router.get('/api/driver/:guid', async (req, res) => {
     const foundDriver = await Driver.findOne({ guid: tmp });
     console.log(foundDriver);
     res.send(foundDriver);
+});
+
+router.put('/api/driver/clearPoints', async (req, res) => {
+    const cleared = await Driver.updateMany({}, {$set: {points: 0}});
+    res.send(cleared);
 })
 
 router.get('/api/openTeamSeats', async (req, res) => {

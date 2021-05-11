@@ -10,7 +10,7 @@ const Track = require('../models/Track');
 router.get('/api/readRaceFile/:fileName', async (req, res) => {
     const c = new Client();
     c.on('ready', () => {
-        c.get(`/173.234.30.178_11576/results/season2/${req.params.fileName}`, (err, stream) => {
+        c.get(`/173.234.30.178_11576/results/${req.params.fileName}`, (err, stream) => {
             if (err) throw err;
             let content = '';
             stream.on('data', function (chunk) {

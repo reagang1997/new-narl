@@ -1,4 +1,5 @@
 const EntryList = require("../models/EntryList");
+const NewsPost = require("../models/NewsPost");
 const Season = require('../models/Season');
 const Weekend = require('../models/Weekend');
 
@@ -6,6 +7,7 @@ const router = require("express").Router();
 
 router.post('/api/createEntry', async (req, res) => {
     const created = await EntryList.create(req.body);
+    let {name, driverNumber} = req.body;
     let currentSeason = await Season.find({});
 
     currentSeason = currentSeason[currentSeason.length - 1];
@@ -14,6 +16,11 @@ router.post('/api/createEntry', async (req, res) => {
     weekend = currentSeason.weekends[weekend];
     console.log(weekend);
     let currentGrid = await Weekend.findOneAndUpdate({ _id: weekend }, {$push: {grid: created._id}}, {new: true});
+
+    let msg = {
+        message: `#${driverNumber} ${name} registered for this weeks race!`
+    };
+    let newsMsg = await NewsPost.create(msg)
     res.send(currentGrid);
 
 })

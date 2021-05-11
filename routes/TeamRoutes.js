@@ -93,5 +93,10 @@ router.get('/api/teams/:name', async (req, res) => {
     res.send(found);
 })
 
+router.get('/api/team/clearTeamPoints', async (req, res) => {
+    const cleared = await Team.updateMany({}, {$set: {points: 0}});
+    res.send(cleared);
+})
+
 
 module.exports = router;
