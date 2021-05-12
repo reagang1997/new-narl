@@ -10,6 +10,7 @@ import merc from './img/mb.png';
 import mclaren from './img/mc.png';
 import redBull from './img/rb.png';
 import renault from './img/renault.png';
+
 import racingPoint from './img/rp.png';
 import williams from './img/w.png';
 
