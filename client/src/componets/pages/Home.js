@@ -31,7 +31,7 @@ function Home() {
                 <br/>
                 <br/>
                 <h3>Already a driver and enjoing the close competition?<span style={{fontSize: '8px', marginLeft: '-5px'}}>and this gorgeous website</span></h3>
-                <p>Please donate! All procedes will be put right back into the league!</p>
+                <p>Please donate! All procedes will be put towards funding for a new server to run a new grid, and into the website. Thank you!</p>
                 <a href='https://www.paypal.com/donate?business=X8RLSA8DMG4VW&currency_code=USD' target='blank'><Button variant='warning'>Donate</Button></a>
             </div>
         </Jumbotron>
