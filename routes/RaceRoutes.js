@@ -33,20 +33,20 @@ router.get('/api/readRaceFile/:fileName', async (req, res) => {
                 console.log('CURRENT TRACK' + currentTrack);
                 const points = [25, 18, 15, 12, 10, 8, 6, 4, 2, 1];
                 raceResults.forEach(async (result, i) => {
-                    if(result.BestLap === 999999999){
+                    if (result.BestLap === 999999999) {
                         return
                     }
 
 
                     // see if driver is in weekends race session (array)
-                    const driverInPR = await RaceResult.findOne({guid: result.DriverGuid});
+                    const driverInPR = await RaceResult.findOne({ guid: result.DriverGuid });
 
-                    if(!driverInPR){
+                    if (!driverInPR) {
                         // see if driver exists
-                        const driverExists = await Driver.findOne({guid: result.DriverGuid});
+                        const driverExists = await Driver.findOne({ guid: result.DriverGuid });
 
                         // if exists
-                        if(driverExists){
+                        if (driverExists) {
                             //create race Result
                             let tmpRR = {
                                 driverName: driverExists.name,
@@ -57,9 +57,9 @@ router.get('/api/readRaceFile/:fileName', async (req, res) => {
                             }
                             const newRR = await RaceResult.create(tmpRR);
                             //push new result into current weekend
-                            const updatedWeekend = await Weekend.findOneAndUpdate({_id: currentWeekend}, {$push: {race: newRR._id}});
+                            const updatedWeekend = await Weekend.findOneAndUpdate({ _id: currentWeekend }, { $push: { race: newRR._id } });
                         }
-                        else{
+                        else {
                             //create driver
                             let tmpDriver = {
                                 name: result.DriverName,
@@ -77,18 +77,18 @@ router.get('/api/readRaceFile/:fileName', async (req, res) => {
                             }
                             const newRR = await RaceResult.create(tmpRR);
                             //push new result into current weekend
-                            const updatedWeekend = await Weekend.findOneAndUpdate({_id: currentWeekend}, {$push: {race: newRR._id}});
+                            const updatedWeekend = await Weekend.findOneAndUpdate({ _id: currentWeekend }, { $push: { race: newRR._id } });
 
                         }
-                    } 
-                    
+                    }
+
                     // update driver points
-                    if (i <= 9){
-                        if(i === 0){
-                            const addedPoints = await Driver.findOneAndUpdate({guid: result.DriverGuid}, {$inc: {points: points[i], careerPoints: points[i], wins: 1, careerWins: 1}});
+                    if (i <= 9) {
+                        if (i === 0) {
+                            const addedPoints = await Driver.findOneAndUpdate({ guid: result.DriverGuid }, { $inc: { points: points[i], careerPoints: points[i], wins: 1, careerWins: 1 } });
                         }
-                        else{
-                            const addedPoints = await Driver.findOneAndUpdate({guid: result.DriverGuid}, {$inc: {points: points[i], careerPoints: points[i]}});
+                        else {
+                            const addedPoints = await Driver.findOneAndUpdate({ guid: result.DriverGuid }, { $inc: { points: points[i], careerPoints: points[i] } });
                         }
                     }
 
@@ -164,7 +164,7 @@ router.get('/api/readRaceFile/:fileName', async (req, res) => {
                         }
                     })
                 })
-                const newResults = await Weekend.find({_id: currentWeekend}).populate('race');
+                const newResults = await Weekend.find({ _id: currentWeekend }).populate('race');
                 res.status(200);
                 res.send(newResults);
             })
@@ -177,7 +177,27 @@ router.get('/api/readRaceFile/:fileName', async (req, res) => {
         user: 'nbhapsgs',
         password: '9p:I0*xA59KMfh'
     });
+});
+
+router.get('/api/race/currentRaceResults', async (req, res) => {
+    let currentSeason = await Season.find({}).populate('weekends');
+    currentSeason = currentSeason[currentSeason.length - 1];
+
+    let currentWeekend = currentSeason.weekends[currentSeason.weekends.length - 1];
+
+    let raceResults = await Weekend.findOne({ _id: currentWeekend }).populate('race');
+    raceResults.race.sort(compare)
+    res.send(raceResults.race);
 })
 
+function compare(a, b) {
+    if (a.points < b.points) {
+        return 1;
+    }
+    if (a.points > b.points) {
+        return -1;
+    }
+    return 0;
+}
 
 module.exports = router;

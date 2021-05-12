@@ -1,0 +1,878 @@
+[{
+  "_id": {
+    "$oid": "605fd08a408e510028e860c1"
+  },
+  "team": "Alfa Romeo",
+  "points": 290,
+  "wins": 7,
+  "fastestLaps": 6,
+  "careerLaps": 0,
+  "careerPoints": 298,
+  "careerWins": 8,
+  "careerFastestLaps": 7,
+  "isActive": true,
+  "wdc": 0,
+  "position": 0,
+  "wcc": 0,
+  "teamHistory": [
+    {
+      "$oid": "605fd0ee408e510028e860d6"
+    }
+  ],
+  "name": "Batata",
+  "__v": 0,
+  "rsvp": "Yes",
+  "driverNumber": "7",
+  "guid": "76561198059743929"
+},{
+  "_id": {
+    "$oid": "605fd090408e510028e860c2"
+  },
+  "team": "Racing Point",
+  "points": 87,
+  "wins": 0,
+  "fastestLaps": 0,
+  "careerLaps": 0,
+  "careerPoints": 156,
+  "careerWins": 1,
+  "careerFastestLaps": 0,
+  "isActive": true,
+  "wdc": 0,
+  "position": 0,
+  "wcc": 0,
+  "teamHistory": [
+    {
+      "$oid": "605fd0ff408e510028e860d9"
+    }
+  ],
+  "name": "Cunninglinguist",
+  "__v": 0,
+  "rsvp": "",
+  "driverNumber": 5
+},{
+  "_id": {
+    "$oid": "605fd094408e510028e860c3"
+  },
+  "team": "Renault",
+  "points": 192,
+  "wins": 3,
+  "fastestLaps": 0,
+  "careerLaps": 18,
+  "careerPoints": 166,
+  "careerWins": 4,
+  "careerFastestLaps": 1,
+  "isActive": true,
+  "wdc": 0,
+  "position": 0,
+  "wcc": 0,
+  "teamHistory": [
+    {
+      "$oid": "605fd0f2408e510028e860d7"
+    }
+  ],
+  "name": "SHELBY",
+  "__v": 0,
+  "rsvp": "Yes",
+  "driverNumber": 14,
+  "guid": "76561198415460681"
+},{
+  "_id": {
+    "$oid": "605fd098408e510028e860c4"
+  },
+  "team": "Alpha Tauri",
+  "points": 114,
+  "wins": 1,
+  "fastestLaps": 0,
+  "careerLaps": 428,
+  "careerPoints": 89,
+  "careerWins": 0,
+  "careerFastestLaps": 0,
+  "isActive": true,
+  "wdc": 0,
+  "position": 0,
+  "wcc": 0,
+  "teamHistory": [
+    {
+      "$oid": "605fd0f9408e510028e860d8"
+    }
+  ],
+  "name": "Ratajawatakowowski",
+  "__v": 0,
+  "rsvp": "",
+  "driverNumber": 22
+},{
+  "_id": {
+    "$oid": "605fd09c408e510028e860c5"
+  },
+  "team": "Renault",
+  "points": 105,
+  "wins": 1,
+  "fastestLaps": 4,
+  "careerLaps": 395,
+  "careerPoints": 82,
+  "careerWins": 1,
+  "careerFastestLaps": 3,
+  "isActive": true,
+  "wdc": 0,
+  "position": 0,
+  "wcc": 0,
+  "teamHistory": [
+    {
+      "$oid": "605fd0f2408e510028e860d7"
+    }
+  ],
+  "name": "BackMarker",
+  "__v": 0,
+  "rsvp": "Yes",
+  "driverNumber": 31,
+  "guid": "76561198972385440"
+},{
+  "_id": {
+    "$oid": "605fd0a0408e510028e860c6"
+  },
+  "team": "Alpha Tauri",
+  "points": 115,
+  "wins": 0,
+  "fastestLaps": 0,
+  "careerLaps": 1144,
+  "careerPoints": 88,
+  "careerWins": 0,
+  "careerFastestLaps": 0,
+  "isActive": true,
+  "wdc": 0,
+  "position": 0,
+  "wcc": 0,
+  "teamHistory": [
+    {
+      "$oid": "605fd0f9408e510028e860d8"
+    }
+  ],
+  "name": "carproblems",
+  "__v": 0,
+  "rsvp": "",
+  "driverNumber": 10,
+  "guid": "76561197980256003"
+},{
+  "_id": {
+    "$oid": "605fd0a3408e510028e860c7"
+  },
+  "team": "Ferrari",
+  "points": 115,
+  "wins": 0,
+  "fastestLaps": 0,
+  "careerLaps": 1357,
+  "careerPoints": 234,
+  "careerWins": 3,
+  "careerFastestLaps": 1,
+  "isActive": true,
+  "wdc": 1,
+  "position": 0,
+  "wcc": 1,
+  "teamHistory": [
+    {
+      "$oid": "605fd105408e510028e860da"
+    }
+  ],
+  "name": "Theo",
+  "__v": 0,
+  "guid": "76561197961128043",
+  "rsvp": "Yes",
+  "driverNumber": 16
+},{
+  "_id": {
+    "$oid": "605fd0a7408e510028e860c8"
+  },
+  "team": "Red Bull",
+  "points": 25,
+  "wins": 0,
+  "fastestLaps": 0,
+  "careerLaps": 0,
+  "careerPoints": 94,
+  "careerWins": 0,
+  "careerFastestLaps": 1,
+  "isActive": true,
+  "wdc": 0,
+  "position": 0,
+  "wcc": 0,
+  "teamHistory": [
+    {
+      "$oid": "605fd10f408e510028e860dc"
+    }
+  ],
+  "name": "Jshylol",
+  "__v": 0,
+  "rsvp": "",
+  "driverNumber": 33,
+  "guid": "76561198025766792"
+},{
+  "_id": {
+    "$oid": "605fd0ab408e510028e860c9"
+  },
+  "team": "Mercedes",
+  "points": 54,
+  "wins": 0,
+  "fastestLaps": 1,
+  "careerLaps": 80,
+  "careerPoints": 109,
+  "careerWins": 0,
+  "careerFastestLaps": 2,
+  "isActive": true,
+  "wdc": 0,
+  "position": 0,
+  "wcc": 0,
+  "teamHistory": [
+    {
+      "$oid": "605fd10a408e510028e860db"
+    }
+  ],
+  "name": "Niski",
+  "__v": 0,
+  "guid": "76561198043408140",
+  "rsvp": "Yes",
+  "driverNumber": 44
+},{
+  "_id": {
+    "$oid": "605fd0b4408e510028e860ca"
+  },
+  "team": "Racing Point",
+  "points": 25,
+  "wins": 0,
+  "fastestLaps": 0,
+  "careerLaps": 35,
+  "careerPoints": 49,
+  "careerWins": null,
+  "careerFastestLaps": 0,
+  "isActive": true,
+  "wdc": 0,
+  "position": 0,
+  "wcc": 0,
+  "teamHistory": [
+    {
+      "$oid": "605fd0ff408e510028e860d9"
+    }
+  ],
+  "name": "SpiffyTheEagle",
+  "__v": 0,
+  "rsvp": "",
+  "admin": true,
+  "driverNumber": 18,
+  "guid": "76561198014638952"
+},{
+  "_id": {
+    "$oid": "605fd0b7408e510028e860cb"
+  },
+  "team": "Reserve",
+  "points": 11,
+  "wins": 0,
+  "fastestLaps": 0,
+  "careerLaps": 1209,
+  "careerPoints": 85,
+  "careerWins": 1,
+  "careerFastestLaps": 2,
+  "isActive": true,
+  "wdc": 0,
+  "position": 0,
+  "wcc": 0,
+  "teamHistory": [
+    {
+      "$oid": "605fd105408e510028e860da"
+    }
+  ],
+  "name": "Reagan G",
+  "__v": 0,
+  "guid": "76561198946955771",
+  "rsvp": "",
+  "admin": true,
+  "driverNumber": 0
+},{
+  "_id": {
+    "$oid": "605fd0bc408e510028e860cc"
+  },
+  "team": "Reserve",
+  "points": 4,
+  "wins": 0,
+  "fastestLaps": 0,
+  "careerLaps": 72,
+  "careerPoints": 26,
+  "careerWins": 0,
+  "careerFastestLaps": 0,
+  "isActive": true,
+  "wdc": 0,
+  "position": 0,
+  "wcc": 0,
+  "teamHistory": [],
+  "name": "sodie",
+  "__v": 0,
+  "rsvp": "",
+  "guid": "76561198180012010"
+},{
+  "_id": {
+    "$oid": "605fd0bf408e510028e860cd"
+  },
+  "team": "Mercedes",
+  "points": 71,
+  "wins": 0,
+  "fastestLaps": 0,
+  "careerLaps": 366,
+  "careerPoints": 131,
+  "careerWins": 1,
+  "careerFastestLaps": 0,
+  "isActive": true,
+  "wdc": 0,
+  "position": 0,
+  "wcc": 0,
+  "teamHistory": [
+    {
+      "$oid": "605fd10a408e510028e860db"
+    }
+  ],
+  "name": "Dabromanovich",
+  "__v": 0,
+  "rsvp": "Yes",
+  "driverNumber": 77,
+  "guid": "76561198338032202"
+},{
+  "_id": {
+    "$oid": "605fd0c2408e510028e860ce"
+  },
+  "team": "McLaren",
+  "points": 20,
+  "wins": 0,
+  "fastestLaps": 0,
+  "careerLaps": 526,
+  "careerPoints": 18,
+  "careerWins": 0,
+  "careerFastestLaps": 0,
+  "isActive": true,
+  "wdc": 0,
+  "position": 0,
+  "wcc": 0,
+  "teamHistory": [
+    {
+      "$oid": "605fd113408e510028e860dd"
+    }
+  ],
+  "name": "CarneAsad",
+  "__v": 0,
+  "rsvp": "Yes",
+  "driverNumber": 3,
+  "guid": "76561198061315736"
+},{
+  "_id": {
+    "$oid": "605fd0c5408e510028e860cf"
+  },
+  "team": "Reserve",
+  "points": 6,
+  "wins": 0,
+  "fastestLaps": 0,
+  "careerLaps": 0,
+  "careerPoints": 6,
+  "careerWins": 0,
+  "careerFastestLaps": 0,
+  "isActive": true,
+  "wdc": 0,
+  "position": 0,
+  "wcc": 0,
+  "teamHistory": [
+    {
+      "$oid": "605fd0ee408e510028e860d6"
+    }
+  ],
+  "name": "Salami",
+  "__v": 0,
+  "rsvp": ""
+},{
+  "_id": {
+    "$oid": "605fd0c8408e510028e860d0"
+  },
+  "team": "Reserve",
+  "points": 2,
+  "wins": 0,
+  "fastestLaps": 0,
+  "careerLaps": 0,
+  "careerPoints": 63,
+  "careerWins": 0,
+  "careerFastestLaps": 0,
+  "isActive": true,
+  "wdc": 0,
+  "position": 0,
+  "wcc": 0,
+  "teamHistory": [
+    {
+      "$oid": "605fd118408e510028e860de"
+    }
+  ],
+  "name": "Maquenchie",
+  "__v": 0,
+  "guid": "7656119815142609",
+  "rsvp": ""
+},{
+  "_id": {
+    "$oid": "605fd0ca408e510028e860d1"
+  },
+  "team": "Reserve",
+  "points": 1,
+  "wins": 0,
+  "fastestLaps": 0,
+  "careerLaps": 0,
+  "careerPoints": 13,
+  "careerWins": 0,
+  "careerFastestLaps": 0,
+  "isActive": false,
+  "wdc": 0,
+  "position": 0,
+  "wcc": 0,
+  "teamHistory": [
+    {
+      "$oid": "605fd105408e510028e860da"
+    }
+  ],
+  "name": "cibbirt",
+  "__v": 0,
+  "rsvp": ""
+},{
+  "_id": {
+    "$oid": "605fd0cd408e510028e860d2"
+  },
+  "team": "McLaren",
+  "points": 16,
+  "wins": 0,
+  "fastestLaps": 0,
+  "careerLaps": 340,
+  "careerPoints": 16,
+  "careerWins": 0,
+  "careerFastestLaps": null,
+  "isActive": true,
+  "wdc": 0,
+  "position": 0,
+  "wcc": 0,
+  "teamHistory": [
+    {
+      "$oid": "605fd113408e510028e860dd"
+    }
+  ],
+  "name": "AlexG",
+  "__v": 0,
+  "rsvp": "Yes",
+  "driverNumber": 4,
+  "guid": "76561198039085663"
+},{
+  "_id": {
+    "$oid": "605fd0d1408e510028e860d3"
+  },
+  "team": "Williams",
+  "points": 20,
+  "wins": 0,
+  "fastestLaps": 0,
+  "careerLaps": 1134,
+  "careerPoints": 14,
+  "careerWins": 0,
+  "careerFastestLaps": 0,
+  "isActive": true,
+  "wdc": 0,
+  "position": 0,
+  "wcc": 0,
+  "teamHistory": [
+    {
+      "$oid": "605fd11d408e510028e860df"
+    }
+  ],
+  "name": "Tommy Gunz",
+  "__v": 0,
+  "guid": "76561198129348572",
+  "rsvp": "Yes",
+  "driverNumber": 6
+},{
+  "_id": {
+    "$oid": "605fd0d4408e510028e860d4"
+  },
+  "team": "Reserve",
+  "points": 0,
+  "wins": 0,
+  "fastestLaps": 0,
+  "careerLaps": 6,
+  "careerPoints": 35,
+  "careerWins": 0,
+  "careerFastestLaps": 0,
+  "isActive": false,
+  "wdc": 0,
+  "position": 0,
+  "wcc": 0,
+  "teamHistory": [
+    {
+      "$oid": "605fd10f408e510028e860dc"
+    }
+  ],
+  "name": "MattWins",
+  "__v": 0,
+  "rsvp": ""
+},{
+  "_id": {
+    "$oid": "605fd0d7408e510028e860d5"
+  },
+  "team": "HAAS",
+  "points": 3,
+  "wins": 0,
+  "fastestLaps": 0,
+  "careerLaps": 65,
+  "careerPoints": 3,
+  "careerWins": 0,
+  "careerFastestLaps": 0,
+  "isActive": false,
+  "wdc": 0,
+  "position": 0,
+  "wcc": 0,
+  "teamHistory": [
+    {
+      "$oid": "605fd11d408e510028e860df"
+    }
+  ],
+  "name": "Jackson",
+  "__v": 0,
+  "guid": "76561198130851942",
+  "rsvp": "Yes",
+  "driverNumber": 9
+},{
+  "_id": {
+    "$oid": "606bd0ab1ab901002880e8f5"
+  },
+  "team": "",
+  "points": 1,
+  "wins": 0,
+  "fastestLaps": 0,
+  "careerLaps": 0,
+  "careerPoints": 0,
+  "careerWins": 0,
+  "careerFastestLaps": 0,
+  "isActive": true,
+  "wdc": 0,
+  "position": 0,
+  "wcc": 0,
+  "teamHistory": [],
+  "name": "bonga cat",
+  "__v": 0,
+  "rsvp": ""
+},{
+  "_id": {
+    "$oid": "6073bf738158270028b1543b"
+  },
+  "team": "Williams",
+  "guid": "76561198013300259",
+  "points": 6,
+  "wins": 0,
+  "fastestLaps": 0,
+  "careerLaps": 76,
+  "careerPoints": 6,
+  "careerWins": 0,
+  "careerFastestLaps": 0,
+  "isActive": true,
+  "wdc": 0,
+  "position": 0,
+  "wcc": 0,
+  "teamHistory": [
+    {
+      "$oid": "605fd11d408e510028e860df"
+    }
+  ],
+  "name": "CountryGentleman",
+  "__v": 0,
+  "rsvp": "Yes",
+  "driverNumber": "63"
+},{
+  "_id": {
+    "$oid": "607a17c35d419200282921c4"
+  },
+  "team": "Ferrari",
+  "guid": "76561199095145171",
+  "points": 1,
+  "wins": 0,
+  "fastestLaps": 0,
+  "careerLaps": 40,
+  "careerPoints": 1,
+  "careerWins": 0,
+  "careerFastestLaps": 0,
+  "isActive": true,
+  "wdc": 0,
+  "position": 0,
+  "wcc": 0,
+  "teamHistory": [
+    {
+      "$oid": "605fd105408e510028e860da"
+    }
+  ],
+  "name": "KingTurkeyLord",
+  "__v": 0,
+  "rsvp": "",
+  "driverNumber": 55
+},{
+  "_id": {
+    "$oid": "607a17d65d419200282921c7"
+  },
+  "team": "HAAS",
+  "guid": "",
+  "points": 0,
+  "wins": 0,
+  "fastestLaps": 0,
+  "careerLaps": 13,
+  "careerPoints": 0,
+  "careerWins": 0,
+  "careerFastestLaps": 0,
+  "isActive": false,
+  "wdc": 0,
+  "position": 0,
+  "wcc": 0,
+  "teamHistory": [],
+  "name": "JATS",
+  "__v": 0,
+  "rsvp": ""
+},{
+  "_id": {
+    "$oid": "607a17e65d419200282921ce"
+  },
+  "team": "",
+  "guid": "",
+  "points": 0,
+  "wins": 0,
+  "fastestLaps": 0,
+  "careerLaps": 31,
+  "careerPoints": 0,
+  "careerWins": 0,
+  "careerFastestLaps": 0,
+  "isActive": false,
+  "wdc": 0,
+  "position": 0,
+  "wcc": 0,
+  "teamHistory": [],
+  "name": "BongoCat",
+  "__v": 0,
+  "rsvp": ""
+},{
+  "_id": {
+    "$oid": "608428b441d624002855b759"
+  },
+  "team": "Reserve",
+  "guid": "76561198746444430",
+  "points": 0,
+  "wins": 0,
+  "fastestLaps": 0,
+  "careerLaps": 217,
+  "careerPoints": 0,
+  "careerWins": 0,
+  "careerFastestLaps": 0,
+  "isActive": false,
+  "wdc": 0,
+  "position": 0,
+  "wcc": 0,
+  "teamHistory": [],
+  "name": "Budah",
+  "__v": 0,
+  "rsvp": "",
+  "driverNumber": 0
+},{
+  "_id": {
+    "$oid": "60877787fb3ff40028589a4b"
+  },
+  "rsvp": "",
+  "driverNumber": 0,
+  "admin": false,
+  "team": "",
+  "guid": "",
+  "points": 0,
+  "wins": 0,
+  "fastestLaps": 0,
+  "careerLaps": 36,
+  "careerPoints": 0,
+  "careerWins": 0,
+  "careerFastestLaps": 0,
+  "isActive": false,
+  "wdc": 0,
+  "position": 0,
+  "wcc": 0,
+  "teamHistory": [],
+  "name": "tommygunz_18",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60881c70e6a14e00288c27e0"
+  },
+  "rsvp": "",
+  "driverNumber": 0,
+  "admin": false,
+  "team": "",
+  "guid": "",
+  "points": 0,
+  "wins": 0,
+  "fastestLaps": 0,
+  "careerLaps": 12,
+  "careerPoints": 0,
+  "careerWins": 0,
+  "careerFastestLaps": 0,
+  "isActive": false,
+  "wdc": 0,
+  "position": 0,
+  "wcc": 0,
+  "teamHistory": [],
+  "name": "jackson_",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "608b7bc660932d002811eaf0"
+  },
+  "rsvp": "",
+  "driverNumber": 0,
+  "admin": false,
+  "team": "",
+  "guid": "",
+  "points": 0,
+  "wins": 0,
+  "fastestLaps": 0,
+  "careerLaps": 14,
+  "careerPoints": 0,
+  "careerWins": 0,
+  "careerFastestLaps": 0,
+  "isActive": false,
+  "wdc": 0,
+  "position": 0,
+  "wcc": 0,
+  "teamHistory": [],
+  "name": "dabromanovich",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "608befc76dfc70002810c53c"
+  },
+  "rsvp": "",
+  "driverNumber": 0,
+  "admin": false,
+  "team": "",
+  "guid": "",
+  "points": 0,
+  "wins": 0,
+  "fastestLaps": 0,
+  "careerLaps": 19,
+  "careerPoints": 0,
+  "careerWins": 0,
+  "careerFastestLaps": 0,
+  "isActive": false,
+  "wdc": 0,
+  "position": 0,
+  "wcc": 0,
+  "teamHistory": [],
+  "name": "kingturkeylord",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "608f2882dbefca0028c7823a"
+  },
+  "rsvp": "",
+  "driverNumber": 0,
+  "admin": false,
+  "team": "",
+  "guid": "",
+  "points": 0,
+  "wins": 0,
+  "fastestLaps": 0,
+  "careerLaps": 0,
+  "careerPoints": 0,
+  "careerWins": 0,
+  "careerFastestLaps": 0,
+  "isActive": false,
+  "wdc": 0,
+  "position": 0,
+  "wcc": 0,
+  "teamHistory": [],
+  "name": "Xander Driessens",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60948fa28962570028e0dc0a"
+  },
+  "rsvp": "Yes",
+  "driverNumber": 22,
+  "admin": false,
+  "team": "Alpha Tauri",
+  "guid": "76561198063039022",
+  "points": 0,
+  "wins": 0,
+  "fastestLaps": 0,
+  "careerLaps": 0,
+  "careerPoints": 0,
+  "careerWins": 0,
+  "careerFastestLaps": 0,
+  "isActive": false,
+  "wdc": 0,
+  "position": 0,
+  "wcc": 0,
+  "teamHistory": [],
+  "name": "mate",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6094b22c8962570028e0dc0c"
+  },
+  "rsvp": "Yes",
+  "driverNumber": 55,
+  "admin": false,
+  "team": "Ferrari",
+  "guid": "https://steamcommunity.com/profiles/76561199070013146/",
+  "points": 0,
+  "wins": 0,
+  "fastestLaps": 0,
+  "careerLaps": 0,
+  "careerPoints": 0,
+  "careerWins": 0,
+  "careerFastestLaps": 0,
+  "isActive": false,
+  "wdc": 0,
+  "position": 0,
+  "wcc": 0,
+  "teamHistory": [],
+  "name": "Smoop",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6096b37ab5a8ef0028ad3a4b"
+  },
+  "rsvp": "",
+  "driverNumber": 0,
+  "admin": false,
+  "team": "Reserve",
+  "guid": "76561199070013146",
+  "points": 0,
+  "wins": 0,
+  "fastestLaps": 0,
+  "careerLaps": 0,
+  "careerPoints": 0,
+  "careerWins": 0,
+  "careerFastestLaps": 0,
+  "isActive": false,
+  "wdc": 0,
+  "position": 0,
+  "wcc": 0,
+  "teamHistory": [],
+  "name": "Jay",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6096b394b5a8ef0028ad3a4f"
+  },
+  "rsvp": "",
+  "driverNumber": 0,
+  "admin": false,
+  "team": "Reserve",
+  "guid": "76561198930304560",
+  "points": 0,
+  "wins": 0,
+  "fastestLaps": 0,
+  "careerLaps": 0,
+  "careerPoints": 0,
+  "careerWins": 0,
+  "careerFastestLaps": 0,
+  "isActive": false,
+  "wdc": 0,
+  "position": 0,
+  "wcc": 0,
+  "teamHistory": [],
+  "name": "BongoCat",
+  "__v": 0
+}]

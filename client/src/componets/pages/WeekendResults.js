@@ -4,6 +4,7 @@ import TeamIcon from '../TeamIcon';
 import React, { useEffect, useState } from 'react';
 import { Card, Col, Row } from 'react-bootstrap';
 import QualyResult from '../QualyResult';
+import RaceResult from '../RaceResult';
 
 const WeekendResults = () => {
 
@@ -152,17 +153,18 @@ const WeekendResults = () => {
                         </table>
                     </Card>
                 </Col>
-                <Col md={6}>
+                {/* <Col md={6}>
                     <Card body className='box f1' style={{ marginTop: '50px' }}>
                         <h1 style={{ width: 'fit-content', margin: 'auto' }}>Qualy Results</h1>
                         {qr.length > 0 ? <QualyResult qr={qr}/> : <h3 style={{width: 'fit-content', margin: 'auto'}}>Qualy will be approx Sunday 8:10pm</h3>}
                     </Card>
-                </Col>
+                </Col> */}
             </Row>
             <Row>
                 <Col md={12}>
                     <Card body className='box f1' style={{ marginTop: '50px' }}>
                         <h1 style={{ width: 'fit-content', margin: 'auto' }}>Race Results</h1>
+                        <RaceResult></RaceResult>
                     </Card>
                 </Col>
             </Row>

@@ -1,0 +1,201 @@
+[{
+  "_id": {
+    "$oid": "6096b35bb5a8ef0028ad3a45"
+  },
+  "teamName": "",
+  "rawLapTime": 71583,
+  "tire": "C4",
+  "laps": 0,
+  "sector1time": 30534,
+  "sector2time": 18495,
+  "sector3time": 21897,
+  "sector1pb": 30534,
+  "sector2pb": 18495,
+  "sector3pb": 21897,
+  "sector1color": "",
+  "sector2color": "",
+  "sector3color": "",
+  "driverName": "Niski",
+  "guid": "76561198043408140",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6096b37ab5a8ef0028ad3a48"
+  },
+  "teamName": "",
+  "rawLapTime": 70042,
+  "tire": "C4",
+  "laps": 0,
+  "sector1time": 29995,
+  "sector2time": 18535,
+  "sector3time": 21933,
+  "sector1pb": 29995,
+  "sector2pb": 18076,
+  "sector3pb": 21924,
+  "sector1color": "",
+  "sector2color": "",
+  "sector3color": "",
+  "driverName": "SHELBY",
+  "guid": "76561198415460681",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6096b37ab5a8ef0028ad3a49"
+  },
+  "teamName": "",
+  "rawLapTime": 74099,
+  "tire": "C4",
+  "laps": 0,
+  "sector1time": 32172,
+  "sector2time": 19584,
+  "sector3time": 22977,
+  "sector1pb": 31944,
+  "sector2pb": 19584,
+  "sector3pb": 22418,
+  "sector1color": "",
+  "sector2color": "",
+  "sector3color": "",
+  "driverName": "CarneAsad",
+  "guid": "76561198061315736",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6096b37ab5a8ef0028ad3a4a"
+  },
+  "teamName": "",
+  "rawLapTime": 70779,
+  "tire": "C4",
+  "laps": 0,
+  "sector1time": 30171,
+  "sector2time": 18431,
+  "sector3time": 22564,
+  "sector1pb": 30098,
+  "sector2pb": 18431,
+  "sector3pb": 21983,
+  "sector1color": "",
+  "sector2color": "",
+  "sector3color": "",
+  "driverName": "BackMarker",
+  "guid": "76561198972385440",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6096b37bb5a8ef0028ad3a4c"
+  },
+  "teamName": "",
+  "rawLapTime": 71890,
+  "tire": "C4",
+  "laps": 0,
+  "sector1time": 30490,
+  "sector2time": 18292,
+  "sector3time": 22222,
+  "sector1pb": 30490,
+  "sector2pb": 18292,
+  "sector3pb": 22222,
+  "sector1color": "",
+  "sector2color": "",
+  "sector3color": "",
+  "driverName": "Jay",
+  "guid": "76561199070013146",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6096b394b5a8ef0028ad3a4e"
+  },
+  "teamName": "",
+  "rawLapTime": 77885,
+  "tire": "C3",
+  "laps": 0,
+  "sector1time": 33599,
+  "sector2time": 20966,
+  "sector3time": 23728,
+  "sector1pb": 33599,
+  "sector2pb": 20690,
+  "sector3pb": 23508,
+  "sector1color": "",
+  "sector2color": "",
+  "sector3color": "",
+  "driverName": "carproblems",
+  "guid": "76561197980256003",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6096b394b5a8ef0028ad3a50"
+  },
+  "teamName": "",
+  "rawLapTime": 80395,
+  "tire": "C4",
+  "laps": 0,
+  "sector1time": 35174,
+  "sector2time": 21330,
+  "sector3time": 23891,
+  "sector1pb": 35174,
+  "sector2pb": 21330,
+  "sector3pb": 23891,
+  "sector1color": "",
+  "sector2color": "",
+  "sector3color": "",
+  "driverName": "BongoCat",
+  "guid": "76561198930304560",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6096b3b7b5a8ef0028ad3a53"
+  },
+  "teamName": "",
+  "rawLapTime": 74422,
+  "tire": "C3",
+  "laps": 0,
+  "sector1time": 31852,
+  "sector2time": 19296,
+  "sector3time": 23274,
+  "sector1pb": 31852,
+  "sector2pb": 19296,
+  "sector3pb": 23274,
+  "sector1color": "",
+  "sector2color": "",
+  "sector3color": "",
+  "driverName": "Theo",
+  "guid": "76561197961128043",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6096b3b8b5a8ef0028ad3a54"
+  },
+  "teamName": "",
+  "rawLapTime": 72187,
+  "tire": "C4",
+  "laps": 0,
+  "sector1time": 31151,
+  "sector2time": 19134,
+  "sector3time": 21902,
+  "sector1pb": 31151,
+  "sector2pb": 19134,
+  "sector3pb": 21902,
+  "sector1color": "",
+  "sector2color": "",
+  "sector3color": "",
+  "driverName": "CountryGentleman",
+  "guid": "76561198013300259",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6096b3e1b5a8ef0028ad3a56"
+  },
+  "teamName": "",
+  "rawLapTime": 76530,
+  "tire": "",
+  "laps": 0,
+  "sector1time": 9999999999,
+  "sector2time": 9999999999,
+  "sector3time": 9999999999,
+  "sector1pb": 9999999999,
+  "sector2pb": 9999999999,
+  "sector3pb": 9999999999,
+  "sector1color": "",
+  "sector2color": "",
+  "sector3color": "",
+  "driverName": "Jackson",
+  "guid": "76561198130851942",
+  "__v": 0
+}]
