@@ -534,7 +534,13 @@ const AdminHome = ({ loggedIn, setLoggedIn }) => {
                             <td>{singleDriver.careerFastestLaps}</td>
                         </tr>
                     </table> : <div></div> }
-                {selection === "Set Track Info" ? <TrackInfo></TrackInfo> : <div></div>}    
+                {selection === "Set Track Info" ? <div>
+                    <TrackInfo></TrackInfo>
+                    <Button onClick={async (e) => {
+                        const nextWeekend = await axios.post('/api/nextWeekend');
+                        console.log('went to next weekend')
+                    }}>Next Weekend</Button>
+                </div> : <div></div>}    
             </div>
               
 
