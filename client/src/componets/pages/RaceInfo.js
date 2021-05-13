@@ -10,7 +10,7 @@ const RaceInfo = () => {
     <div className="col-md-12 f1">
       <div>
         <div body className='' style={{ width: '1250px', margin: 'auto',  marginTop: '25px' }}>
-          <h1 style={{ width: 'fit-content', margin: 'auto', fontSize: '60px', borderBottom: '2px solid rgb(255, 230, 0)' }}>Round 15</h1>
+          <h1 style={{ width: 'fit-content', margin: 'auto', fontSize: '60px', borderBottom: '2px solid rgb(255, 230, 0)' }}>Round 16</h1>
           <Row>
             <Col md={6}>
               <Row>

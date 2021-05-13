@@ -12,7 +12,7 @@ router.post('/api/createWeekend', async (req, res) => {
     const newWeekend = await Weekend.create({});
     const updatedSeason = await Season.findOneAndUpdate({_id: currentSeason._id}, {$push: {weekends: newWeekend._id}});
     res.send(updatedSeason);
-})
+});
 
 router.post('/api/nextWeekend', async (req, res) => {
     const updatedRsvp = await Driver.updateMany({}, {$set: {rsvp: ''}});
