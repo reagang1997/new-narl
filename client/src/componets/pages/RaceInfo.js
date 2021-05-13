@@ -2,6 +2,7 @@ import React from 'react';
 import CurrentTrack from '../CurrentTrack';
 import CurrentGrid from '../CurrentGrid';
 import { Card, Col, Row } from 'react-bootstrap';
+import NewsFeed from '../NewsFeed';
 
 const RaceInfo = () => {
   return (
@@ -224,6 +225,7 @@ const RaceInfo = () => {
               </Row>
             </Col>
             <Col md={6}>
+              <NewsFeed/>
               <CurrentGrid />
 
             </Col>
