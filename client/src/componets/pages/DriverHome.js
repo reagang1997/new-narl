@@ -72,6 +72,8 @@ const DriverHome = ({ loggedIn, driver, setDriver, guid, setGuid }) => {
                 <div className='f1' style={{ width: '1250px', margin: 'auto', marginTop: '25px' }} >
 
                     <h1 style={{ fontSize: '55px' }}>{driver.name}</h1>
+                    <h3>{driver.team}</h3>
+                    <h8>Server Password: narlseason2</h8>
                     {/* <h4><TeamIcon teamName={driver.team} /><span>{driver.team}</span></h4> */}
                     {driver.team !== 'Reserve' ? <RSVP setRsvp={setRsvp} updateRsvp={updateRsvp} driver={driver} rsvp={rsvp} /> :
                         <div>
