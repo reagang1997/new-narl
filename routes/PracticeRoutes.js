@@ -199,7 +199,7 @@ router.get('/api/readFile/:fileName', async (req, res) => {
                             //create practice Result
                             let tmpPR = {
                                 driverName: driverExists.name,
-                                team: driverExists.team,
+                                teamName: driverExists.team,
                                 rawLapTime: result.BestLap,
                                 guid: driverExists.guid
                             }
@@ -219,7 +219,7 @@ router.get('/api/readFile/:fileName', async (req, res) => {
                             //create new practice result
                             let tmpPR = {
                                 driverName: result.DriverName,
-                                team: 'Reserve',
+                                teamName: 'Reserve',
                                 rawLapTime: result.BestLap,
                                 guid: result.DriverGuid
                             }
