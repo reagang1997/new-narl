@@ -19,7 +19,7 @@ const NewsFeed = () => {
         <div>
             <Card body className='box' style={{ width: 'fit-content', marginTop: '50px' }}>
                 <h1 style={{width: 'fit-content', margin: 'auto', borderBottom: '2px solid rgb(255, 230, 0)', marginBottom: '25px'}}>News Feed</h1>
-                {news.length > 2 ? <div>{news.map(post => {
+                {news.length > 0 ? <div>{news.map(post => {
                     return (
                         <Card body>
                             {post.message}
