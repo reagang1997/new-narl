@@ -10,11 +10,16 @@ router.get('/api/allTracks', async (req, res) => {
 })
 
 router.put('/api/setCurrentTrack/:id', async (req, res) => {
-    const deleted = await CurrentTrack.deleteMany({});
-    const foundTrack = await Track.findOne({_id: req.params.id});
-    const currentTrack = await CurrentTrack.create({track: foundTrack._id});
-    res.send(currentTrack);
-})
+    let currentSeason = await Season.find({});
+    currentSeason = currentSeason[currentSeason.length - 1];
+    // let weekend = currentSeason.weeekends[ - 1];
+    let weekend = currentSeason.weekends.length - 1;
+    weekend = currentSeason.weekends[weekend];
+    console.log(weekend);
+
+    const setTrack = await Weekend.findOneAndUpdate({ _id: weekend }, {$set: {currentTrack: req.params.id}});
+    res.send(setTrack);
+});
 
 router.get('/api/getCurrentTrack', async (req, res) => {
     let currentSeason = await Season.find({});

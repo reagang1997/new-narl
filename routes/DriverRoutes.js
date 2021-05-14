@@ -29,7 +29,14 @@ router.get('/api/drivers/:name', async (req, res) => {
 })
 
 router.post('/api/updateRSVP', async (req, res) => {
+    
     const updated = await Driver.findOneAndUpdate({ guid: req.body.guid }, { $set: { rsvp: req.body.rsvp } });
+    if(req.body.rsvp === 'No'){
+        let msg = {
+            message: `${updated.name} just opened their seat for Reserve Driver!`
+        };
+        let newsMsg = await NewsPost.create(msg)
+    }
     console.log(req.body);
     res.send(updated);
 })
@@ -166,6 +173,11 @@ router.get('/api/driver/:guid', async (req, res) => {
     const foundDriver = await Driver.findOne({ guid: tmp });
     console.log(foundDriver);
     res.send(foundDriver);
+});
+
+router.put('/api/driver/clearPoints', async (req, res) => {
+    const cleared = await Driver.updateMany({}, {$set: {points: 0}});
+    res.send(cleared);
 })
 
 router.get('/api/openTeamSeats', async (req, res) => {
@@ -180,6 +192,11 @@ router.put('/api/joinTeam', async (req, res) => {
     const {guid, team, driverNumber} = req.body;
     const updated = await Driver.findOneAndUpdate({guid: guid}, {$set: {team: team, driverNumber: driverNumber}});
     const updatedTeam = await Team.findOneAndUpdate({name: updated.team}, {$push: {drivers: updated._id}});
+
+    let msg = {
+        message: `#${driverNumber} ${updated.name} just joined ${team}!`
+    };
+    let newsMsg = await NewsPost.create(msg)
     res.send(updated);
 })
 
