@@ -77,7 +77,7 @@ const DriverHome = ({ loggedIn, driver, setDriver, guid, setGuid }) => {
                     {/* <h4><TeamIcon teamName={driver.team} /><span>{driver.team}</span></h4> */}
                     {driver.team !== 'Reserve' ? <RSVP setRsvp={setRsvp} updateRsvp={updateRsvp} driver={driver} rsvp={rsvp} /> :
                         <div>
-                            <ReserveSignup reserveRsvp={reserveRsvp} setTeam={setTeam} setNumber={setNumber} driver={driver} />
+                            <ReserveSignup reserveRsvp={reserveRsvp} setTeam={setTeam} setNumber={setNumber} driver={driver}/>
                             <ReserveTeamSignup driver={driver} setDriver={setDriver}></ReserveTeamSignup>
                         </div>}
 

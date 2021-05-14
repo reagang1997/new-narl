@@ -31,7 +31,7 @@ const ReserveSignup = ({ reserveRsvp, driver }) => {
 
 
     return (
-        <Card body className='box f1'>
+        <Card body className='box f1'  style={{marginTop: '15px', marginBottom: '15px'}}>
             {driver.rsvp === 'Yes' ? <h1>You are Registered!</h1> :
                 <div>
                     {noOpen ? <h1>There are no open seats</h1> : <h1>Avalible Seats For This Week</h1>}

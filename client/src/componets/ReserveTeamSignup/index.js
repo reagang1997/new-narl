@@ -29,7 +29,7 @@ const ReserveTeamSignup = ({driver, setDriver}) => {
 
     return (
         <div>
-            <Card body className='box'>
+            <Card body className='box' style={{marginTop: '0px', marginBottom: '15px'}}>
                 <h1>Join A Team Today!</h1>
                 <div>
                   

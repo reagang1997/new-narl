@@ -238,7 +238,7 @@ const findOpenSeats = async () => {
             case 'Red Bull':
                 tmp.numbers = redbull;
                 break;
-            case 'Renault':
+            case 'Alpine':
                 tmp.numbers = alpine;
                 break;
             case 'Mercedes':
@@ -250,7 +250,7 @@ const findOpenSeats = async () => {
             case 'Alfa Romeo':
                 tmp.numbers = alfa;
                 break;
-            case 'Racing Point':
+            case 'Aston Martin':
                 tmp.numbers = aston;
                 break;
             case 'Ferrari':
@@ -327,7 +327,7 @@ const findOpenSeats = async () => {
                 })
                 break;
 
-            case 'Renault':
+            case 'Alpine':
                 team.drivers.forEach(driver => {
                     const numberIndex = alpine.indexOf(driver.driverNumber);
                     console.log(numberIndex);
@@ -388,7 +388,7 @@ const findOpenSeats = async () => {
                 })
                 break;
 
-            case 'Racing Point':
+            case 'Aston Martin':
                 team.drivers.forEach(driver => {
                     const numberIndex = aston.indexOf(driver.driverNumber);
                     console.log(numberIndex);
