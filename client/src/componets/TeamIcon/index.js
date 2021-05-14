@@ -12,6 +12,7 @@ import redBull from './img/rb.png';
 import alpine from './img/alpine.png';
 import astonmartin from './img/astonmartin.png';
 import williams from './img/w.png';
+import reserve from './img/reserve.png';
 
 import './style.css';
 
@@ -63,6 +64,8 @@ function TeamIcon({ teamName }) {
         case 'Williams':
             img = williams;
             break;
+        case 'Reserve':
+            img = reserve;
     }
 
     const handleClick = (e) => {

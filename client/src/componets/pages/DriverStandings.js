@@ -4,6 +4,7 @@ import axios from 'axios';
 import WDCTable from '../WDCTable';
 import fs from 'fs';
 import { Table, Tr, td } from 'reactable';
+import TeamIcon from '../TeamIcon';
 
 function DriverStandings({loggedIn, setLoggedIn}) {
 
@@ -29,11 +30,12 @@ function DriverStandings({loggedIn, setLoggedIn}) {
     // const td = Reactable.td;
 
     return (
-        <Card body className='f1 box driver-card'>
+        <Card body className='f1 box driver-card' style={{width: "1375px"}}>
 
             <table className='table table-hover table-responsive-lg' id='table'>
                 <tr>
                     <th>POS</th>
+                    <th>Teams</th>
                     <th>Driver Name</th>
                     <th>Points</th>
                     <th>Wins</th>
@@ -54,6 +56,7 @@ function DriverStandings({loggedIn, setLoggedIn}) {
                     return (
                         <tr>
                             <td className={pos}>{i+1}</td>
+                            <td column='Teams'><TeamIcon teamName={driver.team}></TeamIcon></td>
                             <td column='Driver Name'>{driver.name}</td>
                             <td column='Points'>{driver.points}</td>
                             <td column='Wins'>{driver.wins}</td>

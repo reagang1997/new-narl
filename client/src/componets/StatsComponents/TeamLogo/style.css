@@ -8,9 +8,10 @@
 }
 
 #Aston-Martin{
-    height: 350px;
+    height: 400px;
+    width: 600px;
     margin-bottom: 25px;
-    margin-left: 200px;
+    margin-left: 250px;
 
 }
 
@@ -24,7 +25,7 @@
 #Alfa-Romeo{
     height: 200px;
     margin-top: 50px;
-    margin-left: 110px;
+    margin-left: 250px;
 
 }
 

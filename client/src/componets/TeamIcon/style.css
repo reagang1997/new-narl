@@ -33,7 +33,7 @@
 }
 
 .Aston-Martin{
-    margin-left: -47px;
+    margin-left: -20px;
 }
 
 .Mercedes{
@@ -64,6 +64,9 @@ table{
     margin-left: -15px;
 }
 
+.Reserve{
+    margin-left: -40px
+}
 td{
     width: 2px;
 }
