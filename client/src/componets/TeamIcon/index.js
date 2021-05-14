@@ -6,11 +6,11 @@ import alfaR from './img/alfa.png';
 import alphaT from './img/alpha.png';
 import ferrari from './img/ferrari.png';
 import haas from './img/h.png';
-import merc from './img/mb.png';
+import merc from './img/merc.png';
 import mclaren from './img/mc.png';
 import redBull from './img/rb.png';
-import renault from './img/renault.png';
-import racingPoint from './img/rp.png';
+import alpine from './img/alpine.png';
+import astonmartin from './img/astonmartin.png';
 import williams from './img/w.png';
 
 import './style.css';
@@ -51,14 +51,14 @@ function TeamIcon({ teamName }) {
         case 'McLaren':
             img = mclaren;
             break;
-        case 'Racing Point':
-            img = racingPoint;
+        case 'Aston Martin':
+            img = astonmartin;
             break;
         case 'Red Bull':
             img = redBull;
             break;
-        case 'Renault':
-            img = renault;
+        case 'Alpine':
+            img = alpine;
             break;
         case 'Williams':
             img = williams;

@@ -6,9 +6,9 @@ import ferrari from './img/ferrari-header.png'
 import haas from './img/haas-head.png'
 import mer from './img/mb.png'
 import mclaren from './img/mc.png'
-import racingPoint from './img/racingpoint-head.png'
+import astonmartin from './img/astonmartin-head.png'
 import redBull from './img/redbull-head.png'
-import renault from './img/renault-head.png'
+import alpine from './img/alpine-head.png'
 import williams from './img/williams-head.png'
 import './style.css';
 
@@ -45,17 +45,17 @@ function TeamLogo({ teamName }) {
             img = mclaren;
             id = 'McLaren-head';
             break;
-        case 'Racing Point':
-            img = racingPoint;
-            id = 'Racing-Point';
+        case 'Aston Martin':
+            img = astonmartin;
+            id = 'Aston-Martin';
             break;
         case 'Red Bull':
             img = redBull;
             id = 'Red-Bull';
             break;
-        case 'Renault':
-            img = renault;
-            id = 'Renault-head';
+        case 'Alpine':
+            img = alpine;
+            id = 'Alpine-head';
             break;
         case 'Williams':
             img = williams;
