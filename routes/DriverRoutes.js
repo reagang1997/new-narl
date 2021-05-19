@@ -2,6 +2,8 @@ const router = require("express").Router();
 const Driver = require('../models/Driver');
 const Team = require('../models/Team');
 const EntryList = require('../models/EntryList');
+const Season = require('../models/Season');
+const Weekend = require('../models/Weekend');
 
 router.post('/api/CreateNewDriver', async (req, res) => {
     const newDriver = await Driver.create(req.body);
@@ -43,8 +45,18 @@ router.post('/api/updateRSVP', async (req, res) => {
 
 router.get('/api/openSeats', async (req, res) => {
     let rsvpNo = await Driver.find({ rsvp: 'No' });
-    const entryList = await EntryList.find({});
+    let currentSeason = await Season.find({});
 
+    currentSeason = currentSeason[currentSeason.length - 1];
+    // let weekend = currentSeason.weeekends[ - 1];
+    let weekend = currentSeason.weekends.length - 1;
+    weekend = currentSeason.weekends[weekend];
+    console.log(weekend);
+    let entryList = await Weekend.findOne({ _id: weekend }).populate('grid').select('grid');
+    entryList = entryList.grid;
+
+    console.log('56 ');
+    console.log(entryList);
     const openSeats = await findOpenSeats();
 
     rsvpNo.forEach(seat => {
@@ -64,7 +76,7 @@ router.get('/api/openSeats', async (req, res) => {
         }
     })
 
-
+    
     let open = openSeats.map(seat => {
         seat.numbers.forEach(number => {
             entryList.forEach(entry => {
