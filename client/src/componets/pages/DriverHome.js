@@ -10,6 +10,7 @@ import e from 'cors';
 import ReserveTeamSignup from '../ReserveTeamSignup';
 import SeasonStats from '../StatsComponents/SeasonStats';
 import CareerStats from '../StatsComponents/CareerStats';
+import DriverHomeNav from '../DriverHomeNav';
 
 const DriverHome = ({ loggedIn, driver, setDriver, guid, setGuid }) => {
     const [rsvp, setRsvp] = useState('');
@@ -68,6 +69,7 @@ const DriverHome = ({ loggedIn, driver, setDriver, guid, setGuid }) => {
     return (
         <div>
             {console.log(driver)}
+
             { driver ?
                 <div className='f1' style={{ width: '1250px', margin: 'auto', marginTop: '25px' }} >
 
@@ -75,6 +77,21 @@ const DriverHome = ({ loggedIn, driver, setDriver, guid, setGuid }) => {
                     <h3>{driver.team}</h3>
                     <h8>Server Password: narlseason2</h8>
                     {/* <h4><TeamIcon teamName={driver.team} /><span>{driver.team}</span></h4> */}
+                    <div style={{ width: 'fit-content', margin: 'auto' }}>
+                        <Row style={{width: '1500px', marginLeft: '-200px'}}>
+                            <Col lg={2}>
+                                <DriverHomeNav driver={driver} />
+                            </Col>
+                            <Col lg={5}>
+                                <SeasonStats wins={driver.wins} pts={driver.points} fl={driver.fastestLaps}></SeasonStats>
+                            </Col>
+
+                            <Col lg={5}>
+                                <CareerStats wins={driver.careerWins} pts={driver.careerPoints} fl={driver.careerFastestLaps}></CareerStats>
+                            </Col>
+
+                        </Row>
+                    </div>
                     {driver.team !== 'Reserve' ? <RSVP setRsvp={setRsvp} updateRsvp={updateRsvp} driver={driver} rsvp={rsvp} /> :
                         <div>
                             <ReserveSignup reserveRsvp={reserveRsvp} setTeam={setTeam} setNumber={setNumber} driver={driver} />
@@ -83,19 +100,7 @@ const DriverHome = ({ loggedIn, driver, setDriver, guid, setGuid }) => {
 
 
                 </div > : <div></div>}
-            <div style={{width: 'fit-content', margin: 'auto'}}>
-                <Row>
 
-                    <Col lg={6}>
-                        <SeasonStats wins={driver.wins} pts={driver.points} fl={driver.fastestLaps}></SeasonStats>
-                    </Col>
-
-                    <Col lg={6}>
-                        <CareerStats wins={driver.careerWins} pts={driver.careerPoints} fl={driver.careerFastestLaps}></CareerStats>
-                    </Col>
-
-                </Row>
-            </div>
             {driver.admin ? <AdminHome></AdminHome> : <div></div>}
         </div>
     )

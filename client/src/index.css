@@ -23,6 +23,10 @@ code {
 
 }
 
+.plain{
+  color: black
+}
+
 @media only screen and (max-width: 500px){
 
   .signup{
