@@ -225,7 +225,7 @@ const RaceInfo = () => {
               </Row>
             </Col>
             <Col md={6}>
-              <NewsFeed/>
+              {/* <NewsFeed/> */}
               <CurrentGrid />
 
             </Col>
