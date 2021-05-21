@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Nav, Form, Button, Col, ToggleButton, ToggleButtonGroup, Card } from 'react-bootstrap';
 import TrackInfo from '../SetTrackInfo';
-import Login from '../Login'
 import axios from 'axios';
 
 const AdminHome = ({ loggedIn, setLoggedIn }) => {

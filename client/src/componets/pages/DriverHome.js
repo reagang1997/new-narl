@@ -11,11 +11,14 @@ import ReserveTeamSignup from '../ReserveTeamSignup';
 import SeasonStats from '../StatsComponents/SeasonStats';
 import CareerStats from '../StatsComponents/CareerStats';
 import DriverHomeNav from '../DriverHomeNav';
+import EditProfile from '../EditProfile';
 
 const DriverHome = ({ loggedIn, driver, setDriver, guid, setGuid }) => {
     const [rsvp, setRsvp] = useState('');
     const [team, setTeam] = useState('');
     const [number, setNumber] = useState('')
+    const [nav, setNav] = useState('Stats');
+
 
 
 
@@ -77,26 +80,47 @@ const DriverHome = ({ loggedIn, driver, setDriver, guid, setGuid }) => {
                     <h3>{driver.team}</h3>
                     <h8>Server Password: narlseason2</h8>
                     {/* <h4><TeamIcon teamName={driver.team} /><span>{driver.team}</span></h4> */}
-                    <div style={{ width: 'fit-content', margin: 'auto' }}>
-                        <Row style={{width: '1500px', marginLeft: '-200px'}}>
+                    <div style={{ width: 'fit-content', margin: 'auto', marginTop: '50px' }}>
+                        <Row style={{ width: '1500px', marginLeft: '-200px' }}>
                             <Col lg={2}>
-                                <DriverHomeNav driver={driver} />
+                                <DriverHomeNav nav={nav} setNav={setNav} />
                             </Col>
-                            <Col lg={5}>
-                                <SeasonStats wins={driver.wins} pts={driver.points} fl={driver.fastestLaps}></SeasonStats>
-                            </Col>
+                            {nav === 'Stats' ?
+                                <div style={{marginLeft: '120px', }}>
+                                    <Row style={{width: 'fit-content', margin: 'auto'}}>
+                                        <Col lg={6}>
+                                            <SeasonStats wins={driver.wins} pts={driver.points} fl={driver.fastestLaps}></SeasonStats>
+                                        </Col>
+                                        <Col lg={6}>
+                                            <   CareerStats wins={driver.careerWins} pts={driver.careerPoints} fl={driver.careerFastestLaps}></CareerStats>
+                                        </Col>
+                                    </Row>
+                                </div>
+                                : <div></div>}
+                            {nav === 'Registration' ?
+                                <div style={{width: 'fit-content', margin: 'auto'}}>
+                                    {
+                                        driver.team !== 'Reserve' ? <RSVP setRsvp={setRsvp} updateRsvp={updateRsvp} driver={driver} rsvp={rsvp} /> :
+                                            <div>
+                                                <ReserveSignup reserveRsvp={reserveRsvp} setTeam={setTeam} setNumber={setNumber} driver={driver} />
+                                                <ReserveTeamSignup driver={driver} setDriver={setDriver}></ReserveTeamSignup>
+                                            </div>
+                                    }
+                                </div> : <div></div>
+                            }
+                            {nav === 'Edit Profile' ?
+                                <div style={{width: 'fit-content', margin: 'auto', marginTop: '0px'}}>
+                                    {
+                                        <EditProfile driver={driver} setDriver={setDriver}/>
+                                    }
+                                </div> : <div></div>
+                            }
 
-                            <Col lg={5}>
-                                <CareerStats wins={driver.careerWins} pts={driver.careerPoints} fl={driver.careerFastestLaps}></CareerStats>
-                            </Col>
+
 
                         </Row>
                     </div>
-                    {driver.team !== 'Reserve' ? <RSVP setRsvp={setRsvp} updateRsvp={updateRsvp} driver={driver} rsvp={rsvp} /> :
-                        <div>
-                            <ReserveSignup reserveRsvp={reserveRsvp} setTeam={setTeam} setNumber={setNumber} driver={driver}/>
-                            <ReserveTeamSignup driver={driver} setDriver={setDriver}></ReserveTeamSignup>
-                        </div>}
+
 
 
                 </div > : <div></div>}

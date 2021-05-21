@@ -42,6 +42,20 @@ router.post('/login', passport.authenticate('local', {
   successFlash: true
 }));
 
+router.get('/api/user/:guid', async (req, res) => {
+  const found = await User.findOne({guid: req.params.guid});
+  res.send(found);
+})
+
+router.put('/api/user/changeName/:guid', async (req, res) => {
+  const changedUser = await User.findOneAndUpdate({guid: req.params.guid}, {$set: {username: req.body.username}});
+  res.send(changedUser);
+})
+router.put('/api/user/changeEmail/:guid', async (req, res) => {
+  const changedUser = await User.findOneAndUpdate({guid: req.params.guid}, {$set: {email: req.body.email}});
+  res.send(changedUser);
+})
+
 router.get('/fail', function (req, res) {
   res.json(req.flash());
 });

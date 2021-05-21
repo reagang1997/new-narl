@@ -3,9 +3,8 @@ import { Card } from 'react-bootstrap';
 import { Navbar, NavDropdown, Nav } from 'react-bootstrap';
 
 
-const DriverHomeNav = ({ driver }) => {
+const DriverHomeNav = ({ nav, setNav }) => {
 
-    const [nav, setNav] = useState('Stats');
 
     const plain = {
         color: 'black'
