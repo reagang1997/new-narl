@@ -49,6 +49,7 @@ router.get('/api/user/:guid', async (req, res) => {
 
 router.put('/api/user/changeName/:guid', async (req, res) => {
   const changedUser = await User.findOneAndUpdate({guid: req.params.guid}, {$set: {username: req.body.username}});
+  const changedDriver = await Driver.findOneAndUpdate({guid: req.params.guid}, {$set: {name: req.body.username}});
   res.send(changedUser);
 })
 router.put('/api/user/changeEmail/:guid', async (req, res) => {
