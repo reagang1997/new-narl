@@ -1,9 +1,10 @@
 import React from 'react';
 import { Row, Col, Card } from 'react-bootstrap';
+import './style.css'
 
 function CareerStats({ wins, fl, pts }) {
     return (
-        <Card className='box f1' style={{width: '500px'}}>
+        <Card className='box f1 career-stats-card' style={{width: '500px'}}>
             <div className='stats-container' >
                 <h1>Career Stats</h1>
                 <Row>

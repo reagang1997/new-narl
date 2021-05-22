@@ -83,7 +83,7 @@ const DriverHome = ({ loggedIn, driver, setDriver, guid, setGuid }) => {
                     <div style={{ width: 'fit-content', margin: 'auto', marginTop: '50px' }}>
                         <Row style={{ width: '1500px', marginLeft: '-200px' }}>
                             <Col lg={2}>
-                                <DriverHomeNav nav={nav} setNav={setNav} />
+                                <DriverHomeNav style={{marginLeft: '100px'}} nav={nav} setNav={setNav} />
                             </Col>
                             {nav === 'Stats' ?
                                 <div style={{marginLeft: '120px', }}>
