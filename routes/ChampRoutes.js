@@ -9,7 +9,7 @@ router.get('/api/WDC', async (req, res) => {
 })
 
 router.get('/api/WCC', async (req, res) => {
-    const teams = await Team.find({}).sort({points: -1});
+    const teams = await Team.find({}).sort({points: -1}).populate('drivers');
     res.send(teams);
 })
 

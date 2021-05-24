@@ -32,5 +32,9 @@ span{
 }
 
 .driver-home{
-    margin-right: 310px;
+    margin-right: 258px;
+}
+
+#my-nav{
+    background-color: #252525 !important;
 }

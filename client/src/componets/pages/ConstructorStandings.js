@@ -25,12 +25,13 @@ function ConstructorStandings({loggedIn, setLoggedIn}) {
 
     return (
         // <WCCTable teams={ConstructorStandings} />
-        <Card body className='f1 box construct-card'>
+        <Card body className='f1 box construct-card' >
 
             <table className='table table-hover table-responsive-lg f1' id='table'>
                 <tr>
                     <th style={{ width: "50px" }}>POS</th>
                     <th style={{ width: "75px" }}>Team</th>
+                    <th style={{ width: "75px" }}>Drivers</th>
                     <th style={{ width: "100px" }}>Points</th>
                     <th style={{ width: "100px" }}>Wins</th>
                     <th style={{ width: "100px" }}>Fastest Laps</th>
@@ -38,6 +39,7 @@ function ConstructorStandings({loggedIn, setLoggedIn}) {
 
                 {teams.map((team, i) => {
                     let pos;
+                    let drivers = team.drivers;
                     if (i === 0){
                         pos = 'first'
                     }
@@ -51,6 +53,7 @@ function ConstructorStandings({loggedIn, setLoggedIn}) {
                         <tr>
                             <td className={pos}>{i+1}</td>
                             <td column='Team' className='team' id={team.name}><TeamIcon teamName={team.name}/></td>
+                            <td column='Drivers' className='drivers'>{drivers.map(tmp => {return (<p>#{tmp.driverNumber} {tmp.name}</p>)})}</td>
                             <td column='Points'>{team.points}</td>
                             <td column='Wins'>{team.wins}</td>
                             <td column='Fastest Laps'>{team.fastestLaps}</td>

@@ -5,6 +5,10 @@
     
 }
 
+body{
+    background-color: #252525;
+}
+
 
 
 .driver-stats-container{
@@ -71,7 +75,7 @@
 }
 
 .home-jumbo{
-    width: 1250px;
+    width: 1350px;
     margin: auto;
 }
 
@@ -108,19 +112,19 @@
 }
 
 .practice-card{
-    width: 1250px;
+    width: 1350px;
     margin: auto;
     margin-top: 50px
 }
 
 .driver-card{
-    width: 800px;
+    width: 1350px;
     margin: auto;
     margin-top: 50px;
 }
 
 .construct-card{
-    width: 800px;
+    width: 1350px;
     margin: auto;
     margin-top: 50px;
 }
@@ -131,12 +135,12 @@
 }
 
 .driver-stat-card{
-    width: 1250px;
+    width: 1350px;
     margin: auto;
     margin-top: 50px;
 }
 .practice-table{
-    width: 1250px;
+    width: 1350px;
 }
 
 

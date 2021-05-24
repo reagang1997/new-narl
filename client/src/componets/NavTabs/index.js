@@ -12,9 +12,9 @@ function NavTabs({ loggedIn, guid }) {
   const history = useHistory();
 
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className='f1'>
+    <Navbar id='my-nav' collapseOnSelect expand="lg" bg="dark" variant="dark" className='f1' style={{background: '#252525'}}>
 
-      <Navbar.Brand onClick={e => history.push('/')} style={{ marginLeft: '310px' }}>
+      <Navbar.Brand onClick={e => history.push('/')} style={{ marginLeft: '258px' }}>
         <img src={logo} style={{ height: '50px' }} />
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
