@@ -2,6 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { Row, Col } from 'react-bootstrap';
 
+import reserve from './img/reserve.png';
 import alfaR from './img/alfa.png';
 import alphaT from './img/alpha.png';
 import ferrari from './img/ferrari.png';
@@ -31,6 +32,9 @@ function TeamIcon({ teamName }) {
     console.log(teamName);
     teamClass += " teams"
     switch (teamName) {
+        case 'Reserve':
+            img = reserve;
+            break;
         case 'Alfa Romeo':
             img = alfaR;
             console.log(img)
