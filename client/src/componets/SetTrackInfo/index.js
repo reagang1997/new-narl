@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { Form, Button, Col } from 'react-bootstrap';
 import axios from 'axios';
 
@@ -9,7 +9,9 @@ const SetTrackInfo = () => {
         trackLength: 0,
         turns: 0,
         numLaps: 0,
-        download: ""
+        download: "",
+        config: '',
+        fileName: ''
     });
     const [currentTrack, setCurrentTrack] = useState('');
 
@@ -50,33 +52,45 @@ const SetTrackInfo = () => {
                     <Form.Row>
                         <Col sm={2}>
                             <Form.Label>Track Name</Form.Label>
+                            <Form.Control style={{ width: '250px' }} placeholder="Enter Track Name" onChange={e => setNewTrack({ ...newTrack, name: e.target.value })} />
+
                         </Col>
                     </Form.Row>
-                    <Form.Row>
-                        <Col sm={2}>
-                            <Form.Control style={{ width: '250px' }} placeholder="Enter Track Name" onChange={e => setNewTrack({...newTrack, name: e.target.value})} />
-                        </Col>
-                    </Form.Row>
+
                     <Form.Row style={{ marginTop: '25px' }}>
                         <Col sm={3}>
                             <Form.Label>Track Length</Form.Label>
+                            <Form.Control style={{ width: '200px' }} placeholder="Track Length (Miles)" onChange={e => setNewTrack({ ...newTrack, trackLength: e.target.value })} />
+
                         </Col>
                         <Col sm={3}>
                             <Form.Label>Number of Turns</Form.Label>
+                            <Form.Control style={{ width: '200px' }} placeholder="Number of Turns" onChange={e => setNewTrack({ ...newTrack, turns: e.target.value })} />
+
                         </Col>
                         <Col sm={3}>
                             <Form.Label>Number of Laps</Form.Label>
+                            <Form.Control style={{ width: '200px' }} placeholder="Number of Laps" onChange={e => setNewTrack({ ...newTrack, numLaps: e.target.value })} />
+
                         </Col>
                         <Col sm={3}>
                             <Form.Label>Download Link</Form.Label>
+                            <Form.Control style={{ width: '200px' }} placeholder="Download Link" onChange={e => setNewTrack({ ...newTrack, download: e.target.value })} />
+
                         </Col>
                     </Form.Row>
+                    <br/>
                     <Form.Row>
-                        <Form.Control style={{ width: '200px' }} placeholder="Track Length (Miles)" onChange={e => setNewTrack({...newTrack, trackLength: e.target.value})}/>
-                        <Form.Control style={{ width: '200px', marginLeft: '60px' }} placeholder="Number of Turns" onChange={e => setNewTrack({...newTrack, turns: e.target.value})}/>
-                        <Form.Control style={{ width: '200px', marginLeft: '60px' }} placeholder="Number of Laps" onChange={e => setNewTrack({...newTrack, numLaps: e.target.value})}/>
-                        <Form.Control style={{ width: '200px', marginLeft: '60px' }} placeholder="Download Link" onChange={e => setNewTrack({...newTrack, download: e.target.value})} />
+                        <Col md={3}>
+                            <Form.Label>Track File Name</Form.Label>
+                            <Form.Control style={{ width: '200px' }} placeholder="Track File Name" onChange={e => setNewTrack({ ...newTrack, fileName: e.target.value })} />
+                        </Col>
+                        <Col md={3}>
+                            <Form.Label>Track Config</Form.Label>
+                            <Form.Control style={{ width: '200px' }} placeholder="Track Config" onChange={e => setNewTrack({ ...newTrack, config: e.target.value })} />
+                        </Col>
                     </Form.Row>
+
                 </Form.Group>
                 <Button variant="warning" onClick={createTrack}>
                     Add Track
@@ -89,7 +103,7 @@ const SetTrackInfo = () => {
                     return <option value={track._id}>{track.name}</option>
                 })}
             </Form.Control>
-            <Button variant='warning' style={{marginTop: '15px', marginBottom: '200px'}} onClick={setTrack}>Set Track</Button>
+            <Button variant='warning' style={{ marginTop: '15px', marginBottom: '200px' }} onClick={setTrack}>Set Track</Button>
         </div>
     )
 }

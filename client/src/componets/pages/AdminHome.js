@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Nav, Form, Button, Col, ToggleButton, ToggleButtonGroup, Card } from 'react-bootstrap';
 import TrackInfo from '../SetTrackInfo';
 import axios from 'axios';
+import './admin.css'
 
 const AdminHome = ({ loggedIn, setLoggedIn }) => {
     const [selection, setSelection] = useState('');
@@ -169,7 +170,7 @@ const AdminHome = ({ loggedIn, setLoggedIn }) => {
     }
 
     return (
-        <div>
+        <div id='admin'>
             <div>
                 <Nav defaultActiveKey="/home" className="justify-content-center">
                     <Nav.Link href="/adminHome">Admin Home</Nav.Link>
