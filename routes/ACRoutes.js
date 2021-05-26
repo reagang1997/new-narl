@@ -265,6 +265,7 @@ router.get('/api/generatePracticeServerFiles', async (req, res) => {
     weekend = currentSeason.weekends[weekend];
     console.log(weekend);
     let currentTrack = await Weekend.findOne({ _id: weekend }).populate('currentTrack', 'numLaps trackFile name config');
+    currentTrack = currentTrack.currentTrack;
 
     drivers.forEach((entry, i) => {
         let livery = ""

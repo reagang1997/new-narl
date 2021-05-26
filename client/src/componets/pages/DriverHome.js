@@ -94,6 +94,8 @@ const DriverHome = ({ loggedIn, driver, setDriver, guid, setGuid }) => {
                     <Row>
                         <Col md={10}>
                             <h1 id='white' style={{ fontSize: '55px' }}>{driver.name}</h1>
+                            <h3 id='white'>{driver.team}</h3>
+                            <h8 id='white'>Server Password: narlseason2</h8>
                         </Col>
                         <Col md={2}>
                             <div className='pts-card'>
@@ -129,8 +131,7 @@ const DriverHome = ({ loggedIn, driver, setDriver, guid, setGuid }) => {
                             </div>
                         </Col>
                     </Row>
-                    <h3 id='white'>{driver.team}</h3>
-                    <h8 id='white'>Server Password: narlseason2</h8>
+
                     {/* <h4><TeamIcon teamName={driver.team} /><span>{driver.team}</span></h4> */}
                     <div style={{ width: 'fit-content', margin: 'auto', marginTop: '50px' }}>
                         <Row style={{ width: '1500px', marginLeft: '-200px' }}>
