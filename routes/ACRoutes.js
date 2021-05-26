@@ -267,6 +267,8 @@ router.get('/api/generatePracticeServerFiles', async (req, res) => {
     let currentTrack = await Weekend.findOne({ _id: weekend }).populate('currentTrack', 'numLaps trackFile name config');
     currentTrack = currentTrack.currentTrack;
 
+    console.log(currentTrack);
+
     drivers.forEach((entry, i) => {
         let livery = ""
         switch (entry.driverNumber) {
@@ -345,15 +347,15 @@ router.get('/api/generatePracticeServerFiles', async (req, res) => {
     });
 
     let server_cfg = `[SERVER]
-NAME=NARL - ${currentTrack.track.name}
+NAME=NARL - ${currentTrack.name}
 PASSWORD=narlseason2
 ADMIN_PASSWORD=dylanLucas
 SPECTATOR_PASSWORD=specpass
 
 #models of the cars allowed in the server - always use lower case characters
 CARS=rss_formula_hybrid_2021;mercedes_sls
-CONFIG_TRACK=${currentTrack.track.config}
-TRACK=${currentTrack.track.trackFile}
+CONFIG_TRACK=${currentTrack.config}
+TRACK=${currentTrack.trackFile}
 WELCOME_MESSAGE=cfg/welcome message.txt
 
 MAX_CLIENTS=30
@@ -368,7 +370,7 @@ PICKUP_MODE_ENABLED=0
 LOCKED_ENTRY_LIST=1
 
 RACE_PIT_WINDOW_START=1
-RACE_PIT_WINDOW_END=${currentTrack.track.numLaps}
+RACE_PIT_WINDOW_END=${currentTrack.numLaps}
 REVERSED_GRID_RACE_POSITIONS=0
 
 #Server settings DO NOT CHANGE!
