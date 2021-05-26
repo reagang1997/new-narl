@@ -4,7 +4,8 @@ const Driver = require('../models/Driver');
 const Team = require('../models/Team');
 const EntryList = require('../models/EntryList');
 const CurrentTrack = require('../models/CurrentTrack');
-
+const Season = require('../models/Season');
+const Weekend = require('../models/Weekend');
 router.get('/api/generateServerFiles', async (req, res) => {
     let entry_list = "";
     const entryList = await EntryList.find({});
