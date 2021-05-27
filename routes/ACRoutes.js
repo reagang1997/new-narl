@@ -256,7 +256,7 @@ WEBLINK=https://www.elitegameservers.net`;
 router.get('/api/generatePracticeServerFiles', async (req, res) => {
     let entry_list = "";
     let drivers = await Driver.find({});
-    drivers = drivers.map(driver => { if (driver.team !== 'Reserve') return driver});
+    drivers = drivers.filter(driver => { if (driver.team !== 'Reserve') return driver});
 
     let currentSeason = await Season.find({});
     currentSeason = currentSeason[currentSeason.length - 1];
@@ -268,8 +268,10 @@ router.get('/api/generatePracticeServerFiles', async (req, res) => {
     currentTrack = currentTrack.currentTrack;
 
     console.log(currentTrack);
-
+    console.log(drivers);
     drivers.forEach((entry, i) => {
+        console.log(`${entry.name}: ${entry.driverNumber}`);
+        console.log(entry);
         let livery = ""
         switch (entry.driverNumber) {
             case "16":
