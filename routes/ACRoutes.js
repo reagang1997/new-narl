@@ -14,64 +14,64 @@ router.get('/api/generateServerFiles', async (req, res) => {
     entryList.forEach((entry, i) => {
         let livery = ""
         switch (entry.driverNumber) {
-            case "16":
+            case 16:
                 livery = 'k_16_Scuderia_Ferrari_SF21'
                 break;
-            case "55":
+            case 55:
                 livery = "l_55_Scuderia_Ferrari_SF21"
                 break;
-            case "63":
+            case 63:
                 livery = "s_63_Williams_Racing_FW43B"
                 break;
-            case "6":
+            case 6:
                 livery = "t_6_Williams_Racing_FW43B";
                 break;
-            case "44":
+            case 44:
                 livery = "a_44_Mercedes-AMG_F1_W12_E_Performance";
                 break;
-            case "77":
+            case 77:
                 livery = "b_77_Mercedes-AMG_F1_W12_E_Performance";
                 break;
-            case "18":
+            case 18:
                 livery = "g_18_Aston_Martin_Cognizant_F1_Team_AMR21";
                 break;
-            case "5":
+            case 5:
                 livery = "h_5_Aston_Martin_Cognizant_F1_Team_AMR21";
                 break;
-            case "47":
+            case 47:
                 livery = "r_47_Uralkali_Haas_F1_Team_VF-21";
                 break;
-            case "9":
+            case 9:
                 livery = "q_9_Uralkali_Haas_F1_Team_VF-21";
                 break;
-            case "3":
+            case 3:
                 livery = "e_3_McLaren_F1_Team_MCL35M";
                 break;
-            case "4":
+            case 4:
                 livery = "f_4_McLaren_F1_Team_MCL35M";
                 break;
-            case "33":
+            case 33:
                 livery = "c_33_Red_Bull_Racing_Honda_RB16B";
                 break;
-            case "11":
+            case 11:
                 livery = "d_11_Red_Bull_Racing_Honda_RB16B";
                 break;
-            case "31":
+            case 31:
                 livery = "j_31_Alpine_F1_Team_A521";
                 break;
-            case "14":
+            case 14:
                 livery = "i_14_Alpine_F1_Team_A521";
                 break;
-            case "99":
+            case 99:
                 livery = "p_99_Alfa_Romeo_Racing_Orlen_C41";
                 break;
-            case "7":
+            case 7:
                 livery = "o_7_Alfa_Romeo_Racing_Orlen_C41";
                 break;
-            case "10":
+            case 10:
                 livery = "n_10_Scuderia_AlphaTauri_Honda_AT02";
                 break;
-            case "22":
+            case 22:
                 livery = "m_22_Scuderia_AlphaTauri_Honda_AT02";
                 break;
 
@@ -105,7 +105,7 @@ PASSWORD=narlseason2
 ADMIN_PASSWORD=dylanLucas
 SPECTATOR_PASSWORD=specpass
 
-#models of the cars allowed in the server - always use lower case characters
+#models of the cars allowed in the server - always use lower case haacters
 CARS=rss_formula_hybrid_2021;mercedes_sls
 CONFIG_TRACK=${currentTrack.track.config}
 TRACK=${currentTrack.track.trackFile}
@@ -256,8 +256,19 @@ WEBLINK=https://www.elitegameservers.net`;
 router.get('/api/generatePracticeServerFiles', async (req, res) => {
     let entry_list = "";
     let drivers = await Driver.find({});
+<<<<<<< HEAD
     drivers = drivers.map(driver => { if (driver.team !== 'Reserve') return driver});
     console.log(drivers);
+=======
+    drivers = drivers.filter(driver => { 
+        if (driver.team !== 'Reserve') {
+            if(driver.guid){
+                return driver
+            }
+        }
+    });
+
+>>>>>>> bca021ebaa7a243754b86f3beb1d5fec6bfcf8ff
     let currentSeason = await Season.find({});
     currentSeason = currentSeason[currentSeason.length - 1];
     // let weekend = currentSeason.weeekends[ - 1];
@@ -268,72 +279,75 @@ router.get('/api/generatePracticeServerFiles', async (req, res) => {
     currentTrack = currentTrack.currentTrack;
 
     console.log(currentTrack);
-
+    console.log(drivers);
     drivers.forEach((entry, i) => {
-        let livery = ""
+        
+        let livery = "";
+        console.log(typeof(entry.driverNumber));
         switch (entry.driverNumber) {
-            case "16":
+            case 16:
                 livery = 'k_16_Scuderia_Ferrari_SF21'
                 break;
-            case "55":
+            case 55:
                 livery = "l_55_Scuderia_Ferrari_SF21"
                 break;
-            case "63":
+            case 63:
                 livery = "s_63_Williams_Racing_FW43B"
                 break;
-            case "6":
+            case 6:
                 livery = "t_6_Williams_Racing_FW43B";
                 break;
-            case "44":
+            case 44:
                 livery = "a_44_Mercedes-AMG_F1_W12_E_Performance";
                 break;
-            case "77":
+            case 77:
                 livery = "b_77_Mercedes-AMG_F1_W12_E_Performance";
                 break;
-            case "18":
+            case 18:
                 livery = "g_18_Aston_Martin_Cognizant_F1_Team_AMR21";
                 break;
-            case "5":
+            case 5:
                 livery = "h_5_Aston_Martin_Cognizant_F1_Team_AMR21";
                 break;
-            case "47":
+            case 47:
                 livery = "r_47_Uralkali_Haas_F1_Team_VF-21";
                 break;
-            case "9":
+            case 9:
                 livery = "q_9_Uralkali_Haas_F1_Team_VF-21";
                 break;
-            case "3":
+            case 3:
                 livery = "e_3_McLaren_F1_Team_MCL35M";
                 break;
-            case "4":
+            case 4:
                 livery = "f_4_McLaren_F1_Team_MCL35M";
                 break;
-            case "33":
+            case 33:
                 livery = "c_33_Red_Bull_Racing_Honda_RB16B";
                 break;
-            case "11":
+            case 11:
                 livery = "d_11_Red_Bull_Racing_Honda_RB16B";
                 break;
-            case "31":
+            case 31:
                 livery = "j_31_Alpine_F1_Team_A521";
                 break;
-            case "14":
+            case 14:
                 livery = "i_14_Alpine_F1_Team_A521";
                 break;
-            case "99":
+            case 99:
                 livery = "p_99_Alfa_Romeo_Racing_Orlen_C41";
                 break;
-            case "7":
+            case 7:
                 livery = "o_7_Alfa_Romeo_Racing_Orlen_C41";
                 break;
-            case "10":
+            case 10:
                 livery = "n_10_Scuderia_AlphaTauri_Honda_AT02";
                 break;
-            case "22":
+            case 22:
                 livery = "m_22_Scuderia_AlphaTauri_Honda_AT02";
                 break;
 
         }
+        console.log(livery);
         entry_list += '\n';
         entry_list += `\n[CAR_${i}]`;
         entry_list += `\nMODEL=rss_formula_hybrid_2021`;
@@ -352,7 +366,7 @@ PASSWORD=narlseason2
 ADMIN_PASSWORD=dylanLucas
 SPECTATOR_PASSWORD=specpass
 
-#models of the cars allowed in the server - always use lower case characters
+#models of the cars allowed in the server - always use lower case haacters
 CARS=rss_formula_hybrid_2021;mercedes_sls
 CONFIG_TRACK=${currentTrack.config}
 TRACK=${currentTrack.trackFile}
