@@ -256,10 +256,6 @@ WEBLINK=https://www.elitegameservers.net`;
 router.get('/api/generatePracticeServerFiles', async (req, res) => {
     let entry_list = "";
     let drivers = await Driver.find({});
-<<<<<<< HEAD
-    drivers = drivers.map(driver => { if (driver.team !== 'Reserve') return driver});
-    console.log(drivers);
-=======
     drivers = drivers.filter(driver => { 
         if (driver.team !== 'Reserve') {
             if(driver.guid){
@@ -268,7 +264,6 @@ router.get('/api/generatePracticeServerFiles', async (req, res) => {
         }
     });
 
->>>>>>> bca021ebaa7a243754b86f3beb1d5fec6bfcf8ff
     let currentSeason = await Season.find({});
     currentSeason = currentSeason[currentSeason.length - 1];
     // let weekend = currentSeason.weeekends[ - 1];
