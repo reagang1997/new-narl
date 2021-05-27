@@ -15,6 +15,13 @@ router.get('/api/getAllDrivers', async (req, res) => {
     res.send(allDrivers);
 })
 
+router.put('/api/driver/dropSeat/:guid', async (req, res) => {
+    console.log('hit');
+    const droppedDriver = await Driver.findOneAndUpdate({guid: req.params.guid}, {set: {team: 'Reserve'}});
+    const droppedTeam = await Team.findOne({name: droppedDriver.team});
+    res.send(droppedTeam);
+})
+
 router.get('/api/singleDriver/:id', async (req, res) => {
     const found = await Driver.findOne({ _id: req.params.id });
     res.send(found);
