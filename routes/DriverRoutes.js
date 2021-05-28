@@ -17,8 +17,22 @@ router.get('/api/getAllDrivers', async (req, res) => {
 
 router.put('/api/driver/dropSeat/:guid', async (req, res) => {
     console.log('hit');
-    const droppedDriver = await Driver.findOneAndUpdate({guid: req.params.guid}, {set: {team: 'Reserve'}});
-    const droppedTeam = await Team.findOne({name: droppedDriver.team});
+    const droppedDriver = await Driver.findOneAndUpdate({guid: req.params.guid}, {$set: {team: 'Reserve'}});
+    console.log(droppedDriver);
+    let droppedTeam = await Team.findOne({name: droppedDriver.team});
+    const index = droppedTeam.drivers.indexOf(droppedDriver._id);
+    console.log(index)
+    console.log(droppedDriver._id);
+    const newDrivers = droppedTeam.drivers.filter(id => {
+        if(id !== droppedDriver._id){
+            return id;
+        }
+    });
+    console.log(newDrivers);
+    
+    // console.log(droppedTeam);
+    // droppedTeam = await Team.findOneAndUpdate({name: droppedDriver.team}, {$set: {drivers: newDrivers}});
+
     res.send(droppedTeam);
 })
 
