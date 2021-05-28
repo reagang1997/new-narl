@@ -93,6 +93,10 @@ body{
     margin: auto;
 }
 
+.rule{
+    color:  rgb(241, 207, 10);
+}
+
 .home-jumbo{
     width: 1350px;
     margin: auto;

@@ -7,6 +7,7 @@ import DriverStandings from "./componets/pages/DriverStandings";
 import PracticeResults from "./componets/pages/PracticeResults";
 import TeamPage from './componets/pages/TeamPage';
 import RaceInfo from './componets/pages/RaceInfo';
+import Schedule from './componets/pages/Schedule';
 import Home from './componets/pages/Home';
 import DriverStats from './componets/pages/DriverStats';
 // import AdminHome from './componets/pages/AdminHome';
@@ -15,6 +16,7 @@ import './index.css';
 import DriverHome from "./componets/pages/DriverHome";
 import ForgotPassword from "./componets/pages/ForgotPassword";
 import PasswordReset from "./componets/pages/PasswordReset";
+import RuleBook from "./componets/pages/RuleBook";
 const App = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [driver, setDriver] = useState({});
@@ -67,6 +69,8 @@ const App = () => {
             <ConstructorStandings loggedIn={loggedIn} setLoggedIn={setLoggedIn}></ConstructorStandings>
         </Route>
         <Route exact path="/raceInformation" component={RaceInfo} />
+        <Route exact path="/schedule" component={Schedule} />
+        <Route exact path="/ruleBook" component={RuleBook} />
         <Route path="/teams" component={TeamPage}/>
         <Route exact path="/driverStats" component={DriverStats} />
       </div>
