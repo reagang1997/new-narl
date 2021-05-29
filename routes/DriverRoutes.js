@@ -34,7 +34,7 @@ router.put('/api/driver/dropSeat/:guid', async (req, res) => {
     console.log(newDrivers);
     
     console.log(droppedTeam);
-    droppedTeam = await Team.findOneAndUpdate({name: droppedDriver.team}, {$set: {drivers: newDrivers}});
+    droppedTeam = await Team.findOneAndUpdate({name: droppedDriver.team}, {$set: {drivers: newDrivers}}); 
 
     res.send(droppedTeam);
 })
