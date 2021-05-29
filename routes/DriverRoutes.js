@@ -23,15 +23,18 @@ router.put('/api/driver/dropSeat/:guid', async (req, res) => {
     const index = droppedTeam.drivers.indexOf(droppedDriver._id);
     console.log(index)
     console.log(droppedDriver._id);
-    const newDrivers = droppedTeam.drivers.filter(id => {
-        if(id !== droppedDriver._id){
+    const newDrivers = droppedTeam.drivers.filter((id, i) => {
+        console.log(i);
+        if(i !== index){
             return id;
         }
+        console.log(`id: ${id}               droppedID: ${droppedDriver._id}`);
+    
     });
     console.log(newDrivers);
     
-    // console.log(droppedTeam);
-    // droppedTeam = await Team.findOneAndUpdate({name: droppedDriver.team}, {$set: {drivers: newDrivers}});
+    console.log(droppedTeam);
+    droppedTeam = await Team.findOneAndUpdate({name: droppedDriver.team}, {$set: {drivers: newDrivers}});
 
     res.send(droppedTeam);
 })
