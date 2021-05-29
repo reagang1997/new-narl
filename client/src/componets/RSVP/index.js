@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useEffect } from 'react';
 import { Card, Button, Row, Col } from 'react-bootstrap';
 
@@ -7,9 +8,14 @@ const RSVP = ({ setRsvp, updateRsvp, driver, rsvp }) => {
 
     }, [driver])
 
+    const dropSeat = async () => {
+        const dropped = await axios.put(`/api/driver/dropSeat/${driver.guid}`);
+        console.log(dropped);
+    }
+
     return (
-        <div>{driver.rsvp === '' ?
-            <Card body className='box' style={{ width: '500px', paddingBottom: '-50px' }}>
+        <div style={{marginBottom: '150px'}}>{driver.rsvp === '' ?
+            <Card body className='box' style={{ width: '500px', marginBottom: '15px'}}>
                 <h3>Making it to this weeks race?</h3>
                 <Row>
                     <Col md={4}>
@@ -33,7 +39,7 @@ const RSVP = ({ setRsvp, updateRsvp, driver, rsvp }) => {
                             <h3>You are not attending this week</h3>
                         </div>}
                 </Card></div>}
-
+            <Button variant='danger' style={{width: '100%'}} onClick={dropSeat}>Drop My Seat : {driver.team}</Button>
         </div>
     )
 
