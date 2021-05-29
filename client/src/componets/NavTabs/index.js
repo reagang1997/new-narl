@@ -12,7 +12,7 @@ function NavTabs({ loggedIn, guid }) {
   const history = useHistory();
 
   return (
-    <Navbar id='my-nav' collapseOnSelect expand="lg" bg="dark" variant="dark" className='f1' style={{background: '#252525'}}>
+    <Navbar id='my-nav' collapseOnSelect expand="lg" bg="dark" variant="dark" className='f1' style={{ background: '#252525' }}>
 
       <Navbar.Brand onClick={e => history.push('/')} style={{ marginLeft: '258px' }}>
         <img src={logo} style={{ height: '50px' }} />
@@ -21,7 +21,12 @@ function NavTabs({ loggedIn, guid }) {
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
           <Nav.Link onClick={e => history.push('/practiceResults')}>Practice Results</Nav.Link>
-          <Nav.Link onClick={e => history.push('/raceInformation')}>Information</Nav.Link>
+          <NavDropdown title="League Info" id="collasible-nav-dropdown">
+            <NavDropdown.Item onClick={e => history.push('/raceInformation')}>This Week</NavDropdown.Item>
+            <NavDropdown.Item onClick={e => history.push('/schedule')}>Schedule</NavDropdown.Item>
+            <NavDropdown.Item onClick={e => history.push('/ruleBook')}>Rule Book</NavDropdown.Item>
+
+          </NavDropdown>
           <NavDropdown title="Standings" id="collasible-nav-dropdown">
             <NavDropdown.Item onClick={e => history.push('/driverStandings')}>Driver Standings</NavDropdown.Item>
             <NavDropdown.Item onClick={e => history.push('/constructorStandings')}>Constructor Standings</NavDropdown.Item>
