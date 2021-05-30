@@ -6,11 +6,18 @@ const EntryList = require('../models/EntryList');
 const CurrentTrack = require('../models/CurrentTrack');
 const Season = require('../models/Season');
 const Weekend = require('../models/Weekend');
-router.get('/api/generateServerFiles', async (req, res) => {
-    let entry_list = "";
-    const entryList = await EntryList.find({});
-    let currentTrack = await CurrentTrack.find({}).populate('track', 'numLaps trackFile name config');
-    currentTrack = currentTrack[0];
+router.get('/api/generateRaceServerFiles', async (req, res) => {
+    let entry_list = '';
+    let currentSeason = await Season.find({});
+    currentSeason = currentSeason[currentSeason.length - 1];
+    // let weekend = currentSeason.weeekends[ - 1];
+    let weekend = currentSeason.weekends.length - 1;
+    weekend = currentSeason.weekends[weekend];
+    console.log(weekend);
+    let currentTrack = await Weekend.findOne({ _id: weekend }).populate('currentTrack', 'numLaps trackFile name config');
+    let entryList = currentTrack.grid;
+
+    currentTrack = currentTrack.currentTrack;
     entryList.forEach((entry, i) => {
         let livery = ""
         switch (entry.driverNumber) {
@@ -100,15 +107,15 @@ router.get('/api/generateServerFiles', async (req, res) => {
     entry_list += `\nRESTRICTOR=0`;
 
     let server_cfg = `[SERVER]
-NAME=NARL - ${currentTrack.track.name}
+NAME=NARL - ${currentTrack.name}
 PASSWORD=narlseason2
 ADMIN_PASSWORD=dylanLucas
 SPECTATOR_PASSWORD=specpass
 
 #models of the cars allowed in the server - always use lower case haacters
 CARS=rss_formula_hybrid_2021;mercedes_sls
-CONFIG_TRACK=${currentTrack.track.config}
-TRACK=${currentTrack.track.trackFile}
+CONFIG_TRACK=${currentTrack.config}
+TRACK=${currentTrack.trackFile}
 WELCOME_MESSAGE=cfg/welcome message.txt
 
 MAX_CLIENTS=30
@@ -123,7 +130,7 @@ PICKUP_MODE_ENABLED=0
 LOCKED_ENTRY_LIST=1
 
 RACE_PIT_WINDOW_START=1
-RACE_PIT_WINDOW_END=${currentTrack.track.numLaps}
+RACE_PIT_WINDOW_END=${currentTrack.numLaps}
 REVERSED_GRID_RACE_POSITIONS=0
 
 #Server settings DO NOT CHANGE!
@@ -173,9 +180,9 @@ TYRE_BLANKETS_ALLOWED=1
 #0 is car locked until start 1 is teleport 2 is drivethru, if race has 3 or less laps then the Teleport penalty is enabled
 START_RULE=2
 
-# loop mode: the server restarts from the first track, to disable this set it to 0
+# loop mode: the server restarts from the first, to disable this set it to 0
 LOOP_MODE=0
-#Penalty if 2 tyres are out of the track, set to -1 to disable
+#Penalty if 2 tyres are out of the, set to -1 to disable
 ALLOWED_TYRES_OUT=4
 DAMAGE_MULTIPLIER=100
 FUEL_RATE=100
@@ -199,7 +206,7 @@ IS_OPEN=1
 
 [RACE]
 NAME=Race
-LAPS=${currentTrack.track.numLaps}
+LAPS=${currentTrack.numLaps}
 TIME=0
 WAIT_TIME=60
 IS_OPEN=1                  
@@ -423,15 +430,15 @@ TC_ALLOWED=0
 ABS_ALLOWED=0
 STABILITY_ALLOWED=0
 AUTOCLUTCH_ALLOWED=0
-FORCE_VIRTUAL_MIRROR=1
+FORCE_VIRTUAL_MIRROR=0
 MAX_BALLAST_KG=150
 TYRE_BLANKETS_ALLOWED=1
 #0 is car locked until start 1 is teleport 2 is drivethru, if race has 3 or less laps then the Teleport penalty is enabled
 START_RULE=2
 
-# loop mode: the server restarts from the first track, to disable this set it to 0
+# loop mode: the server restarts from the first, to disable this set it to 0
 LOOP_MODE=0
-#Penalty if 2 tyres are out of the track, set to -1 to disable
+#Penalty if 2 tyres are out of the, set to -1 to disable
 ALLOWED_TYRES_OUT=4
 DAMAGE_MULTIPLIER=100
 FUEL_RATE=100
