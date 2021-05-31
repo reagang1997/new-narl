@@ -14,7 +14,7 @@ router.get('/api/generateRaceServerFiles', async (req, res) => {
     let weekend = currentSeason.weekends.length - 1;
     weekend = currentSeason.weekends[weekend];
     console.log(weekend);
-    let currentTrack = await Weekend.findOne({ _id: weekend }).populate('currentTrack', 'numLaps trackFile name config grid');
+    let currentTrack = await Weekend.findOne({ _id: weekend }).populate('currentTrack grid', 'numLaps trackFile name config');
     let entryList = currentTrack.grid;
     console.log(entryList);
     currentTrack = currentTrack.currentTrack;
