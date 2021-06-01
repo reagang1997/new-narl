@@ -7,6 +7,7 @@ import { useHistory } from 'react-router-dom'
 import Card from '../theme/Card/Card'
 import NewsFeed from '../NewsFeed';
 import styles from "../../assets/jss/material-kit-react/homeStyles";
+import classNames from "classnames";
 
 // import logo from './img/logo.png'
 import image from '../../assets/img/home.png'
@@ -26,6 +27,7 @@ function Home({loggedIn}) {
         position: "relative",
         paddingTop: "20vh",
         paddingBottom: "200px",
+
     }
     const history = useHistory();
     const classes = useStyles();
@@ -41,9 +43,9 @@ function Home({loggedIn}) {
 
             }}>
             <Header color='transparent' brand="NARL" rightLinks={<HeaderLinks loggedIn={loggedIn}/>}></Header>
-            <div className={`f1 ${classes.container}`} style={{ marginLeft: '250px' }}>
-                <Jumbotron className='f1 box' style={{ width: 'fit-content', margin: 'auto', marginTop: '-85px', marginRight: '50px', opacity: '85%' }}>
-                    <div className='home-jumbo'>
+            <div className={`f1 ${classes.container}`} style={home_container}>
+                <Card body className={classNames(classes.main, classes.mainRaised, 'f1')} style={{padding: '50px', opacity:'85%'}}>
+                    <div >
                         <h1 style={{ fontSize: '50px' }}>North American Racing League</h1>
                         <h4>North Americas Finest Racing League.</h4>
                         <br />
@@ -67,7 +69,7 @@ function Home({loggedIn}) {
                         <p>Please donate! All procedes will be put towards funding for a new server to run a new grid, and into the website. Thank you!</p>
                         <a href='https://www.paypal.com/donate?business=X8RLSA8DMG4VW&currency_code=USD' target='blank'><Button variant='warning'>Donate</Button></a>
                     </div>
-                </Jumbotron>
+                </Card>
             </div>
         </div>
 
