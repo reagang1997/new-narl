@@ -50,7 +50,9 @@ const App = () => {
     <Router>
       <div>
         <NavTabs loggedIn={loggedIn} guid={guid}/>
-        <Route exact path="/" component={Home}/>
+        <Route exact path="/" component={Home}>
+          <Home loggedIn={loggedIn}/>
+        </Route>
         <Route path='/driverHome' component={DriverHome}>
           <DriverHome loggedIn={loggedIn} driver={driver} setDriver={setDriver} getGuid={getGuid} guid={guid} setGuid={setGuid}/>
         </Route>

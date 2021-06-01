@@ -41,6 +41,7 @@ import ReserveTeamSignup from '../../ReserveTeamSignup'
 import EditProfile from "../../EditProfile";
 import TeamIcon from "../../TeamIcon";
 import axios from 'axios'
+import HeaderLinksRight from "../../theme/Header/HeaderLinksRight";
 const useStyles = makeStyles(styles);
 
 export default function ProfilePage(props) {
@@ -97,7 +98,8 @@ export default function ProfilePage(props) {
       <Header
         color="transparent"
         brand="NARL"
-        rightLinks={<HeaderLinks />}
+        rightLinks={<div><HeaderLinks/><HeaderLinksRight /></div>}
+
         fixed
         changeColorOnScroll={{
           height: 200,

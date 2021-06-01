@@ -12,13 +12,13 @@ import styles from "../../assets/jss/material-kit-react/homeStyles";
 import image from '../../assets/img/home.png'
 import { container } from '../../assets/jss/material-kit-react';
 import Header from '../theme/Header/Header';
-import HeaderLinksLeft from '../theme/Header/HeaderLinks';
+import HeaderLinks from '../theme/Header/HeaderLinks';
 import HeaderLinksRight from '../theme/Header/HeaderLinksRight';
 
 const useStyles = makeStyles(styles);
 
 
-function Home() {
+function Home({loggedIn}) {
 
     const home_container = {
         container,
@@ -29,13 +29,7 @@ function Home() {
     }
     const history = useHistory();
     const classes = useStyles();
-    const leftLinks = [<Nav.Link onClick={e => history.push('/practiceResults')}>Practice Results</Nav.Link>,
-    <NavDropdown title="League Info" id="collasible-nav-dropdown">
-        <NavDropdown.Item onClick={e => history.push('/raceInformation')}>This Week</NavDropdown.Item>
-        <NavDropdown.Item onClick={e => history.push('/schedule')}>Schedule</NavDropdown.Item>
-        <NavDropdown.Item onClick={e => history.push('/ruleBook')}>Rule Book</NavDropdown.Item>
-    </NavDropdown>
-    ]
+    
 
     return (
         <div
@@ -46,7 +40,7 @@ function Home() {
                 backgroundPosition: "top center",
 
             }}>
-            <Header color='transparent' brand="NARL" leftLinks={<HeaderLinksLeft/>} rightLinks={<HeaderLinksRight/>}></Header>
+            <Header color='transparent' brand="NARL" rightLinks={<HeaderLinks loggedIn={loggedIn}/>}></Header>
             <div className={`f1 ${classes.container}`} style={{ marginLeft: '250px' }}>
                 <Jumbotron className='f1 box' style={{ width: 'fit-content', margin: 'auto', marginTop: '-85px', marginRight: '50px', opacity: '85%' }}>
                     <div className='home-jumbo'>

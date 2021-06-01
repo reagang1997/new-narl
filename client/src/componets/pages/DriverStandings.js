@@ -43,8 +43,7 @@ function DriverStandings({ loggedIn, setLoggedIn }) {
             <Header
                 color="transparent"
                 brand="NARL"
-                leftLinks={<HeaderLinks />}
-                rightLinks={<HeaderLinksRight loggedIn={loggedIn}/>}
+                rightLinks={<HeaderLinks loggedIn={loggedIn}/>}
                 fixed
                 changeColorOnScroll={{
                     height: 200,

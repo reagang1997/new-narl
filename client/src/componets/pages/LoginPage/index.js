@@ -10,7 +10,7 @@ import Email from "@material-ui/icons/Email";
 import People from "@material-ui/icons/People";
 // core ../../theme
 import Header from '../../theme/Header/Header';
-import HeaderLinksLeft from '../../theme/Header/HeaderLinks';
+import HeaderLinks from '../../theme/Header/HeaderLinks';
 import HeaderLinksRight from '../../theme/Header/HeaderLinksRight';
 import Footer from "../../theme/Footer/Footer.js";
 import GridContainer from "../../theme/Grid/GridContainer.js";
@@ -37,7 +37,7 @@ export default function LoginPage(props) {
   const useStyles = makeStyles(styles);
 
 
-  const { setLoggedIn, guid, setGuid, driver, setDriver } = props;
+  const { setLoggedIn, guid, setGuid, driver, setDriver, loggedIn } = props;
   const history = useHistory();
 
   const [toLogin, setToLogin] = useState(true);
@@ -85,6 +85,7 @@ export default function LoginPage(props) {
         const user = loggedIn.data;
         console.log(user);
         setGuid(user.guid)
+
         let tmp = user.guid;
         // let userGUID = await axios.get(`/api/user/${user._id}`);
         // setGuid(user.data.guid);
@@ -145,7 +146,7 @@ export default function LoginPage(props) {
           height: '1000px'
         }}
       >
-        <Header color='transparent' brand="NARL" leftLinks={<HeaderLinksLeft />} rightLinks={<HeaderLinksRight />}></Header>
+        <Header color='transparent' brand="NARL" rightLinks={<HeaderLinks loggedIn={loggedIn} />} ></Header>
 
 
         <div className={`f1 ${classes.container}`}>

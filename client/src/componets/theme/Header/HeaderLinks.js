@@ -75,6 +75,11 @@ export default function HeaderLinks(props) {
           ]}
         />
       </ListItem>
+      <ListItem className={classes.listItem}>
+        <div className='driver-home'>
+          {props.loggedIn ? <Link className={classes.navLink} to={`/driverHome/${props.guid}`} >Driver Home</Link> : <Link className={classes.navLink} to='/loginSignup' >Log in / Signup</Link>}
+        </div>
+      </ListItem>
     </List>
   );
 }
