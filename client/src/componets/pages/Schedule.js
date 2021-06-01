@@ -1,13 +1,38 @@
 import React from 'react';
 import { Col, Card } from 'react-bootstrap';
+import styles from "../../assets/jss/material-kit-react/views/profilePage.js";
+import classNames from "classnames";
+import { makeStyles } from "@material-ui/core/styles";
+import Header from '../theme/Header/Header';
+import HeaderLinks from '../theme/Header/HeaderLinks';
+import Parallax from '../theme/Parallax/Parallax'
+import HeaderLinksRight from '../theme/Header/HeaderLinksRight.js';
+const useStyles = makeStyles(styles);
+const Schedule = ({loggedIn}) => {
 
-const Schedule = () => {
-
+    const classes = useStyles();
 
     return (
-        <div style={{width: '1350px', margin: 'auto', marginTop: '15px'}}>
+        <div>
+            <Header
+                color="transparent"
+                brand="NARL"
+                leftLinks={<HeaderLinks />}
+                rightLinks={<HeaderLinksRight loggedIn={loggedIn}/>}
+                fixed
+                changeColorOnScroll={{
+                    height: 200,
+                    color: "white",
+                }}
+            />
 
-            <Card body className='box schedule-card f1'>
+            <Parallax
+                small
+                filter
+                image={require("../../assets/img/race-info-bg.jpg").default}
+            />
+
+            <Card body className={classNames(classes.main, classes.mainRaised, 'f1')}>
 
                 <h1 style={{ width: 'fit-content', margin: 'auto', marginBottom: '5px' }}>Current Schedule</h1>
                 <table className="table table-responsive-lg">

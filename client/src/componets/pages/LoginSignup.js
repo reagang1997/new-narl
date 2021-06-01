@@ -1,18 +1,46 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'
-import { Card, Form, Button, Alert } from 'react-bootstrap';
 import TeamIcon from '../TeamIcon'
 import { useHistory } from 'react-router-dom'
 
+import { makeStyles } from "@material-ui/core/styles";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import Icon from "@material-ui/core/Icon";
+// @material-ui/icons
+import Email from "@material-ui/icons/Email";
+import People from "@material-ui/icons/People";
+// core components
+import Header from "../theme/Header/Header.js";
+import HeaderLinks from "../theme/Header/HeaderLinks.js";
+import Footer from "../theme/Footer/Footer.js";
+import GridContainer from "../theme/Grid/GridContainer.js";
+import GridItem from "../theme/Grid/GridItem.js";
+import Button from "../theme/CustomButtons/Button.js";
+import Card from "../theme/Card/Card.js";
+import CardBody from "../theme/Card/CardBody.js";
+import CardHeader from "../theme/Card/CardHeader.js";
+import CardFooter from "../theme/Card/CardFooter.js";
+import CustomInput from "../theme/CustomInput/CustomInput.js";
 
-const LoginSignup = ({setLoggedIn, guid, setGuid, driver, setDriver}) => {
+import styles from "../../assets/jss/material-kit-react/views/loginPage.js";
+
+// import image from "assets/img/bg7.jpg";
 
 
+const LoginSignup = (props) => {
+
+    const useStyles = makeStyles(styles);
+
+
+    const { setLoggedIn, guid, setGuid, driver, setDriver } = props;
     const history = useHistory();
 
+  const [cardAnimaton, setCardAnimation] = useState("cardHidden");
+
+
     const [toLogin, setToLogin] = useState(true);
-    const [hide, setHide] = useState({display: 'none'});
-    const [hideLogin, setHideLogin] = useState({fontSize: '12px'});
+    const [hide, setHide] = useState({ display: 'none' });
+    const [hideLogin, setHideLogin] = useState({ fontSize: '12px' });
 
     const [showAlert, setShowAlert] = useState(false);
     const [msg, setMsg] = useState('');
@@ -30,10 +58,10 @@ const LoginSignup = ({setLoggedIn, guid, setGuid, driver, setDriver}) => {
     }, [msg]);
 
     const handleClick = (e) => {
-        setHide({display: 'block'});
-        setHideLogin({ fontSize: '12px', display: 'none'})
+        setHide({ display: 'block' });
+        setHideLogin({ fontSize: '12px', display: 'none' })
         setToLogin(false);
-        if(showAlert){
+        if (showAlert) {
             setShowAlert(false);
             setMsg('');
         }
@@ -44,14 +72,14 @@ const LoginSignup = ({setLoggedIn, guid, setGuid, driver, setDriver}) => {
         if (toLogin) {
             // login
 
-            const loggedIn = await axios.post('/login', {email: email, password: password});
+            const loggedIn = await axios.post('/login', { email: email, password: password });
             console.log(loggedIn);
-            if(loggedIn.data.error){
+            if (loggedIn.data.error) {
                 console.log('hit')
                 setMsg(loggedIn.data.error[0]);
                 setShowAlert(true);
             }
-            else{
+            else {
                 const user = loggedIn.data;
                 console.log(user);
                 setGuid(user.guid)
@@ -63,8 +91,8 @@ const LoginSignup = ({setLoggedIn, guid, setGuid, driver, setDriver}) => {
                 setLoggedIn(true);
                 history.push(`/driverHome/${tmp}`);
             }
-            
-        } 
+
+        }
         else {
             //signup
             const newUser = {
@@ -82,11 +110,11 @@ const LoginSignup = ({setLoggedIn, guid, setGuid, driver, setDriver}) => {
 
             const signedUp = await axios.post('/signup', newUser);
             console.log(signedUp)
-            if(signedUp.data.error){
+            if (signedUp.data.error) {
                 setShowAlert(true);
                 setMsg(signedUp.data.error);
             }
-            else{
+            else {
                 setLoggedIn(true);
                 const createdDriver = await axios.post('/api/CreateNewDriver', newDriver);
                 setDriver(createdDriver.data);
@@ -94,47 +122,127 @@ const LoginSignup = ({setLoggedIn, guid, setGuid, driver, setDriver}) => {
             }
         }
     }
-    return (
-        <Card body className='box f1 signup' style={{marginTop: '50px'}}>
-            {showAlert ? <Alert variant='danger'>{msg}</Alert>  : <div></div>}
-            
-            <Form>
-                <Form.Group controlId="formBasicEmail">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                    <Form.Text className="text-muted">
-                        We'll never share your email with anyone else.
-                </Form.Text>
-                </Form.Group>
-                <Form.Group style={hide}>
-                    <Form.Label>Display Name</Form.Label>
-                    <Form.Control type='text' placeholder='Lando Norris' value={username} onChange={(e) => setUsername(e.target.value)}/>
-                    <Form.Text className='text-muted'>
-                        Display Name for standings, stats, and name on AC Server.
-                    </Form.Text>
-                </Form.Group>
-                <Form.Group style={hide}> 
-                    <Form.Label>Steam ID</Form.Label>
-                    <Form.Control type='text' placeholder='765xxxxxxxxxxxxxx' value={guid} onChange={(e) => setGuid(e.target.value)}/>
-                    <Form.Text className='text-muted'>
-                        Login to steam on browser and view profile. Steam id will be in the url. EX: https://steamcommunity.com/profiles/765xxxxxxxxxxxxxx/
-                    </Form.Text>
-                </Form.Group>
-                <Form.Group controlId="formBasicPassword">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-                </Form.Group>
 
-                <Button variant="warning" type="submit" onClick={loginSignup}>
-                   {toLogin ? <div>Login</div> : <div>Sign Up</div>}
-                </Button>
-            </Form>
-            <div style={{width: 'fit-content', margin: 'auto'}}>
-                <a href="#" style={hideLogin} onClick={handleClick}>Dont have an account? Sign up!</a>
-                <br/>
-                <a href="#" style={{marginLeft: '45px', fontSize: '12px'}} onClick={e => history.push('/forgotPassword')}>Forgot Password?</a>
+    const classes = useStyles();
+    const { ...rest } = props;
+    return (
+        <div>
+            <Header
+                absolute
+                color="transparent"
+                brand="Material Kit React"
+                rightLinks={<HeaderLinks />}
+                {...rest}
+            />
+            <div
+                className={classes.pageHeader}
+                style={{
+                    // backgroundImage: "url(" + image + ")",
+                    backgroundSize: "cover",
+                    backgroundPosition: "top center",
+                }}
+            >
+                <div className={classes.container}>
+                    <GridContainer justify="center">
+                        <GridItem xs={12} sm={12} md={4}>
+                            <Card className={classes[cardAnimaton]}>
+                                <form className={classes.form}>
+                                    <CardHeader color="primary" className={classes.cardHeader}>
+                                        <h4>Login</h4>
+                                        <div className={classes.socialLine}>
+                                            <Button
+                                                justIcon
+                                                href="#pablo"
+                                                target="_blank"
+                                                color="transparent"
+                                                onClick={(e) => e.preventDefault()}
+                                            >
+                                                <i className={"fab fa-twitter"} />
+                                            </Button>
+                                            <Button
+                                                justIcon
+                                                href="#pablo"
+                                                target="_blank"
+                                                color="transparent"
+                                                onClick={(e) => e.preventDefault()}
+                                            >
+                                                <i className={"fab fa-facebook"} />
+                                            </Button>
+                                            <Button
+                                                justIcon
+                                                href="#pablo"
+                                                target="_blank"
+                                                color="transparent"
+                                                onClick={(e) => e.preventDefault()}
+                                            >
+                                                <i className={"fab fa-google-plus-g"} />
+                                            </Button>
+                                        </div>
+                                    </CardHeader>
+                                    <p className={classes.divider}>Or Be Classical</p>
+                                    <CardBody>
+                                        <CustomInput
+                                            labelText="First Name..."
+                                            id="first"
+                                            formControlProps={{
+                                                fullWidth: true,
+                                            }}
+                                            inputProps={{
+                                                type: "text",
+                                                endAdornment: (
+                                                    <InputAdornment position="end">
+                                                        <People className={classes.inputIconsColor} />
+                                                    </InputAdornment>
+                                                ),
+                                            }}
+                                        />
+                                        <CustomInput
+                                            labelText="Email..."
+                                            id="email"
+                                            formControlProps={{
+                                                fullWidth: true,
+                                            }}
+                                            inputProps={{
+                                                type: "email",
+                                                endAdornment: (
+                                                    <InputAdornment position="end">
+                                                        <Email className={classes.inputIconsColor} />
+                                                    </InputAdornment>
+                                                ),
+                                            }}
+                                        />
+                                        <CustomInput
+                                            labelText="Password"
+                                            id="pass"
+                                            formControlProps={{
+                                                fullWidth: true,
+                                            }}
+                                            inputProps={{
+                                                type: "password",
+                                                endAdornment: (
+                                                    <InputAdornment position="end">
+                                                        <Icon className={classes.inputIconsColor}>
+                                                            lock_outline
+                              </Icon>
+                                                    </InputAdornment>
+                                                ),
+                                                autoComplete: "off",
+                                            }}
+                                        />
+                                    </CardBody>
+                                    <CardFooter className={classes.cardFooter}>
+                                        <Button simple color="primary" size="lg">
+                                            Get started
+                      </Button>
+                                    </CardFooter>
+                                </form>
+                            </Card>
+                        </GridItem>
+                    </GridContainer>
+                </div>
+                <Footer whiteFont />
             </div>
-        </Card>
+        </div>
     )
 }
 

@@ -4,7 +4,7 @@ import './style.css'
 
 function SeasonStats({ wins, pts, fl }) {
     return (
-        <Card className='box f1 season-stats-card' style={{width: '500px'}}>
+        <Card className='box f1 career-stats-card' style={{width: '500px'}}>
             <div className='stats-container'>
                 <h1>Season Stats</h1>
                 <Row>

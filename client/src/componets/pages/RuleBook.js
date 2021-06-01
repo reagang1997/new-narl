@@ -1,11 +1,36 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
-
-const RuleBook = () => {
+import styles from "../../assets/jss/material-kit-react/views/profilePage.js";
+import classNames from "classnames";
+import { makeStyles } from "@material-ui/core/styles";
+import Header from '../theme/Header/Header';
+import HeaderLinks from '../theme/Header/HeaderLinks';
+import Parallax from '../theme/Parallax/Parallax'
+import HeaderLinksRight from '../theme/Header/HeaderLinksRight.js';
+const useStyles = makeStyles(styles);
+const RuleBook = ({loggedIn}) => {
+    const classes = useStyles();
 
     return (
         <div >
-            <Card body className='box f1' style={{ width: '1350px', margin: 'auto' }}>
+             <Header
+                color="transparent"
+                brand="NARL"
+                leftLinks={<HeaderLinks />}
+                rightLinks={<HeaderLinksRight loggedIn={loggedIn}/>}
+                fixed
+                changeColorOnScroll={{
+                    height: 200,
+                    color: "white",
+                }}
+            />
+
+            <Parallax
+                small
+                filter
+                image={require("../../assets/img/race-info-bg.jpg").default}
+            />
+            <Card body className={classNames(classes.main, classes.mainRaised, 'f1')}>
                 <h1 class="display-4" style={{width: 'fit-content', margin: 'auto'}}>NARL Rulebook</h1>
                 <br />
                 <h2 className='rule'>Defending:</h2>

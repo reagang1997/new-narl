@@ -1,12 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import {Card} from 'react-bootstrap'
+import classNames from "classnames";
+import { makeStyles } from "@material-ui/core/styles";
+import { Card } from 'react-bootstrap'
 import axios from 'axios';
 import WDCTable from '../WDCTable';
 import fs from 'fs';
 import { Table, Tr, td } from 'reactable';
 import TeamIcon from '../TeamIcon';
+import Parallax from '../theme/Parallax/Parallax';
+import styles from "../../assets/jss/material-kit-react/views/profilePage.js";
+import Header from '../theme/Header/Header';
+import HeaderLinks from '../theme/Header/HeaderLinks';
+import HeaderLinksRight from '../theme/Header/HeaderLinksRight';
+const useStyles = makeStyles(styles);
 
-function DriverStandings({loggedIn, setLoggedIn}) {
+function DriverStandings({ loggedIn, setLoggedIn }) {
 
     const [drivers, setdrivers] = useState([]);
 
@@ -28,45 +36,66 @@ function DriverStandings({loggedIn, setLoggedIn}) {
     // const Table = Reactable.Table;
     // const Tr = Reactable.Tr;
     // const td = Reactable.td;
+    const classes = useStyles();
 
     return (
-        <Card body className='f1 box driver-card'>
+        <div>
+            <Header
+                color="transparent"
+                brand="NARL"
+                leftLinks={<HeaderLinks />}
+                rightLinks={<HeaderLinksRight loggedIn={loggedIn}/>}
+                fixed
+                changeColorOnScroll={{
+                    height: 200,
+                    color: "white",
+                }}
+            />
+            
+            <Parallax
+                small
+                filter
+                image={require("../../assets/img/driverStandings.png").default}
+            />
+            <div >
+                <Card body className={classNames(classes.main, classes.mainRaised, 'f1')}>
 
-            <table className='table table-hover table-responsive-lg' id='table'>
-                <tr>
-                    <th>POS</th>
-                    <th>Team</th>
-                    <th>Driver Name</th>
-                    <th>Points</th>
-                    <th>Wins</th>
-                    <th>Fastest Laps</th>
-                </tr>
-                
-                {drivers.map((driver, i) => {
-                    let pos;
-                    if (i === 0){
-                        pos = 'first'
-                    }
-                    else if( i === 1){
-                        pos = 'second'
-                    }
-                    else if( i === 2){
-                        pos = 'third'
-                    }
-                    return (
+                    <table className='table table-hover table-responsive-lg' id='table'>
                         <tr>
-                            <td className={pos}>{i+1}</td>
-                            <td column='Team'><TeamIcon teamName={driver.team}/></td>
-                            <td column='Driver Name'>{driver.name}</td>
-                            <td column='Points'>{driver.points}</td>
-                            <td column='Wins'>{driver.wins}</td>
-                            <td column='Fastest Laps'>{driver.fastestLaps}</td>
-                        </tr>)
-                })}
+                            <th>POS</th>
+                            <th>Team</th>
+                            <th>Driver Name</th>
+                            <th>Points</th>
+                            <th>Wins</th>
+                            <th>Fastest Laps</th>
+                        </tr>
 
-            </table>
-        </Card>
-        // <WDCTable drivers={driverStandings}/>
+                        {drivers.map((driver, i) => {
+                            let pos;
+                            if (i === 0) {
+                                pos = 'first'
+                            }
+                            else if (i === 1) {
+                                pos = 'second'
+                            }
+                            else if (i === 2) {
+                                pos = 'third'
+                            }
+                            return (
+                                <tr>
+                                    <td className={pos}>{i + 1}</td>
+                                    <td column='Team'><TeamIcon teamName={driver.team} /></td>
+                                    <td column='Driver Name'>{driver.name}</td>
+                                    <td column='Points'>{driver.points}</td>
+                                    <td column='Wins'>{driver.wins}</td>
+                                    <td column='Fastest Laps'>{driver.fastestLaps}</td>
+                                </tr>)
+                        })}
+
+                    </table>
+                </Card>
+            </div>
+        </div>
     )
 }
 

@@ -3,6 +3,7 @@ import { Link, useLocation, useHistory } from "react-router-dom";
 import logo from './logo.png';
 import { Navbar, NavDropdown, Nav } from 'react-bootstrap';
 import './style.css';
+import Header from "../theme/Header/Header";
 
 function NavTabs({ loggedIn, guid }) {
   // We'll go into the Hooks API later, for now, we are just using some code
@@ -12,85 +13,42 @@ function NavTabs({ loggedIn, guid }) {
   const history = useHistory();
 
   return (
-    <Navbar id='my-nav' collapseOnSelect expand="lg" bg="dark" variant="dark" className='f1' style={{ background: '#252525' }}>
+    <div>
+    </div>
+    // <Header color='primary'>
+      
+    // </Header>
+  //   <Navbar id='my-nav' collapseOnSelect expand="lg" bg="dark" variant="dark" className='f1' style={{ background: '#252525' }}>
 
-      <Navbar.Brand onClick={e => history.push('/')} style={{ marginLeft: '258px' }}>
-        <img src={logo} style={{ height: '50px' }} />
-      </Navbar.Brand>
-      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-      <Navbar.Collapse id="responsive-navbar-nav">
-        <Nav className="mr-auto">
-          <Nav.Link onClick={e => history.push('/practiceResults')}>Practice Results</Nav.Link>
-          <NavDropdown title="League Info" id="collasible-nav-dropdown">
-            <NavDropdown.Item onClick={e => history.push('/raceInformation')}>This Week</NavDropdown.Item>
-            <NavDropdown.Item onClick={e => history.push('/schedule')}>Schedule</NavDropdown.Item>
-            <NavDropdown.Item onClick={e => history.push('/ruleBook')}>Rule Book</NavDropdown.Item>
+  //   <Navbar.Brand onClick={e => history.push('/')} style={{ marginLeft: '258px' }}>
+  //     <img src={logo} style={{ height: '50px' }} />
+  //   </Navbar.Brand>
+  //   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+  //   <Navbar.Collapse id="responsive-navbar-nav">
+  //     <Nav className="mr-auto">
+  //       <Nav.Link onClick={e => history.push('/practiceResults')}>Practice Results</Nav.Link>
+  //       <NavDropdown title="League Info" id="collasible-nav-dropdown">
+  //         <NavDropdown.Item onClick={e => history.push('/raceInformation')}>This Week</NavDropdown.Item>
+  //         <NavDropdown.Item onClick={e => history.push('/schedule')}>Schedule</NavDropdown.Item>
+  //         <NavDropdown.Item onClick={e => history.push('/ruleBook')}>Rule Book</NavDropdown.Item>
 
-          </NavDropdown>
-          <NavDropdown title="Standings" id="collasible-nav-dropdown">
-            <NavDropdown.Item onClick={e => history.push('/driverStandings')}>Driver Standings</NavDropdown.Item>
-            <NavDropdown.Item onClick={e => history.push('/constructorStandings')}>Constructor Standings</NavDropdown.Item>
+  //       </NavDropdown>
+  //       <NavDropdown title="Standings" id="collasible-nav-dropdown">
+  //         <NavDropdown.Item onClick={e => history.push('/driverStandings')}>Driver Standings</NavDropdown.Item>
+  //         <NavDropdown.Item onClick={e => history.push('/constructorStandings')}>Constructor Standings</NavDropdown.Item>
 
-          </NavDropdown>
+  //       </NavDropdown>
 
-        </Nav>
-        <Nav>
-          <div className='driver-home'>
-            {loggedIn ? <Nav.Link onClick={e => history.push(`/driverHome/${guid}`)}>Driver Home</Nav.Link> : <Nav.Link onClick={e => history.push('/loginSignup')} >Log in / Signup</Nav.Link>}
-            {/* <Nav.Link href="/adminHome">Admin Home</Nav.Link> */}
-          </div>
-        </Nav>
-      </Navbar.Collapse>
+  //     </Nav>
+  //     <Nav>
+  //       <div className='driver-home'>
+  //         {loggedIn ? <Nav.Link onClick={e => history.push(`/driverHome/${guid}`)}>Driver Home</Nav.Link> : <Nav.Link onClick={e => history.push('/loginSignup')} >Log in / Signup</Nav.Link>}
+  //         {/* <Nav.Link href="/adminHome">Admin Home</Nav.Link> */}
+  //       </div>
+  //     </Nav>
+  //   </Navbar.Collapse>
 
-    </Navbar>
-    // <div>
-    //   <div style={{width: 'fit-content', margin: 'auto'}}>
-    //     <img src={logo} className='logo'></img>
-    //   </div>
-    //   <div className='links f1'>
-
-    //     <span>
-    //       <Link to='/practiceResults' className={location.pathname === "/practiceResults" ? 'active link-color' : 'link-color'}>
-    //         Practice Results
-    //       </Link>
-    //     </span>
-
-    //     <span>
-    //       <Link to='/driverStandings' className={location.pathname === "/driverStandings" ? 'active' : 'link-color'}>
-    //         Driver Standings
-    //       </Link>
-    //     </span>
-
-    //     <span>
-    //       <Link to='/constructorStandings' className={location.pathname === "/constructorStandings" ? 'active' : 'link-color'}>
-    //         Constructor Standings
-    //       </Link>
-    //     </span>
-
-    //     <span>
-    //       <Link to="/raceInformation" className={location.pathname === "/raceInformation" ? 'active' : 'link-color'} >
-    //         Information
-    //         </Link>
-    //     </span>
-
-    //     <span>
-    //         <Link to="/driverStats" className={location.pathname === "/driverStats" ? 'active' : 'link-color'} >
-    //           Driver Stats
-    //         </Link>
-    //       </span>
-
-    //       {/* <span>
-    //         <Link to="/teamStats" className={location.pathname === "/teamStats" ? 'active' : 'link-color'} >
-    //           Team Stats
-    //         </Link>
-    //       </span> */}
-    //     <span>
-    //       <Link to="/adminHome" className={location.pathname === "/adminHome" ? 'active' : 'link-color'} >
-    //         Admins
-    //         </Link>
-    //     </span>
-    //   </div>
-    // </div>
+  // </Navbar>
 
 
   );

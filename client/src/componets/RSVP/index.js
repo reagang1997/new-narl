@@ -2,15 +2,16 @@ import axios from 'axios';
 import React, { useEffect } from 'react';
 import { Card, Button, Row, Col } from 'react-bootstrap';
 
-const RSVP = ({ setRsvp, updateRsvp, driver, rsvp }) => {
+const RSVP = ({ setRsvp, updateRsvp, driver, setDriver, rsvp }) => {
 
     useEffect(() => {
 
     }, [driver])
 
     const dropSeat = async () => {
+        setDriver({...driver, team: 'Reserve', driverNumber: 0});
         const dropped = await axios.put(`/api/driver/dropSeat/${driver.guid}`);
-        console.log(dropped);
+        // console.log(dropped);
     }
 
     return (
