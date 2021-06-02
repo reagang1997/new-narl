@@ -169,6 +169,8 @@ router.get('/api/readFile/:fileName', async (req, res) => {
                 let currentWeekend = currentSeason.weekends[currentSeason.weekends.length - 1];
 
                 let currentTrack = await Weekend.findOne({ _id: currentWeekend }).populate('currentTrack');
+                const currentPractice = await Weekend.findOne({ _id: currentWeekend }).populate('practice');
+
                 currentTrack = currentTrack.currentTrack;
                 console.log('CURRENT TRACK' + currentTrack);
 
@@ -178,7 +180,15 @@ router.get('/api/readFile/:fileName', async (req, res) => {
                     }
 
                     // see if driver is in weekends practice session (array)
-                    const driverInPR = await PracticeResult.findOne({ guid: result.DriverGuid });
+                    let driverInPR = false;
+                    if (currentPractice.practice.length !== 0) {
+                        currentPractice.practice.forEach(pr => {
+                            if (pr.driverName === result.DriverName) {
+                                driverInPR = true;
+                            }
+                        })
+
+                    }
 
                     if (!driverInPR) {
                         // see if driver exists
@@ -189,7 +199,7 @@ router.get('/api/readFile/:fileName', async (req, res) => {
                             //create practice Result
                             let tmpPR = {
                                 driverName: driverExists.name,
-                                team: driverExists.team,
+                                teamName: driverExists.team,
                                 rawLapTime: result.BestLap,
                                 guid: driverExists.guid
                             }
@@ -208,8 +218,8 @@ router.get('/api/readFile/:fileName', async (req, res) => {
 
                             //create new practice result
                             let tmpPR = {
-                                driverName: result.name,
-                                team: 'Reserve',
+                                driverName: result.DriverName,
+                                teamName: 'Reserve',
                                 rawLapTime: result.BestLap,
                                 guid: result.DriverGuid
                             }
@@ -221,9 +231,17 @@ router.get('/api/readFile/:fileName', async (req, res) => {
                     }
 
                     practiceLaps.forEach(async (lap) => {
-
+                        const currentPractice = await Weekend.findOne({ _id: currentWeekend }).populate('practice');
+                        console.log(currentPractice);
                         if (lap.LapTime === result.BestLap) {
-                            let updatedDriver = await PracticeResult.findOneAndUpdate({ guid: lap.DriverGuid }, { $set: { tire: lap.Tyre } }, { new: true });
+                            let prID;
+                            currentPractice.practice.forEach(pr => {
+                                if (lap.DriverName === pr.driverName) {
+                                    prID = pr._id;
+                                    console.log(prID);
+                                }
+                            })
+                            let updatedDriver = await PracticeResult.findOneAndUpdate({ _id: prID }, { $set: { tire: lap.Tyre } }, { new: true });
                             let track = await Track.findOne({ _id: currentTrack._id });
                             let trackSector1 = track.pSector1;
                             let trackSector2 = track.pSector2;
@@ -231,9 +249,9 @@ router.get('/api/readFile/:fileName', async (req, res) => {
                             let tmp1 = lap.Sectors[0]
                             let tmp2 = lap.Sectors[1]
                             let tmp3 = lap.Sectors[2]
-
+                            console.log(updatedDriver)
                             if (tmp1 < updatedDriver.sector1time) {
-                                let updatedSectors = await PracticeResult.findOneAndUpdate({ guid: lap.DriverGuid }, {
+                                let updatedSectors = await PracticeResult.findOneAndUpdate({ _id: prID }, {
                                     $set:
                                     {
                                         sector1pb: tmp1
@@ -249,7 +267,7 @@ router.get('/api/readFile/:fileName', async (req, res) => {
                                 });
                             }
                             if (tmp2 < updatedDriver.sector2time) {
-                                let updatedSectors = await PracticeResult.findOneAndUpdate({ guid: lap.DriverGuid }, {
+                                let updatedSectors = await PracticeResult.findOneAndUpdate({ _id: prID }, {
                                     $set:
                                     {
                                         sector2pb: tmp2
@@ -265,7 +283,7 @@ router.get('/api/readFile/:fileName', async (req, res) => {
                                 });
                             }
                             if (tmp3 < updatedDriver.sector3time) {
-                                let updatedSectors = await PracticeResult.findOneAndUpdate({ guid: lap.DriverGuid }, {
+                                let updatedSectors = await PracticeResult.findOneAndUpdate({ _id: prID }, {
                                     $set:
                                     {
                                         sector3pb: tmp3
@@ -281,7 +299,7 @@ router.get('/api/readFile/:fileName', async (req, res) => {
                                 });
                             }
 
-                            let updatedSectors = await PracticeResult.findOneAndUpdate({ guid: lap.DriverGuid }, {
+                            let updatedSectors = await PracticeResult.findOneAndUpdate({ _id: prID }, {
                                 $set:
                                 {
                                     sector1time: tmp1,
@@ -335,7 +353,8 @@ router.get('/api/practiceResults', async (req, res) => {
     let weekend = currentSeason.weekends.length - 1;
     weekend = currentSeason.weekends[weekend];
     console.log(weekend);
-    let practiceResults = await Weekend.findOne({ _id: weekend }).populate('practice').sort({ rawLapTime: 1 });
+    let practiceResults = await Weekend.findOne({ _id: weekend }).populate('practice');
+    practiceResults.practice.sort(sortLapTime);
 
     res.send(practiceResults);
 });
@@ -348,6 +367,16 @@ function compare(a, b) {
     }
     if (a.name > b.name) {
         return -1;
+    }
+    return 0;
+}
+
+function sortLapTime(a, b) {
+    if (a.rawLapTime < b.rawLapTime) {
+        return -1;
+    }
+    if (a.rawLapTime > b.rawLapTime) {
+        return 1;
     }
     return 0;
 }

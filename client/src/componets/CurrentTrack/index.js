@@ -20,7 +20,7 @@ const CurrentTrack = () => {
     return (
         <div className='f1'>
             <Card body className='box  week-card' style={{marginTop: '50px', marginBottom: '50px'}}>
-                <h1 className='this-week'>This Weeks Race</h1>
+                <h1 className='this-week'>Track</h1>
 
                 <h2>{currentTrack.name}</h2>
                 <h3>Laps: {currentTrack.numLaps}</h3>

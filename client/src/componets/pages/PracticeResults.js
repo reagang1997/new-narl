@@ -4,11 +4,19 @@ import TeamIcon from '../TeamIcon';
 import axios from 'axios';
 import Sectors from '../Sectors';
 import API from '../../utils/API';
+import Parallax from '../theme/Parallax/Parallax';
+import styles from "../../assets/jss/material-kit-react/views/profilePage.js";
+import Header from '../theme/Header/Header';
+import HeaderLinks from '../theme/Header/HeaderLinks';
+import classNames from "classnames";
+import { makeStyles } from "@material-ui/core/styles";
+import HeaderLinksRight from '../theme/Header/HeaderLinksRight';
+const useStyles = makeStyles(styles);
 
 function PracticeResults({ loggedIn, setLoggedIn }) {
 
     const [practiceResults, setPracticeResults] = useState([]);
-    const [trackSectors, setTrackSectors] = useState({s1: 0, s2: 0, s3: 0});
+    const [trackSectors, setTrackSectors] = useState({ s1: 0, s2: 0, s3: 0 });
     const [hit, setHit] = useState(0)
     const [p1, setP1] = useState(0);
     const [status, setStatus] = useState(0);
@@ -21,9 +29,9 @@ function PracticeResults({ loggedIn, setLoggedIn }) {
         const practice = await axios.get('/api/practiceResults');
         const sectors = await axios.get('/api/getTrackSectors');
         console.log('HITTTTT' + sectors.data);
-        setTrackSectors({s1: sectors.data.pSector1, s2: sectors.data.pSector2, s3: sectors.data.pSector3});
-        if(hit === 0){
-            setHit(hit+1)
+        setTrackSectors({ s1: sectors.data.pSector1, s2: sectors.data.pSector2, s3: sectors.data.pSector3 });
+        if (hit === 0) {
+            setHit(hit + 1)
         }
         console.log(practice);
         setPracticeResults(practice.data.practice);
@@ -50,11 +58,29 @@ function PracticeResults({ loggedIn, setLoggedIn }) {
         const formatted = secs + '.' + ms;
         return formatted;
     }
+    const classes = useStyles();
+
     return (<div>
+        <Header
+            color="transparent"
+            brand="NARL"
+            rightLinks={<HeaderLinks loggedIn={loggedIn}/>}
+            fixed
+            changeColorOnScroll={{
+                height: 200,
+                color: "white",
+            }}
+        />
+
+        <Parallax
+            small
+            filter
+            image={require("../../assets/img/driverStandings.png").default}
+        />
         {status === 204 ?
             <Alert variant='Warning'>Pratice Is Up-To-Date</Alert> : <div></div>
         }
-        <Card body className='f1 box practice-card'>
+        <Card body className={classNames(classes.main, classes.mainRaised, 'f1')}>
 
             <table className="table rounded table-hover table-responsive-lg">
                 <thead>
@@ -69,46 +95,46 @@ function PracticeResults({ loggedIn, setLoggedIn }) {
                 </thead>
                 <tbody>
                     {practiceResults.map((driver, i) => {
-                       
+
                         let split;
-                        if (i > 0){
-                            split = driver.rawLapTime - p1;
+                        if (i > 0) {
+                            split = p1 - driver.rawLapTime;
                             split = getSetor(split);
                         }
                         if (driver.rawLapTime === 99999999999) return;
                         let sector1color, sector2color, sector3color;
                         let time = getFormatted(driver.rawLapTime);
                         console.log(trackSectors.s1);
-                        if(driver.sector1time === trackSectors.s1){
-                             sector1color = 'pink'
-                             console.log('hit')
+                        if (driver.sector1time === trackSectors.s1) {
+                            sector1color = 'pink'
+                            console.log('hit')
                         }
-                        else if(driver.sector1time === driver.sector1pb){
+                        else if (driver.sector1time === driver.sector1pb) {
                             console.log(driver.sector1time)
                             console.log(driver.sector1pb)
-                             sector1color = 'green'
+                            sector1color = 'green'
                         }
-                        else{
+                        else {
                             sector1color = 'yellow'
                         }
-                        if(driver.sector2time === trackSectors.s2){
-                             sector2color = 'pink'
+                        if (driver.sector2time === trackSectors.s2) {
+                            sector2color = 'pink'
                         }
-                        else if(driver.sector2time === driver.sector2pb){
-                             sector2color = 'green'
+                        else if (driver.sector2time === driver.sector2pb) {
+                            sector2color = 'green'
                         }
-                        else{
-                             sector2color = 'yellow'
+                        else {
+                            sector2color = 'yellow'
                         }
 
-                        if(driver.sector3time === trackSectors.s3){
-                             sector3color = 'pink'
+                        if (driver.sector3time === trackSectors.s3) {
+                            sector3color = 'pink'
                         }
-                        else if(driver.sector3time === driver.sector3pb){
-                             sector3color = 'green'
+                        else if (driver.sector3time === driver.sector3pb) {
+                            sector3color = 'green'
                         }
-                        else{
-                             sector3color = 'yellow'
+                        else {
+                            sector3color = 'yellow'
                         }
                         let sector1Time = getSetor(driver.sector1time);
                         let sector2Time = getSetor(driver.sector2time);

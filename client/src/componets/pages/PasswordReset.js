@@ -34,7 +34,7 @@ const PasswordReset = () => {
         history.push('/loginSignup');
     }
     return (
-        <Card body className='f1 box' style={{ width: '1250px', marginTop: '50px' }}>
+        <Card body className='f1 box' style={{ width: '1350px', marginTop: '50px' }}>
             <h1>Password Reset</h1>
             <h2>Driver Name: {driver.name} </h2>
             <Form>

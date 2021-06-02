@@ -2,6 +2,8 @@ const router = require("express").Router();
 const Driver = require('../models/Driver');
 const Team = require('../models/Team');
 const EntryList = require('../models/EntryList');
+const Season = require('../models/Season');
+const Weekend = require('../models/Weekend');
 
 router.post('/api/CreateNewDriver', async (req, res) => {
     const newDriver = await Driver.create(req.body);
@@ -11,6 +13,30 @@ router.post('/api/CreateNewDriver', async (req, res) => {
 router.get('/api/getAllDrivers', async (req, res) => {
     const allDrivers = await Driver.find({});
     res.send(allDrivers);
+})
+
+router.put('/api/driver/dropSeat/:guid', async (req, res) => {
+    console.log('hit');
+    const droppedDriver = await Driver.findOneAndUpdate({guid: req.params.guid}, {$set: {team: 'Reserve'}});
+    console.log(droppedDriver);
+    let droppedTeam = await Team.findOne({name: droppedDriver.team});
+    const index = droppedTeam.drivers.indexOf(droppedDriver._id);
+    console.log(index)
+    console.log(droppedDriver._id);
+    const newDrivers = droppedTeam.drivers.filter((id, i) => {
+        console.log(i);
+        if(i !== index){
+            return id;
+        }
+        console.log(`id: ${id}               droppedID: ${droppedDriver._id}`);
+    
+    });
+    console.log(newDrivers);
+    
+    console.log(droppedTeam);
+    droppedTeam = await Team.findOneAndUpdate({name: droppedDriver.team}, {$set: {drivers: newDrivers}}); 
+
+    res.send(droppedTeam);
 })
 
 router.get('/api/singleDriver/:id', async (req, res) => {
@@ -29,15 +55,32 @@ router.get('/api/drivers/:name', async (req, res) => {
 })
 
 router.post('/api/updateRSVP', async (req, res) => {
+    
     const updated = await Driver.findOneAndUpdate({ guid: req.body.guid }, { $set: { rsvp: req.body.rsvp } });
+    if(req.body.rsvp === 'No'){
+        let msg = {
+            message: `${updated.name} just opened their seat for Reserve Driver!`
+        };
+        let newsMsg = await NewsPost.create(msg)
+    }
     console.log(req.body);
     res.send(updated);
 })
 
 router.get('/api/openSeats', async (req, res) => {
     let rsvpNo = await Driver.find({ rsvp: 'No' });
-    const entryList = await EntryList.find({});
+    let currentSeason = await Season.find({});
 
+    currentSeason = currentSeason[currentSeason.length - 1];
+    // let weekend = currentSeason.weeekends[ - 1];
+    let weekend = currentSeason.weekends.length - 1;
+    weekend = currentSeason.weekends[weekend];
+    console.log(weekend);
+    let entryList = await Weekend.findOne({ _id: weekend }).populate('grid').select('grid');
+    entryList = entryList.grid;
+
+    console.log('56 ');
+    console.log(entryList);
     const openSeats = await findOpenSeats();
 
     rsvpNo.forEach(seat => {
@@ -57,7 +100,7 @@ router.get('/api/openSeats', async (req, res) => {
         }
     })
 
-
+    
     let open = openSeats.map(seat => {
         seat.numbers.forEach(number => {
             entryList.forEach(entry => {
@@ -166,6 +209,11 @@ router.get('/api/driver/:guid', async (req, res) => {
     const foundDriver = await Driver.findOne({ guid: tmp });
     console.log(foundDriver);
     res.send(foundDriver);
+});
+
+router.put('/api/driver/clearPoints', async (req, res) => {
+    const cleared = await Driver.updateMany({}, {$set: {points: 0}});
+    res.send(cleared);
 })
 
 router.get('/api/openTeamSeats', async (req, res) => {
@@ -180,6 +228,11 @@ router.put('/api/joinTeam', async (req, res) => {
     const {guid, team, driverNumber} = req.body;
     const updated = await Driver.findOneAndUpdate({guid: guid}, {$set: {team: team, driverNumber: driverNumber}});
     const updatedTeam = await Team.findOneAndUpdate({name: updated.team}, {$push: {drivers: updated._id}});
+
+    let msg = {
+        message: `#${driverNumber} ${updated.name} just joined ${team}!`
+    };
+    let newsMsg = await NewsPost.create(msg)
     res.send(updated);
 })
 
@@ -221,7 +274,7 @@ const findOpenSeats = async () => {
             case 'Red Bull':
                 tmp.numbers = redbull;
                 break;
-            case 'Renault':
+            case 'Alpine':
                 tmp.numbers = alpine;
                 break;
             case 'Mercedes':
@@ -233,7 +286,7 @@ const findOpenSeats = async () => {
             case 'Alfa Romeo':
                 tmp.numbers = alfa;
                 break;
-            case 'Racing Point':
+            case 'Aston Martin':
                 tmp.numbers = aston;
                 break;
             case 'Ferrari':
@@ -310,7 +363,7 @@ const findOpenSeats = async () => {
                 })
                 break;
 
-            case 'Renault':
+            case 'Alpine':
                 team.drivers.forEach(driver => {
                     const numberIndex = alpine.indexOf(driver.driverNumber);
                     console.log(numberIndex);
@@ -371,7 +424,7 @@ const findOpenSeats = async () => {
                 })
                 break;
 
-            case 'Racing Point':
+            case 'Aston Martin':
                 team.drivers.forEach(driver => {
                     const numberIndex = aston.indexOf(driver.driverNumber);
                     console.log(numberIndex);

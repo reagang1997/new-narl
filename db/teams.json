@@ -1,0 +1,268 @@
+[{
+  "_id": {
+    "$oid": "605fd105408e510028e860da"
+  },
+  "position": 0,
+  "points": 128,
+  "wins": 0,
+  "fastestLaps": 0,
+  "drivers": [
+    {
+      "$oid": "605fd0a3408e510028e860c7"
+    },
+    {
+      "$oid": "607a17c35d419200282921c4"
+    }
+  ],
+  "historyPoints": 275,
+  "historyWins": 6,
+  "historyFastestLaps": 1,
+  "isActive": false,
+  "wcc": 1,
+  "name": "Ferrari",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "605fd113408e510028e860dd"
+  },
+  "position": 0,
+  "points": 46,
+  "wins": 0,
+  "fastestLaps": 0,
+  "drivers": [
+    {
+      "$oid": "605fd0c2408e510028e860ce"
+    },
+    {
+      "$oid": "605fd0cd408e510028e860d2"
+    }
+  ],
+  "historyPoints": 193,
+  "historyWins": 2,
+  "historyFastestLaps": 2,
+  "isActive": false,
+  "wcc": 0,
+  "name": "McLaren",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "605fd0f9408e510028e860d8"
+  },
+  "position": 0,
+  "points": 207,
+  "wins": 1,
+  "fastestLaps": 0,
+  "drivers": [
+    {
+      "$oid": "605fd0a0408e510028e860c6"
+    },
+    {
+      "$oid": "6099cdc425e1da002858ca2f"
+    },
+    {
+      "$oid": "6099cdc425e1da002858ca2f"
+    },
+    {
+      "$oid": "6099cdc425e1da002858ca2f"
+    },
+    {
+      "$oid": "6099cdc425e1da002858ca2f"
+    },
+    {
+      "$oid": "6099cdc425e1da002858ca2f"
+    }
+  ],
+  "historyPoints": 218,
+  "historyWins": 1,
+  "historyFastestLaps": 0,
+  "isActive": false,
+  "wcc": 0,
+  "name": "Alpha Tauri",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "605fd11d408e510028e860df"
+  },
+  "position": 0,
+  "points": 30,
+  "wins": 0,
+  "fastestLaps": 0,
+  "drivers": [
+    {
+      "$oid": "605fd0d1408e510028e860d3"
+    },
+    {
+      "$oid": "6099cdc425e1da002858ca2f"
+    }
+  ],
+  "historyPoints": 99,
+  "historyWins": 1,
+  "historyFastestLaps": 1,
+  "isActive": false,
+  "wcc": 0,
+  "name": "Williams",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "606bd8fd1ab901002880e8f6"
+  },
+  "position": 0,
+  "points": 1,
+  "wins": 0,
+  "fastestLaps": 0,
+  "drivers": [],
+  "historyPoints": 0,
+  "historyWins": 0,
+  "historyFastestLaps": 0,
+  "isActive": false,
+  "wcc": 0,
+  "name": "randos [cats points to hass?]",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "605fd0ff408e510028e860d9"
+  },
+  "position": 0,
+  "points": 112,
+  "wins": 0,
+  "fastestLaps": 0,
+  "drivers": [
+    {
+      "$oid": "605fd0b4408e510028e860ca"
+    }
+  ],
+  "historyPoints": 205,
+  "historyWins": 0,
+  "historyFastestLaps": 1,
+  "isActive": false,
+  "wcc": 0,
+  "name": "Aston Martin",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "605fd10f408e510028e860dc"
+  },
+  "position": 0,
+  "points": 43,
+  "wins": 0,
+  "fastestLaps": 0,
+  "drivers": [
+    {
+      "$oid": "6096b37ab5a8ef0028ad3a4b"
+    },
+    {
+      "$oid": "609db322f578080028617dcd"
+    },
+    {
+      "$oid": "609db322f578080028617dcd"
+    },
+    {
+      "$oid": "609db322f578080028617dcd"
+    },
+    {
+      "$oid": "609db322f578080028617dcd"
+    },
+    {
+      "$oid": "609db322f578080028617dcd"
+    },
+    {
+      "$oid": "609db322f578080028617dcd"
+    }
+  ],
+  "historyPoints": 78,
+  "historyWins": 0,
+  "historyFastestLaps": 0,
+  "isActive": false,
+  "wcc": 0,
+  "name": "Red Bull",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "605fd0f2408e510028e860d7"
+  },
+  "position": 0,
+  "points": 337,
+  "wins": 5,
+  "fastestLaps": 4,
+  "drivers": [
+    {
+      "$oid": "605fd094408e510028e860c3"
+    },
+    {
+      "$oid": "605fd09c408e510028e860c5"
+    }
+  ],
+  "historyPoints": 385,
+  "historyWins": 7,
+  "historyFastestLaps": 5,
+  "isActive": false,
+  "wcc": 0,
+  "name": "Alpine",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "605fd118408e510028e860de"
+  },
+  "position": 0,
+  "points": 5,
+  "wins": 0,
+  "fastestLaps": 0,
+  "drivers": [
+    {
+      "$oid": "607a17d65d419200282921c7"
+    },
+    {
+      "$oid": "605fd0d7408e510028e860d5"
+    }
+  ],
+  "historyPoints": 89,
+  "historyWins": 1,
+  "historyFastestLaps": 1,
+  "isActive": false,
+  "wcc": 0,
+  "name": "HAAS",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "605fd10a408e510028e860db"
+  },
+  "position": 0,
+  "points": 131,
+  "wins": 0,
+  "fastestLaps": 1,
+  "drivers": [
+    {
+      "$oid": "605fd0ab408e510028e860c9"
+    },
+    {
+      "$oid": "605fd0bf408e510028e860cd"
+    }
+  ],
+  "historyPoints": 209,
+  "historyWins": 0,
+  "historyFastestLaps": 1,
+  "isActive": false,
+  "wcc": 0,
+  "name": "Mercedes",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "605fd0ee408e510028e860d6"
+  },
+  "position": 0,
+  "points": 315,
+  "wins": 7,
+  "fastestLaps": 7,
+  "drivers": [
+    {
+      "$oid": "605fd08a408e510028e860c1"
+    }
+  ],
+  "historyPoints": 271,
+  "historyWins": 6,
+  "historyFastestLaps": 6,
+  "isActive": false,
+  "wcc": 0,
+  "name": "Alfa Romeo",
+  "__v": 0
+}]

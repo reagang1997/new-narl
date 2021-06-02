@@ -1,0 +1,205 @@
+[{
+  "_id": {
+    "$oid": "6071f99bbe53be002878b27a"
+  },
+  "fastestLap": {
+    "driver": "",
+    "time": 99999999999
+  },
+  "download": "#",
+  "trackLength": 2.688,
+  "turns": 18,
+  "fastestQualy": 0,
+  "fastestRace": 0,
+  "rSector1": 0,
+  "rSector2": 0,
+  "rSector3": 0,
+  "pSector1": 0,
+  "pSector2": 0,
+  "pSector3": 0,
+  "qSector1": 0,
+  "qSector2": 0,
+  "qSector3": 0,
+  "name": "Red Bull Ring",
+  "numLaps": 43,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60788c68427bf300288f520d"
+  },
+  "fastestLap": {
+    "driver": "",
+    "time": 99999999999
+  },
+  "download": "#",
+  "trackLength": 3.194,
+  "turns": 17,
+  "fastestQualy": 99999999999,
+  "fastestRace": 99999999999,
+  "rSector1": 99999999999,
+  "rSector2": 99999999999,
+  "rSector3": 99999999999,
+  "pSector1": 23729,
+  "pSector2": 37975,
+  "pSector3": 25123,
+  "qSector1": 99999999999,
+  "qSector2": 99999999999,
+  "qSector3": 99999999999,
+  "name": "Silverstone",
+  "numLaps": 32,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "607d6c72b9afb4002891c2c9"
+  },
+  "fastestLap": {
+    "driver": "",
+    "time": 99999999999
+  },
+  "download": "https://assettocorsa.club/mods/tracks/hungaroring.html",
+  "trackLength": 2.722,
+  "turns": 14,
+  "fastestQualy": 99999999999,
+  "fastestRace": 99999999999,
+  "rSector1": 99999999999,
+  "rSector2": 99999999999,
+  "rSector3": 99999999999,
+  "pSector1": 27899,
+  "pSector2": 26258,
+  "pSector3": 21479,
+  "qSector1": 99999999999,
+  "qSector2": 99999999999,
+  "qSector3": 99999999999,
+  "name": "Hungary",
+  "numLaps": 42,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6086e99dbf73cf00282dcdab"
+  },
+  "fastestLap": {
+    "driver": "",
+    "time": 99999999999
+  },
+  "download": "#",
+  "trackLength": 4.352,
+  "turns": 19,
+  "fastestQualy": 99999999999,
+  "fastestRace": 99999999999,
+  "rSector1": 99999999999,
+  "rSector2": 99999999999,
+  "rSector3": 99999999999,
+  "pSector1": 30787,
+  "pSector2": 44163,
+  "pSector3": 28534,
+  "qSector1": 99999999999,
+  "qSector2": 99999999999,
+  "qSector3": 99999999999,
+  "name": "Spa",
+  "numLaps": 27,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "609089455c1abc00283251ce"
+  },
+  "fastestLap": {
+    "driver": "",
+    "time": 99999999999
+  },
+  "download": "https://www.mediafire.com/file/ldky6fwe77svjxa/zandvoort2020.rar/file",
+  "trackLength": 2.676,
+  "turns": 15,
+  "fastestQualy": 99999999999,
+  "fastestRace": 99999999999,
+  "rSector1": 30768,
+  "rSector2": 18715,
+  "rSector3": 22320,
+  "pSector1": 29995,
+  "pSector2": 18076,
+  "pSector3": 21897,
+  "qSector1": 99999999999,
+  "qSector2": 99999999999,
+  "qSector3": 99999999999,
+  "name": "Zandvoort",
+  "numLaps": 44,
+  "__v": 0,
+  "config": "DRS",
+  "trackFile": "zandvoort2020"
+},{
+  "_id": {
+    "$oid": "609bf56e1bc4d90028e9b81a"
+  },
+  "fastestLap": {
+    "driver": "",
+    "time": 99999999999
+  },
+  "download": "#",
+  "trackLength": 3.6,
+  "turns": 11,
+  "fastestQualy": 99999999999,
+  "fastestRace": 99999999999,
+  "rSector1": 99999999999,
+  "rSector2": 99999999999,
+  "rSector3": 99999999999,
+  "pSector1": 30191,
+  "pSector2": 25948,
+  "pSector3": 25020,
+  "qSector1": 99999999999,
+  "qSector2": 99999999999,
+  "qSector3": 99999999999,
+  "name": "Monza",
+  "numLaps": 32,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60a44d6bfba2ea00284c16e0"
+  },
+  "fastestLap": {
+    "driver": "",
+    "time": 99999999999
+  },
+  "download": "https://www.mediafire.com/file/0ips388jspcvhis/acu_sochi_v1.15.rar/file",
+  "trackLength": 3.364,
+  "turns": 18,
+  "fastestQualy": 99999999999,
+  "fastestRace": 99999999999,
+  "rSector1": 19893,
+  "rSector2": 31328,
+  "rSector3": 24346,
+  "pSector1": 34149,
+  "pSector2": 32242,
+  "pSector3": 27851,
+  "qSector1": 99999999999,
+  "qSector2": 99999999999,
+  "qSector3": 99999999999,
+  "name": "Russia",
+  "numLaps": 32,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60ac4d7e9379270028d74f4e"
+  },
+  "fastestLap": {
+    "driver": "",
+    "time": 99999999999
+  },
+  "download": "https://www.mediafire.com/file/6wn37uzw10mdhow/singapore_2020_1_22.7z/file",
+  "trackLength": 3.146,
+  "turns": 23,
+  "fastestQualy": 99999999999,
+  "fastestRace": 99999999999,
+  "rSector1": 99999999999,
+  "rSector2": 99999999999,
+  "rSector3": 99999999999,
+  "pSector1": 99999999999,
+  "pSector2": 99999999999,
+  "pSector3": 99999999999,
+  "qSector1": 99999999999,
+  "qSector2": 99999999999,
+  "qSector3": 99999999999,
+  "name": "Singapore",
+  "numLaps": 37,
+  "__v": 0,
+  "config": "",
+  "trackFile": "singapore_2020"
+}]

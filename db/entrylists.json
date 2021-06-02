@@ -1,0 +1,118 @@
+[{
+  "_id": {
+    "$oid": "609185d13c849c0028754d5b"
+  },
+  "guid": "76561198129348572",
+  "team": "Williams",
+  "driverNumber": "6",
+  "name": "Tommy Gunz",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6091c26ba04fd90028340dfa"
+  },
+  "guid": "76561198043408140",
+  "team": "Mercedes",
+  "driverNumber": "44",
+  "name": "Niski",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60920e221b9a5500286ddb80"
+  },
+  "guid": "76561198061315736",
+  "team": "McLaren",
+  "driverNumber": "3",
+  "name": "CarneAsad",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6092f73f4a7ae90028e4c4ae"
+  },
+  "guid": "76561197961128043",
+  "team": "Ferrari",
+  "driverNumber": "16",
+  "name": "Theo",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60946a60bd380500281338c1"
+  },
+  "guid": "76561198130851942",
+  "team": "HAAS",
+  "driverNumber": "9",
+  "name": "Jackson",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6094b23a8962570028e0dc0d"
+  },
+  "name": "Smoop",
+  "team": "Ferrari",
+  "driverNumber": "55",
+  "guid": "76561199070013146",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6094b3348962570028e0dc0e"
+  },
+  "name": "mate",
+  "team": "Alpha Tauri",
+  "driverNumber": "22",
+  "guid": "76561198063039022",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6095c0abaf4a7d00288bb98f"
+  },
+  "guid": "76561198013300259",
+  "team": "Williams",
+  "driverNumber": "63",
+  "name": "CountryGentleman",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6095eb4256a207002813f63b"
+  },
+  "guid": "76561198415460681",
+  "team": "Alpine",
+  "driverNumber": "14",
+  "name": "SHELBY",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6097143fc4b0be0028d28511"
+  },
+  "guid": "76561198059743929",
+  "team": "Alfa Romeo",
+  "driverNumber": "7",
+  "name": "Batata",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6098084f4760ca00283762a6"
+  },
+  "guid": "76561198039085663",
+  "team": "McLaren",
+  "driverNumber": "4",
+  "name": "AlexG",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60980c614760ca00283762a7"
+  },
+  "guid": "76561198338032202",
+  "team": "Mercedes",
+  "driverNumber": "77",
+  "name": "Dabromanovich",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "609846e309ddb000284a8021"
+  },
+  "guid": "76561198972385440",
+  "team": "Alpine",
+  "driverNumber": "31",
+  "name": "BackMarker",
+  "__v": 0
+}]
