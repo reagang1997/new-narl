@@ -25,12 +25,16 @@ const ReserveTeamSignup = ({ driver, setDriver }) => {
     }
 
     const joinTeam = async (e) => {
+        console.log('HIT')
+        if(e.target.parentElement.id === '' || e.target.parentElement.value === null) {
+            return alert("Please Try Again")
+        }
         const tmp = {
             guid: driver.guid,
-            driverNumber: e.target.id,
-            team: e.target.value
+            driverNumber: e.target.parentElement.id,
+            team: e.target.parentElement.value
         }
-
+        console.log(tmp);
         setDriver({ ...driver, team: tmp.team, driverNumber: tmp.driverNumber });
         console.log(driver)
         const updated = await axios.put('/api/joinTeam', tmp);
@@ -46,16 +50,18 @@ const ReserveTeamSignup = ({ driver, setDriver }) => {
 
                     {openSeats ? openSeats.map(seat => {
                         if (seat === null) { return }
+
                         return (<div>
                             {seat.numbers.map(number => {
+                                console.log(number);
                                 return (
                                     <Card body className='shadow' style={{ marginTop: '5px' }}>
                                         <GridContainer>
-                                            <GridItem xs={12} sm={12} md={4}>
+                                            <GridItem xs={12} sm={12} md={8}>
                                                 <h3 style={{marginTop: '8px'}}> #{number}  {seat.team} </h3>
 
                                             </GridItem>
-                                            <GridItem xs={12} sm={12} md={4}>
+                                            <GridItem xs={12} sm={12} md={8}>
                                                 <div style={{marginLeft: '250px'}}>
                                                     <Button color='warning' value={seat.team} id={number} onClick={joinTeam}>Join {seat.team} #{number}</Button>
                                                 </div>

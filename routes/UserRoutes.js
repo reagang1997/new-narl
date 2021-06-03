@@ -27,6 +27,13 @@ router.post("/signup", (req, res) => {
         email: email,
         guid: guid
       });
+      const newDriver = await Driver.create({
+        name: username,
+        guid: guid,
+        team: 'Reserve',
+        driverNumber: 0
+      })
+
       newUser.save((err, savedUser) => {
         if (err) return res.json(err);
         res.json(savedUser);
