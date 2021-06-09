@@ -9,7 +9,18 @@ const SeasonSchema = new Schema({
             ref: 'Weekend',
             default: []
         }
-    ]
+    ],
+    rounds: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Round',
+            default: []
+        }
+    ],
+    currentRound: {
+        type: Number,
+        default: 0
+    }
 });
 
 const Season = mongoose.model('Season', SeasonSchema);

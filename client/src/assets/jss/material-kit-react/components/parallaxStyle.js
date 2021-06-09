@@ -13,9 +13,9 @@ const parallaxStyle = {
     alignItems: "center",
   },
   filter: {
-    "&:before": {
-      background: "rgba(0, 0, 0, 0.5)",
-    },
+    // "&:before": {
+    //   background: "rgba(0, 0, 0, 0.5)",
+    // },
     "&:after,&:before": {
       position: "absolute",
       zIndex: "1",

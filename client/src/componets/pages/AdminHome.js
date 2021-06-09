@@ -3,6 +3,7 @@ import { Nav, Form, Button, Col, ToggleButton, ToggleButtonGroup, Card } from 'r
 import TrackInfo from '../SetTrackInfo';
 import axios from 'axios';
 import './admin.css'
+import SetSeason from '../SetSeason/SetSeason';
 
 const AdminHome = ({ loggedIn, setLoggedIn }) => {
     const [selection, setSelection] = useState('');
@@ -170,7 +171,7 @@ const AdminHome = ({ loggedIn, setLoggedIn }) => {
     }
 
     return (
-        <div id='admin'>
+        <div id='admin' style={{color: 'black'}}>
             <div>
                 <Nav defaultActiveKey="/home" className="justify-content-center">
                     <Nav.Link href="/adminHome">Admin Home</Nav.Link>
@@ -181,6 +182,7 @@ const AdminHome = ({ loggedIn, setLoggedIn }) => {
                     <Nav.Link eventKey="link-2" onClick={(e) => setSelection(e.target.innerHTML)}>Inc Team Stats</Nav.Link>
                     <Nav.Link eventKey="link-2" onClick={(e) => setSelection(e.target.innerHTML)}>Set Team Stats</Nav.Link>
                     <Nav.Link eventKey="link-2" onClick={(e) => setSelection(e.target.innerHTML)}>Set Track Info</Nav.Link>
+                    <Nav.Link eventKey="link-2" onClick={(e) => setSelection(e.target.innerHTML)}>Set Season</Nav.Link>
                     <Nav.Link eventKey="link-2" onClick={(e) => {
                         setSelection(e.target.innerHTML);
                         getAllResults();
@@ -511,6 +513,7 @@ const AdminHome = ({ loggedIn, setLoggedIn }) => {
                     
                     <Button variant='danger' onClick={clearPractice}>Clear Practice</Button>
                 </div> : <div></div>}
+                {selection === "Set Season" ? <SetSeason/> : <div/>}
                 {singleDriver ?
                     <table className='table table-responsive-lg' > 
                         <tr>

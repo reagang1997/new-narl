@@ -42,6 +42,7 @@ import EditProfile from "../../EditProfile";
 import TeamIcon from "../../TeamIcon";
 import axios from 'axios'
 import HeaderLinksRight from "../../theme/Header/HeaderLinksRight";
+import AdminHome from "../AdminHome";
 const useStyles = makeStyles(styles);
 
 export default function ProfilePage(props) {
@@ -98,7 +99,7 @@ export default function ProfilePage(props) {
       <Header
         color="transparent"
         brand="NARL"
-        rightLinks={<div><HeaderLinks/><HeaderLinksRight /></div>}
+        rightLinks={<HeaderLinks />}
 
         fixed
         changeColorOnScroll={{
@@ -190,9 +191,26 @@ export default function ProfilePage(props) {
 
                         </GridContainer>
                       ),
-                    },
+                    }
                   ]}
                 />
+                {driver.admin ? <NavPills
+                  alignCenter
+                  color="warning"
+                  tabs={[
+                    {
+                      tabButton: "Admin Home",
+                      tabIcon: Equalizer,
+                      tabContent: (
+                        <GridContainer justify="center">
+                          <Row>
+                            <AdminHome/>
+                             </Row>
+                        </GridContainer>
+                      ),
+                    }]}
+                    ></NavPills> : <div />}
+
               </GridItem>
             </GridContainer>
           </div>
