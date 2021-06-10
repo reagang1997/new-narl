@@ -52,16 +52,35 @@ const SetSeason = () => {
     }
 
     const createSeason = async () => {
-        season.forEach(async (round, i) => {
-            if(i === 0){
+        // season.forEach(async (round, i) => {
+        //     console.log(`Round ${i}: ${round}`)
+        //     if (i === 0) {
+        //         const seasonCreated = await axios.post('/api/createNewSeason');
+
+        //     }
+        //     const tmp = {
+        //         track: round
+        //     }
+        //     // console.log(tmp)
+        //     const roundCreated = await axios.post('/api/addRound', tmp)
+        // })
+
+        for (let i = 0; i < season.length; i++) {
+            console.log(`Round ${i}: ${season[i]}`)
+            if (i === 0) {
                 const seasonCreated = await axios.post('/api/createNewSeason');
+                console.log('created season');
+                console.log(season[i]);
             }
             const tmp = {
-                track: round
+                track: season[i]
             }
             console.log(tmp)
             const roundCreated = await axios.post('/api/addRound', tmp)
-        })
+            console.log(`Just added Round ${i}: ${tmp.track}`);
+
+
+        }
     }
 
     useEffect(() => {
@@ -101,29 +120,29 @@ const SetSeason = () => {
                 <GridItem md={6}>
                     <h1>Select a Track </h1>
                     <List component="nav" aria-label="main mailbox folders">
-                    {tracks.map(track => {
-                        return (
-                            <div className={classes.root}>
-                                
+                        {tracks.map(track => {
+                            return (
+                                <div className={classes.root}>
+
                                     <ListItem button onClick={e => {
-                                        if(e.target.innerHTML.length < 50){
+                                        if (e.target.innerHTML.length < 50) {
                                             setSeason([...season, e.target.innerHTML])
                                         }
-                                        else{
+                                        else {
                                             alert('Try Again')
                                         }
                                     }}>
                                         <ListItemIcon>
-                                            {season.indexOf(track.name) > -1 ? <FilledIcon/> : <EmptyIcon/>}
+                                            {season.indexOf(track.name) > -1 ? <FilledIcon /> : <EmptyIcon />}
                                         </ListItemIcon>
                                         <ListItemText primary={track.name} />
                                     </ListItem>
-                                   
-                                    
-                            </div>
-                        );
-                    })}
-                                </List>
+
+
+                                </div>
+                            );
+                        })}
+                    </List>
 
                 </GridItem>
                 <GridItem md={12}>
